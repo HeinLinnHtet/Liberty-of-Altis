@@ -54,11 +54,13 @@ void map::SetStartPos(Entity& entity, int x, int y)
 //Check if entity if collide with obj 
 bool map::EnviroEntityCollide(Entity& entity, environmentalObjs& obj, char direction)
 {
+	direction = toupper(direction);
+
 	//store position
 	int XEntity = entity.PosXY.GetX();
 	int YEntity = entity.PosXY.GetY();
-	int XEnviro = obj.getx();
-	int YEnviro = obj.gety();
+	int XEnviro = obj.objPos.GetX();
+	int YEnviro = obj.objPos.GetY();
 
 	bool result = false;
 
@@ -78,11 +80,11 @@ bool map::EnviroEntityCollide(Entity& entity, environmentalObjs& obj, char direc
 	//Check if entity if UP of each other 
 	if (YEntity == YEnviro) {
 		//Right
-		if ((XEntity == XEntity - 1) && direction == 'D') {
+		if ((XEntity == XEnviro - 1) && direction == 'D') {
 			result = true;
 		}
 		//Left
-		else if ((XEntity == XEntity + 1) && direction == 'A') {
+		else if ((XEntity == XEnviro + 1) && direction == 'A') {
 			result = true;
 		}
 		else

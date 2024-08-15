@@ -107,6 +107,15 @@ void mapmain1::drawmap()
 			}
 		}
 	}
+
+
+	//Shift to position
+	for (int i = 0; i < 48; i++) {
+		trees[i]->setx(trees[i]->getx() + 4);
+		trees[i]->sety(trees[i]->gety() + 1);
+	}
+
+
 }
 
 
@@ -152,13 +161,13 @@ void mapmain1::map1game(void)
 
 
 	//Set all troop positions
-	//SetStartPos(*level1Allies[0], 5, 2);
-	//SetStartPos(*level1Allies[1], 5, 4);
-	//SetStartPos(*level1Allies[2], 7, 4);
-	//SetStartPos(*level1Allies[3], 7, 6);
-	//SetStartPos(*level1Allies[4], 7, 8);
-	//SetStartPos(*level1Allies[5], 7, 10);
-	//SetStartPos(*level1Allies[6], 7, 12);
+	SetStartPos(*level1Allies[0], 5, 2);
+	SetStartPos(*level1Allies[1], 5, 4);
+	SetStartPos(*level1Allies[2], 7, 4);
+	SetStartPos(*level1Allies[3], 7, 6);
+	SetStartPos(*level1Allies[4], 7, 8);
+	SetStartPos(*level1Allies[5], 7, 10);
+	SetStartPos(*level1Allies[6], 7, 12);
 
 	//SetStartPos(*level1Enemy[0], 25 ,3);
 	//SetStartPos(*level1Enemy[1], 30, 4);
@@ -174,123 +183,100 @@ void mapmain1::map1game(void)
 
 
 	//Testing 
-	SetStartPos(*level1Allies[0], 12, 17);
-	SetStartPos(*level1Allies[1], 4, 14);
 	SetStartPos(*level1Enemy[0], 6, 18);
+
 	
-	//Check if all enemies have died  ### To change
+	////Check if all enemies have died  ### To change
 	bool test = false;
+
 	while (test == false) {
-		gotoxy(65, 10);
-		std::cout << "Enter your move";
-		//store user input
-		char input;
+		
+		//////////For player troops
+		// Player choose action 
+		//Movement 
+		for (int i = 0; i < 7; i++) {
+			bool ValidMove = false;
 
-		//allow to check movement is valid 
-		bool CanMove = true;
-		std::cin >> input;
+			//Movement Code
+			while (ValidMove == false) {
 
-		//Check collison with borders
-		if (level1Allies[0]->BorderCollision(input) == true) {
-			gotoxy(15, 20);
-			std::cout << "Collided border";
-			CanMove = false;
-		}
+				gotoxy(65, 10);
+				std::cout << "Enter your move";
+				//store user input
+				char input;
+				std::cin >> input;
 
-		//Check collison between Allies and Enemies
-		if (level1Allies[0]->Entitycollision(*level1Enemy[0], input) == true) {
-			gotoxy(15, 21);
-			std::cout << "Collided Entity";
-			CanMove = false;
-		}
+				//allow to check movement is valid 
+				bool CanMove = true;
 
-		//Check collison between Allies and Allies
-		if (level1Allies[0]->Entitycollision(*level1Allies[1], input) == true) {
-			gotoxy(15, 21);
-			std::cout << "Collided Allies";
-			CanMove = false;
-		}
 
-		//Check collison between Allies and environment 
-		for (int i = 0; i < AmtofObjs; i++) {
-			if (EnviroEntityCollide(*level1Allies[0], *trees[i], input) == true) {
-				gotoxy(15, 22);
-				std::cout << "Collided Environment";
-				CanMove = false;
+				//Check collison with borders
+				if (level1Allies[i]->BorderCollision(input) == true) {
+					gotoxy(15, 20);
+					std::cout << "Collided border";
+					CanMove = false;
+				}
+
+				//Check collison between Allies and Enemies
+				for (int j = 0; j < 10; j++) {
+					if (level1Allies[i]->Entitycollision(*level1Enemy[j], input) == true) {
+						gotoxy(15, 21);
+						std::cout << "Collided Entity";
+						CanMove = false;
+					}
+				}
+
+				//Check collison between Allies and Allies
+				for (int j = 0; j < 7; j++) {
+					if (level1Allies[i]->Entitycollision(*level1Allies[j], input) == true) {
+						gotoxy(15, 21);
+						std::cout << "Collided Allies";
+						CanMove = false;
+					}
+				}
+
+				////Check collison between Allies and environment 
+				for (int j = 0; j < AmtofObjs; j++) {
+					if (EnviroEntityCollide(*level1Allies[i], *trees[j], input) == true) {
+						gotoxy(15, 22);
+						std::cout << "Collided Environment";
+						CanMove = false;
+					}
+				}
+
+				//reflect movement of entity on screen 
+				if (CanMove == true) {
+					MoveEntity(*level1Allies[i], input);
+					ValidMove = true;
+				}
+				else if (CanMove == false) {
+					gotoxy(15, 23);
+					std::cout << "Invalid Movement";
+				}
 			}
 		}
+		//Player attacking 
 
+		
+		////////// For enemy troops 
+		//Attacking 
+		
+		//Movement 
+		
 
-
-		//reflect movement of entity on screen 
-		if (CanMove == true) {
-			MoveEntity(*level1Allies[0], input);
-		}
+		//level1Enemy[0]->M1Movement();
 		drawmap();
-		gotoxy(level1Allies[0]->PosXY.GetX(), level1Allies[0]->PosXY.GetY());
-		std::cout << level1Allies[0]->Draw_Icon();
-		gotoxy(level1Allies[1]->PosXY.GetX(), level1Allies[1]->PosXY.GetY());
-		std::cout << level1Allies[1]->Draw_Icon();
 		gotoxy(level1Enemy[0]->PosXY.GetX(), level1Enemy[0]->PosXY.GetY());
 		std::cout << level1Enemy[0]->Draw_Icon();
+
+		//Update new position 
+		for (int i = 0; i < 7; i++) {
+			gotoxy(level1Allies[i]->PosXY.GetX(), level1Allies[i]->PosXY.GetY());
+			std::cout << level1Allies[i]->Draw_Icon();
+		}
+
+
 	}
-	//while (test == false) {
-
-	//	//////////For player troops
-	//	//Movement 
-	//	for (int i = 0; i < 7; i++) {
-	//		gotoxy(65, 10);
-	//		std::cout << "Enter your move";
-	//		//store user input
-	//		char input;
-
-	//		//allow to check movement is valid 
-	//		bool CanMove = true;
-	//		std::cin >> input;
-
-	//		//Check collison with borders
-	//		if (level1Allies[i]->BorderCollision(input) == true){
-	//			gotoxy(15, 19);
-	//			std::cout << "Collided border";
-	//			CanMove = false;
-	//		}
-	//		
-	//		//Check if collide with enemy 
-	//		for (int j = 0; j < 10; j++) {
-	//			if (level1Allies[i]->Entitycollision(*level1Enemy[j], input) == true) {
-	//				gotoxy(15, 20);
-	//				std::cout << "Collided Entity";
-	//				CanMove = false;
-	//			}
-	//		}
-	//		
-
-	//		//reflect movement of entity on screen 
-	//		if (CanMove == true) {
-	//			MoveEntity(*level1Allies[i], input);
-	//		}
-
-	//		////Check if collide with allies 
-	//		////Check if movement is valid 
-	//		//for (int j = 0; j < 10; j++) {
-
-	//		//	//Collison check between Entities
-
-	//		//}
-	//	}
-	//	//level1Enemy[0]->M1Movement();
-	//	drawmap();
-	//	gotoxy(level1Enemy[0]->PosXY.GetX(), level1Enemy[0]->PosXY.GetY());
-	//	std::cout << level1Enemy[0]->Draw_Icon();
-
-	//	//Update new position 
-	//	for (int i = 0; i < 7; i++) {
-	//		gotoxy(level1Allies[i]->PosXY.GetX(), level1Allies[i]->PosXY.GetY());
-	//		std::cout << level1Allies[i]->Draw_Icon();
-	//	}
-
-
-	//}
 
 
 
