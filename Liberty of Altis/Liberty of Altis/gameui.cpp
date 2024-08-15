@@ -1,9 +1,9 @@
 #include "gameui.h"
 #include <iostream>
 #include "Windows.h"
-#include <mmsystem.h>
 
-#pragma comment(lib, "winmm.lib")
+
+
 gameui::gameui()
 {
 }
@@ -16,8 +16,8 @@ void gameui::gotoxy(int x, int y) {
 
 void gameui::cutscene1()
 {
-	PlaySound(TEXT("C:\\Users\\tyler\\Downloads\\Not-Like-Us.wav"), NULL, SND_FILENAME | SND_ASYNC);
 
+	
 	std::string lines[] = {
 	 "It is 2001, the military of the Republic Of Altis has siezed power after a coup on the democratic government of the island nation",
 
