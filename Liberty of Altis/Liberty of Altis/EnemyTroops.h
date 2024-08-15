@@ -4,7 +4,7 @@ class EnemyTroops : public Entity
 {
 private:
 	bool godown;
-	static bool active;
+	/*static bool active;*/
 
 public:
 	//Default 

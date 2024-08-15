@@ -15,64 +15,196 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AlliedTroops.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyTroops.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tank.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Artillery.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LightArtillery.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Rifleman.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Grenadier.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Machinegunner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="AArtillery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AGrenadier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIFV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="AlliedTroops.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="AMachinegunner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AMotar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ARiflesman.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ATank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Backpack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EArtillery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EGrenadier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EIFV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EMachinegunner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EMotar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnemyTroops.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tank.h">
+    <ClInclude Include="Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Artillery.h">
+    <ClInclude Include="environmentalObjs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LightArtillery.h">
+    <ClInclude Include="ERiflesman.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Rifleman.h">
+    <ClInclude Include="ETank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Grenadier.h">
+    <ClInclude Include="gameui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Machinegunner.h">
+    <ClInclude Include="lobby.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mapmain1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mapmain2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mapmain3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mapmain4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mapmain5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="towers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="walls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AArtillery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AGrenadier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIFV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AlliedTroops.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AMachinegunner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AMotar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ARiflesman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ATank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Backpack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EArtillery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EGrenadier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EIFV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EMachinegunner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EMotar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyTroops.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="environmentalObjs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ERiflesman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ETank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gameui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lobby.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mapmain1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mapmain2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mapmain3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mapmain4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mapmain5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Position.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="towers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="walls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

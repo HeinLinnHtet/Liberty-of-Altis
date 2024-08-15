@@ -18,6 +18,73 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AArtillery.h" />
+    <ClInclude Include="AGrenadier.h" />
+    <ClInclude Include="AIFV.h" />
+    <ClInclude Include="AlliedTroops.h" />
+    <ClInclude Include="AMachinegunner.h" />
+    <ClInclude Include="AMotar.h" />
+    <ClInclude Include="ARiflesman.h" />
+    <ClInclude Include="ATank.h" />
+    <ClInclude Include="Backpack.h" />
+    <ClInclude Include="EArtillery.h" />
+    <ClInclude Include="EGrenadier.h" />
+    <ClInclude Include="EIFV.h" />
+    <ClInclude Include="EMachinegunner.h" />
+    <ClInclude Include="EMotar.h" />
+    <ClInclude Include="EnemyTroops.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="environmentalObjs.h" />
+    <ClInclude Include="ERiflesman.h" />
+    <ClInclude Include="ETank.h" />
+    <ClInclude Include="gameui.h" />
+    <ClInclude Include="lobby.h" />
+    <ClInclude Include="map.h" />
+    <ClInclude Include="mapmain1.h" />
+    <ClInclude Include="mapmain2.h" />
+    <ClInclude Include="mapmain3.h" />
+    <ClInclude Include="mapmain4.h" />
+    <ClInclude Include="mapmain5.h" />
+    <ClInclude Include="Position.h" />
+    <ClInclude Include="shop.h" />
+    <ClInclude Include="towers.h" />
+    <ClInclude Include="walls.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AArtillery.cpp" />
+    <ClCompile Include="AGrenadier.cpp" />
+    <ClCompile Include="AIFV.cpp" />
+    <ClCompile Include="AlliedTroops.cpp" />
+    <ClCompile Include="AMachinegunner.cpp" />
+    <ClCompile Include="AMotar.cpp" />
+    <ClCompile Include="ARiflesman.cpp" />
+    <ClCompile Include="ATank.cpp" />
+    <ClCompile Include="Backpack.cpp" />
+    <ClCompile Include="EArtillery.cpp" />
+    <ClCompile Include="EGrenadier.cpp" />
+    <ClCompile Include="EIFV.cpp" />
+    <ClCompile Include="EMachinegunner.cpp" />
+    <ClCompile Include="EMotar.cpp" />
+    <ClCompile Include="EnemyTroops.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="environmentalObjs.cpp" />
+    <ClCompile Include="ERiflesman.cpp" />
+    <ClCompile Include="ETank.cpp" />
+    <ClCompile Include="gameui.cpp" />
+    <ClCompile Include="lobby.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
+    <ClCompile Include="mapmain1.cpp" />
+    <ClCompile Include="mapmain2.cpp" />
+    <ClCompile Include="mapmain3.cpp" />
+    <ClCompile Include="mapmain4.cpp" />
+    <ClCompile Include="mapmain5.cpp" />
+    <ClCompile Include="Position.cpp" />
+    <ClCompile Include="shop.cpp" />
+    <ClCompile Include="towers.cpp" />
+    <ClCompile Include="walls.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -126,29 +193,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="AlliedTroops.cpp" />
-    <ClCompile Include="Artillery.cpp" />
-    <ClCompile Include="EnemyTroops.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Grenadier.cpp" />
-    <ClCompile Include="LightArtillery.cpp" />
-    <ClCompile Include="Machinegunner.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Rifleman.cpp" />
-    <ClCompile Include="Tank.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AlliedTroops.h" />
-    <ClInclude Include="Artillery.h" />
-    <ClInclude Include="EnemyTroops.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="Grenadier.h" />
-    <ClInclude Include="LightArtillery.h" />
-    <ClInclude Include="Machinegunner.h" />
-    <ClInclude Include="Rifleman.h" />
-    <ClInclude Include="Tank.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

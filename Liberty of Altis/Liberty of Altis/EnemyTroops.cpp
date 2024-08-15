@@ -8,7 +8,7 @@ EnemyTroops::EnemyTroops(void)
 	Range = 0;
 	Cost = 0;
     godown = true;
-    active = false;
+    /*active = false;*/
 }
 
 void EnemyTroops::Movement(char direction)
@@ -50,48 +50,48 @@ void EnemyTroops::M1Movement()
     int THealth = Health;
 
     //change to active for all the troops if one got hit
-    if (THealth != Health) {
+    /*if (THealth != Health) {
         active = true;
-    }
+    }*/
 
     //walk menacingly until hit
-    if (active == false) {
-        //move up and down
-        //check if is it at top or bottom
-        if (PosXY.GetY() + 1 == 19) {
-            godown = false;
-        }
-        else if (PosXY.GetY() - 1 == 0) {
-            godown = true;
-        }
+    //if (active == false) {
+    //    //move up and down
+    //    //check if is it at top or bottom
+    //    if (PosXY.GetY() + 1 == 19) {
+    //        godown = false;
+    //    }
+    //    else if (PosXY.GetY() - 1 == 0) {
+    //        godown = true;
+    //    }
 
-        //movement
-        if (godown == true) {
-            PosXY.SetY(PosXY.GetY() + 1);
-        }
-        else if (godown == false) {
-            PosXY.SetY(PosXY.GetY() - 1);
-        }
-    }
-    else {
-        //scatter and attack
-        if (moving == 0) {
-            //up
-            PosXY.SetY(PosXY.GetY() - 1);
-        }
-        else if (moving == 1) {
-            //down
-            PosXY.SetY(PosXY.GetY() + 1);
-        }
-        else if (moving == 2) {
-            //right
-            PosXY.SetX(PosXY.GetX() - 1);
-        }
-        else {
-            //left
-            PosXY.SetX(PosXY.GetX() + 1);
-        }
-    }
+    //    //movement
+    //    if (godown == true) {
+    //        PosXY.SetY(PosXY.GetY() + 1);
+    //    }
+    //    else if (godown == false) {
+    //        PosXY.SetY(PosXY.GetY() - 1);
+    //    }
+    //}
+    //else {
+    //    //scatter and attack
+    //    if (moving == 0) {
+    //        //up
+    //        PosXY.SetY(PosXY.GetY() - 1);
+    //    }
+    //    else if (moving == 1) {
+    //        //down
+    //        PosXY.SetY(PosXY.GetY() + 1);
+    //    }
+    //    else if (moving == 2) {
+    //        //right
+    //        PosXY.SetX(PosXY.GetX() - 1);
+    //    }
+    //    else {
+    //        //left
+    //        PosXY.SetX(PosXY.GetX() + 1);
+    //    }
+    //}
 }
 
 bool EnemyTroops::canattack(Entity& other)

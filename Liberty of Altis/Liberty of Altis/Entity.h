@@ -58,6 +58,7 @@ public:
 		//Draw icon
 		virtual char Draw_Icon(void);
 
+		void SetHealth(int a);
 
 };
 

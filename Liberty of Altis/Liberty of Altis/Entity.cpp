@@ -139,3 +139,8 @@ char Entity::Draw_Icon(void)
 {
     return 'E';
 }
+
+void Entity::SetHealth(int a)
+{
+    Health = Health - a;
+}
