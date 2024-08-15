@@ -60,5 +60,10 @@ public:
 
 		void SetHealth(int a);
 
+		int hitchance;
+
+		bool hitcheck;
+
+		void hitrate();
 };
 
