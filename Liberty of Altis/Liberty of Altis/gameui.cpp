@@ -4,7 +4,6 @@
 gameui::gameui()
 {
 }
-
 void gameui::gotoxy(int x, int y) {
 	COORD srcn;
 	HANDLE userhandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -65,16 +64,25 @@ int gameui::getstats(int H, int a, int r, int c, int s)
 }
 
 void gameui::turtorial() {
-	std::cout << "You are Johan Heisenburg, your villiage was destroyed by government forces a few weeks ago, angered and driven by revenge, you have joined the New Boers, a rebel force fighting the government\n";
-	std::cout << "you are in the jungle headquarters of the rebels, you are meeting your newly assigned commander, Major Jamal Musiala, to begin your training:\n ";
-	Sleep(2000);
-	std::cout << "Musiala: Welcome Johan, I am your commander and will be overseeing your training. I heard you are a hunter, and that your father was a commander in the Altian Military, thus you will become a captain in our militia\n";
-	Sleep(2000);
-	std::cout << "Musiala: To command your troops, use the WASD keys to move up, left, down, right.\n";
-	Sleep(2000);
-	std::cout << "Musiala: To attack enemies, command your troops by pressing the J button to attack \n";
-	Sleep(2000);
-	std::cout << "Musiala: That is all, good luck commander!";
+	std::string liness[] = {
+	 "You are Johan Heisenburg, your villiage was destroyed by government forces a few weeks ago, you have joined the New Boers, a militia fighting the government",
+	 "you are in the jungle headquarters of the rebels, you are meeting your newly assigned commander, Major Jamal Musiala, to begin your training: ",
+	 "Musiala: Welcome Johan, I am your commander and will be overseeing your training.",
+	 "I heard you are a hunter, and that your father was a commander in the Altian Military, thus you will become a captain in our militia",
+	 "To command your troops, use the WASD keys to move up, left, down, right.",
+	 "To attack enemies, command your troops by pressing the J button to attack",
+	 "That is all, good luck commander!"
+	};
+	int delay = 50;
+	int x = 20, y = 20;
+	for (const auto& text : liness) {
+		gotoxy(x, y);
+		printdelay(text, delay);
+		std::this_thread::sleep_for(std::chrono::seconds(2)); // wait for 2 seconds before replacing the line
+		std::cout << "\r" << std::string(70, ' ') << "\r"; // clear the line
+		gotoxy(x, y);
+		std::cout << std::string(text.length(), ' ');
+	}
 }
 
 void gameui::printdelay(const std::string& text, int delay)
