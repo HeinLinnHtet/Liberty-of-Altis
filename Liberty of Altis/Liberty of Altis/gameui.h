@@ -6,8 +6,8 @@
 class gameui
 {
 private:
-    char unitname;
-    int HP, attack, range, cost, size;
+    std::string unitname[7];
+    int HP[7], attack[7], range[7], cost[7], size[7];
 public:
     gameui();
     int unitcount = 0;
