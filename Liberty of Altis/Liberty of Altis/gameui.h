@@ -1,4 +1,8 @@
 #pragma once
+#include <thread>
+#include <chrono>
+#include <windows.h>
+#include <iostream>
 class gameui
 {
 private:
@@ -12,5 +16,9 @@ public:
     void gamestart(gameui& player);
     int getstats(int H, int a, int r, int c, int s);
     void turtorial();
+    void gotoxy(int x, int y);
+    void printdelay(const std::string& text, int delay);
 };
+
+
 

@@ -5,17 +5,40 @@ gameui::gameui()
 {
 }
 
+void gameui::gotoxy(int x, int y) {
+	COORD srcn;
+	HANDLE userhandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	srcn.X = x; srcn.Y = y;
+	SetConsoleCursorPosition(userhandle, srcn);
+}
+
 void gameui::cutscene1()
 {
-	std::cout << "It is 2001, the military of the Republic Of Altis has siezed power after a coup on the democratic government of the island nation.\n";
-	Sleep(3000);
-	std::cout << "Led by Rikyar(Leader) Adriaan Helt, the new government has begin suppressing internal dissent and opposition through force\n";
-	Sleep(3000);
-	std::cout << "Their suppression of opposition has led to formation of rebel forces, leading to a protracted insurgency that has killed many and destroyed various villages\n";
-	Sleep(3000);
-	std::cout << "One day, a suppression mission by government forces leads to a village in the island's interior being destroyed\n";
-	Sleep(3000);
-	std::cout << "Only one person survived, he was Johan Heisenburg. Angered, he has vowed to punish the government and intends to do so by fighting with a militia.....\n";
+
+	std::string lines[] = {
+	 "It is 2001, the military of the Republic Of Altis has siezed power after a coup on the democratic government of the island nation",
+
+	 "Led by Rikyar(Leader) Adriaan Helt, the new government has begin suppressing internal dissent and opposition through force",
+
+	 "Their suppression of opposition has led to formation of rebel forces, leading to a protracted insurgency that has killed many ",
+
+	 "One day, a suppression mission by government forces leads to a village in the island's interior being destroyed",
+
+	 "Only one person survived, he was Johan Heisenburg. Angered, he has vowed to punish the government and intends to do so by fighting with a militia....."
+
+
+	};
+	int delay = 50;
+	int x = 20, y = 20;
+	for (const auto& text : lines) {
+		gotoxy(x, y);
+		printdelay(text, delay);
+		std::this_thread::sleep_for(std::chrono::seconds(2)); // wait for 2 seconds before replacing the line
+		std::cout << "\r" << std::string(70, ' ') << "\r"; // clear the line
+		gotoxy(x, y);
+		std::cout << std::string(text.length(), ' ');
+	}
+
 }
 
 
@@ -52,4 +75,15 @@ void gameui::turtorial() {
 	std::cout << "Musiala: To attack enemies, command your troops by pressing the J button to attack \n";
 	Sleep(2000);
 	std::cout << "Musiala: That is all, good luck commander!";
+}
+
+void gameui::printdelay(const std::string& text, int delay)
+{
+	for (char e : text) {
+		std::cout << e;
+		std::cout.flush();
+		std::this_thread::sleep_for(std::chrono::milliseconds(delay));
+	}
+	std::cout << std::endl;
+	//refrenced code at the moment
 }
