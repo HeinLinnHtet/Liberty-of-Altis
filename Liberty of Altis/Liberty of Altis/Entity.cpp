@@ -144,3 +144,12 @@ void Entity::SetHealth(int a)
 {
     Health = Health - a;
 }
+void Entity::hitrate() {
+    hitchance = rand()%20+1;
+    if (hitchance < 15) {
+        hitcheck = true;
+    }
+    else if (hitcheck >= 15) {
+        hitcheck = false;
+    }
+}
