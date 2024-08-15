@@ -1,7 +1,9 @@
 #include "lobby.h"
+
 #include <iostream>
 lobby::lobby()
 {
+	isunlock = true;
 }
 void lobby::welcomemessage()
 {
@@ -17,7 +19,8 @@ void lobby::welcomemessage()
 }
 
 void lobby::playchoice()
-{
+{   
+	
 	if (playerchoose == 1){
 		std::cout << "You choose story!";
 
@@ -28,6 +31,7 @@ void lobby::playchoice()
 		}
 		else if (isunlock = true) {
 			std::cout << "you choose shop!";
+			hala.shopping();
 		}
 	}
 }

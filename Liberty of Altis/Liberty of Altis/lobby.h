@@ -1,5 +1,6 @@
 #pragma once
 #include "gameui.h"
+#include "shop.h"
 class lobby : protected gameui
 {
 private:
@@ -9,5 +10,6 @@ public:
 	void welcomemessage();
 	void playchoice();
 	bool isunlock;
+	shop hala;
 };
 

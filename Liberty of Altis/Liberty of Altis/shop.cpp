@@ -19,16 +19,45 @@ void shop::purchase(std::string unittype, int priceofunit)
 	if (cash >= (priceofunit * unitnum)) {
 		std::cout << "you have " << cashlost(priceofunit * unitnum) << " cash left\n";
 		std::cout << "you have purchased " << unitnum << " " << unittype << "!\n";
-
+		troopadder();
 	}
 	else if (cash < (price * unitnum)) {
 		std::cout << "you don't have enough cash! come back when you're a little richer\n";
 	}
 }
 
+void shop::troopadder()
+{
+	if (unitbuy == 1) {
+		inventory.riflemansetter(unitnum);
+		
+	}
+
+	else if (unitbuy == 2) {
+		inventory.machinegunnersetter(unitnum);
+	}
+	else if (unitbuy == 3) {
+		inventory.grenadiersetter(unitnum);
+	}
+	else if (unitbuy == 4) {
+		inventory.motarsetter(unitnum);
+	}
+	else if (unitbuy == 5) {
+		inventory.artillerysetter(unitnum);
+	}
+	else if (unitbuy == 6) {
+		inventory.tanksetter(unitnum);
+	}
+	else if (unitbuy == 7) {
+		inventory.IFVsetter(unitnum);
+	}
+
+}
+
 void shop::shopping()
 {
 	
+
 	while (allen == false) {
 		int hello;
 	
