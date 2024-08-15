@@ -46,6 +46,9 @@ public:
 		//hpgetter
 		int GetHealth(void);
 
+		//hp setter
+		void SetHealth(int a);
+
 		//attack getter
 		int GetAttack(void);
 

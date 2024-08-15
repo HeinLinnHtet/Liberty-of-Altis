@@ -130,6 +130,11 @@ int Entity::GetHealth(void)
     return Health;
 }
 
+void Entity::SetHealth(int a)
+{
+    Health = Health - a;
+}
+
 int Entity::GetAttack(void)
 {
     return Attack;

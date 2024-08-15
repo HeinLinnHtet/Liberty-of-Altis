@@ -183,7 +183,7 @@ void mapmain1::map1game(void)
 	
 	//Check if all enemies have died
 	bool test = false;
-
+	char a = 'a';
 	
 	
 	while (test == false) {
@@ -197,7 +197,19 @@ void mapmain1::map1game(void)
 			//reflect movement of entity on screen 
 			MoveEntity(*level1Allies[i],input);
 		}
+		
+
+		//check if can attack or else just move (idk what to add for the Entity&other)
+		/*if (level1Enemy[0]->canattack() == true) {
+			level1Enemy[0]->Attacking()
+		}
+		else {
+			level1Enemy[0]->M1Movement()
+		}*/
+
+
 		level1Enemy[0]->M1Movement();
+		
 		drawmap();
 		gotoxy(level1Enemy[0]->PosXY.GetX(), level1Enemy[0]->PosXY.GetY());
 		std::cout << level1Enemy[0]->Draw_Icon();
