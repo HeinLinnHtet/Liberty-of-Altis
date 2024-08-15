@@ -27,5 +27,14 @@ public :
 	void gotoxy(int x, int y);
 	virtual void drawmap();
 	void color(int c);
+
+	//ensure entity correcly moved on screen
+	void MoveEntity(Entity& entity, char input);
+
+	//Set starting positions for entity
+	void SetStartPos(Entity& entity, int x, int y);
+
+	//Check collision between entity and enviromnet
+	bool EnviroEntityCollide(Entity& entity, environmentalObjs& obj, char direction);
 };
 

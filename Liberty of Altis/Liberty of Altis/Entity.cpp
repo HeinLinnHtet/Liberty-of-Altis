@@ -43,6 +43,8 @@ bool Entity::Entitycollision(Entity& other, char direction)
         else if ((YEntity == YOther + 1) && direction == 'W') {
             result = true;
         }
+        else
+            result = false;
     }
     //Check if entity if UP of each other 
     if (YEntity == YOther) {
@@ -57,18 +59,6 @@ bool Entity::Entitycollision(Entity& other, char direction)
         else 
             result = false;
     }
-    ////check if other is UD direction of entity 
-    //if ((XEntity == XOther) && ((YEntity == YOther - 1) || (YEntity == YOther + 1))) {
-    //    //return true if collsion 
-    //    result = true;
-    //}
-    ////check if other is LR direction of entity 
-    //else if ((YEntity == YOther) && ((XEntity == XOther - 1) || (XEntity == XOther + 1))) {
-    //    //return true if collsion 
-    //    result = true;
-    //}
-    //else
-    //    result = false;
 
     return result;
 }
@@ -128,11 +118,6 @@ void Entity::Attacking(Entity &other, char direction)
 int Entity::GetHealth(void)
 {
     return Health;
-}
-
-void Entity::SetHealth(int a)
-{
-    Health = Health - a;
 }
 
 int Entity::GetAttack(void)

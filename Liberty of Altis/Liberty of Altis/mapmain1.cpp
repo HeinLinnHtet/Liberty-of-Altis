@@ -2,6 +2,8 @@
 #include "environmentalObjs.h"
 #include <iostream>
 
+environmentalObjs* mapmain1:: trees[AmtofObjs]{};
+
 mapmain1::mapmain1()
 {
 }
@@ -11,7 +13,6 @@ void mapmain1::drawmap()
 {
 	bool objexist = false;
 	int count = 0;
-	environmentalObjs* trees[48];
 
 	//random position list for trees
 	int treexpos[30] = {
@@ -108,23 +109,7 @@ void mapmain1::drawmap()
 	}
 }
 
-//Function to correcly display entity movement 
-void mapmain1::MoveEntity(Entity& entity, char input)
-{
-	gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY());
-	std::cout << "X";
-	entity.Movement(input);
-	gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY());
-	std::cout << entity.Draw_Icon();
-}
 
-//Sets starting position for entity 
-void mapmain1::SetStartPos(Entity& entity,int x, int y)
-{
-	gotoxy(x, y);
-	entity.SetPosition(x, y);
-	std::cout << entity.Draw_Icon();
-}
 
 //Function to start game 1
 void mapmain1::map1game(void)
@@ -166,61 +151,146 @@ void mapmain1::map1game(void)
 	}
 
 
-	//testing 
-	SetStartPos(*level1Allies[0], 5, 2);
-	SetStartPos(*level1Allies[1], 5, 4);
-	SetStartPos(*level1Allies[2], 7, 4);
-	SetStartPos(*level1Allies[3], 7, 6);
-	SetStartPos(*level1Allies[4], 7, 8);
-	SetStartPos(*level1Allies[5], 7, 10);
-	SetStartPos(*level1Allies[6], 7, 12);
+	//Set all troop positions
+	//SetStartPos(*level1Allies[0], 5, 2);
+	//SetStartPos(*level1Allies[1], 5, 4);
+	//SetStartPos(*level1Allies[2], 7, 4);
+	//SetStartPos(*level1Allies[3], 7, 6);
+	//SetStartPos(*level1Allies[4], 7, 8);
+	//SetStartPos(*level1Allies[5], 7, 10);
+	//SetStartPos(*level1Allies[6], 7, 12);
 
-	SetStartPos(*level1Enemy[0],20 ,1);
+	//SetStartPos(*level1Enemy[0], 25 ,3);
+	//SetStartPos(*level1Enemy[1], 30, 4);
+	//SetStartPos(*level1Enemy[2], 28, 2);
+	//SetStartPos(*level1Enemy[3], 40, 4);
+	//SetStartPos(*level1Enemy[4], 30, 6);
+	//SetStartPos(*level1Enemy[5], 40, 6);
+	//SetStartPos(*level1Enemy[6], 28, 4);
+	//SetStartPos(*level1Enemy[7], 35, 3);
+	//SetStartPos(*level1Enemy[8], 23, 4);
+	//SetStartPos(*level1Enemy[9], 35, 5);
 
 
 
-
+	//Testing 
+	SetStartPos(*level1Allies[0], 12, 17);
+	SetStartPos(*level1Allies[1], 4, 14);
+	SetStartPos(*level1Enemy[0], 6, 18);
 	
-	//Check if all enemies have died
+	//Check if all enemies have died  ### To change
 	bool test = false;
-	char a = 'a';
-	
-	
 	while (test == false) {
+		gotoxy(65, 10);
+		std::cout << "Enter your move";
+		//store user input
+		char input;
 
-		for (int i = 0; i < 7; i++) {
-			gotoxy(65, 10);
-			std::cout << "Enter your move";
-			char input;
-			std::cin >> input;
+		//allow to check movement is valid 
+		bool CanMove = true;
+		std::cin >> input;
 
-			//reflect movement of entity on screen 
-			MoveEntity(*level1Allies[i],input);
+		//Check collison with borders
+		if (level1Allies[0]->BorderCollision(input) == true) {
+			gotoxy(15, 20);
+			std::cout << "Collided border";
+			CanMove = false;
 		}
-		
 
-		//check if can attack or else just move (idk what to add for the Entity&other)
-		/*if (level1Enemy[0]->canattack() == true) {
-			level1Enemy[0]->Attacking()
+		//Check collison between Allies and Enemies
+		if (level1Allies[0]->Entitycollision(*level1Enemy[0], input) == true) {
+			gotoxy(15, 21);
+			std::cout << "Collided Entity";
+			CanMove = false;
 		}
-		else {
-			level1Enemy[0]->M1Movement()
-		}*/
+
+		//Check collison between Allies and Allies
+		if (level1Allies[0]->Entitycollision(*level1Allies[1], input) == true) {
+			gotoxy(15, 21);
+			std::cout << "Collided Allies";
+			CanMove = false;
+		}
+
+		//Check collison between Allies and environment 
+		for (int i = 0; i < AmtofObjs; i++) {
+			if (EnviroEntityCollide(*level1Allies[0], *trees[i], input) == true) {
+				gotoxy(15, 22);
+				std::cout << "Collided Environment";
+				CanMove = false;
+			}
+		}
 
 
-		level1Enemy[0]->M1Movement();
-		
+
+		//reflect movement of entity on screen 
+		if (CanMove == true) {
+			MoveEntity(*level1Allies[0], input);
+		}
 		drawmap();
+		gotoxy(level1Allies[0]->PosXY.GetX(), level1Allies[0]->PosXY.GetY());
+		std::cout << level1Allies[0]->Draw_Icon();
+		gotoxy(level1Allies[1]->PosXY.GetX(), level1Allies[1]->PosXY.GetY());
+		std::cout << level1Allies[1]->Draw_Icon();
 		gotoxy(level1Enemy[0]->PosXY.GetX(), level1Enemy[0]->PosXY.GetY());
 		std::cout << level1Enemy[0]->Draw_Icon();
-
-		for (int i = 0; i < 7; i++) {
-			gotoxy(level1Allies[i]->PosXY.GetX(), level1Allies[i]->PosXY.GetY());
-			std::cout << level1Allies[i]->Draw_Icon();
-		}
-
-
 	}
+	//while (test == false) {
+
+	//	//////////For player troops
+	//	//Movement 
+	//	for (int i = 0; i < 7; i++) {
+	//		gotoxy(65, 10);
+	//		std::cout << "Enter your move";
+	//		//store user input
+	//		char input;
+
+	//		//allow to check movement is valid 
+	//		bool CanMove = true;
+	//		std::cin >> input;
+
+	//		//Check collison with borders
+	//		if (level1Allies[i]->BorderCollision(input) == true){
+	//			gotoxy(15, 19);
+	//			std::cout << "Collided border";
+	//			CanMove = false;
+	//		}
+	//		
+	//		//Check if collide with enemy 
+	//		for (int j = 0; j < 10; j++) {
+	//			if (level1Allies[i]->Entitycollision(*level1Enemy[j], input) == true) {
+	//				gotoxy(15, 20);
+	//				std::cout << "Collided Entity";
+	//				CanMove = false;
+	//			}
+	//		}
+	//		
+
+	//		//reflect movement of entity on screen 
+	//		if (CanMove == true) {
+	//			MoveEntity(*level1Allies[i], input);
+	//		}
+
+	//		////Check if collide with allies 
+	//		////Check if movement is valid 
+	//		//for (int j = 0; j < 10; j++) {
+
+	//		//	//Collison check between Entities
+
+	//		//}
+	//	}
+	//	//level1Enemy[0]->M1Movement();
+	//	drawmap();
+	//	gotoxy(level1Enemy[0]->PosXY.GetX(), level1Enemy[0]->PosXY.GetY());
+	//	std::cout << level1Enemy[0]->Draw_Icon();
+
+	//	//Update new position 
+	//	for (int i = 0; i < 7; i++) {
+	//		gotoxy(level1Allies[i]->PosXY.GetX(), level1Allies[i]->PosXY.GetY());
+	//		std::cout << level1Allies[i]->Draw_Icon();
+	//	}
+
+
+	//}
 
 
 
