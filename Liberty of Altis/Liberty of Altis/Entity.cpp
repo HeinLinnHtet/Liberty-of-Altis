@@ -34,25 +34,28 @@ bool Entity::Entitycollision(Entity& other, char direction)
     bool result = false;
 
     //Check if entity is exiting the borders
-    //Down 
-    if ((YEntity == YOther - 1) && direction == 'S') {
-        result = true;
+    if (XEntity == XOther) {
+        //Down 
+        if ((YEntity == YOther - 1) && direction == 'S') {
+            result = true;
+        }
+        //Up
+        else if ((YEntity == YOther + 1) && direction == 'W') {
+            result = true;
+        }
     }
-    //Up
-    else if ((YEntity == YOther + 1) && direction == 'W') {
-        result = true;
+    if (YEntity == YOther) {
+            //Right
+        if ((XEntity == XOther - 1) && direction == 'D') {
+            result = true;
+        }
+        //Left
+        else if ((XEntity == XOther + 1) && direction == 'A') {
+            result = true;
+        }
+        else 
+            result = false;
     }
-    //Right
-    else if ((XEntity == XOther - 1) && direction == 'D') {
-        result = true;
-    }
-    //Left
-    else if ((XEntity == XOther + 1) && direction == 'A') {
-        result = true;
-    }
-    else
-        result = false;
-
     ////check if other is UD direction of entity 
     //if ((XEntity == XOther) && ((YEntity == YOther - 1) || (YEntity == YOther + 1))) {
     //    //return true if collsion 
