@@ -41,26 +41,50 @@ void gameui::cutscene1()
 }
 
 
+
 void gameui::stats()
 {
 	std::cout << "Below are the stats of the units\n";
-	std::cout << "from left to right, unit name, HP, attack, range, size, cost";
-	getstats(HP, attack, range, cost, size);
+	std::cout << "from left to right, unit name, HP, attack, range, size, cost\n";
+
+	getstats("Rifleman", 10, 5, 3, 1, 5);
+
+	getstats("Machine Gunner", 10, 15, 3, 1, 7);
+
+	getstats("Grenadier", 10, 20, 4, 1, 6);
+
+	getstats("Mortar", 20, 20, 7, 1, 8);
+
+	getstats("Artillery", 30, 40, 10, 4, 15);
+
+	getstats("IFV", 60, 10, 5, 4, 10);
+
+	getstats("Tank", 80, 30, 8, 9, 15);
 }
 
 void gameui::gamestart(gameui& player)
 {
 }
 
-int gameui::getstats(int H, int a, int r, int c, int s)
+void gameui::getstats(std::string nameset, int H, int a, int r, int s, int c)
 {
-	HP = H;
-	attack = a;
-	range = r;
-	cost = c;
-	size = s;
-	std::cout << unitname << H << a << r << c << s;
-	return 0;
+	if (unitcount < 7) {
+		unitname[unitcount] = nameset;
+		HP[unitcount] = H;
+		attack[unitcount] = a;
+		range[unitcount] = r;
+		size[unitcount] = s;
+		cost[unitcount] = c;
+		std::cout
+			<< unitname[unitcount] << ": "
+			<< HP[unitcount] << ", "
+			<< attack[unitcount] << ", "
+			<< range[unitcount] << ", "
+			<< size[unitcount] << ", "
+			<< cost[unitcount] << "\n";
+	}
+
+	unitcount++;
 }
 
 void gameui::turtorial() {
