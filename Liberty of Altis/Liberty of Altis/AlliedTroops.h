@@ -14,7 +14,7 @@ public:
 	void Movement(char direction) override;
 
 	//Override, from entity
-	void Attacking(char direction) override;
+	void Attacking(Entity& other, char direction) override;
 
 };
 

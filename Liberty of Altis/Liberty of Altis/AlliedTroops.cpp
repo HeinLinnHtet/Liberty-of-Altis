@@ -29,7 +29,7 @@ void AlliedTroops::Movement(char direction)
 	}
 }
 
-void AlliedTroops::Attacking(char direction)
+void AlliedTroops::Attacking(Entity& other, char direction)
 {
 	std::cout << "Attack Alliedtroop";
 }

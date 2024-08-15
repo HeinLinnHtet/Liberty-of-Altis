@@ -33,7 +33,7 @@ bool Entity::Entitycollision(Entity& other, char direction)
 
     bool result = false;
 
-    //Check if entity is exiting the borders
+    //Check if entity is LR of each other 
     if (XEntity == XOther) {
         //Down 
         if ((YEntity == YOther - 1) && direction == 'S') {
@@ -44,6 +44,7 @@ bool Entity::Entitycollision(Entity& other, char direction)
             result = true;
         }
     }
+    //Check if entity if UP of each other 
     if (YEntity == YOther) {
             //Right
         if ((XEntity == XOther - 1) && direction == 'D') {
@@ -119,7 +120,7 @@ void Entity::Movement(char direction)
 
 }
 
-void Entity::Attacking(char direction)
+void Entity::Attacking(Entity &other, char direction)
 {
 
 }

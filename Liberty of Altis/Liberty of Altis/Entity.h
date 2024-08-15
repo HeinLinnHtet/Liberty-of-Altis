@@ -33,10 +33,12 @@ public:
 		virtual void Movement(char direction);
 
 		//Attack function, carries out attack (pure virtual function)
-		virtual void Attacking(char direction);
+		virtual void Attacking(Entity& other, char direction);
 
 		//Check collision between entities 
-		virtual	bool Entitycollision(Entity& other);
+		virtual	bool Entitycollision(Entity& other, char direction);
+
+		bool BorderCollision(char direction);
 		
 		//Set position of entity 
 		void SetPosition(int x, int y);

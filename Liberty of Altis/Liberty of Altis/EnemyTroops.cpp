@@ -7,7 +7,6 @@ EnemyTroops::EnemyTroops(void)
 	Attack = 0;
 	Range = 0;
 	Cost = 0;
-    godown = true;
 }
 
 void EnemyTroops::Movement(char direction)
@@ -32,7 +31,7 @@ void EnemyTroops::Movement(char direction)
     }
 }
 
-void EnemyTroops::Attacking(char direction)
+void EnemyTroops::Attacking(Entity& other, char direction)
 {
 	std::cout << "Enemy Attacking";
 
@@ -41,10 +40,10 @@ void EnemyTroops::Attacking(char direction)
 void EnemyTroops::M1Movement()
 {
     //bool to determin current position
-   
+    bool godown = true;
 
     //check if is it at top or bottom
-    if (PosXY.GetY() + 1 == 19) {
+    if (PosXY.GetY() + 1 == 50) {
         godown = false;
     }
     else if (PosXY.GetY() - 1 == 0) {
