@@ -142,8 +142,7 @@ char Entity::Draw_Icon(void)
 
 void Entity::SetHealth(int a)
 {
-<<<<<<< Updated upstream
-    Health = Health - a;
+    Health = a;
 }
 void Entity::hitrate() {
     hitchance = rand()%20+1;
@@ -153,7 +152,4 @@ void Entity::hitrate() {
     else if (hitcheck >= 15) {
         hitcheck = false;
     }
-=======
-    Health = a;
->>>>>>> Stashed changes
 }
