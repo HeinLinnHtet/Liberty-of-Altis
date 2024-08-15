@@ -1,4 +1,8 @@
+#include <iostream>
+#include "Windows.h"
+
 #include "map.h"
+#include "mapmain1.h"#include "map.h"
 #include "mapmain1.h"
 
 int main(void) {
