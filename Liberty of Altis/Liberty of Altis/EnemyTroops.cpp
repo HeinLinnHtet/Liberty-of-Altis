@@ -49,6 +49,11 @@ void EnemyTroops::M1Movement()
     //check if enemy is at max health
     int THealth = Health;
 
+    //change to active for all the troops if one got hit
+    if (THealth != Health) {
+        active = true;
+    }
+
     //walk menacingly until hit
     if (active == false) {
         //move up and down
