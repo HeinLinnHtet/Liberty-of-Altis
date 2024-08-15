@@ -16,5 +16,6 @@ public:
 	//Override, from entity
 	void Attacking(Entity& other, char direction) override;
 
+	bool Attackable(Entity& other, char direction);
 };
 
