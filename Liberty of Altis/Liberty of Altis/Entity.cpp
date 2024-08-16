@@ -149,7 +149,7 @@ void Entity::hitrate() {
     if (hitchance < 15) {
         hitcheck = true;
     }
-    else if (hitcheck >= 15) {
+    else if (hitchance >= 15) {
         hitcheck = false;
     }
 }
