@@ -12,6 +12,11 @@ public:
     gameui();
     int unitcount = 0;
     void cutscene1();
+    void cutscene2();
+    void cutscene3();
+    void cutscene4();
+    void cutscene5();
+    void cutscence6();
     void stats();
     int choice;
     void gamestart(gameui& player);

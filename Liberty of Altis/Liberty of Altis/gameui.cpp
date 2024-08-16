@@ -36,22 +36,95 @@ void gameui::cutscene1()
 	for (const auto& text : lines) {
 		gotoxy(x, y);
 		printdelay(text, delay);
-		std::this_thread::sleep_for(std::chrono::seconds(2)); // wait for 2 seconds before replacing the line
-		std::cout << "\r" << std::string(70, ' ') << "\r"; // clear the line
+		std::this_thread::sleep_for(std::chrono::seconds(2)); 
+		std::cout << "\r" << std::string(70, ' ') << "\r"; 
 		gotoxy(x, y);
 		std::cout << std::string(text.length(), ' ');
 	}
 	// Cutscene ends
 	gotoxy(x, y);
 	std::cout << "Cutscene ended. Press any key to start the game." << std::endl;
-	_getch(); // Wait for user to press a key before starting the game
+	_getch();
 
 	// Game starts here
 	std::cout << "Game is starting..." << std::endl;
 
 }
 
+void gameui::cutscene2()
+{
+	std::string lines2[] = {
+		"Musiala: Good job commander! Your forces have routed government units from the area, allowing us to breathe freely after months of heavy fighting ",
+		"However, there is another pressing issue we must tackle. One of our most important suppliers, Virgil 'the shopkeeper' van dijk, has been captured and imprisoned",
+		"Without him, our forces will be unable to carry out attacks as per normal, thus you are tasked to lead a armed unit to destroy the prision and bring Virgil to us",
+		"Good luck Johan, this mission is crucial to our cause!, without Virgil we will be unable to purchase and replinish our forces."
+	};
+	int delay = 50;
+	int x = 20, y = 20;
+	for (const auto& text : lines2) {
+		gotoxy(x, y);
+		printdelay(text, delay);
+		std::this_thread::sleep_for(std::chrono::seconds(2)); 
+		std::cout << "\r" << std::string(70, ' ') << "\r"; 
+		gotoxy(x, y);
+		std::cout << std::string(text.length(), ' ');
+	}
+}
 
+void gameui::cutscene3()
+{
+
+
+	std::string lines3[] = {
+		"Musiala: Good Job commander! with Virgil free, we can continue to recieve shipments from our external supporters",
+		"We have amassed enough forces to launch our own offensive, an attack on the city of Basre.",
+		"I will our spymaster, Komani Lungu, brief you on the attack",
+		"Komani: Wait....Johan?! Its you, i haven't seen you in so long!",
+		"Johan: What?! Komani I didn't know you were part of this militia",
+		"Komani: Well...i was gulity of doing nothing and supporting the government, so i decided to switch sides and help the militia",
+		"Johan: its good that we friends have reunited to fight againist the government that wants us dead",
+		"Komani: yes!,now back to my briefing. We have gathered enough armor units to support this offensive, use it well and don't waste them."
+        "The shop is unlocked now!, after every mission you may proceed to it to replinish your armed unit."
+	};
+	int delay = 50;
+	int x = 20, y = 20;
+	for (const auto& text : lines3) {
+		gotoxy(x, y);
+		printdelay(text, delay);
+		std::this_thread::sleep_for(std::chrono::seconds(2)); 
+		std::cout << "\r" << std::string(70, ' ') << "\r"; 
+		gotoxy(x, y);
+		std::cout << std::string(text.length(), ' ');
+	}
+}
+
+void gameui::cutscene4() {
+	std::string line4[] = {
+		".................",
+		"i......what have we done?",
+		"this battle, it was a nightmare......",
+		"aren't we a liberating force? aiming to overthrow the oppresive state? We are the voice of the people, but are we the voice if we hurt them?",
+		"heh.....maybe we have been too careless, firing our rounds and driving our tanks everywhere.",
+		"But...the amount of citizens we injuned and killed accidentally is horrible",
+		"Did I do the right thing?......to join this militia?",
+		"................",
+		"Musiala: Good afternoon Johan, our offensive onto Basre was successful, however at the cost of many innocent lives.",
+		"But we cannot harp on this misfortunte, with the government driven from the area, our Militia can finally advance onto the Capital",
+		"You will be tasked with entering and subduing all enemy forces outside the parliment buliding and ensuring that government forces will not push us back again",
+		"good luck"
+
+	};
+	int delay = 50;
+	int x = 20, y = 20;
+	for (const auto& text : line4) {
+		gotoxy(x, y);
+		printdelay(text, delay);
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		std::cout << "\r" << std::string(70, ' ') << "\r";
+		gotoxy(x, y);
+		std::cout << std::string(text.length(), ' ');
+	}
+}
 
 void gameui::stats()
 {
@@ -113,8 +186,8 @@ void gameui::turtorial() {
 	for (const auto& text : liness) {
 		gotoxy(x, y);
 		printdelay(text, delay);
-		std::this_thread::sleep_for(std::chrono::seconds(2)); // wait for 2 seconds before replacing the line
-		std::cout << "\r" << std::string(70, ' ') << "\r"; // clear the line
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		std::cout << "\r" << std::string(70, ' ') << "\r"; 
 		gotoxy(x, y);
 		std::cout << std::string(text.length(), ' ');
 	}
@@ -133,5 +206,5 @@ void gameui::printdelay(const std::string& text, int delay)
 		std::this_thread::sleep_for(std::chrono::milliseconds(delay));
 	}
 	std::cout << std::endl;
-	//refrenced code at the moment
+    //refrenced from internet. will change later on
 }
