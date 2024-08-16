@@ -261,7 +261,9 @@ void mapmain1::map1game(void)
 		////////// For enemy troops 
 		//Attacking 
 		
-		//Movement 
+
+
+		//Movement (Ainsley doing now)
 		
 
 		//level1Enemy[0]->M1Movement();
