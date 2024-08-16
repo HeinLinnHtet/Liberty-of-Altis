@@ -29,7 +29,7 @@ void AlliedTroops::Movement(char direction)
 	}
 }
 
-bool AlliedTroops::canattack(Entity& other)
+bool AlliedTroops::canattack(Entity& other, Entity& second, environmentalObjs& obj)
 {
 
 	return false;

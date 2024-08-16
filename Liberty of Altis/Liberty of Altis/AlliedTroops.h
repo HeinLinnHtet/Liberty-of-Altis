@@ -12,9 +12,8 @@ public:
 
 	//Override, from entity
 	void Movement(char direction) override;
-
-	//Override, from entity
-	void Attacking(Entity& other, char direction) override;
-
+	
+	//Check if can attack 
+	bool canattack(Entity& other, Entity& second, environmentalObjs& obj) override;
 };
 

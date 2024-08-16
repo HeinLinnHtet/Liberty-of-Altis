@@ -155,7 +155,7 @@ void EnemyTroops::M1Movement()
 }
 
 //check if can attack 
-bool EnemyTroops::canattack(Entity& other)
+bool EnemyTroops::canattack(Entity& other, Entity& second, environmentalObjs& obj)
 {
     //check if any enemy entity(allied troops) within the range spaces of the entity(enemy troop)
     for (int i = 0; i < Range; i++) {
