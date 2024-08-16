@@ -98,6 +98,12 @@ bool Entity::BorderCollision(char direction)
     return result;
 }
 
+int Entity::RandomNum(void)
+{
+    int num = rand() % 4;
+    return num;
+}
+
 //set xy position
 void Entity::SetPosition(int x, int y)
 {
@@ -110,7 +116,12 @@ void Entity::Movement(char direction)
 
 }
 
-void Entity::Attacking(Entity &other, char direction)
+void Entity::DamageDealt(Entity& other)
+{
+    other.SetHealth(other.GetHealth() - Attack);
+}
+
+bool Entity::canattack(Entity& other)
 {
 
 }
@@ -149,7 +160,7 @@ void Entity::hitrate() {
     if (hitchance < 15) {
         hitcheck = true;
     }
-    else if (hitchance >= 15) {
+    else if (hitcheck >= 15) {
         hitcheck = false;
     }
 }

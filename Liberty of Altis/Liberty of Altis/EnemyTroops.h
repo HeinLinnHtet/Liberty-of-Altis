@@ -13,13 +13,18 @@ public:
 	//for Ai behavioural attacking and movement
 	void Movement(char direction) override;
 
-	//Ai damage has been dealt
-	void Attacking(Entity& other, char direction) override;
+	//Check if Entity collide with Entity
+	bool Entitycollision(Entity& other, char direction) override;
+
+	//Check if Entity border collide 
+	bool BorderCollision(char direction) override;
+
+	//check if can deal damage
+	bool canattack(Entity& other) override;
 
 	//map 1 movement (start)
 	void M1Movement();
 
-	//check if can deal damage
-	bool canattack(Entity& other);
+
 };
 

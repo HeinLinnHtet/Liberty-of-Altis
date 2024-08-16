@@ -32,13 +32,21 @@ public:
 		//Movement function, carries out movement (pure virtual function)
 		virtual void Movement(char direction);
 
-		//Attack function, carries out attack (pure virtual function)
-		virtual void Attacking(Entity& other, char direction);
-
 		//Check collision between entities 
 		virtual	bool Entitycollision(Entity& other, char direction);
 
-		bool BorderCollision(char direction);
+		//Check collision between border
+		virtual bool BorderCollision(char direction);
+
+		//Check if can attack 
+		virtual bool canattack(Entity& other);
+
+		//Damage dealt 
+		void DamageDealt(Entity& other);
+
+
+		//Generate random num between 0 to 3
+		int RandomNum(void);
 		
 		//Set position of entity 
 		void SetPosition(int x, int y);
