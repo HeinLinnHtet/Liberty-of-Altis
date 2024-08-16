@@ -20,7 +20,7 @@ public:
 	bool BorderCollision(char direction) override;
 
 	//check if can deal damage
-	bool canattack(Entity& other, Entity& second, environmentalObjs& obj) override;
+	bool canattack(Entity& other, Entity& otherenemy, environmentalObjs& obj) override;
 
 	//map 1 movement (start)
 	void M1Movement();

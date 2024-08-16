@@ -121,7 +121,7 @@ void Entity::DamageDealt(Entity& other)
     other.SetHealth(other.GetHealth() - Attack);
 }
 
-bool Entity::canattack(Entity& other, Entity& second, environmentalObjs& obj)
+bool Entity::canattack(Entity& other, Entity& otherenemy, environmentalObjs& obj)
 {
     return false;
 }
