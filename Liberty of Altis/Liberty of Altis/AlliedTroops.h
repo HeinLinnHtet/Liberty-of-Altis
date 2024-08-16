@@ -14,7 +14,7 @@ public:
 	void Movement(char direction) override;
 	
 	//Check if can attack 
-	bool AlliesAtk(Entity& other, Entity& otherally, environmentalObjs& obj, char direction);
+	bool AlliesAtk(Entity& other, environmentalObjs& obj, char direction);
 
 
 };

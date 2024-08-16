@@ -29,7 +29,7 @@ void AlliedTroops::Movement(char direction)
 	}
 }
 
-bool AlliedTroops::AlliesAtk(Entity& other, Entity& otherally, environmentalObjs& obj,char direction)
+bool AlliedTroops::AlliesAtk(Entity& other, environmentalObjs& obj,char direction)
 {
 
     //a temp variable to store ture/false
@@ -37,22 +37,20 @@ bool AlliedTroops::AlliesAtk(Entity& other, Entity& otherally, environmentalObjs
 
     //check if any enemy entity(allied troops) within the range spaces of the entity(enemy troop)
     direction = toupper(direction);
+
     for (int i = 0; i < Range; i++) {
+        //attacking in up
         if (direction == 'W') {
+            //check enemy present
             if (PosXY.GetY() + Range - i == other.PosXY.GetY()) {
-                //in front
-                //check if theres any objects in the way
-                if (PosXY.GetY() + Range - i == otherally.PosXY.GetY()) {
-                    //check for fellow enemies
-                    attackable == false;
-                }
-                else if (PosXY.GetY() + Range - i == obj.objPos.GetY()) {
+                //Check if any objects in the way 
+                if (PosXY.GetY() + Range - i == obj.objPos.GetY()) {
                     //check for any objects (trees etc.)
-                    attackable == false;
+                    attackable = false;
                 }
                 else {
                     //if none then shoot
-                    attackable == true;
+                    attackable = true;
                 }
             }
 
@@ -61,17 +59,13 @@ bool AlliedTroops::AlliesAtk(Entity& other, Entity& otherally, environmentalObjs
             if (PosXY.GetY() - Range + i == other.PosXY.GetY()) {
                 //behind
                 //check if theres any objects in the way
-                if (PosXY.GetY() - Range + i == otherally.PosXY.GetY()) {
-                    //check for fellow enemies
-                    attackable == false;
-                }
-                else if (PosXY.GetY() - Range + i == obj.objPos.GetY()) {
+                if (PosXY.GetY() - Range + i == obj.objPos.GetY()) {
                     //check for any objects (trees etc.)
-                    attackable == false;
+                    attackable = false;
                 }
                 else {
                     //if none then shoot
-                    attackable == true;
+                    attackable = true;
                 }
             }
         }
@@ -79,17 +73,13 @@ bool AlliedTroops::AlliesAtk(Entity& other, Entity& otherally, environmentalObjs
             if (PosXY.GetX() + Range - i == other.PosXY.GetX()) {
                 //to the right
                 //check if theres any objects in the way
-                if (PosXY.GetX() + Range - i == otherally.PosXY.GetX()) {
-                    //check for fellow enemies
-                    attackable == false;
-                }
-                else if (PosXY.GetX() + Range - i == obj.objPos.GetX()) {
+                if (PosXY.GetX() + Range - i == obj.objPos.GetX()) {
                     //check for any objects (trees etc.)
-                    attackable == false;
+                    attackable = false;
                 }
                 else {
                     //if none then shoot
-                    attackable == true;
+                    attackable = true;
                 }
             }
         }
@@ -97,17 +87,13 @@ bool AlliedTroops::AlliesAtk(Entity& other, Entity& otherally, environmentalObjs
             if (PosXY.GetX() - Range + i == other.PosXY.GetX()) {
                 //to the left
                 //check if theres any objects in the way
-                if (PosXY.GetX() - Range + i == otherally.PosXY.GetX()) {
-                    //check for fellow enemies
-                    attackable == false;
-                }
-                else if (PosXY.GetX() - Range + i == obj.objPos.GetX()) {
+                if (PosXY.GetX() - Range + i == obj.objPos.GetX()) {
                     //check for any objects (trees etc.)
-                    attackable == false;
+                    attackable = false;
                 }
                 else {
                     //if none then shoot
-                    attackable == true;
+                    attackable = true;
                 }
             }
         }

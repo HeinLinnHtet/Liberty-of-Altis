@@ -39,9 +39,6 @@ public:
 		//Check collision between border
 		virtual bool BorderCollision(char direction);
 
-		//Check if can attack 
-		virtual bool canattack(Entity& other, Entity& otherenemy, environmentalObjs &obj);
-
 		//Damage dealt 
 		void DamageDealt(Entity& other);
 
