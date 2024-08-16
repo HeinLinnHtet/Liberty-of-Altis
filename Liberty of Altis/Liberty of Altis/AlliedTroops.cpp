@@ -33,7 +33,6 @@ void AlliedTroops::Movement(char direction)
 
 void AlliedTroops::Attacking(Entity& other, char direction)
 {
-    char direction;
     std::cout << "Which direction would you like to attack?\n Enter W, A, S, D: ";
     std::cin >> direction;
     if (Attackable(other, direction) == true) {
