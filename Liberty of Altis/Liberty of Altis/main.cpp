@@ -13,6 +13,11 @@ int main(void) {
 	shop test;
 
 	test.shopping();
+
+	mapmain1 testlvl1;
+
+	testlvl1.drawmap();
+	testlvl1.map1game();
 }
 
 

@@ -23,6 +23,16 @@ char environmentalObjs::getsymbol()
 	return objsymbol;
 }
 
+void environmentalObjs::setx(int x)
+{
+	objPos.SetX(x);
+}
+
+void environmentalObjs::sety(int y)
+{
+	objPos.SetY(y);
+}
+
 int environmentalObjs::getx()
 {
 	return objPos.GetX();

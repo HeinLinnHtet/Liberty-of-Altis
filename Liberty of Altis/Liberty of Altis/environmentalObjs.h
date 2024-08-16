@@ -11,6 +11,8 @@ public :
 	environmentalObjs();
 
 	char getsymbol();
+	void setx(int x);
+	void sety(int y);
 	int getx();
 	int gety();
 
