@@ -1,6 +1,10 @@
 #include "lobby.h"
 
 #include <iostream>
+void lobby::cleartext() {
+	system("cls");
+}
+
 lobby::lobby()
 {
 	isunlock = true;
@@ -15,7 +19,9 @@ void lobby::welcomemessage()
 	std::cout << "2: Shop\n"; 
 	std::cout << "Enter: ";
 	std::cin >> playerchoose;
+	cleartext();
 	playchoice();
+
 }
 
 void lobby::playchoice()
@@ -24,6 +30,7 @@ void lobby::playchoice()
 	if (playerchoose == 1){
 		std::cout << "You choose story!";
 
+		joe.turtorial();
 	}
 	if (playerchoose == 2) {
 		if (isunlock = false) {

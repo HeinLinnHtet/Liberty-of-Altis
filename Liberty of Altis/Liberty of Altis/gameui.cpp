@@ -1,7 +1,7 @@
 #include "gameui.h"
 #include <iostream>
 #include "Windows.h"
-
+#include <conio.h>
 
 
 gameui::gameui()
@@ -41,6 +41,13 @@ void gameui::cutscene1()
 		gotoxy(x, y);
 		std::cout << std::string(text.length(), ' ');
 	}
+	// Cutscene ends
+	gotoxy(x, y);
+	std::cout << "Cutscene ended. Press any key to start the game." << std::endl;
+	_getch(); // Wait for user to press a key before starting the game
+
+	// Game starts here
+	std::cout << "Game is starting..." << std::endl;
 
 }
 
@@ -111,11 +118,16 @@ void gameui::turtorial() {
 		gotoxy(x, y);
 		std::cout << std::string(text.length(), ' ');
 	}
+	
 }
 
 void gameui::printdelay(const std::string& text, int delay)
 {
-	for (char e : text) {
+	for (char e :text) {
+		if (_kbhit()) {
+			_getch();
+			break;
+		}
 		std::cout << e;
 		std::cout.flush();
 		std::this_thread::sleep_for(std::chrono::milliseconds(delay));

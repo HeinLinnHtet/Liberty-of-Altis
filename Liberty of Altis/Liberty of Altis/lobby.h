@@ -11,5 +11,7 @@ public:
 	void playchoice();
 	bool isunlock;
 	shop hala;
+	gameui joe;
+	void cleartext();
 };
 

@@ -15,7 +15,7 @@ public:
     void stats();
     int choice;
     void gamestart(gameui& player);
-    int getstats(int H, int a, int r, int c, int s);
+    //int getstats(int H, int a, int r, int c, int s);
     void getstats(std::string nameset,  int H, int a, int r, int c, int s);
     void turtorial();
     void gotoxy(int x, int y);
