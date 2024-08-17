@@ -194,91 +194,90 @@ void mapmain1::map1game(void)
 
 		////////For player troops
 		// Player choose action 
-		
-
-		//Movement 
 		for (int i = 0; i < 7; i++) {
 			bool ValidMove = false;
 
-//Get user input, WASD to move or J to attack 
-gotoxy(15, 25);
-std::cout << "WASD to Move, J to Attack";
+			//Get user input, WASD to move or J to attack 
+			gotoxy(15, 25);
+			std::cout << "WASD to Move, J to Attack";
 	
-char choice = 'Z';
+			char choice = 'Z';
 
-//prevent from reading in console
-choice = _getch();
-//caps
-choice = toupper(choice);
-
-if (choice == 'W' || choice == 'A' || choice == 'S' || choice == 'D') {
-	//Movement Code
-	while (ValidMove == false) {
-
-		//allow to check movement is valid 
-		bool CanMove = true;
-
-		//Check collison with borders
-		if (level1Allies[i]->BorderCollision(choice) == true) {
-			gotoxy(15, 20);
-			std::cout << "Collided border";
-			CanMove = false;
-		}
-
-		//Check collison between Allies and Enemies
-		if (CanMove == true) {
-			for (int j = 0; j < 10; j++) {
-				if (level1Allies[i]->Entitycollision(*level1Enemy[j], choice) == true) {
-					gotoxy(15, 21);
-					std::cout << "Collided Entity";
-					CanMove = false;
-				}
-			}
-		}
-
-		//Check collison between Allies and Allies
-		if (CanMove == true) {
-			for (int j = 0; j < 7; j++) {
-				if (level1Allies[i]->Entitycollision(*level1Allies[j], choice) == true) {
-					gotoxy(15, 21);
-					std::cout << "Collided Allies";
-					CanMove = false;
-				}
-			}
-		}
-
-		//Check collison between Allies and environment 
-		if (CanMove == true) {
-			for (int j = 0; j < AmtofObjs; j++) {
-				if (EnviroEntityCollide(*level1Allies[i], *trees[j], choice) == true) {
-					gotoxy(15, 22);
-					std::cout << "Collided Environment";
-					CanMove = false;
-				}
-			}
-		}
-
-		//reflect movement of entity on screen 
-		if (CanMove == true) {
-			gotoxy(15, 20);
-			std::cout << "                    ";
-			gotoxy(15, 21);
-			std::cout << "                    ";
-			gotoxy(15, 22);
-			std::cout << "                    ";
-			gotoxy(15, 23);
-			std::cout << "                    ";
-			MoveEntity(*level1Allies[i], choice);
-			ValidMove = true;
-		}
-		else if (CanMove == false) {
-			gotoxy(15, 23);
-			std::cout << "Invalid Movement";
+			//prevent from reading in console
 			choice = _getch();
+			//caps
 			choice = toupper(choice);
-		}
+
+			//Movement 
+			if (choice == 'W' || choice == 'A' || choice == 'S' || choice == 'D') {
+				//Movement Code
+				while (ValidMove == false) {
+
+				//allow to check movement is valid 
+				bool CanMove = true;
+
+				//Check collison with borders
+				if (level1Allies[i]->BorderCollision(choice) == true) {
+					gotoxy(15, 20);
+					std::cout << "Collided border";
+					CanMove = false;
+				}
+
+				//Check collison between Allies and Enemies
+				if (CanMove == true) {
+					for (int j = 0; j < 10; j++) {
+						if (level1Allies[i]->Entitycollision(*level1Enemy[j], choice) == true) {
+							gotoxy(15, 21);
+							std::cout << "Collided Entity";
+							CanMove = false;
+						}
+					}
+				}
+
+				//Check collison between Allies and Allies
+				if (CanMove == true) {
+					for (int j = 0; j < 7; j++) {
+						if (level1Allies[i]->Entitycollision(*level1Allies[j], choice) == true) {
+							gotoxy(15, 21);
+							std::cout << "Collided Allies";
+							CanMove = false;
+						}
+					}
+				}
+
+				//Check collison between Allies and environment 
+				if (CanMove == true) {
+					for (int j = 0; j < AmtofObjs; j++) {
+						if (EnviroEntityCollide(*level1Allies[i], *trees[j], choice) == true) {
+							gotoxy(15, 22);
+							std::cout << "Collided Environment";
+							CanMove = false;
+						}
+					}
+				}
+
+				//reflect movement of entity on screen 
+				if (CanMove == true) {
+					gotoxy(15, 20);
+					std::cout << "                    ";
+					gotoxy(15, 21);
+					std::cout << "                    ";
+					gotoxy(15, 22);
+					std::cout << "                    ";
+					gotoxy(15, 23);
+					std::cout << "                    ";
+					MoveEntity(*level1Allies[i], choice);
+					ValidMove = true;
+				}
+				//reinput movement again
+				else if (CanMove == false) {
+					gotoxy(15, 23);
+					std::cout << "Invalid Movement";
+					choice = _getch();
+					choice = toupper(choice);
+				}
 	}
-}
+			}
 			//Attacking 
 			else if (choice == 'J') {
 				gotoxy(16, 24);
@@ -293,8 +292,6 @@ if (choice == 'W' || choice == 'A' || choice == 'S' || choice == 'D') {
 					std::cout << "attack direction";
 				}
 				attackDir = toupper(attackDir);
-				gotoxy(15, 24);
-				std::cout << "Attacking";
 
 				//Check if can attack any enemies 
 				for (int j = 0; j < 10; j++) {
@@ -304,46 +301,15 @@ if (choice == 'W' || choice == 'A' || choice == 'S' || choice == 'D') {
 						gotoxy(15, 25);
 						std::cout << "attack Dealt";
 						gotoxy(15, 26);
-						std::cout << level1Enemy[0]->GetHealth();
+						std::cout << level1Enemy[i]->GetHealth() << " " << j << " " << i;
 						break;
 					}
-				}
-
-				////Check enemies    // currently broken
-				//for (int j = 0; j < 10; j++) {
-				//	//Check enviro objs
-				//	for (int k = 0; k < AmtofObjs; k++) {
-				//		//if attacking works
-				//		if (level1Allies[i]->AlliesAtk(*level1Enemy[j], *trees[k], attackDir) == true) {
-				//			level1Allies[i]->DamageDealt(*level1Enemy[j]);
-				//			gotoxy(15, 25);
-				//			std::cout << "attack dealt";
-
-				//			gotoxy(15, 26);
-				//			level1Enemy[j]->SetHealth(level1Enemy[j]->GetHealth() - 2);
-				//			std::cout << " This enemies's health: " << level1Enemy[j]->GetHealth();
-				//			break;
-				//		}
-				//	}
-				//}
-				//for (int k = 0; k < AmtofObjs; k++) {                          ///Broken pls fix 
-				//	if (level1Allies[0]->AlliesAtk(*level1Enemy[0], *trees[k], attackDir) == true) {
-				//		level1Allies[0]->DamageDealt(*level1Enemy[0]);
-				//		gotoxy(15, 25);
-				//		std::cout << "attack dealt";
-
-				//		gotoxy(15, 26);
-				//		level1Enemy[0]->SetHealth(level1Enemy[0]->GetHealth() - 2);
-				//		std::cout << " This enemies's health: " << level1Enemy[0]->GetHealth();
-				//		break;
-				//	}
-				//}
-				
+				}				
 			}
 
 		}
-		//Player attacking 
-
+		
+		//UI 
 		drawmap();
 		//Update new position 
 		for (int i = 0; i < 7; i++) {
@@ -355,17 +321,17 @@ if (choice == 'W' || choice == 'A' || choice == 'S' || choice == 'D') {
 			std::cout << level1Enemy[i]->Draw_Icon();
 		}
 
-		///////////////////////Remove
-		int yee;
-		std::cin >> yee;
+		//int stop;
+		//std::cin >> stop;	
 
 		////////// For enemy troops 
 		gotoxy(70, 10);
 		int hp = level1Allies[0]->GetHealth();
 		std::cout << hp;
+		gotoxy(50, 23);
+		std::cout << "                                        ";
 
 
-		//Attacking 
 		for (int i = 0; i < 10; i++) {
 
 			//allow to check movement is valid 
@@ -374,22 +340,21 @@ if (choice == 'W' || choice == 'A' || choice == 'S' || choice == 'D') {
 			int Option = 2;
 			//Check if can attack first 
 			for (int j = 0; j < 7; j++) {
-				for (int k = 0; k < AmtofObjs; k++) {
-					if (level1Enemy[i]->canattack(*level1Allies[j], *trees[k]) == true) {
-						level1Enemy[i]->DamageDealt(*level1Allies[j]);
-						Option = 1;
-						gotoxy(50, 23);
-						std::cout << "Enemy attacking " << i << " " << j;
-						break;
-					}
+				if (EnemyCheckAtk(*level1Allies[j], *level1Enemy[i]) == true) {
+					level1Enemy[i]->DamageDealt(*level1Allies[j]);
+					gotoxy(50, 23);
+					std::cout << "Enemy attacking " << i << " " << 0;
+					Option = 1;
+					break;
 				}
 			}
+
 			gotoxy(70, 11);
 			hp = level1Allies[0]->GetHealth();
 			std::cout << hp;
 
-			bool ValidMove = false;
 
+			bool ValidMove = false;
 			gotoxy(20, 19);
 			std::cout << "Enemy moving....";
 
@@ -480,17 +445,22 @@ if (choice == 'W' || choice == 'A' || choice == 'S' || choice == 'D') {
 
 	//Delete backlog
 	for (int i = 0; i < 7; i++) {
-		if (level1Enemy[i] != nullptr) {
-			delete level1Enemy[i];
-		}
 		if (level1Allies[i] != nullptr) {
 			delete level1Allies[i];
 		}
 	}
-
-
-
+	for (int i = 0; i < 10; i++) {
+		if (level1Enemy[i] != nullptr) {
+			delete level1Enemy[i];
+		}
+	}
+	for (int i = 0; i < AmtofObjs; i++) {
+		if (trees[i] != nullptr) {
+			delete trees[i];
+		}
+	}
 }
+
 
 
 //Check attack
@@ -534,9 +504,8 @@ bool mapmain1::CheckAttack(Entity &main, Entity& other, char direction)
 			Endx = xobj - x;
 		}
 
-
-		//Up, range checks already implemented 
-		if (direction == 'W') {
+			//Up, range checks already implemented 
+		if (direction == 'W' ) {
 			//check if object blocking
 			if (x == xobj && -Endy <= Range) {
 				objectblocking = true;
@@ -583,6 +552,63 @@ bool mapmain1::CheckAttack(Entity &main, Entity& other, char direction)
 		else if (direction == 'A' && -dx <= Range) {
 			attackable = true;
 		}
+	}
+
+	return attackable;
+}
+
+
+//Check if enemy can attack
+bool mapmain1::EnemyCheckAtk(Entity& ally, Entity& Enemy)
+{
+	//a temp variable to store ture/false
+	bool attackable = false;
+	//Check if object is blocking
+	bool objectblocking = false;
+
+	//values 
+	int x = Enemy.PosXY.GetX();
+	int y = Enemy.PosXY.GetY();
+	int Range = Enemy.GetRange();
+	int xother = ally.PosXY.GetX();
+	int yother = ally.PosXY.GetY();
+
+	//Store distance between allies  and enemy
+	int dx = abs(x - xother);
+	int dy = abs(y - yother);
+
+	//Check if enemy is within range
+	if (dx <= Range && dy <= Range) {
+
+		//Check if they are alligned 
+		if (x == xother || y == yother) {
+
+			//check EVERY object to see if any is obstructing  
+			for (int i = 0; i < AmtofObjs; i++) {
+				int xobj = trees[i]->objPos.GetX();
+				int yobj = trees[i]->objPos.GetY();
+
+				//check UD direction, if trees pos is between ally and enemy 
+				if ((x == xobj) && (yobj > std::min(y, yother)) && (yobj < std::max(y, yother))) {
+					objectblocking = true;
+					break;
+				}
+				//check LR direction, if trees pos is between ally and enemy 
+				else if ((y == yobj) && (xobj > std::min(x, xother)) && (xobj < std::max(x, xother))) {
+					objectblocking = true;
+					break;
+				}
+			}
+		}
+
+	}
+	else
+		//means cant attack 
+		objectblocking = true;
+
+	//if no object obstruct, attack
+	if (objectblocking == false) {
+		attackable = true;
 	}
 
 	return attackable;

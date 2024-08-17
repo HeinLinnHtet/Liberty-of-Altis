@@ -24,5 +24,8 @@ public :
 	//Check attacking collision with enviroment 
 	bool CheckAttack(Entity& main, Entity& other, char direction);
 
+	//Check attacking collision with enviroment but for enemies 
+	bool EnemyCheckAtk(Entity& ally, Entity& Enemy);
+
 };
 
