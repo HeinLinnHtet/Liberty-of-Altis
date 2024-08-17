@@ -118,10 +118,6 @@ void mapmain1::drawmap()
 
 }
 
-
-
-
-
 //Function to start game 1
 void mapmain1::map1game(void)
 {
@@ -161,6 +157,62 @@ void mapmain1::map1game(void)
 		level1Allies[i] = new AGrenadier;
 	}
 
+	//display the stats
+	//allied troops live stats
+	gotoxy(65, 1);
+	std::cout << "Allied Troops";
+
+	//stats
+	gotoxy(65, 2);
+	std::cout << "Health  Attack  Range";
+
+	//for rifleman
+	for (int i = 0; i < 3; i++) {
+		gotoxy(55, 3 + i);
+		std::cout << "Rifleman " << i + 1 << ": " << level1Allies[i]->GetHealth() << "      "
+			<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
+	}
+
+	//machinegunner
+	for (int i = 3; i < 5; i++) {
+		gotoxy(55, 6 + (i - 3));
+		std::cout << "Machinegunner " << i - 2 << ": " << level1Allies[i]->GetHealth() << "      " 
+			<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
+	}
+
+	//grenadier
+	for (int i = 5; i < 7; i++) {
+		gotoxy(55, 8 + (i - 5));
+		std::cout << "Grenadier " << i - 4 << ": " << level1Allies[i]->GetHealth() << "      "
+			<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
+	}
+
+	//Enemy troops
+	gotoxy(65, 12);
+	std::cout << "Enemy Troops";
+
+	//stats
+	gotoxy(65, 13);
+	std::cout << "Health  Attack  Range";
+
+	//rifleman
+	for (int i = 0; i < 6; i++) {
+		gotoxy(55, 14 + i);
+		std::cout << "Rifleman " << i + 1 << ": " << level1Enemy[i]->GetHealth() << "      " 
+			<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
+	}
+	//machine gunner
+	for (int i = 6; i < 8; i++) {
+		gotoxy(55, 20 + (i - 6));
+		std::cout << "Machinegunner " << i - 5 << ": " << level1Enemy[i]->GetHealth() << "      " 
+			<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
+	}
+	//Grenadier
+	for (int i = 8; i < 10; i++) {
+		gotoxy(55, 22 + (i - 8));
+		std::cout << "Rifleman " << i - 7 << ": " << level1Enemy[i]->GetHealth() << "      " 
+			<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
+	}
 
 	//Set all troop positions
 	//SetStartPos(*level1Allies[0], 5, 2);
