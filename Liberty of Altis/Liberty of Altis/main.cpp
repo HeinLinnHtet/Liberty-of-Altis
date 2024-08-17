@@ -10,10 +10,6 @@ int main(void) {
 	//Making a seed value for real randomness
 	srand((unsigned)time(NULL));
 
-	shop test;
-
-	test.shopping();
-
 	mapmain1 testlvl1;
 
 	testlvl1.drawmap();
