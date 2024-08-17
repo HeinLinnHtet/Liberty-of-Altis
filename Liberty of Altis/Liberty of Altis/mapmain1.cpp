@@ -335,16 +335,17 @@ void mapmain1::map1game(void)
 		for (int i = 0; i < 10; i++) {
 
 			//allow to check movement is valid 
-			bool CanMove = true;
+			bool Moving = true;
+			bool ValidMove = true;
 
-			int Option = 2;
-			//Check if can attack first 
+
+			//Attacking, Check if can attack first 
 			for (int j = 0; j < 7; j++) {
 				if (EnemyCheckAtk(*level1Allies[j], *level1Enemy[i]) == true) {
 					level1Enemy[i]->DamageDealt(*level1Allies[j]);
 					gotoxy(50, 23);
 					std::cout << "Enemy attacking " << i << " " << 0;
-					Option = 1;
+					Moving = false;
 					break;
 				}
 			}
@@ -353,73 +354,68 @@ void mapmain1::map1game(void)
 			hp = level1Allies[0]->GetHealth();
 			std::cout << hp;
 
-
-			bool ValidMove = false;
-			gotoxy(20, 19);
+			gotoxy(20, 20);
 			std::cout << "Enemy moving....";
 
-			//if attack fail, do movement 
-			if (Option == 2) {
 
-				//check if movement valid
-				while (ValidMove == false) {
+			//Movement 
+			while (Moving == true) {
 
 
-					//Random number generation
-					int num = level1Enemy[i]->RandomNum();
-					//convert to char
-					char input = num + '0';
+				//Random number generation
+				int num = level1Enemy[i]->RandomNum();
+				//convert to char
+				char input = num + '0';
 
-					//Check collison with borders
-					if (level1Enemy[i]->BorderCollision(input) == true) {
-						gotoxy(15, 20);
-						std::cout << "Enemy Collided border";
-						CanMove = false;
-					}
+				//Check collison with borders
+				if (level1Enemy[i]->BorderCollision(input) == true) {
+					gotoxy(15, 20);
+					std::cout << "Enemy Collided border";
+					ValidMove = false;
+				}
 
-					if (CanMove == true) {
-						//Check collison between Enemies and Allies
-						for (int j = 0; j < 7; j++) {
-							if (level1Enemy[i]->Entitycollision(*level1Allies[j], input) == true) {
-								gotoxy(15, 21);
-								std::cout << "Enemy Collided Entity";
-								CanMove = false;
-							}
+				if (ValidMove == true) {
+					//Check collison between Enemies and Allies
+					for (int j = 0; j < 7; j++) {
+						if (level1Enemy[i]->Entitycollision(*level1Allies[j], input) == true) {
+							gotoxy(15, 21);
+							std::cout << "Enemy Collided Entity";
+							ValidMove = false;
 						}
 					}
+				}
 
-					if (CanMove == true) {
-						//Check collison between Enemies and Enemies
-						for (int j = 0; j < 10; j++) {
-							if (level1Enemy[i]->Entitycollision(*level1Enemy[j], input) == true) {
-								gotoxy(15, 21);
-								std::cout << "Enemy Collided Enemy";
-								CanMove = false;
-							}
+				if (ValidMove == true) {
+					//Check collison between Enemies and Enemies
+					for (int j = 0; j < 10; j++) {
+						if (level1Enemy[i]->Entitycollision(*level1Enemy[j], input) == true) {
+							gotoxy(15, 21);
+							std::cout << "Enemy Collided Enemy";
+							ValidMove = false;
 						}
 					}
+				}
 
-					if (CanMove == true) {
-						//Check collison between Enemies  and environment 
-						for (int j = 0; j < AmtofObjs; j++) {
-							if (EnviroEntityCollide(*level1Enemy[i], *trees[j], input) == true) {
-								gotoxy(15, 22);
-								std::cout << "Enemy Collided Environment";
-								CanMove = false;
-							}
+				if (ValidMove == true) {
+					//Check collison between Enemies  and environment 
+					for (int j = 0; j < AmtofObjs; j++) {
+						if (EnviroEntityCollide(*level1Enemy[i], *trees[j], input) == true) {
+							gotoxy(15, 22);
+							std::cout << "Enemy Collided Environment";
+							ValidMove = false;
 						}
 					}
+				}
 
-					//reflect movement of entity on screen 
-					if (CanMove == true) {
-						MoveEntity(*level1Enemy[i], input);
-						ValidMove = true;
+				//reflect movement of entity on screen 
+				if (ValidMove == true) {
+					MoveEntity(*level1Enemy[i], input);
+					Moving = false;
 
-					}
-					else if (CanMove == false) {
-						gotoxy(15, 23);
-						std::cout << "Enemy Invalid Movement";
-					}
+				}
+				else if (ValidMove == false) {
+					gotoxy(15, 23);
+					std::cout << "Enemy Invalid Movement";
 				}
 			}
 		}
@@ -435,12 +431,6 @@ void mapmain1::map1game(void)
 			std::cout << level1Enemy[i]->Draw_Icon();
 		}
 	}
-
-
-
-
-
-
 
 
 	//Delete backlog
