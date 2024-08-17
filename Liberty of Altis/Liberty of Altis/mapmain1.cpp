@@ -200,76 +200,85 @@ void mapmain1::map1game(void)
 		for (int i = 0; i < 7; i++) {
 			bool ValidMove = false;
 
-			//Get user input, WASD to move or J to attack 
-			gotoxy(15, 25);
-			std::cout << "WASD to Move, J to Attack";
-				
-			char choice = 'Z';
+//Get user input, WASD to move or J to attack 
+gotoxy(15, 25);
+std::cout << "WASD to Move, J to Attack";
+	
+char choice = 'Z';
 
-			//prevent from reading in console
-			choice = _getch();
-			//caps
-			choice = toupper(choice);
+//prevent from reading in console
+choice = _getch();
+//caps
+choice = toupper(choice);
 
-			if (choice == 'W' || choice == 'A' || choice == 'S' || choice == 'D') {
-				//Movement Code
-				while (ValidMove == false) {
+if (choice == 'W' || choice == 'A' || choice == 'S' || choice == 'D') {
+	//Movement Code
+	while (ValidMove == false) {
 
-					//allow to check movement is valid 
-					bool CanMove = true;
+		//allow to check movement is valid 
+		bool CanMove = true;
 
+		//Check collison with borders
+		if (level1Allies[i]->BorderCollision(choice) == true) {
+			gotoxy(15, 20);
+			std::cout << "Collided border";
+			CanMove = false;
+		}
 
-					//Check collison with borders
-					if (level1Allies[i]->BorderCollision(choice) == true) {
-						gotoxy(15, 20);
-						std::cout << "Collided border";
-						CanMove = false;
-					}
-
-					//Check collison between Allies and Enemies
-					if (CanMove == true) {
-						for (int j = 0; j < 10; j++) {
-							if (level1Allies[i]->Entitycollision(*level1Enemy[j], choice) == true) {
-								gotoxy(15, 21);
-								std::cout << "Collided Entity";
-								CanMove = false;
-							}
-						}
-					}
-
-					//Check collison between Allies and Allies
-					if (CanMove == true) {
-						for (int j = 0; j < 7; j++) {
-							if (level1Allies[i]->Entitycollision(*level1Allies[j], choice) == true) {
-								gotoxy(15, 21);
-								std::cout << "Collided Allies";
-								CanMove = false;
-							}
-						}
-					}
-
-					//Check collison between Allies and environment 
-					if (CanMove == true) {
-						for (int j = 0; j < AmtofObjs; j++) {
-							if (EnviroEntityCollide(*level1Allies[i], *trees[j], choice) == true) {
-								gotoxy(15, 22);
-								std::cout << "Collided Environment";
-								CanMove = false;
-							}
-						}
-					}
-
-					//reflect movement of entity on screen 
-					if (CanMove == true) {
-						MoveEntity(*level1Allies[i], choice);
-						ValidMove = true;
-					}
-					else if (CanMove == false) {
-						gotoxy(15, 23);
-						std::cout << "Invalid Movement";
-					}
+		//Check collison between Allies and Enemies
+		if (CanMove == true) {
+			for (int j = 0; j < 10; j++) {
+				if (level1Allies[i]->Entitycollision(*level1Enemy[j], choice) == true) {
+					gotoxy(15, 21);
+					std::cout << "Collided Entity";
+					CanMove = false;
 				}
 			}
+		}
+
+		//Check collison between Allies and Allies
+		if (CanMove == true) {
+			for (int j = 0; j < 7; j++) {
+				if (level1Allies[i]->Entitycollision(*level1Allies[j], choice) == true) {
+					gotoxy(15, 21);
+					std::cout << "Collided Allies";
+					CanMove = false;
+				}
+			}
+		}
+
+		//Check collison between Allies and environment 
+		if (CanMove == true) {
+			for (int j = 0; j < AmtofObjs; j++) {
+				if (EnviroEntityCollide(*level1Allies[i], *trees[j], choice) == true) {
+					gotoxy(15, 22);
+					std::cout << "Collided Environment";
+					CanMove = false;
+				}
+			}
+		}
+
+		//reflect movement of entity on screen 
+		if (CanMove == true) {
+			gotoxy(15, 20);
+			std::cout << "                    ";
+			gotoxy(15, 21);
+			std::cout << "                    ";
+			gotoxy(15, 22);
+			std::cout << "                    ";
+			gotoxy(15, 23);
+			std::cout << "                    ";
+			MoveEntity(*level1Allies[i], choice);
+			ValidMove = true;
+		}
+		else if (CanMove == false) {
+			gotoxy(15, 23);
+			std::cout << "Invalid Movement";
+			choice = _getch();
+			choice = toupper(choice);
+		}
+	}
+}
 			//Attacking 
 			else if (choice == 'J') {
 				gotoxy(16, 24);
