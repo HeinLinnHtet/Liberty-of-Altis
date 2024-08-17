@@ -2,6 +2,10 @@
 #include <iostream>
 #include "environmentalObjs.h"
 
+
+environmentalObjs* mapmain4::buildings[Amt_Build];
+
+
 mapmain4::mapmain4()
 {
 
@@ -10,8 +14,6 @@ mapmain4::mapmain4()
 void mapmain4::drawmap()
 {
 	bool objexist = false;
-
-	environmentalObjs* buildings[950];
 
 	//parliment
 	for (int i = 0; i < 6; i++)
@@ -320,4 +322,9 @@ void mapmain4::drawmap()
 			}
 		}
 	}
+}
+
+void mapmain4::map4game(void)
+{
+	drawmap();
 }

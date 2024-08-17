@@ -118,6 +118,10 @@ void mapmain1::drawmap()
 
 }
 
+
+
+
+
 //Function to start game 1
 void mapmain1::map1game(void)
 {
@@ -158,7 +162,7 @@ void mapmain1::map1game(void)
 	}
 
 	//display the stats
-	//allied troops live stats
+//allied troops live stats
 	gotoxy(65, 1);
 	std::cout << "Allied Troops";
 
@@ -176,7 +180,7 @@ void mapmain1::map1game(void)
 	//machinegunner
 	for (int i = 3; i < 5; i++) {
 		gotoxy(55, 6 + (i - 3));
-		std::cout << "Machinegunner " << i - 2 << ": " << level1Allies[i]->GetHealth() << "      " 
+		std::cout << "Machinegunner " << i - 2 << ": " << level1Allies[i]->GetHealth() << "      "
 			<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
 	}
 
@@ -198,21 +202,22 @@ void mapmain1::map1game(void)
 	//rifleman
 	for (int i = 0; i < 6; i++) {
 		gotoxy(55, 14 + i);
-		std::cout << "Rifleman " << i + 1 << ": " << level1Enemy[i]->GetHealth() << "      " 
+		std::cout << "Rifleman " << i + 1 << ": " << level1Enemy[i]->GetHealth() << "      "
 			<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
 	}
 	//machine gunner
 	for (int i = 6; i < 8; i++) {
 		gotoxy(55, 20 + (i - 6));
-		std::cout << "Machinegunner " << i - 5 << ": " << level1Enemy[i]->GetHealth() << "      " 
+		std::cout << "Machinegunner " << i - 5 << ": " << level1Enemy[i]->GetHealth() << "      "
 			<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
 	}
 	//Grenadier
 	for (int i = 8; i < 10; i++) {
 		gotoxy(55, 22 + (i - 8));
-		std::cout << "Rifleman " << i - 7 << ": " << level1Enemy[i]->GetHealth() << "      " 
+		std::cout << "Rifleman " << i - 7 << ": " << level1Enemy[i]->GetHealth() << "      "
 			<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
 	}
+
 
 	//Set all troop positions
 	//SetStartPos(*level1Allies[0], 5, 2);

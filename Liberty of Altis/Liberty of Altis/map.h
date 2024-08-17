@@ -1,5 +1,7 @@
 #pragma once
 #include "environmentalObjs.h"
+#include "walls.h"
+#include "towers.h"
 #include "ARiflesman.h"
 #include "AArtillery.h"
 #include "AGrenadier.h"

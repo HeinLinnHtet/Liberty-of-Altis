@@ -3,6 +3,10 @@
 #include "environmentalObjs.h"
 #include "walls.h"
 
+
+environmentalObjs* mapmain3::trees[Amt_Trees];
+environmentalObjs* mapmain3::houses[Amt_House];
+
 mapmain3::mapmain3()
 {
 
@@ -26,14 +30,11 @@ void mapmain3::drawmap()
 		4, 6,  7, 12, 16,  5, 10, 14,  8,  6
 	};
 
-	environmentalObjs* trees[10];
-
 	for (int i = 0; i < 10; i++)
 	{
 		trees[i] = new environmentalObjs(char(178), treexpos[i], treeypos[i]);
 	}
 
-	environmentalObjs* houses[27];
 	for (int i = 0; i < 9; i++)
 	{
 		houses[i] = new environmentalObjs(char(176), housexpos[i], houseypos[i]);
@@ -163,4 +164,9 @@ void mapmain3::drawmap()
 			}
 		}
 	}
+}
+
+void mapmain3::map3game(void)
+{
+	drawmap();
 }

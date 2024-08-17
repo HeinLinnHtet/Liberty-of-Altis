@@ -4,6 +4,13 @@
 #include "walls.h"
 #include "towers.h"
 
+//environmental objects
+walls* mapmain2::wallver[Amt_WallVer];
+walls* mapmain2::wallhor[Amt_WallHor];
+environmentalObjs* mapmain2::barricade[Amt_Barricade];
+towers* mapmain2::tower[Amt_Tower];
+
+
 mapmain2::mapmain2()
 {
 
@@ -14,7 +21,6 @@ void mapmain2::drawmap()
 	bool objexist = false;
 
 	//prison walls vertical
-	walls* wallver[8];
 	wallver[0] = new walls(100, char(219), 14, 2);
 	wallver[1] = new walls(100, char(219), 14, 5);
 	wallver[2] = new walls(100, char(219), 14, 8);
@@ -27,7 +33,6 @@ void mapmain2::drawmap()
 	wallver[7] = new walls(100, char(178), 4, 9);
 
 	//prison walls horizontal
-	walls* wallhor[14];
 	wallhor[0] = new walls(100,char(219), 1, 1);
 	wallhor[1] = new walls(100,char(219), 4, 1);
 	wallhor[2] = new walls(100,char(219), 7, 1);
@@ -47,7 +52,6 @@ void mapmain2::drawmap()
 	wallhor[13] = new walls(100, char(219), 3, 11);
 
 	//barricade
-	environmentalObjs* barricade[12];
 	for (int i = 0; i < 4; i++)
 	{
 		barricade[i] = new environmentalObjs(char(178), 21, i + 3);
@@ -61,7 +65,6 @@ void mapmain2::drawmap()
 		barricade[i] = new environmentalObjs(char(178), 30, i);
 	}
 
-	towers* tower[2];
 	tower[0] = new towers(15, 5, 100, char(219), 12, 3);
 	tower[1] = new towers(15, 5, 100, char(219), 12, 14);
 	
@@ -226,4 +229,21 @@ void mapmain2::drawmap()
 
 	tower[0]->attack();
 	tower[1]->attack();
+
+
+}
+
+
+
+
+//Start game 2
+void mapmain2::map2game(void)
+{
+	//draw map
+	drawmap();
+
+
+	//Spawn the characters
+
+
 }
