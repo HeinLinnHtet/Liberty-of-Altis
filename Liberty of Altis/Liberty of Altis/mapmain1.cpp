@@ -183,7 +183,7 @@ void mapmain1::map1game(void)
 	SetStartPos(*level1Enemy[9], 35, 5);
 	
 	//testing 
-	SetStartPos(*level1Allies[0], 20, 16);
+	SetStartPos(*level1Allies[0], 21, 16);
 	SetStartPos(*level1Enemy[0], 25, 16);
 
 	
@@ -287,24 +287,48 @@ void mapmain1::map1game(void)
 				gotoxy(15, 24);
 				std::cout << "Attacking";
 
-				//Check enemies 
+				//Check if can attack any enemies 
 				for (int j = 0; j < 10; j++) {
-					//Check enviro objs
-					for (int k = 0; k < AmtofObjs; k++) {
-						//if attacking works
-						if (level1Allies[i]->AlliesAtk(*level1Enemy[j], *trees[k], attackDir) == true) {
-							level1Allies[i]->DamageDealt(*level1Enemy[j]);
-							gotoxy(15, 25);
-							std::cout << "attack dealt";
+					if (CheckAttack(*level1Allies[i], *level1Enemy[j], attackDir) == true) {
+						level1Allies[i]->DamageDealt(*level1Enemy[j]);
 
-							gotoxy(15, 26);
-							level1Enemy[j]->SetHealth(level1Enemy[j]->GetHealth() - 2);
-							std::cout << " This enemies's health: " << level1Enemy[j]->GetHealth();
-							break;
-						}
+						gotoxy(15, 25);
+						std::cout << "attack Dealt";
+						gotoxy(15, 26);
+						std::cout << level1Enemy[0]->GetHealth();
+						break;
 					}
 				}
 
+				////Check enemies    // currently broken
+				//for (int j = 0; j < 10; j++) {
+				//	//Check enviro objs
+				//	for (int k = 0; k < AmtofObjs; k++) {
+				//		//if attacking works
+				//		if (level1Allies[i]->AlliesAtk(*level1Enemy[j], *trees[k], attackDir) == true) {
+				//			level1Allies[i]->DamageDealt(*level1Enemy[j]);
+				//			gotoxy(15, 25);
+				//			std::cout << "attack dealt";
+
+				//			gotoxy(15, 26);
+				//			level1Enemy[j]->SetHealth(level1Enemy[j]->GetHealth() - 2);
+				//			std::cout << " This enemies's health: " << level1Enemy[j]->GetHealth();
+				//			break;
+				//		}
+				//	}
+				//}
+				//for (int k = 0; k < AmtofObjs; k++) {                          ///Broken pls fix 
+				//	if (level1Allies[0]->AlliesAtk(*level1Enemy[0], *trees[k], attackDir) == true) {
+				//		level1Allies[0]->DamageDealt(*level1Enemy[0]);
+				//		gotoxy(15, 25);
+				//		std::cout << "attack dealt";
+
+				//		gotoxy(15, 26);
+				//		level1Enemy[0]->SetHealth(level1Enemy[0]->GetHealth() - 2);
+				//		std::cout << " This enemies's health: " << level1Enemy[0]->GetHealth();
+				//		break;
+				//	}
+				//}
 				
 			}
 
@@ -322,6 +346,9 @@ void mapmain1::map1game(void)
 			std::cout << level1Enemy[i]->Draw_Icon();
 		}
 
+		///////////////////////Remove
+		int yee;
+		std::cin >> yee;
 
 		////////// For enemy troops 
 		gotoxy(70, 10);
@@ -454,6 +481,102 @@ void mapmain1::map1game(void)
 
 
 
+}
+
+
+//Check attack
+bool mapmain1::CheckAttack(Entity &main, Entity& other, char direction)
+{
+	//a temp variable to store ture/false
+	bool attackable = false;
+	//Check if object is blocking
+	bool objectblocking = false;
+
+	//values 
+	int x = main.PosXY.GetX();
+	int y = main.PosXY.GetY();
+	int Range = main.GetRange();
+	int xother = other.PosXY.GetX();
+	int yother = other.PosXY.GetY();
+	//Store distance between enemy 
+	int dx = xother - x;
+	int dy = yother - y;
+
+	//check EVERY object to see if any is obstructing player 
+	for (int i = 0; i < AmtofObjs; i++) {
+
+		int xobj = trees[i]->objPos.GetX();
+		int yobj = trees[i]->objPos.GetY();
+		int Endx = 0; int Endy = 0;
+
+		//Store distance between enviromental objects
+		//Check if obj is UP of entity
+		if (yobj < y) {
+			Endy = y - yobj;
+		}
+		else if (yobj > y) {
+			Endy = yobj - y;
+		}
+		//Check if obj is LR of entity
+		if (xobj < x) {
+			Endx = x - xobj;
+		}
+		else if (xobj > x) {
+			Endx = xobj - x;
+		}
+
+
+		//Up, range checks already implemented 
+		if (direction == 'W') {
+			//check if object blocking
+			if (x == xobj && -Endy <= Range) {
+				objectblocking = true;
+				break;
+			}
+		}
+		//Down
+		else if (direction == 'S') {
+			//check if object blocking
+			if (x == xobj && Endy <= Range) {
+				objectblocking = true;
+				break;
+			}
+		}
+		//Right 
+		else if (direction == 'D') {
+			//check if object blocking
+			if (y == yobj && Endx <= Range) {
+				objectblocking = true;
+				break;
+			}
+		}
+		//Left 
+		else if (direction == 'A') {
+			//check if object blocking
+			if (y == yobj && -Endx <= Range) {
+				objectblocking = true;
+				break;
+			}
+		}
+	}
+
+	//if no object obstruct, check if enemy in range
+	if (objectblocking == false) {
+		if (direction == 'W' && -dy <= Range) {
+			attackable = true;
+		}
+		else if (direction == 'S' && dy <= Range) {
+			attackable = true;
+		}
+		else if (direction == 'D' && dx <= Range) {
+			attackable = true;
+		}
+		else if (direction == 'A' && -dx <= Range) {
+			attackable = true;
+		}
+	}
+
+	return attackable;
 }
 
 

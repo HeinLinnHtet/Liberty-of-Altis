@@ -16,6 +16,7 @@
 #include "EMotar.h"
 #include "EIFV.h"
 
+#include <conio.h> // for _getch
 
 
 class map :

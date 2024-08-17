@@ -21,5 +21,8 @@ public :
 	//start level 1 
 	void map1game(void);
 
+	//Check attacking collision with enviroment 
+	bool CheckAttack(Entity& main, Entity& other, char direction);
+
 };
 
