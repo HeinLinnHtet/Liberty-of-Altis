@@ -47,12 +47,12 @@ bool EnemyTroops::Entitycollision(Entity& other, char direction)
 
     //Check if entity is LR of each other 
     if (XEntity == XOther) {
-        //Down 
-        if ((YEntity == YOther - 1) && direction == '0') {
+        //Up
+        if ((YEntity == YOther + 1) && direction == '0') {
             result = true;
         }
-        //Up
-        else if ((YEntity == YOther + 1) && direction == '1') {
+        //Down
+        else if ((YEntity == YOther - 1) && direction == '1') {
             result = true;
         }
         else
