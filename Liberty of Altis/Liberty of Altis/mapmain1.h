@@ -14,6 +14,9 @@ private:
 	//Array pointer of trees
 	static environmentalObjs* trees[AmtofObjs];
 
+	//total number of enemies in this level
+	static int Amt_Lvl1_Enemy;
+
 public :
 	mapmain1();
 	void drawmap();
