@@ -162,64 +162,64 @@ void mapmain1::map1game(void)
 	}
 
 	/////////////STATS
-	{
-		//display the stats
-		//allied troops live stats
-		gotoxy(65, 1);
-		std::cout << "Allied Troops";
+	//{
+	//	//display the stats
+	//	//allied troops live stats
+	//	gotoxy(65, 1);
+	//	std::cout << "Allied Troops";
 
-		//stats
-		gotoxy(65, 2);
-		std::cout << "Health  Attack  Range";
+	//	//stats
+	//	gotoxy(65, 2);
+	//	std::cout << "Health  Attack  Range";
 
-		//for rifleman
-		for (int i = 0; i < 3; i++) {
-			gotoxy(55, 3 + i);
-			std::cout << "Rifleman " << i + 1 << ": " << level1Allies[i]->GetHealth() << "      "
-				<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
-		}
+	//	//for rifleman
+	//	for (int i = 0; i < 3; i++) {
+	//		gotoxy(55, 3 + i);
+	//		std::cout << "Rifleman " << i + 1 << ": " << level1Allies[i]->GetHealth() << "      "
+	//			<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
+	//	}
 
-		//machinegunner
-		for (int i = 3; i < 5; i++) {
-			gotoxy(55, 6 + (i - 3));
-			std::cout << "McGunner " << i - 2 << ": " << level1Allies[i]->GetHealth() << "      "
-				<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
-		}
+	//	//machinegunner
+	//	for (int i = 3; i < 5; i++) {
+	//		gotoxy(55, 6 + (i - 3));
+	//		std::cout << "Machinegunner " << i - 2 << ": " << level1Allies[i]->GetHealth() << "      "
+	//			<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
+	//	}
 
-		//grenadier
-		for (int i = 5; i < 7; i++) {
-			gotoxy(55, 8 + (i - 5));
-			std::cout << "Grenader " << i - 4 << ": " << level1Allies[i]->GetHealth() << "      "
-				<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
-		}
+	//	//grenadier
+	//	for (int i = 5; i < 7; i++) {
+	//		gotoxy(55, 8 + (i - 5));
+	//		std::cout << "Grenadier " << i - 4 << ": " << level1Allies[i]->GetHealth() << "      "
+	//			<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
+	//	}
 
-		//Enemy troops
-		gotoxy(65, 12);
-		std::cout << "Enemy Troops";
+	//	//Enemy troops
+	//	gotoxy(65, 12);
+	//	std::cout << "Enemy Troops";
 
-		//stats
-		gotoxy(65, 13);
-		std::cout << "Health  Attack  Range";
+	//	//stats
+	//	gotoxy(65, 13);
+	//	std::cout << "Health  Attack  Range";
 
-		//rifleman
-		for (int i = 0; i < 6; i++) {
-			gotoxy(55, 14 + i);
-			std::cout << "Rifleman " << i + 1 << ": " << level1Enemy[i]->GetHealth() << "      "
-				<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
-		}
-		//machine gunner
-		for (int i = 6; i < 8; i++) {
-			gotoxy(55, 20 + (i - 6));
-			std::cout << "McGunner " << i - 5 << ": " << level1Enemy[i]->GetHealth() << "      "
-				<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
-		}
-		//Grenadier
-		for (int i = 8; i < 10; i++) {
-			gotoxy(55, 22 + (i - 8));
-			std::cout << "Rifleman " << i - 7 << ": " << level1Enemy[i]->GetHealth() << "      "
-				<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
-		}
-	}
+	//	//rifleman
+	//	for (int i = 0; i < 6; i++) {
+	//		gotoxy(55, 14 + i);
+	//		std::cout << "Rifleman " << i + 1 << ": " << level1Enemy[i]->GetHealth() << "      "
+	//			<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
+	//	}
+	//	//machine gunner
+	//	for (int i = 6; i < 8; i++) {
+	//		gotoxy(55, 20 + (i - 6));
+	//		std::cout << "Machinegunner " << i - 5 << ": " << level1Enemy[i]->GetHealth() << "      "
+	//			<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
+	//	}
+	//	//Grenadier
+	//	for (int i = 8; i < 10; i++) {
+	//		gotoxy(55, 22 + (i - 8));
+	//		std::cout << "Rifleman " << i - 7 << ": " << level1Enemy[i]->GetHealth() << "      "
+	//			<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
+	//	}
+	//}
 
 	//Set all troop positions
 	//SetStartPos(*level1Allies[0], 5, 2);
@@ -242,7 +242,7 @@ void mapmain1::map1game(void)
 	SetStartPos(*level1Enemy[9], 35, 5);
 	
 	//testing 
-	SetStartPos(*level1Allies[0], 21, 16);
+	SetStartPos(*level1Allies[0], 23, 16);
 	SetStartPos(*level1Enemy[0], 25, 16);
 
 	
@@ -250,6 +250,20 @@ void mapmain1::map1game(void)
 	bool test = false;
 
 	while (test == false) {
+
+		int hi = 0, bye = 0;
+		for (int a = 0; a < 10; a++) {
+			gotoxy(60 + hi , 6);
+			std::cout << level1Enemy[a]->PosXY.GetX() << " ";
+			std::cout << level1Enemy[a]->PosXY.GetY() << " ";
+			hi = hi + 6;
+		}
+		for (int a = 0; a < 7; a++) {
+			gotoxy(60 + bye, 8);
+			std::cout << level1Allies[a]->PosXY.GetX() << " ";
+			std::cout << level1Allies[a]->PosXY.GetY() << " ";
+			bye = bye + 5;
+		}
 
 		////////For player troops
 		// Player choose action 
@@ -352,20 +366,21 @@ void mapmain1::map1game(void)
 
 				//Check if can attack any enemies 
 				for (int j = 0; j < 10; j++) {
+
 					if (CheckAttack(*level1Allies[i], *level1Enemy[j], attackDir) == true) {
 						level1Allies[i]->DamageDealt(*level1Enemy[j]);
 
 						gotoxy(15, 25);
 						std::cout << "attack Dealt";
 						gotoxy(15, 26);
-						std::cout << level1Enemy[i]->GetHealth() << " " << j << " " << i;
+						std::cout << level1Enemy[j]->GetHealth() << " " << j << " " << i;
 						break;
 					}
 				}
 			}
 			
 		}
-		
+
 			//UI 
 			drawmap();
 			//Update new position 
@@ -387,93 +402,93 @@ void mapmain1::map1game(void)
 			std::cout << "                                        ";
 
 
-			for (int i = 0; i < 10; i++) {
+			//for (int i = 0; i < 10; i++) {
 
-				//allow to check movement is valid 
-				bool Moving = true;
-
-
-
-				//Attacking, Check if can attack first 
-				//for (int j = 0; j < 7; j++) {
-				//	if (EnemyCheckAtk(*level1Allies[j], *level1Enemy[i]) == true) {
-				//		level1Enemy[i]->DamageDealt(*level1Allies[j]);
-				//		gotoxy(50, 23);
-				//		std::cout << "Enemy attacking " << i << " " << 0;
-				//		Moving = false;
-				//		break;
-				//	}
-				//}
-
-				gotoxy(70, 11);
-				hp = level1Allies[0]->GetHealth();
-				std::cout << hp;
-
-				gotoxy(20, 20);
-				std::cout << "Enemy moving....";
+			//	//allow to check movement is valid 
+			//	bool Moving = true;
 
 
-				//Movement 
-				while (Moving == true) {
 
-					bool ValidMove = true;
+			//	//Attacking, Check if can attack first 
+			//	//for (int j = 0; j < 7; j++) {
+			//	//	if (EnemyCheckAtk(*level1Allies[j], *level1Enemy[i]) == true) {
+			//	//		level1Enemy[i]->DamageDealt(*level1Allies[j]);
+			//	//		gotoxy(50, 23);
+			//	//		std::cout << "Enemy attacking " << i << " " << 0;
+			//	//		Moving = false;
+			//	//		break;
+			//	//	}
+			//	//}
 
-					//Random number generation
-					int num = level1Enemy[i]->RandomNum();
-					//convert to char
-					char input = num + '0';
+			//	gotoxy(70, 11);
+			//	hp = level1Allies[0]->GetHealth();
+			//	std::cout << hp;
 
-					//Check collison with borders
-					if (level1Enemy[i]->BorderCollision(input) == true) {
-						gotoxy(15, 20);
-						std::cout << "Enemy Collided border";
-						ValidMove = false;
-					}
+			//	gotoxy(20, 20);
+			//	std::cout << "Enemy moving....";
 
-					if (ValidMove == true) {
-						//Check collison between Enemies and Allies
-						for (int j = 0; j < 7; j++) {
-							if (level1Enemy[i]->Entitycollision(*level1Allies[j], input) == true) {
-								gotoxy(15, 21);
-								std::cout << "Enemy Collided Entity";
-								ValidMove = false;
-							}
-						}
-					}
 
-					if (ValidMove == true) {
-						//Check collison between Enemies and Enemies
-						for (int j = 0; j < 10; j++) {
-							if (level1Enemy[i]->Entitycollision(*level1Enemy[j], input) == true) {
-								gotoxy(15, 21);
-								std::cout << "Enemy Collided Enemy";
-								ValidMove = false;
-							}
-						}
-					}
+			//	//Movement 
+			//	while (Moving == true) {
 
-					if (ValidMove == true) {
-						//Check collison between Enemies and environment 
-						if (CheckEnviroCollide(*level1Enemy[i], input) == true) {
-							gotoxy(15, 22);
-							std::cout << "Enemy Collided Environment";
-							ValidMove = false;
+			//		bool ValidMove = true;
 
-						}
-					}
+			//		//Random number generation
+			//		int num = level1Enemy[i]->RandomNum();
+			//		//convert to char
+			//		char input = num + '0';
 
-					//reflect movement of entity on screen 
-					if (ValidMove == true) {
-						MoveEntity(*level1Enemy[i], input);
-						Moving = false;
+			//		//Check collison with borders
+			//		if (level1Enemy[i]->BorderCollision(input) == true) {
+			//			gotoxy(15, 20);
+			//			std::cout << "Enemy Collided border";
+			//			ValidMove = false;
+			//		}
 
-					}
-					else if (ValidMove == false) {
-						gotoxy(15, 23);
-						std::cout << "Enemy Invalid Movement";
-					}
-				}
-			}
+			//		if (ValidMove == true) {
+			//			//Check collison between Enemies and Allies
+			//			for (int j = 0; j < 7; j++) {
+			//				if (level1Enemy[i]->Entitycollision(*level1Allies[j], input) == true) {
+			//					gotoxy(15, 21);
+			//					std::cout << "Enemy Collided Entity";
+			//					ValidMove = false;
+			//				}
+			//			}
+			//		}
+
+			//		if (ValidMove == true) {
+			//			//Check collison between Enemies and Enemies
+			//			for (int j = 0; j < 10; j++) {
+			//				if (level1Enemy[i]->Entitycollision(*level1Enemy[j], input) == true) {
+			//					gotoxy(15, 21);
+			//					std::cout << "Enemy Collided Enemy";
+			//					ValidMove = false;
+			//				}
+			//			}
+			//		}
+
+			//		if (ValidMove == true) {
+			//			//Check collison between Enemies and environment 
+			//			if (CheckEnviroCollide(*level1Enemy[i], input) == true) {
+			//				gotoxy(15, 22);
+			//				std::cout << "Enemy Collided Environment";
+			//				ValidMove = false;
+
+			//			}
+			//		}
+
+			//		//reflect movement of entity on screen 
+			//		if (ValidMove == true) {
+			//			MoveEntity(*level1Enemy[i], input);
+			//			Moving = false;
+
+			//		}
+			//		else if (ValidMove == false) {
+			//			gotoxy(15, 23);
+			//			std::cout << "Enemy Invalid Movement";
+			//		}
+			//	}
+			//}
 
 			drawmap();
 			//Update new position 
@@ -485,7 +500,7 @@ void mapmain1::map1game(void)
 				gotoxy(level1Enemy[i]->PosXY.GetX(), level1Enemy[i]->PosXY.GetY());
 				std::cout << level1Enemy[i]->Draw_Icon();
 			}
-		}
+	}
 
 
 		//Delete backlog
@@ -509,7 +524,7 @@ void mapmain1::map1game(void)
 
 
 //Check attack
-bool mapmain1::CheckAttack(Entity &main, Entity& other, char direction)
+bool mapmain1::CheckAttack(Entity& main, Entity& other, char direction)
 {
 	//a temp variable to store ture/false
 	bool attackable = false;
@@ -523,85 +538,88 @@ bool mapmain1::CheckAttack(Entity &main, Entity& other, char direction)
 	int xother = other.PosXY.GetX();
 	int yother = other.PosXY.GetY();
 	//Store distance between enemy 
-	int dx = xother - x;
-	int dy = yother - y;
+	int dx = abs(xother - x);
+	int dy = abs(yother - y);
 
-	//check EVERY object to see if any is obstructing player 
-	for (int i = 0; i < AmtofObjs; i++) {
+	//Check if enemy within range
+	if (dx <= Range && dy <= Range) {
 
-		int xobj = trees[i]->objPos.GetX();
-		int yobj = trees[i]->objPos.GetY();
-		int Endx = 0; int Endy = 0;
+		//Check if enemy is aligned 
+		if (x == xother || y == yother) {
 
-		//Store distance between enviromental objects
-		//Check if obj is UP of entity
-		if (yobj < y) {
-			Endy = y - yobj;
-		}
-		else if (yobj > y) {
-			Endy = yobj - y;
-		}
-		//Check if obj is LR of entity
-		if (xobj < x) {
-			Endx = x - xobj;
-		}
-		else if (xobj > x) {
-			Endx = xobj - x;
-		}
+			//check EVERY object to see if any is obstructing player 
+			for (int i = 0; i < AmtofObjs; i++) {
 
-			//Up, range checks already implemented 
-		if (direction == 'W' ) {
-			//check if object blocking
-			if (x == xobj && -Endy <= Range) {
-				objectblocking = true;
-				break;
+				int xobj = trees[i]->objPos.GetX();
+				int yobj = trees[i]->objPos.GetY();
+				int Endx = 0; int Endy = 0;
+
+				//Store distance between enviromental objects
+				//Check if obj is UP of entity
+				Endx = abs(x - xobj);
+				Endy = abs(y - yobj);
+
+				//Up
+				if (direction == 'W') {
+					//Check for any objects aligned and above player 
+					if (xobj == x && (yobj < y)) {
+						//Check if within range
+						if (Endy <= Range) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+				//Down
+				else if (direction == 'S') {
+					//Check for any objects aligned and above player 
+					if (xobj == x && (yobj > y)) {
+						//Check if within range
+						if (Endy <= Range) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+				//Right
+				else if (direction == 'D') {
+					//Check for any objects aligned and above player 
+					if (yobj == y && (xobj > x)) {
+						//Check if within range
+						if (Endx <= Range) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+				//Left
+				else if (direction == 'A') {
+					//Check for any objects aligned and above player 
+					if (yobj == y && (xobj < x)) {
+						//Check if within range
+						if (Endx <= Range) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
 			}
 		}
-		//Down
-		else if (direction == 'S') {
-			//check if object blocking
-			if (x == xobj && Endy <= Range) {
-				objectblocking = true;
-				break;
-			}
-		}
-		//Right 
-		else if (direction == 'D') {
-			//check if object blocking
-			if (y == yobj && Endx <= Range) {
-				objectblocking = true;
-				break;
-			}
-		}
-		//Left 
-		else if (direction == 'A') {
-			//check if object blocking
-			if (y == yobj && -Endx <= Range) {
-				objectblocking = true;
-				break;
-			}
-		}
+		else 
+			//if enemies not aligned cant attack
+			objectblocking = true;
 	}
+	//if no enemies in range, cant attack
+	else 
+		objectblocking = true;
 
-	//if no object obstruct, check if enemy in range
+	//If no obstructions, attack
 	if (objectblocking == false) {
-		if (direction == 'W' && -dy <= Range) {
-			attackable = true;
-		}
-		else if (direction == 'S' && dy <= Range) {
-			attackable = true;
-		}
-		else if (direction == 'D' && dx <= Range) {
-			attackable = true;
-		}
-		else if (direction == 'A' && -dx <= Range) {
-			attackable = true;
-		}
+		attackable = true;
 	}
 
 	return attackable;
 }
-
 
 //Check if enemy can attack
 bool mapmain1::EnemyCheckAtk(Entity& ally, Entity& Enemy)
