@@ -126,6 +126,60 @@ void gameui::cutscene4() {
 	}
 }
 
+void gameui::cutscene5() {
+	std::string line5[] = {
+		"Gunfire is heard all over the wartorn city, with many bulidings damaged and destroyed.....",
+		"With enemy forces routed and either destroyed or retreating back to the last government stronghold, the government parliment, the city is now liberates....",
+		"Johan and his officers walk through the ruined city, looking upon the destruction caused",
+		"As Johan walks, a medic runs to him...",
+		"Sir! we have bad news, we have found the body of Komani Lungu, it looks to be that he was killed by government forces, most likely cause he was found out",
+		"Johan: what?.....that can't be",
+		"thats impossible.....no...no!"
+		"It seems that in war, no one is immune from the scythe of death....."
+		".............................."
+
+	    "Musiala: Commander! our forces have routed the enemy, and their remaining forces are entrenched at the parliment buliding",
+		"we have intel that Adriaan Helt remains there commanding, your goal is to capture him so as to end this conflict",
+		"you must not kill him, good luck and godspeed"
+	};
+
+	int delay = 50;
+	int x = 20, y = 20;
+	for (const auto& text : line5) {
+		gotoxy(x, y);
+		printdelay(text, delay);
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		std::cout << "\r" << std::string(70, ' ') << "\r";
+		gotoxy(x, y);
+		std::cout << std::string(text.length(), ' ');
+	}
+}
+
+void gameui::cutscence6()
+{
+	std::string line6[] = {
+		"your forces stormed the parliment, successfully defeating the remmmants of the goverment forces",
+		"The Rikyar, the main cause of this war, has been captured. He stares at your with a angered look, but stays silent",
+		"With the parliment captured, you have forced the Rikyar to surrender his forces",
+		"Rikyar: Urgh....fine",
+		"The war had ended, while some forces may still resist, the period of oppression has ended...",
+		"it seems, that liberty have finally come to Altis...."
+	};
+
+	int delay = 50;
+	int x = 20, y = 20;
+	for (const auto& text : line6) {
+		gotoxy(x, y);
+		printdelay(text, delay);
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		std::cout << "\r" << std::string(70, ' ') << "\r";
+		gotoxy(x, y);
+		std::cout << std::string(text.length(), ' ');
+	}
+}
+
+
+
 void gameui::stats()
 {
 	std::cout << "Below are the stats of the units\n";
@@ -206,5 +260,5 @@ void gameui::printdelay(const std::string& text, int delay)
 		std::this_thread::sleep_for(std::chrono::milliseconds(delay));
 	}
 	std::cout << std::endl;
-    //refrenced from internet. will change later on
+ 
 }
