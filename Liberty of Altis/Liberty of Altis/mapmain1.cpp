@@ -182,14 +182,14 @@ void mapmain1::map1game(void)
 		//machinegunner
 		for (int i = 3; i < 5; i++) {
 			gotoxy(55, 6 + (i - 3));
-			std::cout << "Machinegunner " << i - 2 << ": " << level1Allies[i]->GetHealth() << "      "
+			std::cout << "McGunner " << i - 2 << ": " << level1Allies[i]->GetHealth() << "      "
 				<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
 		}
 
 		//grenadier
 		for (int i = 5; i < 7; i++) {
 			gotoxy(55, 8 + (i - 5));
-			std::cout << "Grenadier " << i - 4 << ": " << level1Allies[i]->GetHealth() << "      "
+			std::cout << "Grenader " << i - 4 << ": " << level1Allies[i]->GetHealth() << "      "
 				<< level1Allies[i]->GetAttack() << "       " << level1Allies[i]->GetRange();
 		}
 
@@ -210,7 +210,7 @@ void mapmain1::map1game(void)
 		//machine gunner
 		for (int i = 6; i < 8; i++) {
 			gotoxy(55, 20 + (i - 6));
-			std::cout << "Machinegunner " << i - 5 << ": " << level1Enemy[i]->GetHealth() << "      "
+			std::cout << "McGunner " << i - 5 << ": " << level1Enemy[i]->GetHealth() << "      "
 				<< level1Enemy[i]->GetAttack() << "       " << level1Enemy[i]->GetRange();
 		}
 		//Grenadier
