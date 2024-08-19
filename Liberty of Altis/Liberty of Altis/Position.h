@@ -15,5 +15,7 @@ public:
 	//setters 
 	void SetX(int xPos);
 	void SetY(int yPos);
+
+	bool attackrange(const Position& targetpos, int range);
 };
 

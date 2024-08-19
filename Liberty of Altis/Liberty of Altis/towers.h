@@ -1,5 +1,7 @@
 #pragma once
 #include "environmentalObjs.h"
+#include "Entity.h"
+#include"Position.h"
 
 class towers : public environmentalObjs
 {
@@ -10,7 +12,7 @@ private:
 public:
 	towers(int h, int d, int r, char sym, int xp, int yp);
 
-	void sethealth();
+	void sethealth(int newh);
 	int gethealth();
 
 	void setdamage();
@@ -19,5 +21,5 @@ public:
 	void setrange();
 	int getrange();
 
-	void attack();
+	void attack(Entity& target);
 };
