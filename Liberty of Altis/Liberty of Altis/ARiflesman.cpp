@@ -10,5 +10,5 @@ ARiflesman::ARiflesman()
 
 char ARiflesman::Draw_Icon(void)
 {
-	return 'A';
+	return 'R';
 }
