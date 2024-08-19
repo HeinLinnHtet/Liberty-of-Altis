@@ -1,5 +1,8 @@
 #pragma once
 #include "Entity.h"
+#include <iostream>
+#include "Windows.h"
+
 class EnemyTroops : public Entity
 {
 private:
@@ -25,6 +28,7 @@ public:
 	//map 1 movement (start)
 	void M1Movement();
 
+	void color(int c);
 
 };
 

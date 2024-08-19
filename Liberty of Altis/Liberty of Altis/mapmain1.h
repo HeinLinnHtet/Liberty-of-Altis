@@ -17,6 +17,10 @@ private:
 	//total number of enemies in this level
 	static int Amt_Lvl1_Enemy;
 
+	static int Amt_Lvl1_Allies;
+
+	int alliesdead, enemiesdead;
+
 public :
 	mapmain1();
 	void drawmap();

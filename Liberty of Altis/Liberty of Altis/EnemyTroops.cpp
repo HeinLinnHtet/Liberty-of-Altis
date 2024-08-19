@@ -154,6 +154,12 @@ void EnemyTroops::M1Movement()
     //}
 }
 
+void EnemyTroops::color(int c)
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, c);
+}
+
 
 bool EnemyTroops::canattack(Entity& other, environmentalObjs& obj)
 {

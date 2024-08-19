@@ -1,5 +1,7 @@
 #pragma once
 #include "Entity.h"
+#include <iostream>
+#include "Windows.h"
 
 class AlliedTroops : public Entity
 {
@@ -16,6 +18,7 @@ public:
 	//Check if can attack 
 	bool AlliesAtk(Entity& other, environmentalObjs& obj, char direction);
 
+	void color(int c);
 
 };
 

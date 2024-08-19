@@ -102,3 +102,9 @@ bool AlliedTroops::AlliesAtk(Entity& other, environmentalObjs& obj,char directio
     return attackable;
 }
 
+void AlliedTroops::color(int c)
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, c);
+}
+
