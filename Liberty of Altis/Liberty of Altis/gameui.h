@@ -24,6 +24,7 @@ public:
     void getstats(std::string nameset,  int H, int a, int r, int c, int s);
     void turtorial();
     void gotoxy(int x, int y);
+    void color(int c);
     void printdelay(const std::string& text, int delay);
 };
 
