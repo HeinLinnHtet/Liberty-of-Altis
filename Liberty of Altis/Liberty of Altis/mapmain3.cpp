@@ -137,7 +137,10 @@ void mapmain3::drawmap()
 void mapmain3::map3game(void)
 {
 	//draw out map 
-	drawmap();
+	drawmap();	
+
+	alliesdead = 0;
+	enemiesdead = 0;
 
 	///// #### NOT POLYMORHPHISM ####		
 	// instantiating objects	
