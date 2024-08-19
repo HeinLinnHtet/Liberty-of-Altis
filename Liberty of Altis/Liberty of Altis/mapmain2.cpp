@@ -263,7 +263,10 @@ void mapmain2::drawmap()
 void mapmain2::map2game(void)
 {
 	//draw map
-	drawmap();
+	drawmap();	
+
+	alliesdead = 0;
+	enemiesdead = 0;
 
 	const int Enemy_lvl2 = 5;
 	const int Allies_lvl2 = 7;
