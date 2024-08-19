@@ -33,6 +33,12 @@ public:
 
 	//Check Enviromental collisions
 	bool CheckEnviroCollide(Entity& main, char direction);
+	
+	//Destroy map 2 walls
+	bool CheckWallsAttack(Entity& main, char direction);
+
+	//Check if walls are destroyed
+	bool IsWallsBroken(void);
 };
 
 

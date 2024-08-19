@@ -22,16 +22,16 @@ void mapmain2::drawmap()
 	bool objexist = false;
 
 	//prison walls vertical
-	wallver[0] = new walls(100, char(219), 14, 2);
-	wallver[1] = new walls(100, char(219), 14, 5);
-	wallver[2] = new walls(100, char(219), 14, 8);
-	wallver[3] = new walls(100, char(219), 14, 11);
-	wallver[4] = new walls(100, char(219), 14, 14);
-	wallver[5] = new walls(100, char(219), 14, 15);
+	wallver[0] = new walls(60, char(219), 14, 2);
+	wallver[1] = new walls(60, char(219), 14, 5);
+	wallver[2] = new walls(60, char(219), 14, 8);
+	wallver[3] = new walls(60, char(219), 14, 11);
+	wallver[4] = new walls(60, char(219), 14, 14);
+	wallver[5] = new walls(60, char(219), 14, 15);
 
 	//virgil cage
-	wallver[6] = new walls(100, char(178), 4, 8);
-	wallver[7] = new walls(100, char(178), 4, 9);
+	wallver[6] = new walls(60, char(178), 4, 8);
+	wallver[7] = new walls(60, char(178), 4, 9);
 
 	//prison walls horizontal
 	wallhor[0] = new walls(100,char(219), 1, 1);
@@ -228,8 +228,8 @@ void mapmain2::drawmap()
 		}
 	}
 
-	/*tower[0]->attack();
-	tower[1]->attack();*/
+	tower[0]->attack();
+	tower[1]->attack();
 
 
 	//Shift to position
@@ -263,10 +263,9 @@ void mapmain2::drawmap()
 void mapmain2::map2game(void)
 {
 	//draw map
-	drawmap();	
+	drawmap();
 
-	alliesdead = 0;
-	enemiesdead = 0;
+	
 
 	const int Enemy_lvl2 = 5;
 	const int Allies_lvl2 = 7;
@@ -317,20 +316,23 @@ void mapmain2::map2game(void)
 	SetStartPos(*level2Enemy[3], 25, 14);
 	SetStartPos(*level2Enemy[4], 27, 9);
 
-	SetStartPos(*level2Enemy[0], 24, 6);
+	SetStartPos(*level2Enemy[0], 24, 5);
 	//SetStartPos(*level2Enemy[1], 20, 12);
 	//SetStartPos(*level2Enemy[2], 20, 11);
 	//SetStartPos(*level2Enemy[3], 20, 14);
 	//SetStartPos(*level2Enemy[4], 20, 9);
 
 	//SetStartPos(*level2Enemy[0], 20, 8);
-	SetStartPos(*level2Allies[0], 27, 6);
+	SetStartPos(*level2Allies[0], 20, 9);
 
 
 	//Check if enemy died will need change later #####
 	bool test = false;
 
 	while (test == false) {
+
+		enemiesdead = 0;
+		alliesdead = 0;
 
 		int enemycposx, enemycposy;
 
@@ -541,37 +543,65 @@ void mapmain2::map2game(void)
 					}
 				}
 				//Attacking 
-				//else if (choice == 'J') {
-				//	gotoxy(16, 24);
-				//	std::cout << "going to attack";
+				else if (choice == 'J') {
+					gotoxy(16, 24);
+					std::cout << "going to attack";
 
-				//	//Grab attack direction 
-				//	char attackDir = 'Z';
+					//Grab attack direction 
+					char attackDir = 'Z';
+					bool CheckAtkWall = true;
 
-				//	while (!(attackDir == 'w' || attackDir == 's' || attackDir == 'a' || attackDir == 'd')) {
-				//		attackDir = _getch();
-				//		gotoxy(15, 23);
-				//		std::cout << "attack direction";
-				//	}
-				//	attackDir = toupper(attackDir);
+					while (!(attackDir == 'w' || attackDir == 's' || attackDir == 'a' || attackDir == 'd')) {
+						attackDir = _getch();
+						gotoxy(15, 23);
+						std::cout << "attack direction";
+					}
+					attackDir = toupper(attackDir);
 
-				//	//Check if can attack any enemies 
-				//	for (int j = 0; j < Enemy_lvl2; j++) {
-				//		if (level2Enemy[j] != nullptr) {
-				//			if (CheckAttack(*level2Allies[i], *level2Enemy[j], attackDir) == true) {
-				//				level2Allies[i]->DamageDealt(*level2Enemy[j]);
+					//Check if can attack any enemies 
+					for (int j = 0; j < Enemy_lvl2; j++) {
+						if (level2Enemy[j] != nullptr) {
+							if (CheckAttack(*level2Allies[i], *level2Enemy[j], attackDir) == true) {
+								level2Allies[i]->DamageDealt(*level2Enemy[j]);
 
-				//				gotoxy(15, 25);
-				//				std::cout << "attack Dealt";
-				//				gotoxy(15, 26);
-				//				std::cout << level2Enemy[j]->GetHealth() << " " << j << " " << i;
-				//				break;
-				//			}
-				//		}
-				//	}
-				//}
+								gotoxy(15, 25);
+								std::cout << "attack Dealt";
+								gotoxy(15, 26);
+								std::cout << level2Enemy[j]->GetHealth() << " " << j << " " << i;
+								CheckAtkWall = false;
+								break;
+							}
+						}
+					}
+
+					//Check if wall is being attacked
+					if (CheckAtkWall == true) {
+						for (int j = 0; j < Amt_WallVer; j++) {
+							if (wallver[j] != nullptr) {
+								if (CheckWallsAttack(*level2Allies[i], attackDir) == true) {
+									gotoxy(10, 27);
+									int hp = wallver[j]->gethealth();
+									std::cout << hp;
+
+									gotoxy(15, 28);
+									std::cout << "Attacking wall";
+
+									//Deal damage
+									//int newhealth = wallver[j]->gethealth() - level2Allies[i]->GetAttack();
+									//wallver[j]->sethealth(newhealth);
+									wallver[j]->sethealth(wallver[j]->gethealth() - level2Allies[i]->GetAttack());
+
+									gotoxy(15, 27);
+									hp = wallver[j]->gethealth();
+									std::cout << hp;
+
+									break;
+								}
+							}
+						}
+					}
+				}
 			}
-			//here for the null ptr part
 
 
 
@@ -823,62 +853,62 @@ bool mapmain2::CheckAttack(Entity& main, Entity& other, char direction)
 		if (x == xother || y == yother) {
 
 			//check EVERY object to see if any is obstructing player 
-			//for (int i = 0; i < AmtofObjs; i++) {
+			for (int i = 0; i < Amt_Barricade; i++) {
 
-			//	int xobj = trees[i]->objPos.GetX();
-			//	int yobj = trees[i]->objPos.GetY();
-			//	int Endx = 0; int Endy = 0;
+				int xobj = barricade[i]->objPos.GetX();
+				int yobj = barricade[i]->objPos.GetY();
+				int Endx = 0; int Endy = 0;
 
-			//	//Store distance between enviromental objects
-			//	//Check if obj is UP of entity
-			//	Endx = abs(x - xobj);
-			//	Endy = abs(y - yobj);
+				//Store distance between enviromental objects
+				//Check if obj is UP of entity
+				Endx = abs(x - xobj);
+				Endy = abs(y - yobj);
 
-			//	//Up
-			//	if (direction == 'W') {
-			//		//Check for any objects aligned and above player 
-			//		if (xobj == x && (yobj < y)) {
-			//			//Check if within range
-			//			if (Endy <= Range) {
-			//				objectblocking = true;
-			//				break;
-			//			}
-			//		}
-			//	}
-			//	//Down
-			//	else if (direction == 'S') {
-			//		//Check for any objects aligned and above player 
-			//		if (xobj == x && (yobj > y)) {
-			//			//Check if within range
-			//			if (Endy <= Range) {
-			//				objectblocking = true;
-			//				break;
-			//			}
-			//		}
-			//	}
-			//	//Right
-			//	else if (direction == 'D') {
-			//		//Check for any objects aligned and above player 
-			//		if (yobj == y && (xobj > x)) {
-			//			//Check if within range
-			//			if (Endx <= Range) {
-			//				objectblocking = true;
-			//				break;
-			//			}
-			//		}
-			//	}
-			//	//Left
-			//	else if (direction == 'A') {
-			//		//Check for any objects aligned and above player 
-			//		if (yobj == y && (xobj < x)) {
-			//			//Check if within range
-			//			if (Endx <= Range) {
-			//				objectblocking = true;
-			//				break;
-			//			}
-			//		}
-			//	}
-			//}
+				//Up
+				if (direction == 'W') {
+					//Check for any objects aligned and above player 
+					if (xobj == x && (yobj < y)) {
+						//Check if within range
+						if (Endy <= Range) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+				//Down
+				else if (direction == 'S') {
+					//Check for any objects aligned and above player 
+					if (xobj == x && (yobj > y)) {
+						//Check if within range
+						if (Endy <= Range) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+				//Right
+				else if (direction == 'D') {
+					//Check for any objects aligned and above player 
+					if (yobj == y && (xobj > x)) {
+						//Check if within range
+						if (Endx <= Range) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+				//Left
+				else if (direction == 'A') {
+					//Check for any objects aligned and above player 
+					if (yobj == y && (xobj < x)) {
+						//Check if within range
+						if (Endx <= Range) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+			}
 		}
 		else
 			//if enemies not aligned cant attack
@@ -1011,7 +1041,6 @@ bool mapmain2::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 	return attackable;
 }
 
-
 //Check collision
 bool mapmain2::CheckEnviroCollide(Entity& main, char direction)
 {
@@ -1085,4 +1114,46 @@ bool mapmain2::CheckEnviroCollide(Entity& main, char direction)
 
 	return result;
 
+}
+
+//Check if walls being destroyed
+bool mapmain2::CheckWallsAttack(Entity& main, char direction)
+{
+	//store position
+	int XEntity = main.PosXY.GetX();
+	int YEntity = main.PosXY.GetY();
+
+	bool attacking = false;
+
+	for (int i = 0; i < Amt_WallVer; i++) {
+
+		int XEnviro = wallver[i]->objPos.GetX();
+		int YEnviro = wallver[i]->objPos.GetY();
+
+		//Check if wall arleady destroyed
+		if (wallver[i] != nullptr) {
+	
+			int Walltop = YEnviro - 1;
+			int WallBottom = YEnviro + 1;
+
+			//Check Entity in range 
+			if (XEntity - 2 == XEnviro) {
+
+				//Check if player is trying to attack the wall
+				if (direction == 'A') {
+
+					//Check which wall to attack
+					if ((YEntity <= WallBottom) && (YEntity >= Walltop)) {
+						attacking = true;
+						
+						break;
+					}
+				}
+			}
+		}
+	}
+
+
+
+	return attacking;
 }
