@@ -7,4 +7,6 @@ public:
 	mapmain5();
 
 	void drawmap();
+
+	//void map5game();
 };
