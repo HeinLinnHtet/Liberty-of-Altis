@@ -132,7 +132,10 @@ void mapmain1::drawmap()
 void mapmain1::map1game(void)
 {
 	//draw out map 
-	drawmap();
+	drawmap();	
+
+	alliesdead = 0;
+	enemiesdead = 0;
 
 	///// #### NOT POLYMORHPHISM ####		
 	// instantiating objects	
