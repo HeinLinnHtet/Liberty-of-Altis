@@ -227,8 +227,8 @@ void mapmain2::drawmap()
 		}
 	}
 
-	tower[0]->attack();
-	tower[1]->attack();
+	/*tower[0]->attack();
+	tower[1]->attack();*/
 
 
 }

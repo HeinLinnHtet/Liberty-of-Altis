@@ -13,6 +13,13 @@ private:
 	static environmentalObjs* trees[Amt_Trees];
 	static environmentalObjs* houses[Amt_House];
 
+	//total number of enemies in this level
+	static int Amt_Lvl2_Enemy;
+
+	static int Amt_Lvl2_Allies;
+
+	int alliesdead, enemiesdead;
+
 
 public:
 	mapmain3();
@@ -20,6 +27,15 @@ public:
 	void drawmap();
 
 	void map3game(void);
+
+	//Check attacking collision with enviroment 
+	bool CheckAttack(Entity& main, Entity& other, char direction);
+
+	//Check attacking collision with enviroment but for enemies 
+	bool EnemyCheckAtk(Entity& ally, Entity& Enemy);
+
+	//Check Enviromental collisions
+	bool CheckEnviroCollide(Entity& main, char direction);
 };
 
 
