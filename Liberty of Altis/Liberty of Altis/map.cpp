@@ -37,9 +37,11 @@ void map::drawmap()
 void map::MoveEntity(Entity& entity, char input)
 {
 	gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY());
+	color(0x0F);
 	std::cout << "X";
 	entity.Movement(input);
 	gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY());
+	color(0x09);
 	std::cout << entity.Draw_Icon();
 }
 
