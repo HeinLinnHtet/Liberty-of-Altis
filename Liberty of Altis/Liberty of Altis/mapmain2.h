@@ -16,7 +16,7 @@ private:
 	static towers* tower[Amt_Tower];
 
 
-
+	int alliesdead, enemiesdead;
 
 public:
 	mapmain2();
@@ -24,6 +24,15 @@ public:
 	void drawmap();
 
 	void map2game(void);
+
+	//Check attacking collision with enviroment 
+	bool CheckAttack(Entity& main, Entity& other, char direction);
+
+	//Check attacking collision with enviroment but for enemies 
+	bool EnemyCheckAtk(Entity& ally, Entity& Enemy);
+
+	//Check Enviromental collisions
+	bool CheckEnviroCollide(Entity& main, char direction);
 };
 
 
