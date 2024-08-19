@@ -14,9 +14,9 @@ private:
 	static environmentalObjs* houses[Amt_House];
 
 	//total number of enemies in this level
-	static int Amt_Lvl2_Enemy;
+	static int Amt_Lvl3_Enemy;
 
-	static int Amt_Lvl2_Allies;
+	static int Amt_Lvl3_Allies;
 
 	int alliesdead, enemiesdead;
 
