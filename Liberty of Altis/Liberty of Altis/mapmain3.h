@@ -8,7 +8,7 @@ class mapmain3 :
 private:
 
 	const static int Amt_Trees = 10;
-	const static int Amt_House = 27;
+	const static int Amt_House = 67;
 
 	static environmentalObjs* trees[Amt_Trees];
 	static environmentalObjs* houses[Amt_House];

@@ -47,8 +47,19 @@ void mapmain3::drawmap()
 		houses[i + 18] = new environmentalObjs(char(176), housexpos[i] - 1, houseypos[i]);
 	}
 
-	walls* Ebase;
-	Ebase = new walls(100, char(219), 5, 13);
+	for (int i = 0; i < 5; i++)
+	{
+		houses[i + 27] = new environmentalObjs(char(219), i + 3, 10);
+		houses[i + 32] = new environmentalObjs(char(219), i + 3, 16);
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		houses[i + 37] = new environmentalObjs(char(219), i + 3, 11);
+		houses[i + 43] = new environmentalObjs(char(219), i + 3, 12);
+		houses[i + 49] = new environmentalObjs(char(219), i + 3, 13);
+		houses[i + 55] = new environmentalObjs(char(219), i + 3, 14);
+		houses[i + 61] = new environmentalObjs(char(219), i + 3, 15);
+	}
 
 		//border
 	color(0x0F);
@@ -88,9 +99,14 @@ void mapmain3::drawmap()
 			objexist = false;
 
 			//house
-			for (int k = 0; k < 27; k++)
+			for (int k = 0; k < 67; k++)
 			{
+				//check color for base
 				color(0x0C);
+				if (k > 26)
+				{
+					color(0x08);
+				}
 				if (houses[k]->getx() == i and houses[k]->gety() == j)
 				{
 					std::cout << houses[k]->getsymbol();
@@ -107,59 +123,6 @@ void mapmain3::drawmap()
 					std::cout << trees[k]->getsymbol();
 					objexist = true;
 				}
-			}
-
-			//base
-			color(0x08);
-			if (Ebase->getx() == i and Ebase->gety() == j ||
-				Ebase->getx() == i and Ebase->gety() == j + 1 ||
-				Ebase->getx() == i and Ebase->gety() == j - 1 ||
-				Ebase->getx() == i and Ebase->gety() == j + 2 ||
-				Ebase->getx() == i and Ebase->gety() == j - 2 ||
-				Ebase->getx() == i and Ebase->gety() == j + 3 ||
-				Ebase->getx() == i and Ebase->gety() == j - 3 ||
-
-				Ebase->getx() == i + 1 and Ebase->gety() == j ||
-				Ebase->getx() == i + 1 and Ebase->gety() == j + 1 ||
-				Ebase->getx() == i + 1 and Ebase->gety() == j - 1 ||
-				Ebase->getx() == i + 1 and Ebase->gety() == j + 2 ||
-				Ebase->getx() == i + 1 and Ebase->gety() == j - 2 ||
-				Ebase->getx() == i + 1 and Ebase->gety() == j + 3 ||
-				Ebase->getx() == i + 1 and Ebase->gety() == j - 3 ||
-
-				Ebase->getx() == i - 1 and Ebase->gety() == j ||
-				Ebase->getx() == i - 1 and Ebase->gety() == j - 1 ||
-				Ebase->getx() == i - 1 and Ebase->gety() == j + 1 ||
-				Ebase->getx() == i - 1 and Ebase->gety() == j - 2 ||
-				Ebase->getx() == i - 1 and Ebase->gety() == j + 2 ||
-				Ebase->getx() == i - 1 and Ebase->gety() == j - 3 ||
-				Ebase->getx() == i - 1 and Ebase->gety() == j + 3 ||
-				
-				Ebase->getx() == i + 2 and Ebase->gety() == j ||
-				Ebase->getx() == i + 2 and Ebase->gety() == j - 1 ||
-				Ebase->getx() == i + 2 and Ebase->gety() == j + 1 ||
-				Ebase->getx() == i + 2 and Ebase->gety() == j - 2 ||
-				Ebase->getx() == i + 2 and Ebase->gety() == j + 2 ||
-				Ebase->getx() == i + 2 and Ebase->gety() == j - 3 ||
-				Ebase->getx() == i + 2 and Ebase->gety() == j + 3 ||
-
-				Ebase->getx() == i - 2 and Ebase->gety() == j ||
-				Ebase->getx() == i - 2 and Ebase->gety() == j - 1 ||
-				Ebase->getx() == i - 2 and Ebase->gety() == j + 1 ||
-				Ebase->getx() == i - 2 and Ebase->gety() == j - 2 ||
-				Ebase->getx() == i - 2 and Ebase->gety() == j + 2 ||
-				Ebase->getx() == i - 2 and Ebase->gety() == j - 3 ||
-				Ebase->getx() == i - 2 and Ebase->gety() == j + 3 ||
-
-				Ebase->getx() == i - 3 and Ebase->gety() == j ||
-				Ebase->getx() == i - 3 and Ebase->gety() == j + 1 ||
-				Ebase->getx() == i - 3 and Ebase->gety() == j - 1 ||
-				Ebase->getx() == i - 3 and Ebase->gety() == j + 2 ||
-				Ebase->getx() == i - 3 and Ebase->gety() == j - 2
-				)
-			{
-				std::cout << Ebase->getsymbol();
-				objexist = true;
 			}
 			//background
 			if (!objexist)
