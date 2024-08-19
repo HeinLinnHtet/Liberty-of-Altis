@@ -392,11 +392,11 @@ void mapmain1::map1game(void)
 			for (int j = 0; j < 10; j++) {
 				if (level1Enemy[j] != nullptr) {
 					if (level1Enemy[j]->isEntityAlive() == false) {
+						gotoxy(level1Enemy[j]->PosXY.GetX(), level1Enemy[j]->PosXY.GetY());
+						std::cout << 'X';
 						//kill enemy 
 						delete level1Enemy[j];
 						level1Enemy[j] = nullptr;
-						gotoxy(level1Enemy[j]->PosXY.GetX(), level1Enemy[j]->PosXY.GetY());
-						std::cout << 'X';
 					}
 				}
 			}
@@ -509,11 +509,11 @@ void mapmain1::map1game(void)
 			for (int j = 0; j < 7; j++) {
 				if (level1Allies[j] != nullptr) {
 					if (level1Allies[j]->isEntityAlive() == false) {
+						gotoxy(level1Allies[j]->PosXY.GetX(), level1Allies[j]->PosXY.GetY());
+						std::cout << 'X';
 						//kill alliies
 						delete level1Allies[j];
 						level1Allies[j] = nullptr;
-						gotoxy(level1Allies[j]->PosXY.GetX(), level1Allies[j]->PosXY.GetY());
-						std::cout << 'X';
 					}
 				}
 			}
