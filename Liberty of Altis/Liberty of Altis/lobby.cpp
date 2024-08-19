@@ -31,6 +31,8 @@ void lobby::playchoice()
 		std::cout << "You choose story!";
 
 		joe.turtorial();
+		system("cls");
+		hel.map1game();
 	}
 	if (playerchoose == 2) {
 		if (isunlock = false) {
