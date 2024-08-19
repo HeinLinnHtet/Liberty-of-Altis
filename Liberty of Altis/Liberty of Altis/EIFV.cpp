@@ -2,8 +2,13 @@
 
 EIFV::EIFV()
 {
-	Health = 60;
+	Health = 75;
 	Attack = 10;
 	Range = 5;
 	Cost = 10;
+}
+
+char EIFV::Draw_Icon(void)
+{
+	return 'I';
 }

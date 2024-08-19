@@ -4,5 +4,7 @@ class AMotar : public AlliedTroops
 {
 public:
 	AMotar();
+
+	char Draw_Icon(void) override;
 };
 

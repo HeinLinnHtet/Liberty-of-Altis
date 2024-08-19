@@ -4,5 +4,7 @@ class ETank : public EnemyTroops
 {
 public:
 	ETank();
+
+	char Draw_Icon(void) override;
 };
 

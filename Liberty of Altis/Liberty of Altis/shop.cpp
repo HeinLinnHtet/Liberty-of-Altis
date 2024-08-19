@@ -30,7 +30,7 @@ void shop::troopadder()
 {
 	if (unitbuy == 1) {
 		inventory.riflemansetter(unitnum);
-		
+		inventory.riflemangetter();
 	}
 
 	else if (unitbuy == 2) {

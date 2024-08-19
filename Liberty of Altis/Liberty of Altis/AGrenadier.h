@@ -4,5 +4,7 @@ class AGrenadier : public AlliedTroops
 {
 public:
 	AGrenadier();
+
+	char Draw_Icon(void) override;
 };
 

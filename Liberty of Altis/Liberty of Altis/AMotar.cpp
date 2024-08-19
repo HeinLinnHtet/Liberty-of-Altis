@@ -2,8 +2,13 @@
 
 AMotar::AMotar()
 {
-	Health = 20;
+	Health = 40;
 	Attack = 20;
 	Range = 7;
 	Cost = 8;
+}
+
+char AMotar::Draw_Icon(void)
+{
+	return 'O';
 }

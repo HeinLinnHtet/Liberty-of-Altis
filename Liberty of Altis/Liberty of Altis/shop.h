@@ -3,9 +3,8 @@
 #include "backpack.h"
 class shop
 {
-private:
-	Backpack inventory;
 public:
+	Backpack inventory;
 	int cash = 1000;
 	int unitbuy;
 	int unitnum;

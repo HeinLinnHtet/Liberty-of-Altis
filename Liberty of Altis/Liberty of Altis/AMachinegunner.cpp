@@ -2,8 +2,13 @@
 
 AMachinegunner::AMachinegunner()
 {
-	Health = 10;
+	Health = 30;
 	Attack = 15;
 	Range = 3;
 	Cost = 7;
+}
+
+char AMachinegunner::Draw_Icon(void)
+{
+	return 'G';
 }

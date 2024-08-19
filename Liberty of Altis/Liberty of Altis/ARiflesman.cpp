@@ -2,7 +2,7 @@
 
 ARiflesman::ARiflesman()
 {
-	Health = 10;
+	Health = 30;
 	Attack = 5;
 	Range = 3;
 	Cost = 5;
