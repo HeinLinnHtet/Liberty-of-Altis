@@ -10,5 +10,5 @@ AMachinegunner::AMachinegunner()
 
 char AMachinegunner::Draw_Icon(void)
 {
-	return 'G';
+	return 'M';
 }
