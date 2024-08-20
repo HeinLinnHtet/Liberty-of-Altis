@@ -708,9 +708,11 @@ void mapmain3::map3game(
 
 		//check win or lose
 		if (alliesdead == Amt_Lvl3_Allies) {
-			test = true;
+			winloss.loss();
+			map3game;
 		}
 		else if (enemiesdead == Amt_Lvl3_Enemy) {
+			winloss.win();
 			test = true;
 		}
 		else {

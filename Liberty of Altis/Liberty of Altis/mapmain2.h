@@ -1,5 +1,6 @@
 #pragma once
 #include "map.h"
+#include "gameui.h"
 class mapmain2 :
 	public map
 {
@@ -19,6 +20,8 @@ private:
 	int alliesdead, enemiesdead;
 
 public:
+	gameui winloss;
+
 	mapmain2();
 
 	void drawmap();

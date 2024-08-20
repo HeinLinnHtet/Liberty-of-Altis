@@ -775,9 +775,11 @@ void mapmain2::map2game(void)
 
 		//check win or lose
 		if (alliesdead == Allies_lvl2) {
-			test = true;
+			winloss.loss();
+			map2game();
 		}
 		else if (enemiesdead == Enemy_lvl2) {
+			winloss.win();
 			test = true;
 		}
 		else {

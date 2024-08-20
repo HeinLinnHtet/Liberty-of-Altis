@@ -628,9 +628,11 @@ void mapmain1::map1game(void)
 
 		//check win or lose
 		if (alliesdead == Amt_Lvl1_Allies) {
+			winloss.loss();
 			map1game();
 		}
 		else if (enemiesdead == Amt_Lvl1_Enemy) {
+			winloss.win();
 			test = true;
 		}
 		else {

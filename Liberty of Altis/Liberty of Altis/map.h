@@ -1,5 +1,6 @@
 #pragma once
 #include "environmentalObjs.h"
+#include "gameui.h"
 #include "walls.h"
 #include "towers.h"
 #include "ARiflesman.h"
@@ -19,6 +20,8 @@
 #include "EIFV.h"
 
 #include <conio.h> // for _getch
+#include <windows.h>
+#include <iostream>
 
 
 class map :
