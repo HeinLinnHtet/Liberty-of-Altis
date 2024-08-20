@@ -18,6 +18,8 @@ public:
     void cutscene5();
     void cutscence6();
     void stats();
+    void win();
+    void loss();
     int choice;
     void gamestart(gameui& player);
     //int getstats(int H, int a, int r, int c, int s);
