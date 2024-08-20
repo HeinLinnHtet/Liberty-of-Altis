@@ -219,21 +219,51 @@ void mapmain3::map3game(
 
 	//Set all troop positions
 	color(0x09);
-	SetStartPos(*level3Allies[0], 5, 2);
-	SetStartPos(*level3Allies[1], 5, 5);
-	SetStartPos(*level3Allies[2], 7, 5);
-	SetStartPos(*level3Allies[3], 7, 6);
-	SetStartPos(*level3Allies[4], 7, 8);
-	SetStartPos(*level3Allies[5], 7, 10);
-	SetStartPos(*level3Allies[6], 7, 12);
-	SetStartPos(*level3Allies[7], 9, 14);
-	SetStartPos(*level3Allies[8], 5, 16);
-	SetStartPos(*level3Allies[9], 10, 18);
-	SetStartPos(*level3Allies[10], 7, 13);
-	SetStartPos(*level3Allies[11], 7, 14);
-	SetStartPos(*level3Allies[12], 9, 12);
-	SetStartPos(*level3Allies[13], 10, 2);
-	SetStartPos(*level3Allies[Allies_Limit-1], 6, 12);
+	if (level3Allies[0] != nullptr){
+		SetStartPos(*level3Allies[0], 5, 2);
+	}
+	if (level3Allies[1] != nullptr) {
+		SetStartPos(*level3Allies[1], 5, 5);
+	}
+	if (level3Allies[2] != nullptr) {
+		SetStartPos(*level3Allies[2], 7, 5);
+	}
+	if (level3Allies[3] != nullptr) {
+		SetStartPos(*level3Allies[3], 7, 6);
+	}
+	if (level3Allies[4] != nullptr) {
+		SetStartPos(*level3Allies[4], 7, 8);
+	}
+	if (level3Allies[5] != nullptr) {
+		SetStartPos(*level3Allies[5], 7, 10);
+	}
+	if (level3Allies[6] != nullptr) {
+		SetStartPos(*level3Allies[6], 7, 12);
+	}
+	if (level3Allies[7] != nullptr) {
+		SetStartPos(*level3Allies[7], 9, 14);
+	}
+	if (level3Allies[8] != nullptr) {
+		SetStartPos(*level3Allies[8], 5, 16);
+	}
+	if (level3Allies[9] != nullptr) {
+		SetStartPos(*level3Allies[9], 10, 18);
+	}
+	if (level3Allies[10] != nullptr) {
+		SetStartPos(*level3Allies[10], 7, 13);
+	}
+	if (level3Allies[11] != nullptr) {
+		SetStartPos(*level3Allies[11], 7, 14);
+	}
+	if (level3Allies[12] != nullptr) {
+		SetStartPos(*level3Allies[12], 9, 12);
+	}
+	if (level3Allies[13] != nullptr) {
+		SetStartPos(*level3Allies[13], 10, 2);
+	}
+	if (level3Allies[Allies_Limit - 1] != nullptr) {
+		SetStartPos(*level3Allies[Allies_Limit - 1], 6, 12);
+	}
 
 	color(0x06);
 	SetStartPos(*level3Enemy[0], 25, 3);
