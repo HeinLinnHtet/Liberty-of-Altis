@@ -350,7 +350,7 @@ void mapmain4::map4game(void)
 	//Spawn enemies 
 	EnemyTroops* level4Enemy[Amt_Lvl4_Enemy];
 	//rifle man
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < Amt_Lvl4_Enemy; i++) {
 		level4Enemy[i] = new ERiflesman;
 	}
 	//Machine gunner
@@ -370,7 +370,7 @@ void mapmain4::map4game(void)
 		level4Enemy[i] = new EIFV;
 	}
 	//Tank
-	for (int i = 9; i < 10; i++) {
+	for (int i = 9; i < Amt_Lvl4_Enemy; i++) {
 		level4Enemy[i] = new ETank;
 	}
 
@@ -392,13 +392,21 @@ void mapmain4::map4game(void)
 	SetStartPos(*level4Allies[1], 5, 5);
 
 	color(0x06);
-	SetStartPos(*level4Enemy[0], 25, 3);
-	SetStartPos(*level4Enemy[1], 30, 4);
+	SetStartPos(*level4Enemy[0], 60, 4);
+	SetStartPos(*level4Enemy[1], 50, 17);
+	SetStartPos(*level4Enemy[2], 55, 8);
+	SetStartPos(*level4Enemy[3], 53, 8);
+	SetStartPos(*level4Enemy[4], 67, 4);
+	SetStartPos(*level4Enemy[5], 37, 17);
+	SetStartPos(*level4Enemy[6], 55, 10);
+	SetStartPos(*level4Enemy[7], 60, 13);
+	SetStartPos(*level4Enemy[8], 70, 9);
+	SetStartPos(*level4Enemy[9], 60, 16);
 
 
 	bool test = false;
 
-	while (test == false) {
+	while (test == false)  {
 		
 		int enemycposx, enemycposy;
 
@@ -406,48 +414,48 @@ void mapmain4::map4game(void)
 		{
 			//display the stats
 			//allied troops live stats
-			gotoxy(95, 1);
+			gotoxy(95, 13);   
 			color(0x09);
 			std::cout << "Allied Troops";
 
 			//stats
-			gotoxy(95, 2);
+			gotoxy(95, 14);
 			std::cout << "Health  Attack  Range";
 
 			//for rifleman
 			for (int i = 0; i < Amt_Lvl4_Allies; i++) {
 				if (level4Allies[i] != nullptr) {
-					gotoxy(85, 3 + i);
+					gotoxy(85, 15 + i);
 					std::cout << "Rifleman " << i + 1 << ": " << level4Allies[i]->GetHealth() << " ";
 
-					gotoxy(105, 3 + i);
+					gotoxy(105, 15 + i);
 					std::cout << level4Allies[i]->GetAttack();
 
-					gotoxy(113, 3 + i);
+					gotoxy(113, 15 + i);
 					std::cout << level4Allies[i]->GetRange();
 				}
 			}
 
 
 			//Enemy troops
-			gotoxy(95, 12);
+			gotoxy(95, 1);
 			color(0x06);
 			std::cout << "Enemy Troops";
 
 			//stats
-			gotoxy(95, 13);
+			gotoxy(95, 2);
 			std::cout << "Health  Attack  Range";
 
 			//rifleman
 			for (int i = 0; i < Amt_Lvl4_Enemy; i++) {
 				if (level4Enemy[i] != nullptr) {
-					gotoxy(85, 14 + i);
+					gotoxy(85, 3 + i);
 					std::cout << "Rifleman " << i + 1 << ": " << level4Enemy[i]->GetHealth() << " ";
 
-					gotoxy(105, 14 + i);
+					gotoxy(105, 3 + i);
 					std::cout << level4Enemy[i]->GetAttack();
 
-					gotoxy(113, 14 + i);
+					gotoxy(113, 3 + i);
 					std::cout << level4Enemy[i]->GetRange();
 				}
 			}
@@ -670,7 +678,7 @@ void mapmain4::map4game(void)
 
 					if (ValidMove == true) {
 						//Check collison between Enemies and Allies
-						for (int j = 0; j < Amt_Lvl4_Enemy; j++) {
+						for (int j = 0; j < Amt_Lvl4_Allies; j++) {
 							if (level4Allies[j] != nullptr) {
 								if (level4Enemy[i]->Entitycollision(*level4Allies[j], input) == true) {
 									gotoxy(40, 27);
@@ -684,7 +692,7 @@ void mapmain4::map4game(void)
 
 					if (ValidMove == true) {
 						//Check collison between Enemies and Enemies
-						for (int j = 0; j < Amt_Lvl4_Allies; j++) {
+						for (int j = 0; j < Amt_Lvl4_Enemy; j++) {
 							if (level4Enemy[j] != nullptr) {
 								if (level4Enemy[i]->Entitycollision(*level4Enemy[j], input) == true) {
 									gotoxy(15, 28);
@@ -755,10 +763,13 @@ void mapmain4::map4game(void)
 
 		//check win or lose
 		if (alliesdead == Amt_Lvl4_Allies) {
+			winloss.loss();
 			map4game();
 		}
 		else if (enemiesdead == Amt_Lvl4_Enemy) {
+			winloss.win();
 			test = true;
+
 		}
 		else {
 			test = false;
