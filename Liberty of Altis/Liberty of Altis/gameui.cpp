@@ -504,8 +504,52 @@ void gameui::stats()
 	getstats("Tank", 80, 30, 8, 9, 15);
 }
 
+void gameui::win()
+{
+	std::string liness1[] = {
+		"You have defeated the enemy",
+		"good job!"
+	};
+
+
+
+	int delay = 50;
+	int x = 20, y = 20;
+	for (const auto& text : liness1) {
+		gotoxy(x, y);
+		printdelay(text, delay);
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		std::cout << "\r" << std::string(70, ' ') << "\r";
+		gotoxy(x, y);
+		std::cout << std::string(text.length(), ' ');
+	}
+}
+
+void gameui::loss()
+{
+	std::string liness2[] = {
+		"The enemy has routed our forces",
+		"terrible loss for us, we must regroup and strike back!",
+		"try again......."
+	};
+
+	int delay = 50;
+	int x = 20, y = 20;
+	for (const auto& text : liness2) {
+		gotoxy(x, y);
+		printdelay(text, delay);
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		std::cout << "\r" << std::string(70, ' ') << "\r";
+		gotoxy(x, y);
+		std::cout << std::string(text.length(), ' ');
+	}
+
+}
+
 void gameui::gamestart(gameui& player)
 {
+	
+
 }
 
 void gameui::getstats(std::string nameset, int H, int a, int r, int s, int c)

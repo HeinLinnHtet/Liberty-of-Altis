@@ -33,6 +33,8 @@ void lobby::playchoice()
 		joe.turtorial();
 		system("cls");
 		hel.map1game();
+		system("cls");
+
 	}
 	if (playerchoose == 2) {
 		if (isunlock = false) {
