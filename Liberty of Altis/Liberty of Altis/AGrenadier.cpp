@@ -3,7 +3,7 @@
 AGrenadier::AGrenadier()
 {
 	Health = 30;
-	Attack = 20;
+	Attack = 15;
 	Range = 4;
 	Cost = 6;
 }
