@@ -14,6 +14,8 @@ private:
 
 	int alliesdead, enemiesdead;
 
+	static bool GameOver;
+
 public:
 	gameui winloss;
 
@@ -21,7 +23,13 @@ public:
 
 	void drawmap();
 
-	void map4game(void);
+	void map4game(int rifleamount,
+		int mcgunamount,
+		int grendamount,
+		int motaramount,
+		int artilamount,
+		int tankamount,
+		int ifvamount);
 
 	//Check collisions
 	bool CheckBorder(Entity& main, char direction);
@@ -34,6 +42,8 @@ public:
 
 	//Check attacking collision with enviroment but for enemies 
 	bool EnemyCheckAtk(Entity& ally, Entity& Enemy);
+	
+	bool GetGameOver(void);
 
 };
 

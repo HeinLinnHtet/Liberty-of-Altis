@@ -333,7 +333,13 @@ void mapmain4::drawmap()
 }
 
 
-void mapmain4::map4game(void)
+void mapmain4::map4game(int rifleamount,
+	int mcgunamount,
+	int grendamount,
+	int motaramount,
+	int artilamount,
+	int tankamount,
+	int ifvamount)
 {
 	//draw out map 
 	drawmap();
@@ -404,9 +410,9 @@ void mapmain4::map4game(void)
 	SetStartPos(*level4Enemy[9], 60, 16);
 
 
-	bool test = false;
+	bool GameOver = false;
 
-	while (test == false)  {
+	while (GameOver == false)  {
 		
 		int enemycposx, enemycposy;
 
@@ -764,15 +770,15 @@ void mapmain4::map4game(void)
 		//check win or lose
 		if (alliesdead == Amt_Lvl4_Allies) {
 			winloss.loss();
-			map4game();
+			GameOver = true;
 		}
 		else if (enemiesdead == Amt_Lvl4_Enemy) {
 			winloss.win();
-			test = true;
+			GameOver = true;
 
 		}
 		else {
-			test = false;
+			GameOver = false;
 		}
 	}
 
@@ -1090,4 +1096,9 @@ bool mapmain4::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 	}
 
 	return attackable;
+}
+
+bool mapmain4::GetGameOver(void)
+{
+	return GameOver;
 }

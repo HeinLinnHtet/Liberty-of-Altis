@@ -50,7 +50,26 @@ int main(void) {
 	maininventory.motarsetter(testshop.inventory.motargetter());
 	maininventory.tanksetter(testshop.inventory.tankgetter());
 
+	//Level 3
 	while (testlvl3.GetGameOver() == false) {
+		maininventory.backpak();
+		system("CLS");
+		testlvl3.map3game(
+			maininventory.Troop_broughtin[0],
+			maininventory.Troop_broughtin[1],
+			maininventory.Troop_broughtin[2],
+			maininventory.Troop_broughtin[3],
+			maininventory.Troop_broughtin[4],
+			maininventory.Troop_broughtin[5],
+			maininventory.Troop_broughtin[6]);
+	}
+
+	cutscene.cutscene4();
+	system("CLS");
+
+
+	//Level 4
+	while (testlvl4.GetGameOver() == false) {
 		maininventory.backpak();
 		system("CLS");
 		testlvl3.map3game(
