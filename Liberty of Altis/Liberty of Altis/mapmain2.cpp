@@ -13,8 +13,6 @@ towers* mapmain2::tower[Amt_Tower];
 
 mapmain2::mapmain2()
 {
-	alliesdead = 0;
-	enemiesdead = 0;
 }
 
 void mapmain2::drawmap()
@@ -264,8 +262,8 @@ void mapmain2::map2game(void)
 {
 	//draw map
 	drawmap();
-
-	
+	alliesdead = 0;
+	enemiesdead = 0;
 
 	const int Enemy_lvl2 = 5;
 	const int Allies_lvl2 = 7;

@@ -21,9 +21,12 @@ private:
 
 	int alliesdead, enemiesdead;
 
+	static bool GameOver;
+
 
 public:
 	gameui winloss;
+	Backpack lvl3;
 
 	mapmain3();
 
@@ -48,6 +51,8 @@ public:
 
 	//Check Enviromental collisions
 	bool CheckEnviroCollide(Entity& main, char direction);
+
+	bool GetGameOver(void);
 };
 
 

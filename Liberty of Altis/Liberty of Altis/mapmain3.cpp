@@ -9,6 +9,7 @@ environmentalObjs* mapmain3::houses[Amt_House];
 
 int mapmain3::Amt_Lvl3_Enemy = 10;
 int mapmain3::Amt_Lvl3_Allies = 7;
+bool mapmain3::GameOver = false;
 
 
 mapmain3::mapmain3()
@@ -158,6 +159,8 @@ void mapmain3::map3game(
 	alliesdead = 0;
 	enemiesdead = 0;
 
+	const int Allies_Limit = 15;
+
 	///// #### NOT POLYMORHPHISM ####		
 	// instantiating objects	
 
@@ -178,35 +181,40 @@ void mapmain3::map3game(
 
 
 	//Spawn allies 
-	AlliedTroops* level3Allies[15];
+	AlliedTroops* level3Allies[Allies_Limit];
+	for (int i = 0; i < Allies_Limit; i++) {
+		level3Allies[i] = nullptr;
+	}
+
 	//rifle man
-	for (int i = 0; i < rifleamount; i++) {
+	for (int i = 0; i < rifleamount; i++) { 
 		level3Allies[i] = new ARiflesman;
 	}
-	//Lmg
+	//Lmg    // rifleamount 
 	for (int i = 0; i < mcgunamount; i++) {
-		level3Allies[i + rifleamount - 1] = new AMachinegunner;
+		level3Allies[i + rifleamount] = new AMachinegunner;
 	}
 	//Grenadier
 	for (int i = 0; i < grendamount; i++) {
-		level3Allies[i + rifleamount + mcgunamount - 1] = new AGrenadier;
+		level3Allies[i + rifleamount + mcgunamount ] = new AGrenadier;
 	}
 	//Mortar	
 	for (int i = 0; i < motaramount; i++) {
-		level3Allies[i + rifleamount + mcgunamount + grendamount - 1] = new AMotar;
+		level3Allies[i + rifleamount + mcgunamount + grendamount ] = new AMotar;
 	}
 	//Artillery	
 	for (int i = 0; i < artilamount; i++) {
-		level3Allies[i + rifleamount + mcgunamount + grendamount + motaramount - 1] = new AArtillery;
+		level3Allies[i + rifleamount + mcgunamount + grendamount + motaramount ] = new AArtillery;
 	}
 	//Tank	
 	for (int i = 0; i < tankamount; i++) {
-		level3Allies[i + rifleamount + mcgunamount + grendamount + motaramount + artilamount - 1] = new ATank;
+		level3Allies[i + rifleamount + mcgunamount + grendamount + motaramount + artilamount ] = new ATank;
 	}
 	//IFV
 	for (int i = 0; i < ifvamount; i++) {
-		level3Allies[i + rifleamount + mcgunamount + grendamount + motaramount + artilamount + tankamount - 1] = new AIFV;
+		level3Allies[i + rifleamount + mcgunamount + grendamount + motaramount + artilamount + tankamount ] = new AIFV;
 	}
+
 
 
 	//Set all troop positions
@@ -225,7 +233,7 @@ void mapmain3::map3game(
 	SetStartPos(*level3Allies[11], 7, 14);
 	SetStartPos(*level3Allies[12], 9, 12);
 	SetStartPos(*level3Allies[13], 10, 2);
-	SetStartPos(*level3Allies[14], 6, 12);
+	SetStartPos(*level3Allies[Allies_Limit-1], 6, 12);
 
 	color(0x06);
 	SetStartPos(*level3Enemy[0], 25, 3);
@@ -241,9 +249,9 @@ void mapmain3::map3game(
 
 
 	////Check if all enemies have died  ### To change
-	bool test = false;
+	bool GameOver = false;
 
-	while (test == false) {
+	while (GameOver == false) {
 
 		int enemycposx, enemycposy;
 
@@ -309,7 +317,7 @@ void mapmain3::map3game(
 			std::cout << "Health  Attack  Range";
 
 			//for rifleman
-			for (int i = 0; i < rifleamount; i++) {
+			for (int i = 0; i < rifleamount; i++) {   
 				if (level3Allies[i] != nullptr) {
 					gotoxy(55, numberofenemies + 5 + i);
 					std::cout << level3Allies[i]->Getname() << i + 1 << ": " << level3Allies[i]->GetHealth() << " ";
@@ -322,8 +330,8 @@ void mapmain3::map3game(
 				}
 			}
 
-			//machinegunner
-			for (int i = 0; i < mcgunamount; i++) {
+			//machinegunner            
+			for (int i = rifleamount; i < mcgunamount + rifleamount; i++) {  
 				if (level3Allies[i] != nullptr) {
 					gotoxy(55, numberofenemies + 5 + i);
 					std::cout << level3Allies[i]->Getname() << i - 2 << ": " << level3Allies[i]->GetHealth() << " ";
@@ -337,7 +345,7 @@ void mapmain3::map3game(
 			}
 
 			//grenadier
-			for (int i = 0; i < grendamount; i++) {
+			for (int i = mcgunamount + rifleamount; i < grendamount + mcgunamount + rifleamount; i++) {
 				if (level3Allies[i] != nullptr) {
 					gotoxy(55, numberofenemies + 5 + i);
 					std::cout << level3Allies[i]->Getname() << i - 4 << ": " << level3Allies[i]->GetHealth() << " ";
@@ -351,7 +359,7 @@ void mapmain3::map3game(
 			}
 
 			//mortar
-			for (int i = 0; i < motaramount; i++) {
+			for (int i = grendamount + mcgunamount + rifleamount; i < motaramount + grendamount + mcgunamount + rifleamount; i++) {
 				if (level3Allies[i] != nullptr) {
 					gotoxy(55, numberofenemies + 5 + i);
 					std::cout << level3Allies[i]->Getname() << i + 1 << ": " << level3Allies[i]->GetHealth() << " ";
@@ -365,7 +373,7 @@ void mapmain3::map3game(
 			}
 
 			//artillery
-			for (int i = 0; i < artilamount; i++) {
+			for (int i = motaramount + grendamount + mcgunamount + rifleamount; i < artilamount + motaramount + grendamount + mcgunamount + rifleamount; i++) {
 				if (level3Allies[i] != nullptr) {
 					gotoxy(55, numberofenemies + 5 + i);
 					std::cout << level3Allies[i]->Getname() << i - 2 << ": " << level3Allies[i]->GetHealth() << " ";
@@ -379,7 +387,7 @@ void mapmain3::map3game(
 			}
 
 			//tank
-			for (int i = 0; i < tankamount; i++) {
+			for (int i = artilamount + motaramount + grendamount + mcgunamount + rifleamount; i < tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i++) {
 				if (level3Allies[i] != nullptr) {
 					gotoxy(55, numberofenemies + 5 + i);
 					std::cout << level3Allies[i]->Getname() << i - 4 << ": " << level3Allies[i]->GetHealth() << " ";
@@ -393,10 +401,10 @@ void mapmain3::map3game(
 			}
 
 			//ifv
-			for (int i = 0; i < ifvamount; i++) {
+			for (int i = tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i < ifvamount + tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i++) {
 				if (level3Allies[i] != nullptr) {
 					gotoxy(55, numberofenemies + 5 + i);
-					std::cout << level3Allies[i]->Getname() << i - 4 << ": " << level3Allies[i]->GetHealth() << " ";
+					std::cout << level3Allies[i]->Getname() << i + 1 << ": " << level3Allies[i]->GetHealth() << " ";
 
 					gotoxy(75, numberofenemies + 5 + i);
 					std::cout << level3Allies[i]->GetAttack();
@@ -410,7 +418,7 @@ void mapmain3::map3game(
 
 		////////For player troops
 		// Player choose action 
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < Allies_Limit; i++) {
 			bool ValidMove = false;
 
 			//Get user input, WASD to move or J to attack 
@@ -465,7 +473,7 @@ void mapmain3::map3game(
 
 						//Check collison between Allies and Allies
 						if (CanMove == true) {
-							for (int j = 0; j < 7; j++) {
+							for (int j = 0; j < Allies_Limit; j++) {
 								if (level3Allies[j] != nullptr) {
 									if (level3Allies[i]->Entitycollision(*level3Allies[j], choice) == true) {
 										gotoxy(15, 21);
@@ -564,7 +572,7 @@ void mapmain3::map3game(
 		//UI 
 		drawmap();
 		//Update new position 
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < Allies_Limit; i++) {
 			if (level3Allies[i] != nullptr) {
 				gotoxy(level3Allies[i]->PosXY.GetX(), level3Allies[i]->PosXY.GetY());
 				color(0x09);
@@ -589,7 +597,7 @@ void mapmain3::map3game(
 			if (level3Enemy[i] != nullptr) {
 
 				//Attacking, Check if can attack first 
-				for (int j = 0; j < 7; j++) {
+				for (int j = 0; j < Allies_Limit; j++) {
 					if (level3Allies[j] != nullptr) {
 						if (EnemyCheckAtk(*level3Allies[j], *level3Enemy[i]) == true) {
 							level3Enemy[i]->DamageDealt(*level3Allies[j]);
@@ -623,7 +631,7 @@ void mapmain3::map3game(
 
 					if (ValidMove == true) {
 						//Check collison between Enemies and Allies
-						for (int j = 0; j < 7; j++) {
+						for (int j = 0; j < Allies_Limit; j++) {
 							if (level3Allies[j] != nullptr) {
 								if (level3Enemy[i]->Entitycollision(*level3Allies[j], input) == true) {
 									gotoxy(15, 21);
@@ -673,7 +681,7 @@ void mapmain3::map3game(
 			}
 
 			//Check if allies are alive 
-			for (int j = 0; j < 7; j++) {
+			for (int j = 0; j < Allies_Limit; j++) {
 				if (level3Allies[j] != nullptr) {
 					if (level3Allies[j]->isEntityAlive() == false) {
 						gotoxy(level3Allies[j]->PosXY.GetX(), level3Allies[j]->PosXY.GetY());
@@ -691,7 +699,7 @@ void mapmain3::map3game(
 		//UI
 		drawmap();
 		//Update new position 
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < Allies_Limit; i++) {
 			if (level3Allies[i] != nullptr) {
 				gotoxy(level3Allies[i]->PosXY.GetX(), level3Allies[i]->PosXY.GetY());
 				color(0x09);
@@ -708,21 +716,20 @@ void mapmain3::map3game(
 
 		//check win or lose
 		if (alliesdead == Amt_Lvl3_Allies) {
-			winloss.loss();
-			map3game;
+			GameOver = true;
 		}
 		else if (enemiesdead == Amt_Lvl3_Enemy) {
 			winloss.win();
-			test = true;
+			GameOver = true;
 		}
 		else {
-			test = false;
+			GameOver = false;
 		}
 	}
 
 
 	//Delete backlog
-	for (int i = 0; i < 7; i++) {
+	for (int i = 0; i < Allies_Limit; i++) {
 		if (level3Allies[i] != nullptr) {
 			delete level3Allies[i];
 			level3Allies[i] = nullptr;
@@ -1160,3 +1167,13 @@ bool mapmain3::CheckEnviroCollide(Entity& main, char direction)
 
 	return result;
 }
+
+bool mapmain3::GetGameOver(void)
+{
+	return GameOver;
+}
+
+
+
+
+
