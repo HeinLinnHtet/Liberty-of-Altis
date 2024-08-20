@@ -41,5 +41,10 @@ public:
 	//IFV
 	void IFVsetter(int a);
 	int IFVgetter();
+
+	//backpak
+	void backpak();
+
+	int Troop_broughtin[7];
 };
 

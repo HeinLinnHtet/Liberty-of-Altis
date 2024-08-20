@@ -36,21 +36,60 @@ void map::drawmap()
 //Function to correcly display entity movement 
 void map::MoveEntity(Entity& entity, char input)
 {
-	gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY());
-	color(0x0F);
-	std::cout << "X";
-	entity.Movement(input);
-	gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY());
-	color(0x09);
-	std::cout << entity.Draw_Icon();
+	if (entity.Draw_Icon() == 'T' || entity.Draw_Icon() == 'A')
+	{
+		gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY());
+		color(0x0F);
+		std::cout << "X";
+		gotoxy(entity.PosXY.GetX() - 1, entity.PosXY.GetY());
+		std::cout << "X";
+		gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY() - 1);
+		std::cout << "X";
+		gotoxy(entity.PosXY.GetX() - 1, entity.PosXY.GetY() - 1);
+		std::cout << "X";
+		entity.Movement(input);
+		gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY());
+		color(0x09);
+		std::cout << entity.Draw_Icon();
+		gotoxy(entity.PosXY.GetX() - 1, entity.PosXY.GetY());
+		std::cout << entity.Draw_Icon();
+		gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY() - 1);
+		std::cout << entity.Draw_Icon();
+		gotoxy(entity.PosXY.GetX() - 1, entity.PosXY.GetY() - 1);
+		std::cout << entity.Draw_Icon();
+	}
+	else
+	{
+		gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY());
+		color(0x0F);
+		std::cout << "X";
+		entity.Movement(input);
+		gotoxy(entity.PosXY.GetX(), entity.PosXY.GetY());
+		color(0x09);
+		std::cout << entity.Draw_Icon();
+	}
 }
 
 //Sets starting position for entity 
 void map::SetStartPos(Entity& entity, int x, int y)
 {
-	gotoxy(x, y);
 	entity.SetPosition(x, y);
-	std::cout << entity.Draw_Icon();
+	if (entity.Draw_Icon() == 'T' || entity.Draw_Icon() == 'A')
+	{
+		gotoxy(x, y);
+		std::cout << entity.Draw_Icon();
+		gotoxy(x - 1, y);
+		std::cout << entity.Draw_Icon();
+		gotoxy(x, y - 1);
+		std::cout << entity.Draw_Icon();
+		gotoxy(x - 1, y - 1);
+		std::cout << entity.Draw_Icon();
+	}
+	else
+	{
+		gotoxy(x, y);
+		std::cout << entity.Draw_Icon();
+	}
 }
 
 //Check if entity if collide with obj 

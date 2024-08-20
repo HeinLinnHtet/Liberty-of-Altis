@@ -12,3 +12,8 @@ char EMachinegunner::Draw_Icon(void)
 {
 	return 'M';
 }
+
+std::string EMachinegunner::Getname(void)
+{
+	return "McGunner";
+}

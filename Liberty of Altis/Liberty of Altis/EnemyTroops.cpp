@@ -222,3 +222,8 @@ bool EnemyTroops::canattack(Entity& other, environmentalObjs& obj)
     //return the thing
     return attackable;
 }
+
+std::string EnemyTroops::Getname(void)
+{
+    return "John Doe (Evil)";
+}

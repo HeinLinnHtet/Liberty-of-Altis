@@ -147,6 +147,12 @@ char Entity::Draw_Icon(void)
     return 'E';
 }
 
+std::string Entity::Getname(void)
+{
+    return "John Doe";
+}
+
+
 void Entity::SetHealth(int a)
 {
     Health = a;

@@ -160,7 +160,7 @@ void mapmain1::map1game(void)
 	AlliedTroops* level1Allies[7];
 	//rifle man 
 	for (int i = 0; i < 3; i++) {
-		level1Allies[i] = new ARiflesman;
+		level1Allies[i] = new ATank;
 	}
 	//Lmg
 	for (int i = 3; i < 5; i++) {
@@ -218,7 +218,7 @@ void mapmain1::map1game(void)
 			for (int i = 0; i < 3; i++) {
 				if (level1Allies[i] != nullptr) {
 					gotoxy(55, 3 + i);
-					std::cout << "Rifleman " << i + 1 << ": " << level1Allies[i]->GetHealth() << " ";
+					std::cout << level1Allies[i]->Getname() << i + 1 << ": " << level1Allies[i]->GetHealth() << " ";
 
 					gotoxy(75, 3 + i);
 					std::cout << level1Allies[i]->GetAttack();
@@ -233,7 +233,7 @@ void mapmain1::map1game(void)
 				if (level1Allies[i] != nullptr) {
 
 					gotoxy(55, 6 + (i - 3));
-					std::cout << "McGunner " << i - 2 << ": " << level1Allies[i]->GetHealth() << " ";
+					std::cout << level1Allies[i]->Getname() << i - 2 << ": " << level1Allies[i]->GetHealth() << " ";
 
 					gotoxy(75, 6 + (i - 3));
 					std::cout << level1Allies[i]->GetAttack();
@@ -247,7 +247,7 @@ void mapmain1::map1game(void)
 			for (int i = 5; i < 7; i++) {
 				if (level1Allies[i] != nullptr) {
 					gotoxy(55, 8 + (i - 5));
-					std::cout << "Grenader " << i - 4 << ": " << level1Allies[i]->GetHealth() << " ";
+					std::cout << level1Allies[i]->Getname() << i - 4 << ": " << level1Allies[i]->GetHealth() << " ";
 
 					gotoxy(75, 8 + (i - 5));
 					std::cout << level1Allies[i]->GetAttack();
@@ -270,7 +270,7 @@ void mapmain1::map1game(void)
 			for (int i = 0; i < 6; i++) {
 				if (level1Enemy[i] != nullptr) {
 					gotoxy(55, 14 + i);
-					std::cout << "Rifleman " << i + 1 << ": " << level1Enemy[i]->GetHealth() << " ";
+					std::cout << level1Enemy[i]->Getname() << i + 1 << ": " << level1Enemy[i]->GetHealth() << " ";
 
 					gotoxy(75, 14 + i);
 					std::cout << level1Enemy[i]->GetAttack();
@@ -283,7 +283,7 @@ void mapmain1::map1game(void)
 			for (int i = 6; i < 8; i++) {
 				if (level1Enemy[i] != nullptr) {
 					gotoxy(55, 20 + (i - 6));
-					std::cout << "McGunner " << i - 5 << ": " << level1Enemy[i]->GetHealth() << " ";
+					std::cout << level1Enemy[i]->Getname() << i - 5 << ": " << level1Enemy[i]->GetHealth() << " ";
 
 					gotoxy(75, 20 + (i - 6));
 					std::cout << level1Enemy[i]->GetAttack();
@@ -296,7 +296,7 @@ void mapmain1::map1game(void)
 			for (int i = 8; i < 10; i++) {
 				if (level1Enemy[i] != nullptr) {
 					gotoxy(55, 22 + (i - 8));
-					std::cout << "Grenader " << i - 7 << ": " << level1Enemy[i]->GetHealth() << " ";
+					std::cout << level1Enemy[i]->Getname() << i - 7 << ": " << level1Enemy[i]->GetHealth() << " ";
 
 					gotoxy(75, 22 + (i - 8));
 					std::cout << level1Enemy[i]->GetAttack();
@@ -597,9 +597,25 @@ void mapmain1::map1game(void)
 		//Update new position 
 		for (int i = 0; i < 7; i++) {
 			if (level1Allies[i] != nullptr) {
-				gotoxy(level1Allies[i]->PosXY.GetX(), level1Allies[i]->PosXY.GetY());
 				color(0x09);
-				std::cout << level1Allies[i]->Draw_Icon();
+				//tank or artilery
+				if (level1Allies[i]->Draw_Icon() == 'T' || level1Allies[i]->Draw_Icon() == 'A')
+				{
+					gotoxy(level1Allies[i]->PosXY.GetX(), level1Allies[i]->PosXY.GetY());
+					std::cout << level1Allies[i]->Draw_Icon();
+					gotoxy(level1Allies[i]->PosXY.GetX() - 1, level1Allies[i]->PosXY.GetY());
+					std::cout << level1Allies[i]->Draw_Icon();
+					gotoxy(level1Allies[i]->PosXY.GetX(), level1Allies[i]->PosXY.GetY() - 1);
+					std::cout << level1Allies[i]->Draw_Icon();
+					gotoxy(level1Allies[i]->PosXY.GetX() - 1, level1Allies[i]->PosXY.GetY() - 1);
+					std::cout << level1Allies[i]->Draw_Icon();
+				}
+				//other troops
+				else
+				{
+					gotoxy(level1Allies[i]->PosXY.GetX(), level1Allies[i]->PosXY.GetY());
+					std::cout << level1Allies[i]->Draw_Icon();
+				}
 			}
 		}
 		for (int i = 0; i < 10; i++) {
