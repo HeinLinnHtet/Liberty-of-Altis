@@ -228,8 +228,8 @@ void mapmain2::drawmap()
 		}
 	}
 
-	//tower[0]->attack();
-	//tower[1]->attack();
+	/*tower[0]->attack();
+	tower[1]->attack();*/
 
 
 	//Shift to position
@@ -341,23 +341,73 @@ void mapmain2::map2game(void)
 			//display the stats
 			//allied troops live stats
 			gotoxy(65, 1);
-			color(0x09);
-			std::cout << "Allied Troops";
+			color(0x06);
+			std::cout << "Enemy Troops";
 
 			//stats
 			gotoxy(65, 2);
 			std::cout << "Health  Attack  Range";
 
+			//rifleman
+			for (int i = 0; i < 2; i++) {
+				if (level2Enemy[i] != nullptr) {
+					gotoxy(55, 3 + i);
+					std::cout << "Rifleman " << i + 1 << ": " << level2Enemy[i]->GetHealth() << " ";
+
+					gotoxy(75, 3 + i);
+					std::cout << level2Enemy[i]->GetAttack();
+
+					gotoxy(83, 3 + i);
+					std::cout << level2Enemy[i]->GetRange();
+				}
+			}
+			//machine gunner
+			for (int i = 2; i < 4; i++) {
+				if (level2Enemy[i] != nullptr) {
+					gotoxy(55, 3 + i);
+					std::cout << "McGunner " << i - 1 << ": " << level2Enemy[i]->GetHealth() << " ";
+
+					gotoxy(75, 3 + i);
+					std::cout << level2Enemy[i]->GetAttack();
+
+					gotoxy(83, 3 + i);
+					std::cout << level2Enemy[i]->GetRange();
+				}
+			}
+			//Grenadier
+			for (int i = 4; i < Enemy_lvl2; i++) {
+				if (level2Enemy[i] != nullptr) {
+					gotoxy(55, 3 + i);
+					std::cout << "Grenader " << i - 3 << ": " << level2Enemy[i]->GetHealth() << " ";
+
+					gotoxy(75, 3 + i);
+					std::cout << level2Enemy[i]->GetAttack();
+
+					gotoxy(83, 3 + i);
+					std::cout << level2Enemy[i]->GetRange();
+				}
+			}
+
+
+			//Enemy troops
+			gotoxy(65, 12);
+			color(0x09);
+			std::cout << "Allied Troops";
+
+			//stats
+			gotoxy(65, 13);
+			std::cout << "Health  Attack  Range";
+
 			//for rifleman
 			for (int i = 0; i < 3; i++) {
 				if (level2Allies[i] != nullptr) {
-					gotoxy(55, 3 + i);
+					gotoxy(55, 14 + i);
 					std::cout << "Rifleman " << i + 1 << ": " << level2Allies[i]->GetHealth() << " ";
 
-					gotoxy(75, 3 + i);
+					gotoxy(75, 14 + i);
 					std::cout << level2Allies[i]->GetAttack();
 
-					gotoxy(83, 3 + i);
+					gotoxy(83, 14 + i);
 					std::cout << level2Allies[i]->GetRange();
 				}
 			}
@@ -366,13 +416,13 @@ void mapmain2::map2game(void)
 			for (int i = 3; i < 5; i++) {
 				if (level2Allies[i] != nullptr) {
 
-					gotoxy(55, 6 + (i - 3));
+					gotoxy(55, 14 + i);
 					std::cout << "McGunner " << i - 2 << ": " << level2Allies[i]->GetHealth() << " ";
 
-					gotoxy(75, 6 + (i - 3));
+					gotoxy(75, 14 + i);
 					std::cout << level2Allies[i]->GetAttack();
 
-					gotoxy(83, 6 + (i - 3));
+					gotoxy(83, 14 + i);
 					std::cout << level2Allies[i]->GetRange();
 				}
 			}
@@ -380,63 +430,14 @@ void mapmain2::map2game(void)
 			//grenadier
 			for (int i = 5; i < Allies_lvl2; i++) {
 				if (level2Allies[i] != nullptr) {
-					gotoxy(55, 8 + (i - 5));
+					gotoxy(55, 14 + i);
 					std::cout << "Grenader " << i - 4 << ": " << level2Allies[i]->GetHealth() << " ";
 
-					gotoxy(75, 8 + (i - 5));
+					gotoxy(75, 14 + i);
 					std::cout << level2Allies[i]->GetAttack();
 
-					gotoxy(83, 8 + (i - 5));
-					std::cout << level2Allies[i]->GetRange();
-				}
-			}
-
-			//Enemy troops
-			gotoxy(65, 12);
-			color(0x06);
-			std::cout << "Enemy Troops";
-
-			//stats
-			gotoxy(65, 13);
-			std::cout << "Health  Attack  Range";
-
-			//rifleman
-			for (int i = 0; i < 2; i++) {
-				if (level2Enemy[i] != nullptr) {
-					gotoxy(55, 14 + i);
-					std::cout << "Rifleman " << i + 1 << ": " << level2Enemy[i]->GetHealth() << " ";
-
-					gotoxy(75, 14 + i);
-					std::cout << level2Enemy[i]->GetAttack();
-
 					gotoxy(83, 14 + i);
-					std::cout << level2Enemy[i]->GetRange();
-				}
-			}
-			//machine gunner
-			for (int i = 2; i < 4; i++) {
-				if (level2Enemy[i] != nullptr) {
-					gotoxy(55, 20 + (i - 6));
-					std::cout << "McGunner " << i - 1 << ": " << level2Enemy[i]->GetHealth() << " ";
-
-					gotoxy(75, 20 + (i - 6));
-					std::cout << level2Enemy[i]->GetAttack();
-
-					gotoxy(83, 20 + (i - 6));
-					std::cout << level2Enemy[i]->GetRange();
-				}
-			}
-			//Grenadier
-			for (int i = 4; i < Enemy_lvl2; i++) {
-				if (level2Enemy[i] != nullptr) {
-					gotoxy(55, 22 + (i - 8));
-					std::cout << "Grenader " << i - 3 << ": " << level2Enemy[i]->GetHealth() << " ";
-
-					gotoxy(75, 22 + (i - 8));
-					std::cout << level2Enemy[i]->GetAttack();
-
-					gotoxy(83, 22 + (i - 8));
-					std::cout << level2Enemy[i]->GetRange();
+					std::cout << level2Allies[i]->GetRange();
 				}
 			}
 		}
@@ -570,6 +571,33 @@ void mapmain2::map2game(void)
 								std::cout << level2Enemy[j]->GetHealth() << " " << j << " " << i;
 								CheckAtkWall = false;
 								break;
+							}
+						}
+					}
+
+					//Check if wall is being attacked
+					if (CheckAtkWall == true) {
+						for (int j = 0; j < Amt_WallVer; j++) {
+							if (wallver[j] != nullptr) {
+								if (CheckWallsAttack(*level2Allies[i], attackDir) == true) {
+									gotoxy(10, 27);
+									int hp = wallver[j]->gethealth();
+									std::cout << hp;
+
+									gotoxy(15, 28);
+									std::cout << "Attacking wall";
+
+									//Deal damage
+									//int newhealth = wallver[j]->gethealth() - level2Allies[i]->GetAttack();
+									//wallver[j]->sethealth(newhealth);
+									wallver[j]->sethealth(wallver[j]->gethealth() - level2Allies[i]->GetAttack());
+
+									gotoxy(15, 27);
+									hp = wallver[j]->gethealth();
+									std::cout << hp;
+
+									break;
+								}
 							}
 						}
 					}
@@ -796,6 +824,10 @@ void mapmain2::map2game(void)
 		}
 	}
 }
+
+
+
+
 
 //Check attack
 bool mapmain2::CheckAttack(Entity& main, Entity& other, char direction)
@@ -1106,7 +1138,7 @@ bool mapmain2::CheckWallsAttack(Entity& main, char direction)
 			int WallBottom = YEnviro + 1;
 
 			//Check Entity in range 
-			if (XEntity - 1 == XEnviro) {
+			if (XEntity - 2 == XEnviro) {
 
 				//Check if player is trying to attack the wall
 				if (direction == 'A') {

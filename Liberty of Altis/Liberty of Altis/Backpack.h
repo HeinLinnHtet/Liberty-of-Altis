@@ -45,6 +45,5 @@ public:
 	//backpak
 	void backpak();
 
-	int Troop_broughtin[7];
+	int Troop_broughtin[7] = { 0,0,0,0,0,0,0 };
 };
-

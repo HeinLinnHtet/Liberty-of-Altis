@@ -143,7 +143,14 @@ void mapmain3::drawmap()
 
 }
 
-void mapmain3::map3game(void)
+void mapmain3::map3game(
+	int rifleamount,
+	int mcgunamount,
+	int grendamount,
+	int motaramount,
+	int artilamount,
+	int tankamount,
+	int ifvamount)
 {
 	//draw out map 
 	drawmap();
@@ -155,7 +162,7 @@ void mapmain3::map3game(void)
 	// instantiating objects	
 
 	//Spawn enemies 
-	EnemyTroops* level3Enemy[10];
+	EnemyTroops* level3Enemy[numberofenemies];
 	//rifle man
 	for (int i = 0; i < 6; i++) {
 		level3Enemy[i] = new ERiflesman;
@@ -171,18 +178,34 @@ void mapmain3::map3game(void)
 
 
 	//Spawn allies 
-	AlliedTroops* level3Allies[7];
-	//rifle man 
-	for (int i = 0; i < 3; i++) {
+	AlliedTroops* level3Allies[15];
+	//rifle man
+	for (int i = 0; i < rifleamount; i++) {
 		level3Allies[i] = new ARiflesman;
 	}
 	//Lmg
-	for (int i = 3; i < 5; i++) {
-		level3Allies[i] = new AMachinegunner;
+	for (int i = 0; i < mcgunamount; i++) {
+		level3Allies[i + rifleamount - 1] = new AMachinegunner;
 	}
 	//Grenadier
-	for (int i = 5; i < 7; i++) {
-		level3Allies[i] = new AGrenadier;
+	for (int i = 0; i < grendamount; i++) {
+		level3Allies[i + rifleamount + mcgunamount - 1] = new AGrenadier;
+	}
+	//Mortar	
+	for (int i = 0; i < motaramount; i++) {
+		level3Allies[i + rifleamount + mcgunamount + grendamount - 1] = new AMotar;
+	}
+	//Artillery	
+	for (int i = 0; i < artilamount; i++) {
+		level3Allies[i + rifleamount + mcgunamount + grendamount + motaramount - 1] = new AArtillery;
+	}
+	//Tank	
+	for (int i = 0; i < tankamount; i++) {
+		level3Allies[i + rifleamount + mcgunamount + grendamount + motaramount + artilamount - 1] = new ATank;
+	}
+	//IFV
+	for (int i = 0; i < ifvamount; i++) {
+		level3Allies[i + rifleamount + mcgunamount + grendamount + motaramount + artilamount + tankamount - 1] = new AIFV;
 	}
 
 
@@ -195,6 +218,14 @@ void mapmain3::map3game(void)
 	SetStartPos(*level3Allies[4], 7, 8);
 	SetStartPos(*level3Allies[5], 7, 10);
 	SetStartPos(*level3Allies[6], 7, 12);
+	SetStartPos(*level3Allies[7], 9, 14);
+	SetStartPos(*level3Allies[8], 5, 16);
+	SetStartPos(*level3Allies[9], 10, 18);
+	SetStartPos(*level3Allies[10], 7, 13);
+	SetStartPos(*level3Allies[11], 7, 14);
+	SetStartPos(*level3Allies[12], 9, 12);
+	SetStartPos(*level3Allies[13], 10, 2);
+	SetStartPos(*level3Allies[14], 6, 12);
 
 	color(0x06);
 	SetStartPos(*level3Enemy[0], 25, 3);
@@ -221,102 +252,157 @@ void mapmain3::map3game(void)
 			//display the stats
 			//allied troops live stats
 			gotoxy(65, 1);
-			color(0x09);
-			std::cout << "Allied Troops";
+			color(0x06);
+			std::cout << "Enemy Troops";
 
 			//stats
 			gotoxy(65, 2);
 			std::cout << "Health  Attack  Range";
 
-			//for rifleman
-			for (int i = 0; i < 3; i++) {
-				if (level3Allies[i] != nullptr) {
-					gotoxy(55, 3 + i);
-					std::cout << "Rifleman " << i + 1 << ": " << level3Allies[i]->GetHealth() << " ";
-
-					gotoxy(75, 3 + i);
-					std::cout << level3Allies[i]->GetAttack();
-
-					gotoxy(83, 3 + i);
-					std::cout << level3Allies[i]->GetRange();
-				}
-			}
-
-			//machinegunner
-			for (int i = 3; i < 5; i++) {
-				if (level3Allies[i] != nullptr) {
-
-					gotoxy(55, 6 + (i - 3));
-					std::cout << "McGunner " << i - 2 << ": " << level3Allies[i]->GetHealth() << " ";
-
-					gotoxy(75, 6 + (i - 3));
-					std::cout << level3Allies[i]->GetAttack();
-
-					gotoxy(83, 6 + (i - 3));
-					std::cout << level3Allies[i]->GetRange();
-				}
-			}
-
-			//grenadier
-			for (int i = 5; i < 7; i++) {
-				if (level3Allies[i] != nullptr) {
-					gotoxy(55, 8 + (i - 5));
-					std::cout << "Grenader " << i - 4 << ": " << level3Allies[i]->GetHealth() << " ";
-
-					gotoxy(75, 8 + (i - 5));
-					std::cout << level3Allies[i]->GetAttack();
-
-					gotoxy(83, 8 + (i - 5));
-					std::cout << level3Allies[i]->GetRange();
-				}
-			}
-
-			//Enemy troops
-			gotoxy(65, 12);
-			color(0x06);
-			std::cout << "Enemy Troops";
-
-			//stats
-			gotoxy(65, 13);
-			std::cout << "Health  Attack  Range";
-
 			//rifleman
 			for (int i = 0; i < 6; i++) {
 				if (level3Enemy[i] != nullptr) {
-					gotoxy(55, 14 + i);
+					gotoxy(55, 3 + i);
 					std::cout << "Rifleman " << i + 1 << ": " << level3Enemy[i]->GetHealth() << " ";
 
-					gotoxy(75, 14 + i);
+					gotoxy(75, 3 + i);
 					std::cout << level3Enemy[i]->GetAttack();
 
-					gotoxy(83, 14 + i);
+					gotoxy(83, 3 + i);
 					std::cout << level3Enemy[i]->GetRange();
 				}
 			}
 			//machine gunner
 			for (int i = 6; i < 8; i++) {
 				if (level3Enemy[i] != nullptr) {
-					gotoxy(55, 20 + (i - 6));
+					gotoxy(55, 3 + i);
 					std::cout << "McGunner " << i - 5 << ": " << level3Enemy[i]->GetHealth() << " ";
 
-					gotoxy(75, 20 + (i - 6));
+					gotoxy(75, 3 + i);
 					std::cout << level3Enemy[i]->GetAttack();
 
-					gotoxy(83, 20 + (i - 6));
+					gotoxy(83, 3 + i);
 					std::cout << level3Enemy[i]->GetRange();
 				}
 			}
 			//Grenadier
 			for (int i = 8; i < 10; i++) {
 				if (level3Enemy[i] != nullptr) {
-					gotoxy(55, 22 + (i - 8));
+					gotoxy(55, 3 + i);
 					std::cout << "Grenader " << i - 7 << ": " << level3Enemy[i]->GetHealth() << " ";
 
-					gotoxy(75, 22 + (i - 8));
+					gotoxy(75, 3 + i);
 					std::cout << level3Enemy[i]->GetAttack();
 
-					gotoxy(83, 22 + (i - 8));
+					gotoxy(83, 3 + i);
 					std::cout << level3Enemy[i]->GetRange();
+				}
+			}
+
+			//Enemy troops
+			gotoxy(65, numberofenemies + 3);
+			color(0x09);
+			std::cout << "Allied Troops";
+
+			//stats
+			gotoxy(65, numberofenemies + 4);
+			std::cout << "Health  Attack  Range";
+
+			//for rifleman
+			for (int i = 0; i < rifleamount; i++) {
+				if (level3Allies[i] != nullptr) {
+					gotoxy(55, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->Getname() << i + 1 << ": " << level3Allies[i]->GetHealth() << " ";
+
+					gotoxy(75, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetAttack();
+
+					gotoxy(83, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetRange();
+				}
+			}
+
+			//machinegunner
+			for (int i = 0; i < mcgunamount; i++) {
+				if (level3Allies[i] != nullptr) {
+					gotoxy(55, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->Getname() << i - 2 << ": " << level3Allies[i]->GetHealth() << " ";
+
+					gotoxy(75, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetAttack();
+
+					gotoxy(83, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetRange();
+				}
+			}
+
+			//grenadier
+			for (int i = 0; i < grendamount; i++) {
+				if (level3Allies[i] != nullptr) {
+					gotoxy(55, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->Getname() << i - 4 << ": " << level3Allies[i]->GetHealth() << " ";
+
+					gotoxy(75, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetAttack();
+
+					gotoxy(83, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetRange();
+				}
+			}
+
+			//mortar
+			for (int i = 0; i < motaramount; i++) {
+				if (level3Allies[i] != nullptr) {
+					gotoxy(55, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->Getname() << i + 1 << ": " << level3Allies[i]->GetHealth() << " ";
+
+					gotoxy(75, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetAttack();
+
+					gotoxy(83, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetRange();
+				}
+			}
+
+			//artillery
+			for (int i = 0; i < artilamount; i++) {
+				if (level3Allies[i] != nullptr) {
+					gotoxy(55, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->Getname() << i - 2 << ": " << level3Allies[i]->GetHealth() << " ";
+
+					gotoxy(75, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetAttack();
+
+					gotoxy(83, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetRange();
+				}
+			}
+
+			//tank
+			for (int i = 0; i < tankamount; i++) {
+				if (level3Allies[i] != nullptr) {
+					gotoxy(55, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->Getname() << i - 4 << ": " << level3Allies[i]->GetHealth() << " ";
+
+					gotoxy(75, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetAttack();
+
+					gotoxy(83, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetRange();
+				}
+			}
+
+			//ifv
+			for (int i = 0; i < ifvamount; i++) {
+				if (level3Allies[i] != nullptr) {
+					gotoxy(55, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->Getname() << i - 4 << ": " << level3Allies[i]->GetHealth() << " ";
+
+					gotoxy(75, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetAttack();
+
+					gotoxy(83, numberofenemies + 5 + i);
+					std::cout << level3Allies[i]->GetRange();
 				}
 			}
 		}

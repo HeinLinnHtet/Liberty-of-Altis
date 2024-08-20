@@ -26,7 +26,16 @@ public:
 
 	void drawmap();
 
-	void map3game(void);
+	void map3game(
+	int rifleamount,
+	int mcgunamount,
+	int grendamount,
+	int motaramount,
+	int artilamount,
+	int tankamount,
+	int ifvamount);
+
+	static const int numberofenemies = 10;
 
 	//Check attacking collision with enviroment 
 	bool CheckAttack(Entity& main, Entity& other, char direction);

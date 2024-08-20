@@ -22,29 +22,37 @@ int main(void) {
 	mapmain2 testlvl2;
 	mapmain3 testlvl3;
 
-	cutscene.cutscene1();
+	/*cutscene.cutscene1();
 	system("CLS");
 	testlvl1.map1game();
 	system("CLS");
 
 	cutscene.cutscene2();
-	system("CLS");
-	testlvl2.map2game();
-	system("CLS");
+	system("CLS");*/
+	//testlvl2.map2game();
+	//system("CLS");
 
-	testshop.shopping();
+	//testshop.shopping();
 
-	//These are the values of what you bought from the shop
-	
-	maininventory.riflemansetter(testshop.inventory.riflemangetter());
-	maininventory.artillerysetter(testshop.inventory.artillerygetter());
-	maininventory.grenadiersetter(testshop.inventory.grenadiergetter());
-	maininventory.IFVsetter(testshop.inventory.IFVgetter());
-	maininventory.machinegunnersetter(testshop.inventory.machinegunnergetter());
-	maininventory.motarsetter(testshop.inventory.motargetter());
-	maininventory.tanksetter(testshop.inventory.tankgetter());
+	////These are the values of what you bought from the shop
+	//
+	//maininventory.riflemansetter(testshop.inventory.riflemangetter());
+	//maininventory.artillerysetter(testshop.inventory.artillerygetter());
+	//maininventory.grenadiersetter(testshop.inventory.grenadiergetter());
+	//maininventory.IFVsetter(testshop.inventory.IFVgetter());
+	//maininventory.machinegunnersetter(testshop.inventory.machinegunnergetter());
+	//maininventory.motarsetter(testshop.inventory.motargetter());
+	//maininventory.tanksetter(testshop.inventory.tankgetter());
 
-	cutscene.cutscene3();
-	system("CLS");
-	testlvl3.map3game();
+	//maininventory.backpak();
+	//cutscene.cutscene3();
+	//system("CLS");
+	testlvl3.map3game(
+		maininventory.Troop_broughtin[0],
+		maininventory.Troop_broughtin[1],
+		maininventory.Troop_broughtin[2],
+		maininventory.Troop_broughtin[3],
+		maininventory.Troop_broughtin[4],
+		maininventory.Troop_broughtin[5],
+		maininventory.Troop_broughtin[6]);
 }
