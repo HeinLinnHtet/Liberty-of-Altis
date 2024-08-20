@@ -1,5 +1,5 @@
 #include "Backpack.h"
-
+#include <iostream>
 Backpack::Backpack()
 {
 	//intialising the array
@@ -77,3 +77,46 @@ int Backpack::IFVgetter()
 {
 	return Troops[6];
 }
+
+void Backpack::backpak()
+{
+	int jo;
+	int jo1;
+	int jo2;
+	int jo3;
+	int jo4;
+	int jo5;
+	int jo6;
+	std::cout << "below shows the number of units you have from rifleman to IFV: ";
+	std::cout << Troops[0] << Troops[1] << Troops[2] << Troops[3] << Troops[4] << Troops[5] << Troops[6];
+
+	std::cout << "enter the riflemans you will bring: ";
+	std::cin >> jo;
+	Troop_broughtin[0] = jo;
+	if (Troop_broughtin[0] > Troops[0]) {
+		std::cout << "cannot!";
+	}//validating can complete later
+	std::cout << "enter the machinegunner you will bring: ";
+	std::cin >> jo1;
+	Troop_broughtin[1] = jo1;
+	std::cout << "enter grenaiders: ";
+	std::cin >> jo2;
+	Troop_broughtin[2] = jo2;
+	std::cout << "enter mortarman: ";
+	std::cin >> jo3;
+	Troop_broughtin[3] = jo3;
+
+	std::cout << "enter artillery: ";
+	std::cin >> jo4;
+	Troop_broughtin[4] = jo4;
+
+	std::cout << "enter Tanks: ";
+	std::cin >> jo5;
+	Troop_broughtin[5] = jo5;
+
+	std::cout << "enter IFVs: ";
+	std::cin >> jo6;
+	Troop_broughtin[6] = jo6;
+
+}
+
