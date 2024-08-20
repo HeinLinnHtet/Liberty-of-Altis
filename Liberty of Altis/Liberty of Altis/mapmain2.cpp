@@ -228,8 +228,8 @@ void mapmain2::drawmap()
 		}
 	}
 
-	tower[0]->attack();
-	tower[1]->attack();
+	//tower[0]->attack();
+	//tower[1]->attack();
 
 
 	//Shift to position
@@ -573,33 +573,6 @@ void mapmain2::map2game(void)
 							}
 						}
 					}
-
-					//Check if wall is being attacked
-					if (CheckAtkWall == true) {
-						for (int j = 0; j < Amt_WallVer; j++) {
-							if (wallver[j] != nullptr) {
-								if (CheckWallsAttack(*level2Allies[i], attackDir) == true) {
-									gotoxy(10, 27);
-									int hp = wallver[j]->gethealth();
-									std::cout << hp;
-
-									gotoxy(15, 28);
-									std::cout << "Attacking wall";
-
-									//Deal damage
-									//int newhealth = wallver[j]->gethealth() - level2Allies[i]->GetAttack();
-									//wallver[j]->sethealth(newhealth);
-									wallver[j]->sethealth(wallver[j]->gethealth() - level2Allies[i]->GetAttack());
-
-									gotoxy(15, 27);
-									hp = wallver[j]->gethealth();
-									std::cout << hp;
-
-									break;
-								}
-							}
-						}
-					}
 				}
 			}
 
@@ -823,10 +796,6 @@ void mapmain2::map2game(void)
 		}
 	}
 }
-
-
-
-
 
 //Check attack
 bool mapmain2::CheckAttack(Entity& main, Entity& other, char direction)
@@ -1137,7 +1106,7 @@ bool mapmain2::CheckWallsAttack(Entity& main, char direction)
 			int WallBottom = YEnviro + 1;
 
 			//Check Entity in range 
-			if (XEntity - 2 == XEnviro) {
+			if (XEntity - 1 == XEnviro) {
 
 				//Check if player is trying to attack the wall
 				if (direction == 'A') {
