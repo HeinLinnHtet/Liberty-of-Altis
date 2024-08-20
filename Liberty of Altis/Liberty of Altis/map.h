@@ -40,6 +40,10 @@ public :
 	//Check collision between entity and enviromnet
 	bool EnviroEntityCollide(Entity& entity, environmentalObjs& obj, char direction);
 
-	bool BorderCollision(Entity& entity, char direction);
+	//allie border collision
+	bool ABorderCollision(Entity& entity, char direction);
+
+	//enemy border collision
+	bool EBorderCollision(Entity& entity, char direction);
 };
 

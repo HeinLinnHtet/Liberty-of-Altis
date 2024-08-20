@@ -196,7 +196,7 @@ bool map::EnviroEntityCollide(Entity& entity, environmentalObjs& obj, char direc
 }
 
 //Check border collison
-bool map::BorderCollision(Entity& entity, char direction)
+bool map::ABorderCollision(Entity& entity, char direction)
 {
 	direction = toupper(direction);
 
@@ -258,6 +258,69 @@ bool map::BorderCollision(Entity& entity, char direction)
 		}
 	}
 
+	return result;
+}
+
+bool map::EBorderCollision(Entity& entity, char direction)
+{
+
+	int result = false;
+	//tanks and artilery
+	if (entity.Draw_Icon() == 'T' || entity.Draw_Icon() == 'A')
+	{
+		//Up 
+		if (direction == '0') {
+			if (entity.PosXY.GetY() - 2 == 0) {
+				result = true;
+			}
+		}
+		//Down
+		else if (direction == '1') {
+			if (entity.PosXY.GetY() + 1 == 19) {
+				result = true;
+			}
+		}
+		//left
+		else if (direction == '2') {
+			if (entity.PosXY.GetX() + 1 == 54) {
+				result = true;
+			}
+		}
+		//right 
+		else if (direction == '3') {
+			if (entity.PosXY.GetX() - 2 == 3) {
+				result = true;
+			}
+		}
+	}
+	//other troops
+	else
+	{
+		//Up 
+		if (direction == '0') {
+			if (entity.PosXY.GetY() - 1 == 0) {
+				result = true;
+			}
+		}
+		//Down
+		else if (direction == '1') {
+			if (entity.PosXY.GetY() + 1 == 19) {
+				result = true;
+			}
+		}
+		//left
+		else if (direction == '2') {
+			if (entity.PosXY.GetX() + 1 == 54) {
+				result = true;
+			}
+		}
+		//right 
+		else if (direction == '3') {
+			if (entity.PosXY.GetX() - 1 == 3) {
+				result = true;
+			}
+		}
+	}
 	return result;
 }
 

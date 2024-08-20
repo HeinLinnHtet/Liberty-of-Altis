@@ -481,7 +481,7 @@ void mapmain3::map3game(
 						bool CanMove = true;
 
 						//Check collison with borders
-						if (level3Allies[i]->BorderCollision(choice) == true) {
+						if (ABorderCollision(*level3Allies[i],choice) == true) {
 							gotoxy(15, 20);
 							std::cout << "Collided border";
 							CanMove = false;
@@ -653,7 +653,7 @@ void mapmain3::map3game(
 					char input = num + '0';
 
 					//Check collison with borders
-					if (level3Enemy[i]->BorderCollision(input) == true) {
+					if (EBorderCollision(*level3Enemy[i],input) == true) {
 						gotoxy(15, 20);
 						std::cout << "Enemy Collided border";
 						ValidMove = false;

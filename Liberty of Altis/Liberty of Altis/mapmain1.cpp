@@ -343,7 +343,7 @@ void mapmain1::map1game(void)
 						bool CanMove = true;
 
 						//Check collison with borders
-						if (BorderCollision(*level1Allies[i],choice) == true) {
+						if (ABorderCollision(*level1Allies[i],choice) == true) {
 							gotoxy(15, 20);
 							std::cout << "Collided border";
 							CanMove = false;
@@ -519,7 +519,7 @@ void mapmain1::map1game(void)
 					char input = num + '0';
 
 					//Check collison with borders
-					if (BorderCollision(*level1Enemy[i],input) == true) {
+					if (EBorderCollision(*level1Enemy[i],input) == true) {
 						gotoxy(15, 20);
 						std::cout << "Enemy Collided border";
 						ValidMove = false;
