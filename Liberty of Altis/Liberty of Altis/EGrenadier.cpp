@@ -12,3 +12,7 @@ char EGrenadier::Draw_Icon(void)
 {
 	return 'G';
 }
+std::string EGrenadier::Getname(void)
+{
+	return "Grenadier";
+}

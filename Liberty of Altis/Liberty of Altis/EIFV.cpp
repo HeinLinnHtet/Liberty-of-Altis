@@ -12,3 +12,7 @@ char EIFV::Draw_Icon(void)
 {
 	return 'I';
 }
+std::string EIFV::Getname(void)
+{
+	return "IFV     ";
+}

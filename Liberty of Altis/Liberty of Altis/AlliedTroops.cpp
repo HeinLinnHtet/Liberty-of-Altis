@@ -108,3 +108,7 @@ void AlliedTroops::color(int c)
     SetConsoleTextAttribute(hConsole, c);
 }
 
+std::string AlliedTroops::Getname(void)
+{
+    return "John Doe (Good)";
+}

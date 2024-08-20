@@ -8,7 +8,7 @@ private:
 public:
 	walls(int h, char sym, int xp, int yp);
 
-	void sethealth();
+	void sethealth(int a);
 	int gethealth();
 };
 

@@ -12,3 +12,7 @@ char AMachinegunner::Draw_Icon(void)
 {
 	return 'M';
 }
+std::string AMachinegunner::Getname(void)
+{
+	return "McGunner";
+}

@@ -12,3 +12,7 @@ char EArtillery::Draw_Icon(void)
 {
 	return 'A';
 }
+std::string EArtillery::Getname(void)
+{
+	return "Artillery";
+}

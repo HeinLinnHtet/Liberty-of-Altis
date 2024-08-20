@@ -12,3 +12,7 @@ char ARiflesman::Draw_Icon(void)
 {
 	return 'R';
 }
+std::string ARiflesman::Getname(void)
+{
+	return "Rifleman";
+}

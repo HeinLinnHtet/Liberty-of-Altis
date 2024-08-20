@@ -71,5 +71,7 @@ public:
 		bool hitcheck;
 
 		void hitrate();
+
+		virtual std::string Getname(void);
 };
 

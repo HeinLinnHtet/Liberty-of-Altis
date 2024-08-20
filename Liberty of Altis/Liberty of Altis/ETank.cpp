@@ -12,3 +12,8 @@ char ETank::Draw_Icon(void)
 {
 	return 'T';
 }
+
+std::string ETank::Getname(void)
+{
+	return "Tank    ";
+}
