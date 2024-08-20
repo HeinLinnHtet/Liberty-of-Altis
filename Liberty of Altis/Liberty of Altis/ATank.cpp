@@ -12,3 +12,8 @@ char ATank::Draw_Icon(void)
 {
 	return 'T';
 }
+
+std::string ATank::Getname(void)
+{
+	return "Tank    ";
+}

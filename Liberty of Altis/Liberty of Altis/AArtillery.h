@@ -6,5 +6,6 @@ public:
 	AArtillery();
 
 	char Draw_Icon(void) override;
+	std::string Getname(void) override;
 };
 

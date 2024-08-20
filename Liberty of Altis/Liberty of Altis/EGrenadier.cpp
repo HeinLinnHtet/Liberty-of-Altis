@@ -3,7 +3,7 @@
 EGrenadier::EGrenadier()
 {
 	Health = 25;
-	Attack = 15;
+	Attack = 20;
 	Range = 4;
 	Cost = 6;
 }
@@ -11,4 +11,8 @@ EGrenadier::EGrenadier()
 char EGrenadier::Draw_Icon(void)
 {
 	return 'G';
+}
+std::string EGrenadier::Getname(void)
+{
+	return "Grenadier";
 }

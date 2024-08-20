@@ -30,5 +30,7 @@ public:
 
 	void color(int c);
 
+	std::string Getname(void) override;
+
 };
 

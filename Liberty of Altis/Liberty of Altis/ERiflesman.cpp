@@ -12,3 +12,8 @@ char ERiflesman::Draw_Icon(void)
 {
 	return 'R';
 }
+
+std::string ERiflesman::Getname(void)
+{
+	return "Rifleman";
+}

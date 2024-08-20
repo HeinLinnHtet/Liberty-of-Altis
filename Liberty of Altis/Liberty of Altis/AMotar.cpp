@@ -12,3 +12,7 @@ char AMotar::Draw_Icon(void)
 {
 	return 'O';
 }
+std::string AMotar::Getname(void)
+{
+	return "Mortar  ";
+}
