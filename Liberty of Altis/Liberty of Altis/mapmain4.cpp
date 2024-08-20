@@ -5,8 +5,6 @@
 
 environmentalObjs* mapmain4::buildings[Amt_Build];
 
-int mapmain4::Amt_Lvl4_Enemy = 10;
-int mapmain4::Amt_Lvl4_Allies = 7;
 
 mapmain4::mapmain4()
 {
@@ -325,518 +323,760 @@ void mapmain4::drawmap()
 			}
 		}
 	}
+
+
+	//Move to correct positiion 
+	for (int i = 0; i < Amt_Build; i++) {
+		buildings[i]->setx(buildings[i]->getx() + 4);
+		buildings[i]->sety(buildings[i]->gety() + 1);
+	}
 }
 
-//void mapmain4::map4game(void)
-//{
-//	//draw out map 
-//	drawmap();
-//
-//	///// #### NOT POLYMORHPHISM ####		
-//	// instantiating objects	
-//
-//	//Spawn enemies 
-//	EnemyTroops* level4Enemy[10];
-//	//rifle man
-//	for (int i = 0; i < 6; i++) {
-//		level4Enemy[i] = new ERiflesman;
-//	}
-//	//Lmg
-//	for (int i = 6; i < 8; i++) {
-//		level4Enemy[i] = new EMachinegunner;
-//	}
-//	//Grenadier
-//	for (int i = 8; i < 10; i++) {
-//		level4Enemy[i] = new EGrenadier;
-//	}
-//
-//
-//	//Spawn allies 
-//	AlliedTroops* level4Allies[7];
-//	//rifle man 
-//	for (int i = 0; i < 3; i++) {
-//		level4Allies[i] = new ARiflesman;
-//	}
-//	//Lmg
-//	for (int i = 3; i < 5; i++) {
-//		level4Allies[i] = new AMachinegunner;
-//	}
-//	//Grenadier
-//	for (int i = 5; i < 7; i++) {
-//		level4Allies[i] = new AGrenadier;
-//	}
-//
-//
-//	//Set all troop positions
-//	color(0x09);
-//	SetStartPos(*level4Allies[0], 5, 2);
-//	SetStartPos(*level4Allies[1], 5, 5);
-//	SetStartPos(*level4Allies[2], 7, 5);
-//	SetStartPos(*level4Allies[3], 7, 6);
-//	SetStartPos(*level4Allies[4], 7, 8);
-//	SetStartPos(*level4Allies[5], 7, 10);
-//	SetStartPos(*level4Allies[6], 7, 12);
-//
-//	color(0x06);
-//	SetStartPos(*level4Enemy[0], 25, 3);
-//	SetStartPos(*level4Enemy[1], 30, 4);
-//	SetStartPos(*level4Enemy[2], 28, 2);
-//	SetStartPos(*level4Enemy[3], 40, 4);
-//	SetStartPos(*level4Enemy[4], 30, 6);
-//	SetStartPos(*level4Enemy[5], 40, 6);
-//	SetStartPos(*level4Enemy[6], 28, 4);
-//	SetStartPos(*level4Enemy[7], 35, 3);
-//	SetStartPos(*level4Enemy[8], 23, 4);
-//	SetStartPos(*level4Enemy[9], 35, 5);
-//
-//
-//	////Check if all enemies have died  ### To change
-//	bool test = false;
-//
-//	while (test == false) {
-//
-//		int enemycposx, enemycposy;
-//
-//		///////////STATS
-//		{
-//			//display the stats
-//			//allied troops live stats
-//			gotoxy(65, 1);
-//			color(0x09);
-//			std::cout << "Allied Troops";
-//
-//			//stats
-//			gotoxy(65, 2);
-//			std::cout << "Health  Attack  Range";
-//
-//			//for rifleman
-//			for (int i = 0; i < 3; i++) {
-//				if (level4Allies[i] != nullptr) {
-//					gotoxy(55, 3 + i);
-//					std::cout << "Rifleman " << i + 1 << ": " << level4Allies[i]->GetHealth() << " ";
-//
-//					gotoxy(75, 3 + i);
-//					std::cout << level4Allies[i]->GetAttack();
-//
-//					gotoxy(83, 3 + i);
-//					std::cout << level4Allies[i]->GetRange();
-//				}
-//			}
-//
-//			//machinegunner
-//			for (int i = 3; i < 5; i++) {
-//				if (level4Allies[i] != nullptr) {
-//
-//					gotoxy(55, 6 + (i - 3));
-//					std::cout << "McGunner " << i - 2 << ": " << level4Allies[i]->GetHealth() << " ";
-//
-//					gotoxy(75, 6 + (i - 3));
-//					std::cout << level4Allies[i]->GetAttack();
-//
-//					gotoxy(83, 6 + (i - 3));
-//					std::cout << level4Allies[i]->GetRange();
-//				}
-//			}
-//
-//			//grenadier
-//			for (int i = 5; i < 7; i++) {
-//				if (level4Allies[i] != nullptr) {
-//					gotoxy(55, 8 + (i - 5));
-//					std::cout << "Grenader " << i - 4 << ": " << level4Allies[i]->GetHealth() << " ";
-//
-//					gotoxy(75, 8 + (i - 5));
-//					std::cout << level4Allies[i]->GetAttack();
-//
-//					gotoxy(83, 8 + (i - 5));
-//					std::cout << level4Allies[i]->GetRange();
-//				}
-//			}
-//
-//			//Enemy troops
-//			gotoxy(65, 12);
-//			color(0x06);
-//			std::cout << "Enemy Troops";
-//
-//			//stats
-//			gotoxy(65, 13);
-//			std::cout << "Health  Attack  Range";
-//
-//			//rifleman
-//			for (int i = 0; i < 6; i++) {
-//				if (level4Enemy[i] != nullptr) {
-//					gotoxy(55, 14 + i);
-//					std::cout << "Rifleman " << i + 1 << ": " << level4Enemy[i]->GetHealth() << " ";
-//
-//					gotoxy(75, 14 + i);
-//					std::cout << level4Enemy[i]->GetAttack();
-//
-//					gotoxy(83, 14 + i);
-//					std::cout << level4Enemy[i]->GetRange();
-//				}
-//			}
-//			//machine gunner
-//			for (int i = 6; i < 8; i++) {
-//				if (level4Enemy[i] != nullptr) {
-//					gotoxy(55, 20 + (i - 6));
-//					std::cout << "McGunner " << i - 5 << ": " << level4Enemy[i]->GetHealth() << " ";
-//
-//					gotoxy(75, 20 + (i - 6));
-//					std::cout << level4Enemy[i]->GetAttack();
-//
-//					gotoxy(83, 20 + (i - 6));
-//					std::cout << level4Enemy[i]->GetRange();
-//				}
-//			}
-//			//Grenadier
-//			for (int i = 8; i < 10; i++) {
-//				if (level4Enemy[i] != nullptr) {
-//					gotoxy(55, 22 + (i - 8));
-//					std::cout << "Grenader " << i - 7 << ": " << level4Enemy[i]->GetHealth() << " ";
-//
-//					gotoxy(75, 22 + (i - 8));
-//					std::cout << level4Enemy[i]->GetAttack();
-//
-//					gotoxy(83, 22 + (i - 8));
-//					std::cout << level4Enemy[i]->GetRange();
-//				}
-//			}
-//		}
-//
-//
-//		////////For player troops
-//		// Player choose action 
-//		for (int i = 0; i < 7; i++) {
-//			bool ValidMove = false;
-//
-//			//Get user input, WASD to move or J to attack 
-//			gotoxy(15, 25);
-//			color(0x0F);
-//			std::cout << "WASD to Move, J to Attack";
-//
-//			char choice = 'Z';
-//
-//
-//			if (level4Allies[i] != nullptr) {
-//				//prevent from reading in console
-//				gotoxy(level4Allies[i]->PosXY.GetX(), level4Allies[i]->PosXY.GetY());
-//				color(0x0D);
-//				std::cout << level4Allies[i]->Draw_Icon();
-//				choice = _getch();
-//				//caps
-//				choice = toupper(choice);
-//			}
-//
-//			//Check if Ally is alive  (prevent crashes)
-//			if (level4Allies[i] != nullptr) {
-//
-//				//Movement 
-//				if (choice == 'W' || choice == 'A' || choice == 'S' || choice == 'D') {
-//					//Movement Code
-//					while (ValidMove == false) {
-//
-//						//allow to check movement is valid 
-//						bool CanMove = true;
-//
-//						//Check collison with borders
-//						if (level4Allies[i]->BorderCollision(choice) == true) {
-//							gotoxy(15, 20);
-//							std::cout << "Collided border";
-//							CanMove = false;
-//						}
-//
-//						//Check collison between Allies and Enemies
-//						if (CanMove == true) {
-//							for (int j = 0; j < 10; j++) {
-//								if (level4Enemy[j] != nullptr) {
-//									if (level4Allies[i]->Entitycollision(*level4Enemy[j], choice) == true) {
-//										gotoxy(15, 21);
-//										std::cout << "Collided Entity";
-//										CanMove = false;
-//										break;
-//									}
-//								}
-//							}
-//						}
-//
-//						//Check collison between Allies and Allies
-//						if (CanMove == true) {
-//							for (int j = 0; j < 7; j++) {
-//								if (level4Allies[j] != nullptr) {
-//									if (level4Allies[i]->Entitycollision(*level4Allies[j], choice) == true) {
-//										gotoxy(15, 21);
-//										std::cout << "Collided Allies";
-//										CanMove = false;
-//										break;
-//									}
-//								}
-//							}
-//						}
-//
-//						//Check collison between Allies and environment 
-//						if (CanMove == true) {
-//							if (CheckEnviroCollide(*level4Allies[i], choice) == true) {
-//								gotoxy(15, 22);
-//								std::cout << "Collided Environment";
-//								CanMove = false;
-//							}
-//						}
-//
-//						//reflect movement of entity on screen 
-//						if (CanMove == true) {
-//							gotoxy(15, 20);
-//							std::cout << "                    ";
-//							gotoxy(15, 21);
-//							std::cout << "                    ";
-//							gotoxy(15, 22);
-//							std::cout << "                    ";
-//							gotoxy(15, 23);
-//							std::cout << "                    ";
-//							MoveEntity(*level4Allies[i], choice);
-//							ValidMove = true;
-//						}
-//						//reinput movement again
-//						else if (CanMove == false) {
-//							gotoxy(15, 23);
-//							std::cout << "Invalid Movement";
-//							choice = _getch();
-//							choice = toupper(choice);
-//						}
-//					}
-//				}
-//				//Attacking 
-//				else if (choice == 'J') {
-//					gotoxy(16, 24);
-//					std::cout << "going to attack";
-//
-//					//Grab attack direction 
-//					char attackDir = 'Z';
-//
-//					while (!(attackDir == 'w' || attackDir == 's' || attackDir == 'a' || attackDir == 'd')) {
-//						attackDir = _getch();
-//						gotoxy(15, 23);
-//						std::cout << "attack direction";
-//					}
-//					attackDir = toupper(attackDir);
-//
-//					//Check if can attack any enemies 
-//					for (int j = 0; j < 10; j++) {
-//						if (level4Enemy[j] != nullptr) {
-//							if (CheckAttack(*level4Allies[i], *level4Enemy[j], attackDir) == true) {
-//								level4Allies[i]->DamageDealt(*level4Enemy[j]);
-//
-//								gotoxy(15, 25);
-//								std::cout << "attack Dealt";
-//								gotoxy(15, 26);
-//								std::cout << level4Enemy[j]->GetHealth() << " " << j << " " << i;
-//								break;
-//							}
-//						}
-//					}
-//				}
-//			}
-//
-//			//Check if Enemy is alive 
-//			for (int j = 0; j < 10; j++) {
-//
-//				if (!(level4Enemy[j] == nullptr)) {
-//					if (level4Enemy[j]->isEntityAlive() == false) {
-//						enemycposx = level4Enemy[j]->PosXY.GetX();
-//						enemycposy = level4Enemy[j]->PosXY.GetY();
-//
-//
-//						gotoxy(enemycposx, enemycposy);
-//						std::cout << 'X';
-//
-//						//kill enemy 
-//						enemiesdead = enemiesdead + 1;
-//						delete level4Enemy[j];
-//						level4Enemy[j] = nullptr;
-//					}
-//				}
-//			}
-//		}
-//
-//		//UI 
-//		drawmap();
-//		//Update new position 
-//		for (int i = 0; i < 7; i++) {
-//			if (level4Allies[i] != nullptr) {
-//				gotoxy(level4Allies[i]->PosXY.GetX(), level4Allies[i]->PosXY.GetY());
-//				color(0x09);
-//				std::cout << level4Allies[i]->Draw_Icon();
-//			}
-//		}
-//		for (int i = 0; i < 10; i++) {
-//			if (level4Enemy[i] != nullptr) {//error is here
-//				gotoxy(level4Enemy[i]->PosXY.GetX(), level4Enemy[i]->PosXY.GetY());
-//				color(0x06);
-//				std::cout << level4Enemy[i]->Draw_Icon();
-//			}
-//		}
-//
-//		////////// For enemy troops 
-//		for (int i = 0; i < 10; i++) {
-//
-//			//allow to check movement is valid 
-//			bool Moving = true;
-//
-//			//Check if enemy is alive (prevent crashes) 
-//			if (level4Enemy[i] != nullptr) {
-//
-//				//Attacking, Check if can attack first 
-//				for (int j = 0; j < 7; j++) {
-//					if (level4Allies[j] != nullptr) {
-//						if (EnemyCheckAtk(*level4Allies[j], *level4Enemy[i]) == true) {
-//							level4Enemy[i]->DamageDealt(*level4Allies[j]);
-//							/*gotoxy(50, 23);
-//							std::cout << "Enemy attacking " << i << " " << j << " " << level1Allies[0]->GetHealth();*/
-//							Moving = false;
-//							break;
-//						}
-//					}
-//				}
-//
-//				//Movement 
-//				while (Moving == true) {
-//
-//					gotoxy(20, 20);
-//					std::cout << "Enemy moving....";
-//
-//					bool ValidMove = true;
-//
-//					//Random number generation
-//					int num = level4Enemy[i]->RandomNum();
-//					//convert to char
-//					char input = num + '0';
-//
-//					//Check collison with borders
-//					if (level4Enemy[i]->BorderCollision(input) == true) {
-//						gotoxy(15, 20);
-//						std::cout << "Enemy Collided border";
-//						ValidMove = false;
-//					}
-//
-//					if (ValidMove == true) {
-//						//Check collison between Enemies and Allies
-//						for (int j = 0; j < 7; j++) {
-//							if (level4Allies[j] != nullptr) {
-//								if (level4Enemy[i]->Entitycollision(*level4Allies[j], input) == true) {
-//									gotoxy(15, 21);
-//									std::cout << "Enemy Collided Entity";
-//									ValidMove = false;
-//									break;
-//								}
-//							}
-//						}
-//					}
-//
-//					if (ValidMove == true) {
-//						//Check collison between Enemies and Enemies
-//						for (int j = 0; j < 10; j++) {
-//							if (level4Enemy[j] != nullptr) {
-//								if (level4Enemy[i]->Entitycollision(*level4Enemy[j], input) == true) {
-//									gotoxy(15, 21);
-//									std::cout << "Enemy Collided Enemy";
-//									ValidMove = false;
-//									break;
-//								}
-//							}
-//						}
-//					}
-//
-//					if (ValidMove == true) {
-//						//Check collison between Enemies and environment 
-//						if (CheckEnviroCollide(*level4Enemy[i], input) == true) {
-//							gotoxy(15, 22);
-//							std::cout << "Enemy Collided Environment";
-//							ValidMove = false;
-//							break;
-//						}
-//					}
-//
-//					//reflect movement of entity on screen 
-//					if (ValidMove == true) {
-//						MoveEntity(*level4Enemy[i], input);
-//						Moving = false;
-//
-//					}
-//					else if (ValidMove == false) {
-//						gotoxy(15, 23);
-//						std::cout << "Enemy Invalid Movement";
-//					}
-//				}
-//			}
-//
-//			//Check if allies are alive 
-//			for (int j = 0; j < 7; j++) {
-//				if (level4Allies[j] != nullptr) {
-//					if (level4Allies[j]->isEntityAlive() == false) {
-//						gotoxy(level4Allies[j]->PosXY.GetX(), level4Allies[j]->PosXY.GetY());
-//						std::cout << 'X';
-//
-//						//kill alliies
-//						alliesdead = alliesdead + 1;
-//						delete level4Allies[j];
-//						level4Allies[j] = nullptr;
-//					}
-//				}
-//			}
-//		}
-//
-//		//UI
-//		drawmap();
-//		//Update new position 
-//		for (int i = 0; i < 7; i++) {
-//			if (level4Allies[i] != nullptr) {
-//				gotoxy(level4Allies[i]->PosXY.GetX(), level4Allies[i]->PosXY.GetY());
-//				color(0x09);
-//				std::cout << level4Allies[i]->Draw_Icon();
-//			}
-//		}
-//		for (int i = 0; i < 10; i++) {
-//			if (level4Enemy[i] != nullptr) {
-//				gotoxy(level4Enemy[i]->PosXY.GetX(), level4Enemy[i]->PosXY.GetY());
-//				color(0x06);
-//				std::cout << level4Enemy[i]->Draw_Icon();
-//			}
-//		}
-//
-//		//check win or lose
-//		if (alliesdead == Amt_Lvl2_Allies) {
-//			test = true;
-//		}
-//		else if (enemiesdead == Amt_Lvl2_Enemy) {
-//			test = true;
-//		}
-//		else {
-//			test = false;
-//		}
-//	}
-//
-//
-//	//Delete backlog
-//	for (int i = 0; i < 7; i++) {
-//		if (level4Allies[i] != nullptr) {
-//			delete level4Allies[i];
-//			level4Allies[i] = nullptr;
-//		}
-//	}
-//	for (int i = 0; i < 10; i++) {
-//		if (level4Enemy[i] != nullptr) {
-//			delete level4Enemy[i];
-//			level4Enemy[i] = nullptr;
-//		}
-//	}
-//	for (int i = 0; i < Amt_Trees; i++) {
-//		if (trees[i] != nullptr) {
-//			delete trees[i];
-//			trees[i] = nullptr;
-//		}
-//	}
-//	for (int i = 0; i < Amt_House; i++) {
-//		if (houses[i] != nullptr) {
-//			delete houses[i];
-//			houses[i] = nullptr;
-//		}
-//	}
-//}
+
+void mapmain4::map4game(void)
+{
+	//draw out map 
+	drawmap();
+
+	alliesdead = 0;
+	enemiesdead = 0;
+
+	const int Amt_Lvl4_Allies = 2;
+	const int Amt_Lvl4_Enemy = 10;
+
+	///// #### NOT POLYMORHPHISM ####		
+	// instantiating objects	
+
+	//Spawn enemies 
+	EnemyTroops* level4Enemy[Amt_Lvl4_Enemy];
+	//rifle man
+	for (int i = 0; i < 3; i++) {
+		level4Enemy[i] = new ERiflesman;
+	}
+	//Machine gunner
+	for (int i = 3; i < 4; i++) {
+		level4Enemy[i] = new EMachinegunner;
+	}
+	//Grenadier 
+	for (int i = 4; i < 6; i++) {
+		level4Enemy[i] = new EGrenadier;
+	}
+	//Motar
+	for (int i = 6; i < 7; i++) {
+		level4Enemy[i] = new EMotar;
+	}
+	//IFV
+	for (int i = 7; i < 9; i++) {
+		level4Enemy[i] = new EIFV;
+	}
+	//Tank
+	for (int i = 9; i < 10; i++) {
+		level4Enemy[i] = new ETank;
+	}
+
+
+
+
+
+	//Spawn allies 
+	AlliedTroops* level4Allies[Amt_Lvl4_Allies];
+	//rifle man 
+	for (int i = 0; i < Amt_Lvl4_Allies; i++) {
+		level4Allies[i] = new ARiflesman;
+	}
+
+
+	//Set all troop positions
+	color(0x09);
+	SetStartPos(*level4Allies[0], 26, 3);
+	SetStartPos(*level4Allies[1], 5, 5);
+
+	color(0x06);
+	SetStartPos(*level4Enemy[0], 25, 3);
+	SetStartPos(*level4Enemy[1], 30, 4);
+
+
+	bool test = false;
+
+	while (test == false) {
+		
+		int enemycposx, enemycposy;
+
+		///////////STATS
+		{
+			//display the stats
+			//allied troops live stats
+			gotoxy(95, 1);
+			color(0x09);
+			std::cout << "Allied Troops";
+
+			//stats
+			gotoxy(95, 2);
+			std::cout << "Health  Attack  Range";
+
+			//for rifleman
+			for (int i = 0; i < Amt_Lvl4_Allies; i++) {
+				if (level4Allies[i] != nullptr) {
+					gotoxy(85, 3 + i);
+					std::cout << "Rifleman " << i + 1 << ": " << level4Allies[i]->GetHealth() << " ";
+
+					gotoxy(105, 3 + i);
+					std::cout << level4Allies[i]->GetAttack();
+
+					gotoxy(113, 3 + i);
+					std::cout << level4Allies[i]->GetRange();
+				}
+			}
+
+
+			//Enemy troops
+			gotoxy(95, 12);
+			color(0x06);
+			std::cout << "Enemy Troops";
+
+			//stats
+			gotoxy(95, 13);
+			std::cout << "Health  Attack  Range";
+
+			//rifleman
+			for (int i = 0; i < Amt_Lvl4_Enemy; i++) {
+				if (level4Enemy[i] != nullptr) {
+					gotoxy(85, 14 + i);
+					std::cout << "Rifleman " << i + 1 << ": " << level4Enemy[i]->GetHealth() << " ";
+
+					gotoxy(105, 14 + i);
+					std::cout << level4Enemy[i]->GetAttack();
+
+					gotoxy(113, 14 + i);
+					std::cout << level4Enemy[i]->GetRange();
+				}
+			}
+		}
+
+
+		//////For player troops
+		//Player choose action 
+		for (int i = 0; i < Amt_Lvl4_Allies; i++) {
+			bool ValidMove = false;
+
+			//Get user input, WASD to move or J to attack 
+			gotoxy(15, 26);
+			color(0x0F);
+			std::cout << "WASD to Move, J to Attack";
+
+			char choice = 'Z';
+
+
+			if (level4Allies[i] != nullptr) {
+				//prevent from reading in console
+				gotoxy(level4Allies[i]->PosXY.GetX(), level4Allies[i]->PosXY.GetY());
+				color(0x0D);
+				std::cout << level4Allies[i]->Draw_Icon();
+				choice = _getch();
+				//caps
+				choice = toupper(choice);
+			}
+
+			//Check if Ally is alive  (prevent crashes)
+			if (level4Allies[i] != nullptr) {
+
+				//Movement 
+				if (choice == 'W' || choice == 'A' || choice == 'S' || choice == 'D') {
+					//Movement Code
+					while (ValidMove == false) {
+
+						//allow to check movement is valid 
+						bool CanMove = true;
+
+						//Check collison with borders
+						if (CheckBorder(*level4Allies[i], choice) == true) {
+							gotoxy(15, 27);
+							std::cout << "Collided border";
+							CanMove = false;
+						}
+
+						//Check collison between Allies and Enemies
+						if (CanMove == true) {
+							for (int j = 0; j < Amt_Lvl4_Enemy; j++) {
+								if (level4Enemy[j] != nullptr) {
+									if (level4Allies[i]->Entitycollision(*level4Enemy[j], choice) == true) {
+										gotoxy(40, 27);
+										std::cout << "Collided Entity";
+										CanMove = false;
+										break;
+									}
+								}
+							}
+						}
+
+						//Check collison between Allies and Allies
+						if (CanMove == true) {
+							for (int j = 0; j < Amt_Lvl4_Allies; j++) {
+								if (level4Allies[j] != nullptr) {
+									if (level4Allies[i]->Entitycollision(*level4Allies[j], choice) == true) {
+										gotoxy(15, 28);
+										std::cout << "Collided Allies";
+										CanMove = false;
+										break;
+									}
+								}
+							}
+						}
+
+						//Check collison between Allies and environment 
+						if (CanMove == true) {
+							if (CheckEnviroCollide(*level4Allies[i], choice) == true) {
+								gotoxy(40, 28);
+								std::cout << "Collided Environment";
+								CanMove = false;
+							}
+						}
+
+						//reflect movement of entity on screen 
+						if (CanMove == true) {
+							gotoxy(15, 27);
+							std::cout << "                                                   ";
+							gotoxy(15, 28);
+							std::cout << "                                                             ";
+							gotoxy(15, 29);
+							std::cout << "                                                            ";
+							MoveEntity(*level4Allies[i], choice);
+							ValidMove = true;
+						}
+						//reinput movement again
+						else if (CanMove == false) {
+							gotoxy(40, 29);
+							std::cout << "Invalid Movement";
+							choice = _getch();
+							choice = toupper(choice);
+						}
+					}
+				}
+				//Attacking 
+				else if (choice == 'J') {
+					gotoxy(16, 24);
+					std::cout << "going to attack";
+
+					//Grab attack direction 
+					char attackDir = 'Z';
+
+					while (!(attackDir == 'w' || attackDir == 's' || attackDir == 'a' || attackDir == 'd')) {
+						attackDir = _getch();
+						gotoxy(70, 27);
+						std::cout << "attack direction";
+					}
+					attackDir = toupper(attackDir);
+
+					//Check if can attack any enemies 
+					for (int j = 0; j < Amt_Lvl4_Enemy; j++) {
+						if (level4Enemy[j] != nullptr) {
+							if (CheckAttack(*level4Allies[i], *level4Enemy[j], attackDir) == true) {
+								level4Allies[i]->DamageDealt(*level4Enemy[j]);
+
+								gotoxy(70, 28);
+								std::cout << "attack Dealt";
+								gotoxy(75, 27);
+								std::cout << level4Enemy[j]->GetHealth() << " " << j << " " << i;
+								break;
+							}
+						}
+					}
+				}
+			}
+			//here for the null ptr part
+
+
+
+
+			//Check if Enemy is alive 
+			for (int j = 0; j < Amt_Lvl4_Enemy; j++) {
+
+				if (!(level4Enemy[j] == nullptr)) {
+					if (level4Enemy[j]->isEntityAlive() == false) {
+						enemycposx = level4Enemy[j]->PosXY.GetX();
+						enemycposy = level4Enemy[j]->PosXY.GetY();
+
+
+						gotoxy(enemycposx, enemycposy);
+						std::cout << 'X';
+
+						//kill enemy 
+						enemiesdead = enemiesdead + 1;
+						delete level4Enemy[j];
+						level4Enemy[j] = nullptr;
+					}
+				}
+			}
+		}
+
+		//UI 
+		drawmap();
+		//Update new position 
+		for (int i = 0; i < Amt_Lvl4_Allies; i++) {
+			if (level4Allies[i] != nullptr) {
+				gotoxy(level4Allies[i]->PosXY.GetX(), level4Allies[i]->PosXY.GetY());
+				color(0x09);
+				std::cout << level4Allies[i]->Draw_Icon();
+			}
+		}
+		for (int i = 0; i < Amt_Lvl4_Enemy; i++) {
+			if (level4Enemy[i] != nullptr) {//error is here
+				gotoxy(level4Enemy[i]->PosXY.GetX(), level4Enemy[i]->PosXY.GetY());
+				color(0x06);
+				std::cout << level4Enemy[i]->Draw_Icon();
+			}
+		}
+
+
+
+		//////// For enemy troops 
+		for (int i = 0; i < Amt_Lvl4_Enemy; i++) {
+
+			//allow to check movement is valid 
+			bool Moving = true;
+
+			//Check if enemy is alive (prevent crashes) 
+			if (level4Enemy[i] != nullptr) {
+
+				//Attacking, Check if can attack first 
+				for (int j = 0; j < Amt_Lvl4_Allies; j++) {
+					if (level4Allies[j] != nullptr) {
+						if (EnemyCheckAtk(*level4Allies[j], *level4Enemy[i]) == true) {
+							level4Enemy[i]->DamageDealt(*level4Allies[j]);
+							gotoxy(15, 28);
+							std::cout << "Enemy attacking " << i << " " << j << " " << level4Allies[j]->GetHealth();
+							Moving = false;
+							break;
+						}
+					}
+				}
+
+				//Movement 
+				while (Moving == true) {
+
+					bool ValidMove = true;
+
+					//Random number generation
+					int num = level4Enemy[i]->RandomNum();
+					//convert to char
+					char input = num + '0';
+
+					//Check collison with borders
+					if (level4Enemy[i]->BorderCollision(input) == true) {
+						gotoxy(15, 27);
+						std::cout << "Enemy Collided border";
+						ValidMove = false;
+					}
+
+					if (ValidMove == true) {
+						//Check collison between Enemies and Allies
+						for (int j = 0; j < Amt_Lvl4_Enemy; j++) {
+							if (level4Allies[j] != nullptr) {
+								if (level4Enemy[i]->Entitycollision(*level4Allies[j], input) == true) {
+									gotoxy(40, 27);
+									std::cout << "Enemy Collided Entity";
+									ValidMove = false;
+									break;
+								}
+							}
+						}
+					}
+
+					if (ValidMove == true) {
+						//Check collison between Enemies and Enemies
+						for (int j = 0; j < Amt_Lvl4_Allies; j++) {
+							if (level4Enemy[j] != nullptr) {
+								if (level4Enemy[i]->Entitycollision(*level4Enemy[j], input) == true) {
+									gotoxy(15, 28);
+									std::cout << "Enemy Collided Enemy";
+									ValidMove = false;
+									break;
+								}
+							}
+						}
+					}
+
+					if (ValidMove == true) {
+						//Check collison between Enemies and environment 
+						if (CheckEnviroCollide(*level4Enemy[i], input) == true) {
+							gotoxy(40, 28);
+							std::cout << "Enemy Collided Environment";
+							ValidMove = false;
+							break;
+						}
+					}
+
+					//reflect movement of entity on screen 
+					if (ValidMove == true) {
+						MoveEntity(*level4Enemy[i], input);
+						Moving = false;
+
+					}
+					else if (ValidMove == false) {
+						gotoxy(40, 29);
+						std::cout << "Enemy Invalid Movement";
+					}
+				}
+			}
+
+			//Check if allies are alive 
+			for (int j = 0; j < Amt_Lvl4_Allies; j++) {
+				if (level4Allies[j] != nullptr) {
+					if (level4Allies[j]->isEntityAlive() == false) {
+						gotoxy(level4Allies[j]->PosXY.GetX(), level4Allies[j]->PosXY.GetY());
+						std::cout << 'X';
+
+						//kill alliies
+						alliesdead = alliesdead + 1;
+						delete level4Allies[j];
+						level4Allies[j] = nullptr;
+					}
+				}
+			}
+		}
+
+		//UI
+		drawmap();
+		//Update new position 
+		for (int i = 0; i < Amt_Lvl4_Allies; i++) {
+			if (level4Allies[i] != nullptr) {
+				gotoxy(level4Allies[i]->PosXY.GetX(), level4Allies[i]->PosXY.GetY());
+				color(0x09);
+				std::cout << level4Allies[i]->Draw_Icon();
+			}
+		}
+		for (int i = 0; i < Amt_Lvl4_Enemy; i++) {
+			if (level4Enemy[i] != nullptr) {
+				gotoxy(level4Enemy[i]->PosXY.GetX(), level4Enemy[i]->PosXY.GetY());
+				color(0x06);
+				std::cout << level4Enemy[i]->Draw_Icon();
+			}
+		}
+
+		//check win or lose
+		if (alliesdead == Amt_Lvl4_Allies) {
+			map4game();
+		}
+		else if (enemiesdead == Amt_Lvl4_Enemy) {
+			test = true;
+		}
+		else {
+			test = false;
+		}
+	}
+
+
+	//Delete backlog
+	for (int i = 0; i < Amt_Lvl4_Allies; i++) {
+		if (level4Allies[i] != nullptr) {
+			delete level4Allies[i];
+			level4Allies[i] = nullptr;
+		}
+	}
+	for (int i = 0; i < Amt_Lvl4_Enemy; i++) {
+		if (level4Enemy[i] != nullptr) {
+			delete level4Enemy[i];
+			level4Enemy[i] = nullptr;
+		}
+	}
+	for (int i = 0; i < Amt_Build; i++) {
+		if (buildings[i] != nullptr) {
+			delete buildings[i];
+			buildings[i] = nullptr;
+		}
+	}
+
+
+
+}
+
+
+//Border checking 
+bool mapmain4::CheckBorder(Entity& main, char direction)
+{
+
+	int result = false;
+	//Check if UD position
+	//Up 
+	if (direction == '0' || direction == 'W') {
+		if (main.PosXY.GetY() - 1 == 0) {
+			result = true;
+		}
+	}
+	//Down
+	if (direction == '1' || direction == 'S') {
+		if (main.PosXY.GetY() + 1 == 25) {
+			result = true;
+		}
+	}
+	//left
+	if (direction == '3' || direction == 'D') {
+		if (main.PosXY.GetX() + 1 == 84) {
+			result = true;
+		}
+	}
+	//right 
+	if (direction == '2' || direction == 'A') {
+		if (main.PosXY.GetX() - 1 == 3) {
+			result = true;
+		}
+	}
+
+	return result;
+}
+
+//Check collision
+bool mapmain4::CheckEnviroCollide(Entity& main, char direction)
+{
+	//store position
+	int XEntity = main.PosXY.GetX();
+	int YEntity = main.PosXY.GetY();
+
+	bool result = false;
+
+	//Check with EVERY object
+	for (int i = 0; i < Amt_Build; i++) {
+
+		int XEnviro = buildings[i]->objPos.GetX();
+		int YEnviro = buildings[i]->objPos.GetY();
+
+		//Check if enviroment is aligned hori or veritcally 
+		if ((XEntity == XEnviro) || (YEntity == YEnviro)) {
+			if ((YEntity == YEnviro - 1) && (direction == 'S' || direction == '1')) {
+				result = true;
+				break;
+			}
+			//Up
+			else if ((YEntity == YEnviro + 1) && (direction == 'W' || direction == '0')) {
+				result = true;
+				break;
+			}
+			//Right
+			if ((XEntity == XEnviro - 1) && (direction == 'D' || direction == '2')) {
+				result = true;
+				break;
+			}
+			//Left
+			else if ((XEntity == XEnviro + 1) && (direction == 'A' || direction == '3')) {
+				result = true;
+				break;
+			}
+		}
+	}
+
+	return result;
+
+}
+
+///Check player attack
+bool mapmain4::CheckAttack(Entity& main, Entity& other, char direction)
+{
+	//a temp variable to store ture/false	
+	bool attackable = false;
+	//Check if object is blocking
+	bool objectblocking = false;
+
+	//values 
+	int x = main.PosXY.GetX();
+	int y = main.PosXY.GetY();
+	int Range = main.GetRange();
+	int xother = other.PosXY.GetX();
+	int yother = other.PosXY.GetY();
+	//Store distance between enemy 
+	int dx = abs(xother - x);
+	int dy = abs(yother - y);
+
+	//Check if enemy within range
+	if (dx <= Range && dy <= Range) {
+
+		//Check if enemy is aligned 
+		if (x == xother || y == yother) {
+
+			//check EVERY object to see if any is obstructing player 
+			for (int i = 0; i < Amt_Build; i++) {
+
+				int xobj = buildings[i]->objPos.GetX();
+				int yobj = buildings[i]->objPos.GetY();
+				int Endx = 0; int Endy = 0;
+
+				//Store distance between enviromental objects
+				//Check if obj is UP of entity
+				Endx = abs(x - xobj);
+				Endy = abs(y - yobj);
+
+				//Up
+				if (direction == 'W') {
+					//Check for any objects aligned and above player 
+					if (xobj == x && (yobj < y)) {
+						//Check if within range
+						if ((Endy <= Range) && !(yother >= yobj)) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+				//Down
+				else if (direction == 'S') {
+					//Check for any objects aligned and above player 
+					if (xobj == x && (yobj > y)) {
+						//Check if within range
+						if ((Endy <= Range) && !(yother <= yobj)) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+				//Right
+				else if (direction == 'D') {
+					//Check for any objects aligned and above player 
+					if (yobj == y && (xobj > x)) {
+						//Check if within range
+						if ((Endx <= Range) && !(xother <= xobj)) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+				//Left
+				else if (direction == 'A') {
+					//Check for any objects aligned and above player 
+					if (yobj == y && (xobj < x)) {
+						//Check if within range but enemy not infront of wall 
+						if ((Endx <= Range) && !(xother >= xobj)) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+			}
+		}
+		else
+			//if enemies not aligned cant attack
+			objectblocking = true;
+	}
+	//if no enemies in range, cant attack
+	else
+		objectblocking = true;
+
+	//If no obstructions, attack
+	if (objectblocking == false) {
+		attackable = true;
+	}
+
+	return attackable;
+}
+
+//Check if enemy can attack
+bool mapmain4::EnemyCheckAtk(Entity& ally, Entity& Enemy)
+{
+	//a temp variable to store ture/false
+	bool attackable = false;
+	//Check if object is blocking
+	bool objectblocking = false;
+
+	//values 
+	int x = Enemy.PosXY.GetX();
+	int y = Enemy.PosXY.GetY();
+	int Range = Enemy.GetRange();
+	int xother = ally.PosXY.GetX();
+	int yother = ally.PosXY.GetY();
+
+	//Store distance between allies  and enemy
+	int dx = abs(x - xother);
+	int dy = abs(y - yother);
+
+	//Check if enemy is within range
+	if (dx <= Range && dy <= Range) {
+
+		//Check if they are aligned
+		//ally on y axis
+		if (x == xother) {
+
+			//check EVERY object to see if any is obstructing (barricade)
+			for (int i = 0; i < Amt_Build; i++) {
+
+				int xobj = buildings[i]->objPos.GetX();
+				int yobj = buildings[i]->objPos.GetY();
+				int Endy = 0;
+
+				//Store distance between enviromental objects
+				Endy = abs(y - yobj);
+
+				//If ally is above
+				if (yother < y) {
+					//check if enviroment obj above
+					if ((x == xobj) && (yobj < y)) {
+						//Check if object in range and allies not infront
+						if ((Endy <= Range) && !(y >= yobj)) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+				//If ally is below 
+				else if (yother > y) {
+					//check if enviroment obj above
+					if ((x == xobj) && (yobj > y)) {
+						//Check if object in range
+						if ((Endy <= Range) && !(y <= yobj)) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+			}
+		}
+		//Check if they are aligned
+		//ally on x axis
+		else if (y == yother) {
+
+			//check EVERY object to see if any is obstructing  
+			for (int i = 0; i < Amt_Build; i++) {
+
+				int xobj = buildings[i]->objPos.GetX();
+				int yobj = buildings[i]->objPos.GetY();
+				int Endx = 0;
+
+				//Store distance between enviromental objects
+				Endx = abs(x - xobj);
+
+				//If ally is on the left
+				if (xother < x) {
+					//check if enviroment obj above
+					if ((y == yobj) && (xobj < x)) {
+						//Check if object is within range
+						if ((Endx <= Range) && !(x >= xobj)) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+				//If ally is on the right 
+				else if (xother > x) {
+					//check if enviroment obj above
+					if ((y == yobj) && (xobj > x)) {
+						//Check if object is within range
+						if ((Endx <= Range) && !(x <= xobj)) {
+							objectblocking = true;
+							break;
+						}
+					}
+				}
+			}
+		}
+		else
+			objectblocking = true;
+
+	}
+	else
+		//means cant attack 
+		objectblocking = true;
+
+
+	//if no object obstruct, attack
+	if (objectblocking == false) {
+		attackable = true;
+	}
+
+	return attackable;
+}
