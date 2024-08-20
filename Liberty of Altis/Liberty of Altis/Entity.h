@@ -36,9 +36,6 @@ public:
 		//Check collision between entities 
 		virtual	bool Entitycollision(Entity& other, char direction);
 
-		//Check collision between border
-		virtual bool BorderCollision(char direction);
-
 		//Damage dealt 
 		void DamageDealt(Entity& other);
 

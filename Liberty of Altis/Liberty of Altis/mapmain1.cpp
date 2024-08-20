@@ -343,7 +343,7 @@ void mapmain1::map1game(void)
 						bool CanMove = true;
 
 						//Check collison with borders
-						if (level1Allies[i]->BorderCollision(choice) == true) {
+						if (BorderCollision(*level1Allies[i],choice) == true) {
 							gotoxy(15, 20);
 							std::cout << "Collided border";
 							CanMove = false;
@@ -519,7 +519,7 @@ void mapmain1::map1game(void)
 					char input = num + '0';
 
 					//Check collison with borders
-					if (level1Enemy[i]->BorderCollision(input) == true) {
+					if (BorderCollision(*level1Enemy[i],input) == true) {
 						gotoxy(15, 20);
 						std::cout << "Enemy Collided border";
 						ValidMove = false;
@@ -877,46 +877,76 @@ bool mapmain1::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 	return attackable;
 }
 
-//Check collision
+// Check collision
 bool mapmain1::CheckEnviroCollide(Entity& main, char direction)
 {
-	//store position
+	// Store position
 	int XEntity = main.PosXY.GetX();
 	int YEntity = main.PosXY.GetY();
 
-	bool result = false;
-
-	//Check with EVERY object
+	// Check with EVERY object
 	for (int i = 0; i < AmtofObjs; i++) {
 
 		int XEnviro = trees[i]->objPos.GetX();
 		int YEnviro = trees[i]->objPos.GetY();
 
-		//Check if enviroment is aligned hori or veritcally 
-		if ((XEntity == XEnviro) || (YEntity == YEnviro)) {
-			if ((YEntity == YEnviro - 1) && (direction == 'S' || direction == '1')) {
-				result = true;
-				break;
+		// Tank and artillery
+		if (main.Draw_Icon() == 'T' || main.Draw_Icon() == 'A')
+		{
+			// Check if entity is LR of each other
+			if ((XEntity == XEnviro) || (XEntity == XEnviro + 1)) {
+				// Down
+				if ((YEntity == YEnviro - 1) && direction == 'S') {
+					return true;
+				}
+				// Up
+				if ((YEntity == YEnviro + 2) && direction == 'W') {
+					return true;
+				}
 			}
-			//Up
-			else if ((YEntity == YEnviro + 1) && (direction == 'W' || direction == '0')) {
-				result = true;
-				break;
+
+			// Check if entity is UP of each other
+			if (YEntity == YEnviro || (YEntity == YEnviro + 1)) {
+				// Right
+				if ((XEntity == XEnviro - 1) && direction == 'D') {
+					return true;
+				}
+				// Left
+				if ((XEntity == XEnviro + 2) && direction == 'A') {
+					return true;
+				}
 			}
-			//Right
-			if ((XEntity == XEnviro - 1) && (direction == 'D' || direction == '2')) {
-				result = true;
-				break;
+		}
+
+		// Other troops
+		else
+		{
+			// Check if entity is LR of each other
+			if (XEntity == XEnviro) {
+				// Down
+				if ((YEntity == YEnviro - 1) && direction == 'S') {
+					return true;
+				}
+				// Up
+				if ((YEntity == YEnviro + 1) && direction == 'W') {
+					return true;
+				}
 			}
-			//Left
-			else if ((XEntity == XEnviro + 1) && (direction == 'A' || direction == '3')) {
-				result = true;
-				break;
+
+			// Check if entity is UP of each other
+			if (YEntity == YEnviro) {
+				// Right
+				if ((XEntity == XEnviro - 1) && direction == 'D') {
+					return true;
+				}
+				// Left
+				if ((XEntity == XEnviro + 1) && direction == 'A') {
+					return true;
+				}
 			}
 		}
 	}
 
-	return result;
-
+	// If no collisions detected, return false
+	return false;
 }
-

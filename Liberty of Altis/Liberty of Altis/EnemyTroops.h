@@ -19,9 +19,6 @@ public:
 	//Check if Entity collide with Entity
 	bool Entitycollision(Entity& other, char direction) override;
 
-	//Check if Entity border collide 
-	bool BorderCollision(char direction) override;
-
 	//check if can deal damage
 	bool canattack(Entity& other, environmentalObjs& obj);
 

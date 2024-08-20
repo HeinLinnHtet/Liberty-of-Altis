@@ -105,33 +105,159 @@ bool map::EnviroEntityCollide(Entity& entity, environmentalObjs& obj, char direc
 
 	bool result = false;
 
-	//Check if entity is LR of each other 
-	if (XEntity == XEnviro) {
-		//Down 
-		if ((YEntity == YEnviro - 1) && direction == 'S')  {
-			result = true;
+	//tank and artilery
+	if (entity.Draw_Icon() == 'T' || entity.Draw_Icon() == 'A')
+	{
+		//Check if entity is LR of each other 
+		if (XEntity == XEnviro) {
+			//Down 
+			if ((YEntity == YEnviro - 1) && direction == 'S') {
+				result = true;
+			}
+			//Up
+			else if ((YEntity == YEnviro + 2) && direction == 'W') {
+				result = true;
+			}
+			else
+				result = false;
 		}
-		//Up
-		else if ((YEntity == YEnviro + 1) && direction == 'W') {
-			result = true;
+		if (XEntity == XEnviro + 1) {
+			//Down 
+			if ((YEntity == YEnviro - 1) && direction == 'S') {
+				result = true;
+			}
+			//Up
+			else if ((YEntity == YEnviro + 2) && direction == 'W') {
+				result = true;
+			}
+			else
+				result = false;
 		}
-		else 
-			result  = false;
+
+		//Check if entity if UP of each other 
+		if (YEntity == YEnviro) {
+			//Right
+			if ((XEntity == XEnviro - 1) && direction == 'D') {
+				result = true;
+			}
+			//Left
+			else if ((XEntity == XEnviro + 2) && direction == 'A') {
+				result = true;
+			}
+			else
+				result = false;
+		}
+		if (YEntity == YEnviro - 1) {
+			//Right
+			if ((XEntity == XEnviro - 1) && direction == 'D') {
+				result = true;
+			}
+			//Left
+			else if ((XEntity == XEnviro + 2) && direction == 'A') {
+				result = true;
+			}
+			else
+				result = false;
+		}
 	}
-	//Check if entity if UP of each other 
-	if (YEntity == YEnviro) {
-		//Right
-		if ((XEntity == XEnviro - 1) && direction == 'D') {
-			result = true;
+
+	//other troops
+	else
+	{
+		//Check if entity is LR of each other 
+		if (XEntity == XEnviro) {
+			//Down 
+			if ((YEntity == YEnviro - 1) && direction == 'S') {
+				result = true;
+			}
+			//Up
+			else if ((YEntity == YEnviro + 1) && direction == 'W') {
+				result = true;
+			}
+			else
+				result = false;
 		}
-		//Left
-		else if ((XEntity == XEnviro + 1) && direction == 'A') {
-			result = true;
+		//Check if entity if UP of each other 
+		if (YEntity == YEnviro) {
+			//Right
+			if ((XEntity == XEnviro - 1) && direction == 'D') {
+				result = true;
+			}
+			//Left
+			else if ((XEntity == XEnviro + 1) && direction == 'A') {
+				result = true;
+			}
+			else
+				result = false;
 		}
-		else
-			result = false;
 	}
 	
+	return result;
+}
+
+//Check border collison
+bool map::BorderCollision(Entity& entity, char direction)
+{
+	direction = toupper(direction);
+
+	int result = false;
+	//tanks and artilery
+	if (entity.Draw_Icon() == 'T' || entity.Draw_Icon() == 'A')
+	{
+		//Up 
+		if (direction == 'W') {
+			if (entity.PosXY.GetY() - 2 == 0) {
+				result = true;
+			}
+		}
+		//Down
+		else if (direction == 'S') {
+			if (entity.PosXY.GetY() + 1 == 19) {
+				result = true;
+			}
+		}
+		//left
+		else if (direction == 'D') {
+			if (entity.PosXY.GetX() + 1 == 54) {
+				result = true;
+			}
+		}
+		//right 
+		else if (direction == 'A') {
+			if (entity.PosXY.GetX() - 2 == 3) {
+				result = true;
+			}
+		}
+	}
+	//other troops
+	else
+	{
+		//Up 
+		if (direction == 'W') {
+			if (entity.PosXY.GetY() - 1 == 0) {
+				result = true;
+			}
+		}
+		//Down
+		else if (direction == 'S') {
+			if (entity.PosXY.GetY() + 1 == 19) {
+				result = true;
+			}
+		}
+		//left
+		else if (direction == 'D') {
+			if (entity.PosXY.GetX() + 1 == 54) {
+				result = true;
+			}
+		}
+		//right 
+		else if (direction == 'A') {
+			if (entity.PosXY.GetX() - 1 == 3) {
+				result = true;
+			}
+		}
+	}
+
 	return result;
 }
 

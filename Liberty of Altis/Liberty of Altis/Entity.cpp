@@ -63,41 +63,6 @@ bool Entity::Entitycollision(Entity& other, char direction)
     return result;
 }
 
-//Check border collison
-bool Entity::BorderCollision(char direction)
-{
-    direction = toupper(direction);
-
-    int result = false;
-
-    //Up 
-    if (direction == 'W') {
-        if (PosXY.GetY() - 1 == 0) {
-            result = true;
-        }
-    }
-    //Down
-    else if (direction == 'S') {
-        if (PosXY.GetY() + 1 == 19) {
-            result = true;
-        }
-    }
-    //left
-    else if (direction == 'D') {
-        if (PosXY.GetX() + 1 == 54) {
-            result = true;
-        }
-    }
-    //right 
-    else if (direction == 'A') {
-        if (PosXY.GetX() - 1 == 3) {
-            result = true;
-        }
-    }
-
-    return result;
-}
-
 int Entity::RandomNum(void)
 {
     int num = rand() % 4;

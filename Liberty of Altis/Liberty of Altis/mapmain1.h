@@ -1,6 +1,5 @@
 #pragma once
 #include "map.h"
-#include "gameui.h"
 #include "Position.h"
 #include "environmentalObjs.h"
 
@@ -23,8 +22,6 @@ private:
 	int alliesdead, enemiesdead;
 
 public :
-	gameui winloss;
-
 	mapmain1();
 	void drawmap();
 
@@ -39,7 +36,5 @@ public :
 
 	//Check Enviromental collisions
 	bool CheckEnviroCollide(Entity& main, char direction);
-
-
 };
 

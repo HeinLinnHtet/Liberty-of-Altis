@@ -75,40 +75,6 @@ bool EnemyTroops::Entitycollision(Entity& other, char direction)
     return result;
 }
 
-//Enemy troop border collision
-bool EnemyTroops::BorderCollision(char direction)
-{
-
-    int result = false;
-    //Check if UD position
-    //Up 
-    if (direction == '0') {
-        if (PosXY.GetY() - 1 == 0) {
-            result = true;
-        }
-    }
-    //Down
-    if (direction == '1') {
-        if (PosXY.GetY() + 1 == 19) {
-            result = true;
-        }
-    }
-    //left
-    if (direction == '2') {
-        if (PosXY.GetX() + 1 == 54) {
-            result = true;
-        }
-    }
-    //right 
-    if (direction == '3') {
-        if (PosXY.GetX() - 1 == 3) {
-            result = true;
-        }
-    }
-
-    return result;
-}
-
 
 //Broken pls try fix 
 void EnemyTroops::M1Movement()

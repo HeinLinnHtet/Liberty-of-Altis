@@ -1,7 +1,5 @@
 #pragma once
 #include "environmentalObjs.h"
-#include "Backpack.h"
-#include "gameui.h"
 #include "walls.h"
 #include "towers.h"
 #include "ARiflesman.h"
@@ -21,8 +19,6 @@
 #include "EIFV.h"
 
 #include <conio.h> // for _getch
-#include <windows.h>
-#include <iostream>
 
 
 class map :
@@ -43,5 +39,7 @@ public :
 
 	//Check collision between entity and enviromnet
 	bool EnviroEntityCollide(Entity& entity, environmentalObjs& obj, char direction);
+
+	bool BorderCollision(Entity& entity, char direction);
 };
 
