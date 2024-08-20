@@ -310,14 +310,13 @@ void gameui::cutscene1()
 void gameui::cutscene2()
 {
 	std::string lines2[] = {
-		"Musiala: Good job commander! Your forces have routed government units from the area, allowing us to breathe freely after months of heavy fighting ",
-		"However, there is another pressing issue we must tackle. One of our most important suppliers, Virgil 'the shopkeeper' van dijk, has been captured and imprisoned",
-		"Without him, our forces will be unable to carry out attacks as per normal, thus you are tasked to lead a armed unit to destroy the prision and bring Virgil to us",
-		"Good luck Johan, this mission is crucial to our cause!, without Virgil we will be unable to purchase and replinish our forces."
+		"Musiala: Good job commander! Your forces have routed government units from the area, allowing us to breathe freely after months of heavy fighting.",
+		"However, there is another pressing issue we must tackle. One of our most important suppliers, Virgil 'the shopkeeper' van dijk, has been captured and imprisoned.",
 	};
 	int delay = 50;
 	int x = 20, y = 20;
 	for (const auto& text : lines2) {
+		color(0x07);
 		gotoxy(x, y);
 		printdelay(text, delay);
 		std::this_thread::sleep_for(std::chrono::seconds(2)); 
@@ -325,6 +324,220 @@ void gameui::cutscene2()
 		gotoxy(x, y);
 		std::cout << std::string(text.length(), ' ');
 	}
+
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+
+	//prison middle
+	for (int i = 0; i < 14; i++)
+	{
+		for (int j = 18; j < 61; j++)
+		{
+			//check color for grey lines
+			if (j == 24 || j == 30 || j == 36 || j == 42 || j == 48 || j == 54)
+			{
+				color(0x08);
+			}
+			else
+			{
+				color(0x04);
+			}
+			gotoxy(j + 20, 3 + i);
+			std::cout << char(219);
+		}
+	}
+	//prison sides
+	for (int i = 0; i < 12; i++)
+	{
+		//left side
+		for (int j = 5; j < 18; j++)
+		{
+			//check color for grey lines
+			if (i == 0 || j == 17)
+			{
+				color(0x08);
+			}
+			else
+			{
+				color(0x04);
+			}
+			gotoxy(j + 20, 5 + i);
+			std::cout << char(219);
+		}
+		//right side
+		for (int j = 61; j < 74; j++)
+		{
+			//check color for grey lines
+			if (i == 0 || j == 61)
+			{
+				color(0x08);
+			}
+			else
+			{
+				color(0x04);
+			}
+			gotoxy(j + 20, 5 + i);
+			std::cout << char(219);
+		}
+	}
+	for (int i = 0; i < 11; i++)
+	{
+		color(0x08);
+		gotoxy(4 + 20, 6 + i);
+		std::cout << char(219);
+		gotoxy(74 + 20, 6 + i);
+		std::cout << char(219);
+	}
+
+	//roof
+	for (int i = 0; i < 41; i++)
+	{
+		gotoxy(i + 19 + 20, 2);
+		color(0x08);
+		std::cout << char(219);
+	}
+	for (int i = 0; i < 39; i++)
+	{
+		gotoxy(i + 20 + 20, 1);
+		color(0x08);
+		std::cout << char(219);
+	}
+
+	//connecter
+	color(0x08);
+	gotoxy(18 + 20, 3);
+	std::cout << char(219);
+	gotoxy(60 + 20, 3);
+	std::cout << char(219);
+
+	gotoxy(17 + 20, 4);
+	std::cout << char(219);
+	gotoxy(61 + 20, 4);
+	std::cout << char(219);
+
+	//door
+	for (int i = 0; i < 13; i++)
+	{
+		for (int j = 13; j < 17; j++)
+		{
+			color(0x06);
+			gotoxy(i + 33 + 20, j);
+			std::cout << char(178);
+		}
+	}
+
+	//windows
+	//middle
+	for (int i = 20; i < 58; i = i + 6)
+	{
+		for (int j = 4; j < 11; j = j + 3)
+		{
+			color(0x08);
+			gotoxy(i + 20, j);
+			std::cout << char(176);
+			gotoxy(i + 1 + 20, j);
+			std::cout << char(176);
+			gotoxy(i + 2 + 20, j);
+			std::cout << char(176);
+			gotoxy(i + 20, j + 1);
+			std::cout << char(176);
+			gotoxy(i + 1 + 20, j + 1);
+			std::cout << char(176);
+			gotoxy(i + 2 + 20, j + 1);
+			std::cout << char(176);
+		}
+	}
+	//sides
+	for (int i = 7; i < 14; i = i + 6)
+	{
+		for (int j = 7; j < 14; j = j + 3)
+		{
+			color(0x08);
+			gotoxy(i + 20, j);
+			std::cout << char(176);
+			gotoxy(i + 1 + 20, j);
+			std::cout << char(176);
+			gotoxy(i + 2 + 20, j);
+			std::cout << char(176);
+			gotoxy(i + 20, j + 1);
+			std::cout << char(176);
+			gotoxy(i + 1 + 20, j + 1);
+			std::cout << char(176);
+			gotoxy(i + 2 + 20, j + 1);
+			std::cout << char(176);
+		}
+	}
+	for (int i = 63; i < 70; i = i + 6)
+	{
+		for (int j = 7; j < 14; j = j + 3)
+		{
+			color(0x08);
+			gotoxy(i + 20, j);
+			std::cout << char(176);
+			gotoxy(i + 1 + 20, j);
+			std::cout << char(176);
+			gotoxy(i + 2 + 20, j);
+			std::cout << char(176);
+			gotoxy(i + 20, j + 1);
+			std::cout << char(176);
+			gotoxy(i + 1 + 20, j + 1);
+			std::cout << char(176);
+			gotoxy(i + 2 + 20, j + 1);
+			std::cout << char(176);
+		}
+	}
+	//bottom left
+	for (int i = 20; i < 27; i = i + 6)
+	{
+		color(0x08);
+		gotoxy(i + 20, 13);
+		std::cout << char(176);
+		gotoxy(i + 1 + 20, 13);
+		std::cout << char(176);
+		gotoxy(i + 2 + 20, 13);
+		std::cout << char(176);
+		gotoxy(i + 20, 13 + 1);
+		std::cout << char(176);
+		gotoxy(i + 1 + 20, 13 + 1);
+		std::cout << char(176);
+		gotoxy(i + 2 + 20, 13 + 1);
+		std::cout << char(176);
+	}
+	//bottom right
+	for (int i = 50; i < 57; i = i + 6)
+	{
+		color(0x08);
+		gotoxy(i + 20, 13);
+		std::cout << char(176);
+		gotoxy(i + 1 + 20, 13);
+		std::cout << char(176);
+		gotoxy(i + 2 + 20, 13);
+		std::cout << char(176);
+		gotoxy(i + 20, 13 + 1);
+		std::cout << char(176);
+		gotoxy(i + 1 + 20, 13 + 1);
+		std::cout << char(176);
+		gotoxy(i + 2 + 20, 13 + 1);
+		std::cout << char(176);
+	}
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+
+	std::string cutscene2line2[] = {
+		"The Prison of Altis, one of the most fortified prisons in the world.",
+		"Standing 180 feet tall, consisting of 1000 cell blocks, heavily guarded 24/7 with the best forces the Altis military has to offer.",
+		"Infiltrating this prison won't be an easy task....",
+		"Without Virgil, our forces will be unable to carry out attacks as per normal, thus you are tasked to lead a armed unit to destroy the prision and bring Virgil to us",
+		"Good luck Johan, this mission is crucial to our cause!, without Virgil we will be unable to purchase and replinish our forces."
+	};
+	for (const auto& text : cutscene2line2) {
+		color(0x07);
+		gotoxy(x, y);
+		printdelay(text, delay);
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		std::cout << "\r" << std::string(70, ' ') << "\r";
+		gotoxy(x, y);
+		std::cout << std::string(text.length(), ' ');
+	}
+
 }
 
 void gameui::cutscene3()
@@ -345,6 +558,7 @@ void gameui::cutscene3()
 	int delay = 50;
 	int x = 20, y = 20;
 	for (const auto& text : lines3) {
+		color(0x07);
 		gotoxy(x, y);
 		printdelay(text, delay);
 		std::this_thread::sleep_for(std::chrono::seconds(2)); 
