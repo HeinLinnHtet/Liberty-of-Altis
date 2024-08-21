@@ -24,7 +24,7 @@ int main(void) {
 	mapmain4 testlvl4;
 	mapmain5 testlvl5;
 
-	/*cutscene.cutscene1();
+	cutscene.cutscene1();
 	system("CLS");
 
 	testlvl1.map1game();
@@ -33,7 +33,7 @@ int main(void) {
 	cutscene.cutscene2();
 	system("CLS");
 	testlvl2.map2game();
-	system("CLS");*/
+	system("CLS");
 
 	cutscene.cutscene3();
 	system("CLS");
@@ -67,8 +67,8 @@ int main(void) {
 	//pay day
 	testshop.cashearned(500);
 
-	//cutscene.cutscene4();
-	//system("CLS");
+	cutscene.cutscene4();
+	system("CLS");
 
 	testshop.shopping();
 

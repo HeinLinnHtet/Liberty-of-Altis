@@ -268,7 +268,7 @@ void mapmain2::map2game(void)
 
 	//Spawning locations
 	color(0x09);
-	//SetStartPos(*level2Allies[0], 43, 6);
+	SetStartPos(*level2Allies[0], 43, 6);
 	SetStartPos(*level2Allies[1], 49, 8);
 	SetStartPos(*level2Allies[2], 45, 7);
 	SetStartPos(*level2Allies[3], 41, 11);
@@ -277,20 +277,11 @@ void mapmain2::map2game(void)
 	SetStartPos(*level2Allies[6], 43, 15);
 
 	color(0x06);
-	//SetStartPos(*level2Enemy[0], 21, 8);
+	SetStartPos(*level2Enemy[0], 21, 8);
 	SetStartPos(*level2Enemy[1], 21, 12);
 	SetStartPos(*level2Enemy[2], 23, 11);
 	SetStartPos(*level2Enemy[3], 25, 14);
 	SetStartPos(*level2Enemy[4], 27, 9);
-
-	SetStartPos(*level2Enemy[0], 24, 5);
-	//SetStartPos(*level2Enemy[1], 20, 12);
-	//SetStartPos(*level2Enemy[2], 20, 11);
-	//SetStartPos(*level2Enemy[3], 20, 14);
-	//SetStartPos(*level2Enemy[4], 20, 9);
-
-	//SetStartPos(*level2Enemy[0], 20, 8);
-	SetStartPos(*level2Allies[0], 20, 9);
 
 
 	//Check if enemy died will need change later #####

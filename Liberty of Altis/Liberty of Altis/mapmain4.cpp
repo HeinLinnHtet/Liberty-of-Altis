@@ -821,13 +821,15 @@ void mapmain4::map4game(int rifleamount,
 								}
 							}
 							else{
-								level4Allies[i]->DamageDealt(*level4Enemy[j]);
+								if (CheckAttack(*level4Allies[i], *level4Enemy[j], attackDir) == true) {
+									level4Allies[i]->DamageDealt(*level4Enemy[j]);
 
-								gotoxy(70, 28);
-								std::cout << "attack Dealt";
-								gotoxy(75, 27);
-								std::cout << level4Enemy[j]->GetHealth() << " " << j << " " << i;
-								break;
+									gotoxy(70, 28);
+									std::cout << "attack Dealt";
+									gotoxy(75, 27);
+									std::cout << level4Enemy[j]->GetHealth() << " " << j << " " << i;
+									break;
+								}
 							}
 						}
 					}
@@ -901,11 +903,13 @@ void mapmain4::map4game(int rifleamount,
 							}
 						}
 						else{
-							level4Enemy[i]->DamageDealt(*level4Allies[j]);
-							gotoxy(15, 28);
-							std::cout << "Enemy attacking " << i << " " << j << " " << level4Allies[j]->GetHealth();
-							Moving = false;
-							break;
+							if (EnemyCheckAtk(*level4Allies[j], *level4Enemy[i]) == true) {
+								level4Enemy[i]->DamageDealt(*level4Allies[j]);
+								gotoxy(15, 28);
+								std::cout << "Enemy attacking " << i << " " << j << " " << level4Allies[j]->GetHealth();
+								Moving = false;
+								break;
+							}
 						}
 					}
 				}
@@ -1154,59 +1158,65 @@ bool mapmain4::CheckAttack(Entity& main, Entity& other, char direction)
 		//Check if enemy is aligned 
 		if (x == xother || y == yother) {
 
+			//arty
+			if (main.Draw_Icon() == 'A' || main.Draw_Icon() == 'O') {
+				objectblocking = false;
+			}
+			else {
 			//check EVERY object to see if any is obstructing player 
-			for (int i = 0; i < Amt_Build; i++) {
+				for (int i = 0; i < Amt_Build; i++) {
 
-				int xobj = buildings[i]->objPos.GetX();
-				int yobj = buildings[i]->objPos.GetY();
-				int Endx = 0; int Endy = 0;
+					int xobj = buildings[i]->objPos.GetX();
+					int yobj = buildings[i]->objPos.GetY();
+					int Endx = 0; int Endy = 0;
 
-				//Store distance between enviromental objects
-				//Check if obj is UP of entity
-				Endx = abs(x - xobj);
-				Endy = abs(y - yobj);
+					//Store distance between enviromental objects
+					//Check if obj is UP of entity
+					Endx = abs(x - xobj);
+					Endy = abs(y - yobj);
 
-				//Up
-				if (direction == 'W') {
-					//Check for any objects aligned and above player 
-					if (xobj == x && (yobj < y)) {
-						//Check if within range
-						if ((Endy <= Range) && !(yother >= yobj)) {
-							objectblocking = true;
-							break;
+					//Up
+					if (direction == 'W') {
+						//Check for any objects aligned and above player 
+						if (xobj == x && (yobj < y)) {
+							//Check if within range
+							if ((Endy <= Range) && !(yother >= yobj)) {
+								objectblocking = true;
+								break;
+							}
 						}
 					}
-				}
-				//Down
-				else if (direction == 'S') {
-					//Check for any objects aligned and above player 
-					if (xobj == x && (yobj > y)) {
-						//Check if within range
-						if ((Endy <= Range) && !(yother <= yobj)) {
-							objectblocking = true;
-							break;
+					//Down
+					else if (direction == 'S') {
+						//Check for any objects aligned and above player 
+						if (xobj == x && (yobj > y)) {
+							//Check if within range
+							if ((Endy <= Range) && !(yother <= yobj)) {
+								objectblocking = true;
+								break;
+							}
 						}
 					}
-				}
-				//Right
-				else if (direction == 'D') {
-					//Check for any objects aligned and above player 
-					if (yobj == y && (xobj > x)) {
-						//Check if within range
-						if ((Endx <= Range) && !(xother <= xobj)) {
-							objectblocking = true;
-							break;
+					//Right
+					else if (direction == 'D') {
+						//Check for any objects aligned and above player 
+						if (yobj == y && (xobj > x)) {
+							//Check if within range
+							if ((Endx <= Range) && !(xother <= xobj)) {
+								objectblocking = true;
+								break;
+							}
 						}
 					}
-				}
-				//Left
-				else if (direction == 'A') {
-					//Check for any objects aligned and above player 
-					if (yobj == y && (xobj < x)) {
-						//Check if within range but enemy not infront of wall 
-						if ((Endx <= Range) && !(xother >= xobj)) {
-							objectblocking = true;
-							break;
+					//Left
+					else if (direction == 'A') {
+						//Check for any objects aligned and above player 
+						if (yobj == y && (xobj < x)) {
+							//Check if within range but enemy not infront of wall 
+							if ((Endx <= Range) && !(xother >= xobj)) {
+								objectblocking = true;
+								break;
+							}
 						}
 					}
 				}
@@ -1250,39 +1260,46 @@ bool mapmain4::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 	//Check if enemy is within range
 	if (dx <= Range && dy <= Range) {
 
+
+
 		//Check if they are aligned
 		//ally on y axis
 		if (x == xother) {
 
-			//check EVERY object to see if any is obstructing (barricade)
-			for (int i = 0; i < Amt_Build; i++) {
+			if (Enemy.Draw_Icon() == 'A' || Enemy.Draw_Icon() == 'O') {
+				objectblocking = false;
+			}
+			else {
+				//check EVERY object to see if any is obstructing (barricade)
+				for (int i = 0; i < Amt_Build; i++) {
 
-				int xobj = buildings[i]->objPos.GetX();
-				int yobj = buildings[i]->objPos.GetY();
-				int Endy = 0;
+					int xobj = buildings[i]->objPos.GetX();
+					int yobj = buildings[i]->objPos.GetY();
+					int Endy = 0;
 
-				//Store distance between enviromental objects
-				Endy = abs(y - yobj);
+					//Store distance between enviromental objects
+					Endy = abs(y - yobj);
 
-				//If ally is above
-				if (yother < y) {
-					//check if enviroment obj above
-					if ((x == xobj) && (yobj < y)) {
-						//Check if object in range and allies not infront
-						if ((Endy <= Range) && !(y >= yobj)) {
-							objectblocking = true;
-							break;
+					//If ally is above
+					if (yother < y) {
+						//check if enviroment obj above
+						if ((x == xobj) && (yobj < y)) {
+							//Check if object in range and allies not infront
+							if ((Endy <= Range) && !(y >= yobj)) {
+								objectblocking = true;
+								break;
+							}
 						}
 					}
-				}
-				//If ally is below 
-				else if (yother > y) {
-					//check if enviroment obj above
-					if ((x == xobj) && (yobj > y)) {
-						//Check if object in range
-						if ((Endy <= Range) && !(y <= yobj)) {
-							objectblocking = true;
-							break;
+					//If ally is below 
+					else if (yother > y) {
+						//check if enviroment obj above
+						if ((x == xobj) && (yobj > y)) {
+							//Check if object in range
+							if ((Endy <= Range) && !(y <= yobj)) {
+								objectblocking = true;
+								break;
+							}
 						}
 					}
 				}
@@ -1292,35 +1309,41 @@ bool mapmain4::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 		//ally on x axis
 		else if (y == yother) {
 
-			//check EVERY object to see if any is obstructing  
-			for (int i = 0; i < Amt_Build; i++) {
+			if (Enemy.Draw_Icon() == 'A' || Enemy.Draw_Icon() == 'O') {
+				objectblocking = false;
+			}
+			else {
 
-				int xobj = buildings[i]->objPos.GetX();
-				int yobj = buildings[i]->objPos.GetY();
-				int Endx = 0;
+				//check EVERY object to see if any is obstructing  
+				for (int i = 0; i < Amt_Build; i++) {
 
-				//Store distance between enviromental objects
-				Endx = abs(x - xobj);
+					int xobj = buildings[i]->objPos.GetX();
+					int yobj = buildings[i]->objPos.GetY();
+					int Endx = 0;
 
-				//If ally is on the left
-				if (xother < x) {
-					//check if enviroment obj above
-					if ((y == yobj) && (xobj < x)) {
-						//Check if object is within range
-						if ((Endx <= Range) && !(x >= xobj)) {
-							objectblocking = true;
-							break;
+					//Store distance between enviromental objects
+					Endx = abs(x - xobj);
+
+					//If ally is on the left
+					if (xother < x) {
+						//check if enviroment obj above
+						if ((y == yobj) && (xobj < x)) {
+							//Check if object is within range
+							if ((Endx <= Range) && !(x >= xobj)) {
+								objectblocking = true;
+								break;
+							}
 						}
 					}
-				}
-				//If ally is on the right 
-				else if (xother > x) {
-					//check if enviroment obj above
-					if ((y == yobj) && (xobj > x)) {
-						//Check if object is within range
-						if ((Endx <= Range) && !(x <= xobj)) {
-							objectblocking = true;
-							break;
+					//If ally is on the right 
+					else if (xother > x) {
+						//check if enviroment obj above
+						if ((y == yobj) && (xobj > x)) {
+							//Check if object is within range
+							if ((Endx <= Range) && !(x <= xobj)) {
+								objectblocking = true;
+								break;
+							}
 						}
 					}
 				}
