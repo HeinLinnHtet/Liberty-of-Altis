@@ -4,6 +4,7 @@
 
 
 environmentalObjs* mapmain4::buildings[Amt_Build];
+bool mapmain4::GameOver = false;
 
 
 mapmain4::mapmain4()
@@ -347,7 +348,7 @@ void mapmain4::map4game(int rifleamount,
 	alliesdead = 0;
 	enemiesdead = 0;
 
-	const int Amt_Lvl4_Allies = 2;
+	const int Amt_Lvl4_Allies = 15;
 	const int Amt_Lvl4_Enemy = 10;
 
 	///// #### NOT POLYMORHPHISM ####		
@@ -356,7 +357,7 @@ void mapmain4::map4game(int rifleamount,
 	//Spawn enemies 
 	EnemyTroops* level4Enemy[Amt_Lvl4_Enemy];
 	//rifle man
-	for (int i = 0; i < Amt_Lvl4_Enemy; i++) {
+	for (int i = 0; i < 3; i++) {
 		level4Enemy[i] = new ERiflesman;
 	}
 	//Machine gunner
@@ -386,16 +387,84 @@ void mapmain4::map4game(int rifleamount,
 
 	//Spawn allies 
 	AlliedTroops* level4Allies[Amt_Lvl4_Allies];
-	//rifle man 
-	for (int i = 0; i < Amt_Lvl4_Allies; i++) {
+
+	//rifle man
+	for (int i = 0; i < rifleamount; i++) {
 		level4Allies[i] = new ARiflesman;
+	}
+	//Lmg    // rifleamount 
+	for (int i = 0; i < mcgunamount; i++) {
+		level4Allies[i + rifleamount] = new AMachinegunner;
+	}
+	//Grenadier
+	for (int i = 0; i < grendamount; i++) {
+		level4Allies[i + rifleamount + mcgunamount] = new AGrenadier;
+	}
+	//Mortar	
+	for (int i = 0; i < motaramount; i++) {
+		level4Allies[i + rifleamount + mcgunamount + grendamount] = new AMotar;
+	}
+	//Artillery	
+	for (int i = 0; i < artilamount; i++) {
+		level4Allies[i + rifleamount + mcgunamount + grendamount + motaramount] = new AArtillery;
+	}
+	//Tank	
+	for (int i = 0; i < tankamount; i++) {
+		level4Allies[i + rifleamount + mcgunamount + grendamount + motaramount + artilamount] = new ATank;
+	}
+	//IFV
+	for (int i = 0; i < ifvamount; i++) {
+		level4Allies[i + rifleamount + mcgunamount + grendamount + motaramount + artilamount + tankamount] = new AIFV;
 	}
 
 
 	//Set all troop positions
 	color(0x09);
-	SetStartPos(*level4Allies[0], 26, 3);
-	SetStartPos(*level4Allies[1], 5, 5);
+	if (level4Allies[0] != nullptr) {
+		SetStartPos(*level4Allies[0], 5, 2);
+	}
+	if (level4Allies[1] != nullptr) {
+		SetStartPos(*level4Allies[1], 5, 5);
+	}
+	if (level4Allies[2] != nullptr) {
+		SetStartPos(*level4Allies[2], 7, 5);
+	}
+	if (level4Allies[3] != nullptr) {
+		SetStartPos(*level4Allies[3], 7, 6);
+	}
+	if (level4Allies[4] != nullptr) {
+		SetStartPos(*level4Allies[4], 7, 8);
+	}
+	if (level4Allies[5] != nullptr) {
+		SetStartPos(*level4Allies[5], 7, 10);
+	}
+	if (level4Allies[6] != nullptr) {
+		SetStartPos(*level4Allies[6], 7, 12);
+	}
+	if (level4Allies[7] != nullptr) {
+		SetStartPos(*level4Allies[7], 9, 14);
+	}
+	if (level4Allies[8] != nullptr) {
+		SetStartPos(*level4Allies[8], 5, 16);
+	}
+	if (level4Allies[9] != nullptr) {
+		SetStartPos(*level4Allies[9], 10, 18);
+	}
+	if (level4Allies[10] != nullptr) {
+		SetStartPos(*level4Allies[10], 7, 13);
+	}
+	if (level4Allies[11] != nullptr) {
+		SetStartPos(*level4Allies[11], 7, 14);
+	}
+	if (level4Allies[12] != nullptr) {
+		SetStartPos(*level4Allies[12], 9, 12);
+	}
+	if (level4Allies[13] != nullptr) {
+		SetStartPos(*level4Allies[13], 10, 2);
+	}
+	if (level4Allies[Amt_Lvl4_Allies - 1] != nullptr) {
+		SetStartPos(*level4Allies[Amt_Lvl4_Allies - 1], 6, 12);
+	}
 
 	color(0x06);
 	SetStartPos(*level4Enemy[0], 60, 4);
@@ -410,7 +479,6 @@ void mapmain4::map4game(int rifleamount,
 	SetStartPos(*level4Enemy[9], 60, 16);
 
 
-	bool GameOver = false;
 
 	while (GameOver == false)  {
 		
@@ -420,27 +488,56 @@ void mapmain4::map4game(int rifleamount,
 		{
 			//display the stats
 			//allied troops live stats
-			gotoxy(95, 13);   
+			gotoxy(95, Amt_Lvl4_Enemy + 3);
 			color(0x09);
 			std::cout << "Allied Troops";
 
 			//stats
-			gotoxy(95, 14);
+			gotoxy(95, Amt_Lvl4_Enemy + 4);
 			std::cout << "Health  Attack  Range";
 
 			//for rifleman
 			for (int i = 0; i < Amt_Lvl4_Allies; i++) {
 				if (level4Allies[i] != nullptr) {
-					gotoxy(85, 15 + i);
-					std::cout << "Rifleman " << i + 1 << ": " << level4Allies[i]->GetHealth() << " ";
+					gotoxy(55, Amt_Lvl4_Enemy + 5 + i);
+					std::cout << level4Allies[i]->Getname() << i - 2 << ": " << level4Allies[i]->GetHealth() << " ";
 
-					gotoxy(105, 15 + i);
+					gotoxy(75, Amt_Lvl4_Enemy + 5 + i);
 					std::cout << level4Allies[i]->GetAttack();
 
-					gotoxy(113, 15 + i);
+					gotoxy(83, Amt_Lvl4_Enemy + 5 + i);
 					std::cout << level4Allies[i]->GetRange();
 				}
 			}
+
+			//tank
+			for (int i = artilamount + motaramount + grendamount + mcgunamount + rifleamount; i < tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i++) {
+				if (level4Allies[i] != nullptr) {
+					gotoxy(55, Amt_Lvl4_Enemy + 5 + i);
+					std::cout << level4Allies[i]->Getname() << i - 4 << ": " << level4Allies[i]->GetHealth() << " ";
+
+					gotoxy(75, Amt_Lvl4_Enemy + 5 + i);
+					std::cout << level4Allies[i]->GetAttack();
+
+					gotoxy(83, Amt_Lvl4_Enemy + 5 + i);
+					std::cout << level4Allies[i]->GetRange();
+				}
+			}
+
+			//ifv
+			for (int i = tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i < ifvamount + tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i++) {
+				if (level4Allies[i] != nullptr) {
+					gotoxy(55, Amt_Lvl4_Enemy + 5 + i);
+					std::cout << level4Allies[i]->Getname() << i + 1 << ": " << level4Allies[i]->GetHealth() << " ";
+
+					gotoxy(75, Amt_Lvl4_Enemy + 5 + i);
+					std::cout << level4Allies[i]->GetAttack();
+
+					gotoxy(83, Amt_Lvl4_Enemy + 5 + i);
+					std::cout << level4Allies[i]->GetRange();
+				}
+			}
+
 
 
 			//Enemy troops
@@ -453,19 +550,86 @@ void mapmain4::map4game(int rifleamount,
 			std::cout << "Health  Attack  Range";
 
 			//rifleman
-			for (int i = 0; i < Amt_Lvl4_Enemy; i++) {
+			for (int i = 0; i < 3; i++) {
 				if (level4Enemy[i] != nullptr) {
-					gotoxy(85, 3 + i);
+					gotoxy(55, 3 + i);
 					std::cout << "Rifleman " << i + 1 << ": " << level4Enemy[i]->GetHealth() << " ";
 
-					gotoxy(105, 3 + i);
+					gotoxy(75, 3 + i);
 					std::cout << level4Enemy[i]->GetAttack();
 
-					gotoxy(113, 3 + i);
+					gotoxy(83, 3 + i);
 					std::cout << level4Enemy[i]->GetRange();
 				}
 			}
+			//machine gunner
+			for (int i = 3; i < 4; i++) {
+				if (level4Enemy[i] != nullptr) {
+					gotoxy(55, 3 + i);
+					std::cout << "McGunner " << i - 5 << ": " << level4Enemy[i]->GetHealth() << " ";
+
+					gotoxy(75, 3 + i);
+					std::cout << level4Enemy[i]->GetAttack();
+
+					gotoxy(83, 3 + i);
+					std::cout << level4Enemy[i]->GetRange();
+				}
+			}
+			//Grenadier
+			for (int i = 4; i < 6; i++) {
+				if (level4Enemy[i] != nullptr) {
+					gotoxy(55, 3 + i);
+					std::cout << "Grenader " << i - 7 << ": " << level4Enemy[i]->GetHealth() << " ";
+
+					gotoxy(75, 3 + i);
+					std::cout << level4Enemy[i]->GetAttack();
+
+					gotoxy(83, 3 + i);
+					std::cout << level4Enemy[i]->GetRange();
+				}
+			}
+			//Motar
+			for (int i = 6; i < 7; i++) {
+				if (level4Enemy[i] != nullptr) {
+					gotoxy(55, 3 + i);
+					std::cout << "Motar " << i - 7 << ": " << level4Enemy[i]->GetHealth() << " ";
+
+					gotoxy(75, 3 + i);
+					std::cout << level4Enemy[i]->GetAttack();
+
+					gotoxy(83, 3 + i);
+					std::cout << level4Enemy[i]->GetRange();
+				}
+			}
+			//IFV
+			for (int i = 7; i < 9; i++) {
+				if (level4Enemy[i] != nullptr) {
+					gotoxy(55, 3 + i);
+					std::cout << "IFV " << i - 7 << ": " << level4Enemy[i]->GetHealth() << " ";
+
+					gotoxy(75, 3 + i);
+					std::cout << level4Enemy[i]->GetAttack();
+
+					gotoxy(83, 3 + i);
+					std::cout << level4Enemy[i]->GetRange();
+				}
+			}
+			//Tank
+			for (int i = 9; i < Amt_Lvl4_Enemy; i++) {
+				if (level4Enemy[i] != nullptr) {
+					gotoxy(55, 3 + i);
+					std::cout << "Tank " << i - 7 << ": " << level4Enemy[i]->GetHealth() << " ";
+
+					gotoxy(75, 3 + i);
+					std::cout << level4Enemy[i]->GetAttack();
+
+					gotoxy(83, 3 + i);
+					std::cout << level4Enemy[i]->GetRange();
+				}
+			}
+
 		}
+
 
 
 		//////For player troops
@@ -503,7 +667,7 @@ void mapmain4::map4game(int rifleamount,
 						bool CanMove = true;
 
 						//Check collison with borders
-						if (CheckBorder(*level4Allies[i], choice) == true) {
+						if (ABorderCollision(*level4Allies[i], choice) == true){
 							gotoxy(15, 27);
 							std::cout << "Collided border";
 							CanMove = false;
@@ -676,7 +840,7 @@ void mapmain4::map4game(int rifleamount,
 					char input = num + '0';
 
 					//Check collison with borders
-					if (level4Enemy[i]->BorderCollision(input) == true) {
+					if (EBorderCollision(*level4Enemy[i],input) == true) {
 						gotoxy(15, 27);
 						std::cout << "Enemy Collided border";
 						ValidMove = false;
@@ -1098,7 +1262,8 @@ bool mapmain4::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 	return attackable;
 }
 
-bool mapmain4::GetGameOver(void)
-{
+
+bool mapmain4::GetGameOver(void) {
+
 	return GameOver;
 }
