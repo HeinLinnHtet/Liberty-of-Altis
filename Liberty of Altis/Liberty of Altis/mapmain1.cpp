@@ -160,7 +160,7 @@ void mapmain1::map1game(void)
 	AlliedTroops* level1Allies[7];
 	//rifle man 
 	for (int i = 0; i < 3; i++) {
-		level1Allies[i] = new ATank;
+		level1Allies[i] = new ARiflesman;
 	}
 	//Lmg
 	for (int i = 3; i < 5; i++) {

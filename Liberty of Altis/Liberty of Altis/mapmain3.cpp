@@ -1202,8 +1202,3 @@ bool mapmain3::GetGameOver(void)
 {
 	return GameOver;
 }
-
-
-
-
-

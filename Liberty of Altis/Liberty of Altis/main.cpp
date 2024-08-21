@@ -64,23 +64,14 @@ int main(void) {
 	//		maininventory.Troop_broughtin[6]);
 	//}
 
-	//pay day
-	testshop.cashearned(500);
+	////pay day
+	//testshop.cashearned(500);
 
-	//cutscene.cutscene4();
-	//system("CLS");
+	cutscene.cutscene3();
+	system("CLS");
 
-	testshop.shopping();
-
-	//These are the values of what you bought from the shop
-
-	maininventory.riflemansetter(testshop.inventory.riflemangetter());
-	maininventory.artillerysetter(testshop.inventory.artillerygetter());
-	maininventory.grenadiersetter(testshop.inventory.grenadiergetter());
-	maininventory.IFVsetter(testshop.inventory.IFVgetter());
-	maininventory.machinegunnersetter(testshop.inventory.machinegunnergetter());
-	maininventory.motarsetter(testshop.inventory.motargetter());
-	maininventory.tanksetter(testshop.inventory.tankgetter());
+	cutscene.cutscene4();
+	system("CLS");
 
 
 	//Level 4
@@ -100,21 +91,6 @@ int main(void) {
 	//pay day 2
 	testshop.cashearned(1000);
 
-	cutscene.cutscene5();
-	system("CLS");
-
-	testshop.shopping();
-
-	//These are the values of what you bought from the shop
-
-	maininventory.riflemansetter(testshop.inventory.riflemangetter());
-	maininventory.artillerysetter(testshop.inventory.artillerygetter());
-	maininventory.grenadiersetter(testshop.inventory.grenadiergetter());
-	maininventory.IFVsetter(testshop.inventory.IFVgetter());
-	maininventory.machinegunnersetter(testshop.inventory.machinegunnergetter());
-	maininventory.motarsetter(testshop.inventory.motargetter());
-	maininventory.tanksetter(testshop.inventory.tankgetter());
-
 	//level 5
 	while (testlvl5.GetGameOver() == false) {
 		maininventory.bakpak();
@@ -128,7 +104,4 @@ int main(void) {
 			maininventory.Troop_broughtin[5],
 			maininventory.Troop_broughtin[6]);
 	}
-
-	cutscene.cutscence6();
-	system("CLS");
 }

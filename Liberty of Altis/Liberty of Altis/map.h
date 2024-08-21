@@ -1,5 +1,7 @@
 #pragma once
 #include "environmentalObjs.h"
+#include "Backpack.h"
+#include "gameui.h"
 #include "walls.h"
 #include "ARiflesman.h"
 #include "AArtillery.h"
