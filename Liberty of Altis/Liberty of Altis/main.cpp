@@ -64,6 +64,9 @@ int main(void) {
 			maininventory.Troop_broughtin[6]);
 	}
 
+	//pay day
+	testshop.cashearned(500);
+
 	cutscene.cutscene4();
 	system("CLS");
 
@@ -72,7 +75,7 @@ int main(void) {
 	while (testlvl4.GetGameOver() == false) {
 		maininventory.backpak();
 		system("CLS");
-		testlvl3.map3game(
+		testlvl4.map4game(
 			maininventory.Troop_broughtin[0],
 			maininventory.Troop_broughtin[1],
 			maininventory.Troop_broughtin[2],
@@ -82,6 +85,20 @@ int main(void) {
 			maininventory.Troop_broughtin[6]);
 	}
 
+	//pay day 2
+	testshop.cashearned(1000);
 
-	
+	//level 5
+	while (testlvl5.GetGameOver() == false) {
+		maininventory.bakpak();
+		system("CLS");
+		testlvl5.map5game(
+			maininventory.Troop_broughtin[0],
+			maininventory.Troop_broughtin[1],
+			maininventory.Troop_broughtin[2],
+			maininventory.Troop_broughtin[3],
+			maininventory.Troop_broughtin[4],
+			maininventory.Troop_broughtin[5],
+			maininventory.Troop_broughtin[6]);
+	}
 }

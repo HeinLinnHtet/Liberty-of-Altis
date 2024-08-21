@@ -45,5 +45,8 @@ public:
 	//backpak
 	void backpak();
 
+	//no tank bp
+	void bakpak();
+
 	int Troop_broughtin[7] = { 0,0,0,0,0,0,0 };
 };
