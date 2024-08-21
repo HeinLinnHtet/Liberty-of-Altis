@@ -613,7 +613,18 @@ void mapmain5::map5game(int rifleamount,
 						//Check if can attack any enemies 
 						for (int j = 0; j < 10; j++) {
 							if (level5Enemy[j] != nullptr) {
-								if (CheckAttack(*level5Allies[i], *level5Enemy[j], attackDir) == true) {
+								if (level5Allies[i]->Draw_Icon() != 'A' || level5Allies[i]->Draw_Icon() != 'O'){
+									if (CheckAttack(*level5Allies[i], *level5Enemy[j], attackDir) == true) {
+										level5Allies[i]->DamageDealt(*level5Enemy[j]);
+
+										gotoxy(15, 25);
+										std::cout << "attack Dealt";
+										gotoxy(15, 26);
+										std::cout << level5Enemy[j]->GetHealth() << " " << j << " " << i;
+										break;
+									}
+								}
+								else {
 									level5Allies[i]->DamageDealt(*level5Enemy[j]);
 
 									gotoxy(15, 25);
@@ -678,7 +689,16 @@ void mapmain5::map5game(int rifleamount,
 					//Attacking, Check if can attack first 
 					for (int j = 0; j < 7; j++) {
 						if (level5Allies[j] != nullptr) {
-							if (EnemyCheckAtk(*level5Allies[j], *level5Enemy[i]) == true) {
+							if (level5Enemy[i]->Draw_Icon() != 'A' || level5Enemy[i]->Draw_Icon() != 'O'){
+								if (EnemyCheckAtk(*level5Allies[j], *level5Enemy[i]) == true) {
+									level5Enemy[i]->DamageDealt(*level5Allies[j]);
+									/*gotoxy(50, 23);
+									std::cout << "Enemy attacking " << i << " " << j << " " << level1Allies[0]->GetHealth();*/
+									Moving = false;
+									break;
+								}
+							}
+							else{
 								level5Enemy[i]->DamageDealt(*level5Allies[j]);
 								/*gotoxy(50, 23);
 								std::cout << "Enemy attacking " << i << " " << j << " " << level1Allies[0]->GetHealth();*/

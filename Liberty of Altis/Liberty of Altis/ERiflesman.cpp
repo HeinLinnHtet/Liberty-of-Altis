@@ -3,7 +3,7 @@
 ERiflesman::ERiflesman()
 {
 	Health = 25;
-	Attack = 5;
+	Attack = 10;
 	Range = 3;
 	Cost = 5;
 }

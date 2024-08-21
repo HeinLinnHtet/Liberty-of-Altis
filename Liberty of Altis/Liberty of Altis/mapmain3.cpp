@@ -288,7 +288,7 @@ void mapmain3::map3game(
 		///////////STATS
 		{
 			//display the stats
-			//allied troops live stats
+			//Enemy troops live stats
 			gotoxy(65, 1);
 			color(0x06);
 			std::cout << "Enemy Troops";
@@ -337,7 +337,7 @@ void mapmain3::map3game(
 				}
 			}
 
-			//Enemy troops
+			//Allied troops
 			gotoxy(65, numberofenemies + 3);
 			color(0x09);
 			std::cout << "Allied Troops";
@@ -564,14 +564,25 @@ void mapmain3::map3game(
 					//Check if can attack any enemies 
 					for (int j = 0; j < 10; j++) {
 						if (level3Enemy[j] != nullptr) {
-							if (CheckAttack(*level3Allies[i], *level3Enemy[j], attackDir) == true) {
-								level3Allies[i]->DamageDealt(*level3Enemy[j]);
+							if (level3Allies[i]->Draw_Icon() != 'A' || level3Allies[i]->Draw_Icon() != 'O') {
+								if (CheckAttack(*level3Allies[i], *level3Enemy[j], attackDir) == true) {
+									level3Allies[i]->DamageDealt(*level3Enemy[j]);
 
-								gotoxy(15, 25);
-								std::cout << "attack Dealt";
-								gotoxy(15, 26);
-								std::cout << level3Enemy[j]->GetHealth() << " " << j << " " << i;
-								break;
+									gotoxy(15, 25);
+									std::cout << "attack Dealt";
+									gotoxy(15, 26);
+									std::cout << level3Enemy[j]->GetHealth() << " " << j << " " << i;
+									break;
+								}
+								else {
+									level3Allies[i]->DamageDealt(*level3Enemy[j]);
+
+									gotoxy(15, 25);
+									std::cout << "attack Dealt";
+									gotoxy(15, 26);
+									std::cout << level3Enemy[j]->GetHealth() << " " << j << " " << i;
+									break;
+								}
 							}
 						}
 					}
@@ -629,7 +640,16 @@ void mapmain3::map3game(
 				//Attacking, Check if can attack first 
 				for (int j = 0; j < Allies_Limit; j++) {
 					if (level3Allies[j] != nullptr) {
-						if (EnemyCheckAtk(*level3Allies[j], *level3Enemy[i]) == true) {
+						if (level3Enemy[i]->Draw_Icon() != 'A' || level3Enemy[i]->Draw_Icon() != 'O'){
+							if (EnemyCheckAtk(*level3Allies[j], *level3Enemy[i]) == true) {
+								level3Enemy[i]->DamageDealt(*level3Allies[j]);
+								/*gotoxy(50, 23);
+								std::cout << "Enemy attacking " << i << " " << j << " " << level1Allies[0]->GetHealth();*/
+								Moving = false;
+								break;
+							}
+						}
+						else{
 							level3Enemy[i]->DamageDealt(*level3Allies[j]);
 							/*gotoxy(50, 23);
 							std::cout << "Enemy attacking " << i << " " << j << " " << level1Allies[0]->GetHealth();*/
@@ -1202,3 +1222,8 @@ bool mapmain3::GetGameOver(void)
 {
 	return GameOver;
 }
+
+
+
+
+

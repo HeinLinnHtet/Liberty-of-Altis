@@ -74,22 +74,8 @@ void map::MoveEntity(Entity& entity, char input)
 void map::SetStartPos(Entity& entity, int x, int y)
 {
 	entity.SetPosition(x, y);
-	if (entity.Draw_Icon() == 'T' || entity.Draw_Icon() == 'A')
-	{
-		gotoxy(x, y);
-		std::cout << entity.Draw_Icon();
-		gotoxy(x - 1, y);
-		std::cout << entity.Draw_Icon();
-		gotoxy(x, y - 1);
-		std::cout << entity.Draw_Icon();
-		gotoxy(x - 1, y - 1);
-		std::cout << entity.Draw_Icon();
-	}
-	else
-	{
-		gotoxy(x, y);
-		std::cout << entity.Draw_Icon();
-	}
+	gotoxy(x, y);
+	std::cout << entity.Draw_Icon();
 }
 
 //Check if entity if collide with obj 
@@ -202,36 +188,7 @@ bool map::ABorderCollision(Entity& entity, char direction)
 
 	int result = false;
 	//tanks and artilery
-	if (entity.Draw_Icon() == 'T' || entity.Draw_Icon() == 'A')
-	{
-		//Up 
-		if (direction == 'W') {
-			if (entity.PosXY.GetY() - 2 == 0) {
-				result = true;
-			}
-		}
-		//Down
-		else if (direction == 'S') {
-			if (entity.PosXY.GetY() + 1 == 19) {
-				result = true;
-			}
-		}
-		//left
-		else if (direction == 'D') {
-			if (entity.PosXY.GetX() + 1 == 54) {
-				result = true;
-			}
-		}
-		//right 
-		else if (direction == 'A') {
-			if (entity.PosXY.GetX() - 2 == 3) {
-				result = true;
-			}
-		}
-	}
-	//other troops
-	else
-	{
+
 		//Up 
 		if (direction == 'W') {
 			if (entity.PosXY.GetY() - 1 == 0) {
@@ -256,7 +213,7 @@ bool map::ABorderCollision(Entity& entity, char direction)
 				result = true;
 			}
 		}
-	}
+
 
 	return result;
 }
@@ -266,36 +223,6 @@ bool map::EBorderCollision(Entity& entity, char direction)
 
 	int result = false;
 	//tanks and artilery
-	if (entity.Draw_Icon() == 'T' || entity.Draw_Icon() == 'A')
-	{
-		//Up 
-		if (direction == '0') {
-			if (entity.PosXY.GetY() - 2 == 0) {
-				result = true;
-			}
-		}
-		//Down
-		else if (direction == '1') {
-			if (entity.PosXY.GetY() + 1 == 19) {
-				result = true;
-			}
-		}
-		//left
-		else if (direction == '2') {
-			if (entity.PosXY.GetX() + 1 == 54) {
-				result = true;
-			}
-		}
-		//right 
-		else if (direction == '3') {
-			if (entity.PosXY.GetX() - 2 == 3) {
-				result = true;
-			}
-		}
-	}
-	//other troops
-	else
-	{
 		//Up 
 		if (direction == '0') {
 			if (entity.PosXY.GetY() - 1 == 0) {
@@ -320,24 +247,7 @@ bool map::EBorderCollision(Entity& entity, char direction)
 				result = true;
 			}
 		}
-	}
+
 	return result;
 }
 
-////Check all collisions                         ////////////////////Maybe remove
-//void map::CheckAllCollide(Entity& entity, char input)
-//{
-//	//true if can move
-//	bool result = false;d
-//	
-//	//Check border collisons
-//	if (entity.BorderCollision(input) == false) {
-//		result = true;
-//	}
-//	//Check entity collisons
-//	if (entity.Entitycollision(entity, input) == false) {
-//		result = true;
-//	}
-//	
-//
-//}
