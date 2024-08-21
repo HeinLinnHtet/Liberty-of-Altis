@@ -14,7 +14,6 @@ private:
 	static walls* wallver[Amt_WallVer];
 	static walls* wallhor[Amt_WallHor];
 	static environmentalObjs* barricade[Amt_Barricade];
-	static towers* tower[Amt_Tower];
 
 
 	int alliesdead, enemiesdead;

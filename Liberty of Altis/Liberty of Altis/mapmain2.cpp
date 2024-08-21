@@ -2,13 +2,12 @@
 #include <iostream>
 #include "environmentalObjs.h"
 #include "walls.h"
-#include "towers.h"
+
 
 //environmental objects
 walls* mapmain2::wallver[Amt_WallVer];
 walls* mapmain2::wallhor[Amt_WallHor];
 environmentalObjs* mapmain2::barricade[Amt_Barricade];
-towers* mapmain2::tower[Amt_Tower];
 
 
 mapmain2::mapmain2()
@@ -63,9 +62,6 @@ void mapmain2::drawmap()
 	{
 		barricade[i] = new environmentalObjs(char(178), 30, i);
 	}
-
-	tower[0] = new towers(15, 5, 100, char(219), 12, 3);
-	tower[1] = new towers(15, 5, 100, char(219), 12, 14);
 	
 	//border
 	color(0x0F);
@@ -189,23 +185,6 @@ void mapmain2::drawmap()
 				}
 			}
 
-			//towers
-			for (int k = 0; k < 2; k++)
-			{
-				color(0x0E);
-
-				if (tower[k]->getx() == i and tower[k]->gety() == j)
-				{
-					std::cout << tower[k]->getsymbol();
-					objexist = true;
-				}
-				if (tower[k]->getx() == i - 1 and tower[k]->gety() == j)
-				{
-					std::cout << tower[k]->getsymbol();
-					objexist = true;
-				}
-			}
-
 			if (!objexist)
 			{
 				if (i == 2 && j == 8)
@@ -226,10 +205,6 @@ void mapmain2::drawmap()
 		}
 	}
 
-	/*tower[0]->attack();
-	tower[1]->attack();*/
-
-
 	//Shift to position
 	for (int i = 0; i < Amt_Barricade; i++) {
 		barricade[i]->setx(barricade[i]->getx() + 4);
@@ -245,12 +220,6 @@ void mapmain2::drawmap()
 		wallhor[i]->setx(wallhor[i]->getx() + 4);
 		wallhor[i]->sety(wallhor[i]->gety() + 1);
 	}
-	//Shift to position
-	for (int i = 0; i < Amt_Tower; i++) {
-		tower[i]->setx(tower[i]->getx() + 4);
-		tower[i]->sety(tower[i]->gety() + 1);
-	}
-
 
 }
 
@@ -476,7 +445,7 @@ void mapmain2::map2game(void)
 						bool CanMove = true;
 
 						//Check collison with borders
-						if (level2Allies[i]->BorderCollision(choice) == true) {
+						if (ABorderCollision(*level2Allies[i], choice) == true) {
 							gotoxy(15, 20);
 							std::cout << "Collided border";
 							CanMove = false;
@@ -680,7 +649,7 @@ void mapmain2::map2game(void)
 					char input = num + '0';
 
 					//Check collison with borders
-					if (level2Enemy[i]->BorderCollision(input) == true) {
+					if (EBorderCollision(*level2Enemy[i], input) == true) {
 						gotoxy(15, 20);
 						std::cout << "Enemy Collided border";
 						ValidMove = false;
@@ -816,11 +785,6 @@ void mapmain2::map2game(void)
 	for (int i = 0; i < Amt_Barricade; i++) {
 		if (barricade[i] != nullptr) {
 			delete barricade[i];
-		}
-	}
-	for (int i = 0; i < Amt_Tower; i++) {
-		if (tower[i] != nullptr) {
-			delete tower[i];
 		}
 	}
 }
@@ -1153,8 +1117,6 @@ bool mapmain2::CheckWallsAttack(Entity& main, char direction)
 			}
 		}
 	}
-
-
 
 	return attacking;
 }
