@@ -1,7 +1,6 @@
 #pragma once
 #include "environmentalObjs.h"
 #include "walls.h"
-#include "towers.h"
 #include "ARiflesman.h"
 #include "AArtillery.h"
 #include "AGrenadier.h"
@@ -45,5 +44,8 @@ public :
 
 	//enemy border collision
 	bool EBorderCollision(Entity& entity, char direction);
+
+	//Check collision between entities 
+	bool Entitycollision(Entity& other, char direction);
 };
 
