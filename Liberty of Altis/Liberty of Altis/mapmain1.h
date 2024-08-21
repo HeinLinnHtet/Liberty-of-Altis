@@ -21,6 +21,7 @@ private:
 
 	int alliesdead, enemiesdead;
 
+	gameui winloss;
 public :
 	mapmain1();
 	void drawmap();
