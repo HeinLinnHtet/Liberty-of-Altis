@@ -564,27 +564,14 @@ void mapmain3::map3game(
 					//Check if can attack any enemies 
 					for (int j = 0; j < 10; j++) {
 						if (level3Enemy[j] != nullptr) {
-							if (level3Allies[i]->Draw_Icon() != 'A' || level3Allies[i]->Draw_Icon() != 'O') {
-								if (CheckAttack(*level3Allies[i], *level3Enemy[j], attackDir) == true) {
-									level3Allies[i]->DamageDealt(*level3Enemy[j]);
+							if (CheckAttack(*level3Allies[i], *level3Enemy[j], attackDir) == true) {
+								level3Allies[i]->DamageDealt(*level3Enemy[j]);
 
-									gotoxy(15, 25);
-									std::cout << "attack Dealt";
-									gotoxy(15, 26);
-									std::cout << level3Enemy[j]->GetHealth() << " " << j << " " << i;
-									break;
-								}
-								else {
-									if (CheckAttack(*level3Allies[i], *level3Enemy[j], attackDir) == true) {
-										level3Allies[i]->DamageDealt(*level3Enemy[j]);
-
-										gotoxy(15, 25);
-										std::cout << "attack Dealt";
-										gotoxy(15, 26);
-										std::cout << level3Enemy[j]->GetHealth() << " " << j << " " << i;
-										break;
-									}
-								}
+								gotoxy(15, 25);
+								std::cout << "attack Dealt";
+								gotoxy(15, 26);
+								std::cout << level3Enemy[j]->GetHealth() << " " << j << " " << i;
+								break;
 							}
 						}
 					}

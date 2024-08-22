@@ -48,7 +48,6 @@
     <ClInclude Include="mapmain5.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="shop.h" />
-    <ClInclude Include="towers.h" />
     <ClInclude Include="walls.h" />
   </ItemGroup>
   <ItemGroup>
@@ -82,7 +81,6 @@
     <ClCompile Include="mapmain5.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="shop.cpp" />
-    <ClCompile Include="towers.cpp" />
     <ClCompile Include="walls.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

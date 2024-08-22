@@ -62,7 +62,7 @@ void shop::shopping()
 		int hello;
 	
 		std::cout << "Below you can purchase needed units for your missions\n";
-		std::cout << "1. Rifleman\n2. Machinegunner\n3. Grenaider\n4. Mortarman\n5. Artillery\n6. Tank\n7. IFV\n\n";
+		std::cout << "1. Rifleman ($5)\n2. Machinegunner ($7)\n3. Grenaider ($6)\n4. Mortarman ($6)\n5. Artillery ($15)\n6. Tank ($15)\n7. IFV ($10)\n\n";
 		std::cout << "You have " << cash << " cash in your account. \n\n";
 		std::cout << "Please choose which unit to purchase: ";
 		std::cin >> unitbuy;

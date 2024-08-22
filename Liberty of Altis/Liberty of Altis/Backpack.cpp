@@ -109,107 +109,121 @@ void Backpack::backpak()
 	//Code will go on while the troop limit is less than 15
 
 	if (trooplimit < 15) {
-		std::cout << "enter the riflemans you will bring: ";
-		std::cin >> jo;
-		Troop_broughtin[0] = jo;
-		if (Troop_broughtin[0] > Troops[0]) {
-			std::cout << "cannot!";
-		}
-		trooplimit = trooplimit + jo;
-		if (trooplimit > 15) {
-			Troop_broughtin[0] = Troop_broughtin[0] - (trooplimit - 15);
-			trooplimit = 15;
-			std::cout << std::endl << "Unable to create unit due to maximum unit limit";
-		}
-	}
-
-	if (trooplimit < 15) {
-		std::cout << "enter the machinegunner you will bring: ";
-		std::cin >> jo1;
-		Troop_broughtin[1] = jo1;
-		if (Troop_broughtin[1] > Troops[1]) {
-			std::cout << "cannot!";
-		}
-		trooplimit = trooplimit + jo1;
-		if (trooplimit > 15) {
-			Troop_broughtin[1] = Troop_broughtin[1] - (trooplimit - 15);
-			trooplimit = 15;
-			std::cout << std::endl << "Unable to create unit due to maximum unit limit";
+		if (Troops[0] != 0) {
+			std::cout << "enter the riflemans you will bring: ";
+			std::cin >> jo;
+			Troop_broughtin[0] = jo;
+			if (Troop_broughtin[0] > Troops[0]) {
+				std::cout << "cannot!";
+			}
+			trooplimit = trooplimit + jo;
+			if (trooplimit > 15) {
+				Troop_broughtin[0] = Troop_broughtin[0] - (trooplimit - 15);
+				trooplimit = 15;
+				std::cout << std::endl << "Unable to create unit due to maximum unit limit";
+			}
 		}
 	}
 
 	if (trooplimit < 15) {
-		std::cout << "enter grenaiders: ";
-		std::cin >> jo2;
-		Troop_broughtin[2] = jo2;
-		if (Troop_broughtin[2] > Troops[2]) {
-			std::cout << "cannot!";
-		}
-		trooplimit = trooplimit + jo2;
-		if (trooplimit > 15) {
-			Troop_broughtin[2] = Troop_broughtin[2] - (trooplimit - 15);
-			trooplimit = 15;
-			std::cout << std::endl << "Unable to create unit due to maximum unit limit";
-		}
-	}
-
-	if (trooplimit < 15) {
-		std::cout << "enter mortarman: ";
-		std::cin >> jo3;
-		Troop_broughtin[3] = jo3;
-		if (Troop_broughtin[3] > Troops[3]) {
-			std::cout << "cannot!";
-		}
-		trooplimit = trooplimit + jo3;
-		if (trooplimit > 15) {
-			Troop_broughtin[3] = Troop_broughtin[3] - (trooplimit - 15);
-			trooplimit = 15;
-			std::cout << std::endl << "Unable to create unit due to maximum unit limit";
+		if (Troops[1] != 0) {
+			std::cout << "enter the machinegunner you will bring: ";
+			std::cin >> jo1;
+			Troop_broughtin[1] = jo1;
+			if (Troop_broughtin[1] > Troops[1]) {
+				std::cout << "cannot!";
+			}
+			trooplimit = trooplimit + jo1;
+			if (trooplimit > 15) {
+				Troop_broughtin[1] = Troop_broughtin[1] - (trooplimit - 15);
+				trooplimit = 15;
+				std::cout << std::endl << "Unable to create unit due to maximum unit limit";
+			}
 		}
 	}
 
 	if (trooplimit < 15) {
-		std::cout << "enter artillery: ";
-		std::cin >> jo4;
-		Troop_broughtin[4] = jo4;
-		if (Troop_broughtin[4] > Troops[4]) {
-			std::cout << "cannot!";
-		}
-		trooplimit = trooplimit + jo4;
-		if (trooplimit > 15) {
-			Troop_broughtin[4] = Troop_broughtin[4] - (trooplimit - 15);
-			trooplimit = 15;
-			std::cout << std::endl << "Unable to create unit due to maximum unit limit";
-		}
-	}
-
-	if (trooplimit < 15) {
-		std::cout << "enter Tanks: ";
-		std::cin >> jo5;
-		Troop_broughtin[5] = jo5;
-		if (Troop_broughtin[5] > Troops[5]) {
-			std::cout << "cannot!";
-		}
-		trooplimit = trooplimit + jo5;
-		if (trooplimit > 15) {
-			Troop_broughtin[5] = Troop_broughtin[5] - (trooplimit - 15);
-			trooplimit = 15;
-			std::cout << std::endl << "Unable to create unit due to maximum unit limit";
+		if (Troops[2] != 0) {
+			std::cout << "enter grenaiders: ";
+			std::cin >> jo2;
+			Troop_broughtin[2] = jo2;
+			if (Troop_broughtin[2] > Troops[2]) {
+				std::cout << "cannot!";
+			}
+			trooplimit = trooplimit + jo2;
+			if (trooplimit > 15) {
+				Troop_broughtin[2] = Troop_broughtin[2] - (trooplimit - 15);
+				trooplimit = 15;
+				std::cout << std::endl << "Unable to create unit due to maximum unit limit";
+			}
 		}
 	}
 
 	if (trooplimit < 15) {
-		std::cout << "enter IFVs: ";
-		std::cin >> jo6;
-		Troop_broughtin[6] = jo6;
-		if (Troop_broughtin[6] > Troops[6]) {
-			std::cout << "cannot!";
+		if (Troops[3] != 0) {
+			std::cout << "enter mortarman: ";
+			std::cin >> jo3;
+			Troop_broughtin[3] = jo3;
+			if (Troop_broughtin[3] > Troops[3]) {
+				std::cout << "cannot!";
+			}
+			trooplimit = trooplimit + jo3;
+			if (trooplimit > 15) {
+				Troop_broughtin[3] = Troop_broughtin[3] - (trooplimit - 15);
+				trooplimit = 15;
+				std::cout << std::endl << "Unable to create unit due to maximum unit limit";
+			}
 		}
-		trooplimit = trooplimit + jo6;
-		if (trooplimit > 15) {
-			Troop_broughtin[6] = Troop_broughtin[6] - (trooplimit - 15);
-			trooplimit = 15;
-			std::cout << std::endl << "Unable to create unit due to maximum unit limit";
+	}
+
+	if (trooplimit < 15) {
+		if (Troops[4] != 0){
+			std::cout << "enter artillery: ";
+			std::cin >> jo4;
+			Troop_broughtin[4] = jo4;
+			if (Troop_broughtin[4] > Troops[4]) {
+				std::cout << "cannot!";
+			}
+			trooplimit = trooplimit + jo4;
+			if (trooplimit > 15) {
+				Troop_broughtin[4] = Troop_broughtin[4] - (trooplimit - 15);
+				trooplimit = 15;
+				std::cout << std::endl << "Unable to create unit due to maximum unit limit";
+			}
+		}
+	}
+
+	if (trooplimit < 15) {
+		if (Troops[5] != 0){
+			std::cout << "enter Tanks: ";
+			std::cin >> jo5;
+			Troop_broughtin[5] = jo5;
+			if (Troop_broughtin[5] > Troops[5]) {
+				std::cout << "cannot!";
+			}
+			trooplimit = trooplimit + jo5;
+			if (trooplimit > 15) {
+				Troop_broughtin[5] = Troop_broughtin[5] - (trooplimit - 15);
+				trooplimit = 15;
+				std::cout << std::endl << "Unable to create unit due to maximum unit limit";
+			}
+		}
+	}
+
+	if (trooplimit < 15) {
+		if (Troops[6] != 0){
+			std::cout << "enter IFVs: ";
+			std::cin >> jo6;
+			Troop_broughtin[6] = jo6;
+			if (Troop_broughtin[6] > Troops[6]) {
+				std::cout << "cannot!";
+			}
+			trooplimit = trooplimit + jo6;
+			if (trooplimit > 15) {
+				Troop_broughtin[6] = Troop_broughtin[6] - (trooplimit - 15);
+				trooplimit = 15;
+				std::cout << std::endl << "Unable to create unit due to maximum unit limit";
+			}
 		}
 	}
 

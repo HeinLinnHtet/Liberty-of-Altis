@@ -289,9 +289,6 @@ void mapmain2::map2game(void)
 
 	while (test == false) {
 
-		enemiesdead = 0;
-		alliesdead = 0;
-
 		int enemycposx, enemycposy;
 
 		///////////STATS
