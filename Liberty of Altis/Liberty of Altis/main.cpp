@@ -24,11 +24,11 @@ int main(void) {
 	mapmain4 testlvl4;
 	mapmain5 testlvl5;
 
-	/*cutscene.cutscene1();
+	cutscene.cutscene1();
 	system("CLS");
 
 	testlvl1.map1game();
-	system("CLS");*/
+	system("CLS");
 
 	cutscene.cutscene2();
 	system("CLS");
