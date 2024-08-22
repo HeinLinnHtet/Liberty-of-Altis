@@ -299,6 +299,83 @@ int fireypos2[309]
 	11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
 	12,12,12,12,12,12,12
 };
+int citybuildingxpos[481]
+{
+	58,59,60,
+	58,59,60,
+	8,7,9,10,29,30,31,32,33,58,59,60,
+	8,7,9,10,11,12,27,29,28,30,31,32,33,58,59,60,
+	8,7,9,10,11,12,27,29,28,30,31,32,33,35,34,36,37,55,56,57,58,59,60,
+	8,7,9,10,11,12,13,25,26,27,29,28,30,31,32,33,35,34,36,38,46,47,48,55,56,57,58,59,60,61,62,
+	3,4,8,7,9,10,11,12,13,25,26,27,29,28,30,31,32,33,35,34,36,39,46,47,48,55,56,57,58,59,60,61,62,
+	2,3,4,5,6,8,7,9,10,11,12,13,14,24,25,26,27,29,28,30,31,32,35,34,36,37,38,40,39,45,46,47,48,55,56,57,58,59,60,61,62,63,64,
+	1,2,3,4,5,6,8,7,9,10,11,12,13,14,24,25,23,26,27,29,28,30,31,32,35,34,36,40,46,47,48,55,56,57,58,59,60,61,62,63,64,
+	1,2,3,4,5,6,8,7,9,10,11,12,13,14,19,21,20,22,24,25,23,26,27,29,28,35,34,36,40,46,47,48,55,56,57,58,59,60,61,62,63,64,
+	1,2,3,4,5,6,8,7,9,10,11,12,13,14,19,21,20,22,24,25,23,26,27,29,28,31,32,33,35,34,36,37,38,40,39,42,43,44,45,46,47,48,55,56,57,58,59,60,61,62,63,64,70,71,72,73,74,76,75,77,78,
+	1,2,3,4,5,6,8,7,9,10,11,12,13,14,19,21,20,22,24,25,23,26,27,29,28,31,32,33,35,34,36,40,42,43,44,46,47,48,55,56,57,58,59,60,61,62,63,64,73,74,76,75,77,78,
+	1,2,3,4,5,6,8,7,9,10,11,12,13,14,19,21,20,22,24,25,23,26,27,29,28,31,32,33,35,34,36,40,41,42,46,47,48,55,56,57,58,59,60,61,62,63,64,67,73,74,76,75,77,78,
+	1,2,3,4,5,6,8,7,9,10,11,12,13,14,19,21,20,22,24,25,23,26,27,29,28,31,32,33,35,34,36,37,38,40,39,41,42,43,44,45,46,47,48,55,56,57,58,59,60,61,62,63,64,67,68,69,70,71,72,73,74,76,75,77,78
+
+};
+
+int citybuildingypos[481]
+{
+	2, 2, 2,
+	3, 3, 3,
+	4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+	5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+	6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+	7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+	8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+	9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,
+	10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+	11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11,
+	12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12,
+	13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13,
+	14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14,
+	15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15
+
+};
+
+int scene4firexpos[230] =
+{
+	6,62,
+	5,6,59,60,61,62,
+	3,4,5,6,7,57,58,59,60,61,
+	3,4,5,6,8,7,30,57,58,59,60,
+	3,4,5,6,8,7,9,30,31,32,57,58,59,60,
+	3,4,5,6,8,7,9,10,31,32,51,57,58,59,60,
+	3,4,5,6,8,7,9,10,29,28,30,31,32,50,51,
+	4,5,6,7,29,28,30,31,32,33,34,50,51,53,52,
+	21,20,22,26,27,29,28,30,31,32,33,35,34,36,43,44,45,46,47,48,49,50,51,53,52,77,
+	18,17,19,21,20,22,24,23,26,27,29,28,30,31,32,33,35,34,36,43,44,45,46,47,48,49,50,51,52,77,78,
+	18,17,19,21,20,22,24,25,23,26,27,29,28,30,31,32,33,34,46,47,48,49,50,51,52,71,76,77,78,
+	18,17,19,21,20,22,24,25,23,26,45,46,47,48,49,50,51,52,72,76,75,77,78,
+	21,20,22,24,25,23,26,27,45,46,47,76,75,77,78,
+	18,19,21,20,22,24,25,23,26,41,42,
+	3,18,19,20,34,72,
+	61
+};
+
+int scene4fireypos[230] =
+{
+	3,3,
+	4,4,4,4,4,4,
+	5,5,5,5,5,5,5,5,5,5,
+	6,6,6,6,6,6,6,6,6,6,6,
+	7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+	8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+	9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,
+	10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,
+	11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+	12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
+	13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,
+	14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,
+	15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,
+	16,16,16,16,16,16,16,16,16,16,16,
+	17,17,17,17,17,17,
+	18
+};
 
 gameui::gameui()
 {
@@ -930,6 +1007,45 @@ void gameui::cutscene4() {
 }
 
 void gameui::cutscene5() {
+
+	//buildings
+	for (int i = 0; i < 481; i++)
+	{
+		color(0x08);
+		gotoxy(citybuildingxpos[i] + 20, citybuildingypos[i]);
+		std::cout << char(219);
+	}
+
+	for (int i = 0; i < 79; i++)
+	{
+		if (i < 53 || i > 56)
+		{
+			color(0x07);
+			gotoxy(i + 20, 16);
+			std::cout << char(219);
+		}
+		if (i < 50 || i > 54)
+		{
+			color(0x0F);
+			gotoxy(i + 20, 17);
+			std::cout << char(219);
+		}
+		if (i < 47 || i > 50)
+		{
+			color(0x07);
+			gotoxy(i + 20, 18);
+			std::cout << char(219);
+		}
+	}
+	//fire
+	for (int i = 0; i < 230; i++)
+	{
+		color(0x0C);
+		gotoxy(scene4firexpos[i] + 20, scene4fireypos[i]);
+		std::cout << char(177);
+	}
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+
 	std::string line5[] = {
 		"Gunfire is heard all over the wartorn city, with many bulidings damaged and destroyed.....",
 		"With enemy forces routed and either destroyed or retreating back to the last government stronghold, the government parliment, the city is now liberates....",
@@ -939,13 +1055,6 @@ void gameui::cutscene5() {
 		"Johan: what?.....that can't be",
 		"thats impossible.....no...no!"
 		"It seems that in war, no one is immune from the scythe of death....."
-
-		"!?!?!?!?!!??",
-		"Somehow in the middle of the a full blown war, not a single part of the parliment is damaged....",
-		"Musiala: Commander! Our forces have routed the enemy, and their remaining forces are entrenched at the parliment buliding",
-		"We have intel that Adriaan Helt remains there commanding",
-
-		"Johan went into the parliment clearing all the military officials one by one... until one remains...."
 	};
 
 	int delay = 50;
@@ -959,164 +1068,236 @@ void gameui::cutscene5() {
 		gotoxy(x, y);
 		std::cout << std::string(text.length(), ' ');
 	}
-	/////////////////////////////////frame 1//////////////////////////////////////////
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+
 	system("CLS");
-	//floor
-	for (int i = 0; i < 50; i++)
+
+	//main
+	for (int i = 0; i < 74; i++)
 	{
-		for (int j = 0; j < 18; j++)
+		for (int j = 0; j < 13; j++)
 		{
-			gotoxy(i + 20, j);
 			color(0x0C);
+			if (i == 0 || i == 73)
+			{
+				color(0x04);
+			}
+			gotoxy(i + 3 + 20, j + 6);
 			std::cout << char(219);
 		}
 	}
-
-	//chairs
-	color(0x0E);
-	for (int i = 11; i < 36; i++)
+	//dark roof line
+	for (int i = 0; i < 72; i++)
 	{
-		gotoxy(i + 20, 1);
-		std::cout << char(219);
-		gotoxy(i + 20, 16);
+		color(0x06);
+		gotoxy(i + 4 + 20, 5);
 		std::cout << char(219);
 	}
-	for (int i = 14; i < 33; i++)
+	for (int i = 0; i < 35; i++)
 	{
-		gotoxy(i + 20, 3);
+		color(0x06);
+		gotoxy(i + 22 + 20, 2);
 		std::cout << char(219);
-		gotoxy(i + 20, 14);
+	}
+	//light roof line
+	for (int i = 0; i < 17; i++)
+	{
+		color(0x0E);
+		gotoxy(i + 3 + 20, 6);
+		std::cout << char(219);
+
+		gotoxy(i + 60 + 20, 6);
+		std::cout << char(219);
+	}
+	gotoxy(19 + 20, 5);
+	std::cout << char(219);
+	gotoxy(19 + 20, 4);
+	std::cout << char(219);
+
+	gotoxy(59 + 20, 6);
+	std::cout << char(219);
+	gotoxy(59 + 20, 5);
+	std::cout << char(219);
+	gotoxy(59 + 20, 4);
+	std::cout << char(219);
+	for (int i = 0; i < 39; i++)
+	{
+		gotoxy(i + 20 + 20, 3);
+		std::cout << char(219);
+
+		gotoxy(i + 20 + 20, 4);
+		std::cout << char(219);
+	}
+
+	//emblem
+	for (int i = 0; i < 6; i++)
+	{
+		color(0x08);
+		gotoxy(i + 37 + 20, 3);
+		std::cout << char(219);
+
+		gotoxy(i + 37 + 20, 4);
+		std::cout << char(219);
+
+		gotoxy(i + 37 + 20, 5);
 		std::cout << char(219);
 	}
 	for (int i = 0; i < 4; i++)
 	{
-		gotoxy(i + 7 + 20, 2);
-		std::cout << char(219);
-		gotoxy(i + 36 + 20, 2);
-		std::cout << char(219);
-		gotoxy(i + 10 + 20, 4);
-		std::cout << char(219);
-		gotoxy(i + 33 + 20, 4);
-		std::cout << char(219);
-		gotoxy(i + 41 + 20, 3);
-		std::cout << char(219);
-
-		gotoxy(i + 7 + 20, 15);
-		std::cout << char(219);
-		gotoxy(i + 36 + 20, 15);
-		std::cout << char(219);
-		gotoxy(i + 10 + 20, 13);
-		std::cout << char(219);
-		gotoxy(i + 33 + 20, 13);
-		std::cout << char(219);
-		gotoxy(i + 41 + 20, 14);
+		gotoxy(i + 38 + 20, 6);
 		std::cout << char(219);
 	}
+
 	for (int i = 0; i < 2; i++)
 	{
-		gotoxy(i + 44 + 20, 4);
+		color(0x06);
+		gotoxy(i + 39 + 20, 4);
 		std::cout << char(219);
-		gotoxy(i + 44 + 20, 5);
-		std::cout << char(219);
-
-		gotoxy(i + 44 + 20, 12);
-		std::cout << char(219);
-		gotoxy(i + 44 + 20, 13);
+		gotoxy(i + 39 + 20, 5);
 		std::cout << char(219);
 	}
 
-	//walls
-	color(0x08);
-	for (int i = 0; i < 50; i++)
-	{
-		gotoxy(i + 20, 0);
-		std::cout << char(219);
-		gotoxy(i + 20, 17);
-		std::cout << char(219);
-	}
+	//pillars
 	for (int i = 0; i < 6; i++)
 	{
-		gotoxy(49 + 20, i + 1);
-		std::cout << char(219);
-		gotoxy(49 + 20, i + 11);
-		std::cout << char(219);
+		for (int j = 0; j < 11; j++)
+		{
+			color(0x04);
+			gotoxy(i + 5 + 20, 8);
+			std::cout << char(219);
+
+			gotoxy(i + 13 + 20, 8);
+			std::cout << char(219);
+
+			gotoxy(i + 21 + 20, 8);
+			std::cout << char(219);
+
+			gotoxy(i + 29 + 20, 8);
+			std::cout << char(219);
+
+			gotoxy(i + 37 + 20, 8);
+			std::cout << char(219);
+
+			gotoxy(i + 45 + 20, 8);
+			std::cout << char(219);
+
+			gotoxy(i + 53 + 20, 8);
+			std::cout << char(219);
+
+			gotoxy(i + 61 + 20, 8);
+			std::cout << char(219);
+
+			gotoxy(i + 69 + 20, 8);
+			std::cout << char(219);
+
+			if (i != 2 && i != 3)
+			{
+				gotoxy(i + 5 + 20, j + 8);
+				std::cout << char(219);
+
+				gotoxy(i + 13 + 20, j + 8);
+				std::cout << char(219);
+
+				gotoxy(i + 21 + 20, j + 8);
+				std::cout << char(219);
+
+				gotoxy(i + 29 + 20, j + 8);
+				std::cout << char(219);
+
+				gotoxy(i + 37 + 20, j + 8);
+				std::cout << char(219);
+
+				gotoxy(i + 45 + 20, j + 8);
+				std::cout << char(219);
+
+				gotoxy(i + 53 + 20, j + 8);
+				std::cout << char(219);
+
+				gotoxy(i + 61 + 20, j + 8);
+				std::cout << char(219);
+
+				gotoxy(i + 69 + 20, j + 8);
+				std::cout << char(219);
+			}
+		}
 	}
-	for (int i = 0; i < 17; i++)
+
+	//flagpole
+	for (int i = 0; i < 11; i++)
 	{
-		gotoxy(0 + 20, i + 1);
+		color(0x08);
+
+		gotoxy(35 + 20, 8 + i);
+		std::cout << char(219);
+
+		gotoxy(43 + 20, 8 + i);
 		std::cout << char(219);
 	}
 
-	//door
-	color(0x0F);
-	gotoxy(48 + 20, 5);
-	std::cout << char(219);
-	gotoxy(48 + 20, 6);
-	std::cout << char(219);
-	gotoxy(48 + 20, 11);
-	std::cout << char(219);
-	gotoxy(48 + 20, 12);
-	std::cout << char(219);
-
-	//table on  frame 1
-	for (int i = 0; i < 5; i++)
+	//flag one
+	for (int i = 0; i < 2; i++)
 	{
-		color(0x0E);
-		gotoxy(i + 6 + 20, 7);
+		color(0x0D);
+		gotoxy(32 + 20 + i, 8);
 		std::cout << char(219);
-		gotoxy(i + 6 + 20, 8);
+
+		gotoxy(33 + 20 + i, 8);
 		std::cout << char(219);
-		gotoxy(i + 6 + 20, 9);
+
+		gotoxy(31 + 20 + i, 9);
 		std::cout << char(219);
-		gotoxy(i + 6 + 20, 10);
+
+		gotoxy(33 + 20 + i, 9);
+		std::cout << char(219);
+
+		gotoxy(31 + 20 + i, 10);
+		std::cout << char(219);
+
+	}
+
+	//flag two
+	for (int i = 0; i < 2; i++)
+	{
+		color(0x06);
+		gotoxy(44 + 20 + i, 8);
+		std::cout << char(219);
+
+		gotoxy(45 + 20 + i, 8);
+		std::cout << char(219);
+
+		gotoxy(46 + 20 + i, 9);
+		std::cout << char(219);
+
+		color(0x09);
+		gotoxy(44 + 20 + i, 9);
+		std::cout << char(219);
+
+		gotoxy(46 + 20 + i, 10);
+		std::cout << char(219);
+
+	}
+	color(0x07);
+	gotoxy(32 + 20, 9);
+	std::cout << char(219);
+
+	gotoxy(46 + 20, 9);
+	std::cout << char(219);
+
+	//foundation
+	for (int i = 0; i < 76; i++)
+	{
+		color(0x08);
+		gotoxy(i + 2 + 20, 19);
 		std::cout << char(219);
 	}
-	//dictator
-	color(0x06);
-	gotoxy(4 + 20, 8);
-	std::cout << "H";
-	//johan
-	color(0x09);
-	gotoxy(49 + 20, 8);
-	std::cout << "J";
 
-	/////////////////////////////////frame 2//////////////////////////////////////////
 	std::this_thread::sleep_for(std::chrono::seconds(2));
-	//johan
-	color(0x0C);
-	gotoxy(49 + 20, 8);
-	std::cout << char(219);
-
-	//dictator
-	color(0x06);
-	gotoxy(4 + 20, 8);
-	std::cout << "H";
-	//johan
-	color(0x09);
-	gotoxy(47 + 20, 8);
-	std::cout << "J";
-
-	/////////////////////////////////frame 3//////////////////////////////////////////
-	//floor
-	std::this_thread::sleep_for(std::chrono::seconds(2));
-	//johan
-	color(0x0C);
-	gotoxy(47 + 20, 8);
-	std::cout << char(219);
-	//dictator
-	color(0x06);
-	gotoxy(4 + 20, 8);
-	std::cout << "H";
-	//johan
-	color(0x09);
-	gotoxy(42 + 20, 8);
-	std::cout << "J";
 
 	std::string cutscene5line2[] = {
-		"Rikyar Adriaan Helt : Pleasure to meet you Commander Johan Heisenburg",
-		"Rikyar Adriaan Helt : Unfortunately, my army has been defeated by your militia... one of the strongest armies in Africa defeated that easily... impressive I'd say...",
-		"Rikyar Adriaan Helt : If you're here to kill me, don't think I'll surrender to someone like you....",
-		"Rikyar Adriaan Helt : DEATH BEFORE DISHONOR!!!!"
+		"!?!?!?!?!!??",
+		"Somehow in the middle of the a full blown war, not a single part of the parliment is damaged....",
+		"Musiala: Commander! Our forces have routed the enemy, and their remaining forces are entrenched at the parliment buliding",
+		"We have intel that Adriaan Helt remains there commanding",
 	};
 
 	for (const auto& text : cutscene5line2) {
@@ -1128,404 +1309,12 @@ void gameui::cutscene5() {
 		gotoxy(x, y);
 		std::cout << std::string(text.length(), ' ');
 	}
-
-	/////////////////////////////////frame 4//////////////////////////////////////////
-	std::this_thread::sleep_for(std::chrono::seconds(1));
-	system("CLS");
-	//floor
-	for (int i = 0; i < 50; i++)
-	{
-		for (int j = 0; j < 18; j++)
-		{
-			gotoxy(i + 20, j);
-			color(0x0C);
-			std::cout << char(219);
-		}
-	}
-	//chairs
-	color(0x0E);
-	for (int i = 11; i < 36; i++)
-	{
-		gotoxy(i + 20, 1);
-		std::cout << char(219);
-		gotoxy(i + 20, 16);
-		std::cout << char(219);
-	}
-	for (int i = 14; i < 33; i++)
-	{
-		gotoxy(i + 20, 3);
-		std::cout << char(219);
-		gotoxy(i + 20, 14);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 4; i++)
-	{
-		gotoxy(i + 7 + 20, 2);
-		std::cout << char(219);
-		gotoxy(i + 36 + 20, 2);
-		std::cout << char(219);
-		gotoxy(i + 10 + 20, 4);
-		std::cout << char(219);
-		gotoxy(i + 33 + 20, 4);
-		std::cout << char(219);
-		gotoxy(i + 41 + 20, 3);
-		std::cout << char(219);
-
-		gotoxy(i + 7 + 20, 15);
-		std::cout << char(219);
-		gotoxy(i + 36 + 20, 15);
-		std::cout << char(219);
-		gotoxy(i + 10 + 20, 13);
-		std::cout << char(219);
-		gotoxy(i + 33 + 20, 13);
-		std::cout << char(219);
-		gotoxy(i + 41 + 20, 14);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 2; i++)
-	{
-		gotoxy(i + 44 + 20, 4);
-		std::cout << char(219);
-		gotoxy(i + 44 + 20, 5);
-		std::cout << char(219);
-
-		gotoxy(i + 44 + 20, 12);
-		std::cout << char(219);
-		gotoxy(i + 44 + 20, 13);
-		std::cout << char(219);
-	}
-	//walls
-	for (int i = 0; i < 50; i++)
-	{
-		color(0x08);
-		gotoxy(i + 20, 0);
-		std::cout << char(219);
-		gotoxy(i + 20, 17);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 6; i++)
-	{
-		gotoxy(49 + 20, i + 1);
-		std::cout << char(219);
-		gotoxy(49 + 20, i + 11);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 17; i++)
-	{
-		gotoxy(0 + 20, i + 1);
-		std::cout << char(219);
-	}
-
-	//door
-	color(0x0F);
-	gotoxy(48 + 20, 5);
-	std::cout << char(219);
-	gotoxy(48 + 20, 6);
-	std::cout << char(219);
-	gotoxy(48 + 20, 11);
-	std::cout << char(219);
-	gotoxy(48 + 20, 12);
-	std::cout << char(219);
-
-	//table on frame 2
-	for (int i = 0; i < 5; i++)
-	{
-		color(0x0E);
-		gotoxy(i + 15 + 20, 7);
-		std::cout << char(219);
-		gotoxy(i + 15 + 20, 8);
-		std::cout << char(219);
-		gotoxy(i + 15 + 20, 9);
-		std::cout << char(219);
-		gotoxy(i + 15 + 20, 10);
-		std::cout << char(219);
-	}
-	//dictator
-	color(0x06);
-	gotoxy(4 + 20, 8);
-	std::cout << "H";
-	//johan
-	color(0x09);
-	gotoxy(42 + 20, 8);
-	std::cout << "J";
-
-	/////////////////////////////////frame 5//////////////////////////////////////////
 	std::this_thread::sleep_for(std::chrono::seconds(1));
 	system("CLS");
 
-	//floor
-	for (int i = 0; i < 50; i++)
+	std::string cutscene5line3[] = 
 	{
-		for (int j = 0; j < 18; j++)
-		{
-			gotoxy(i + 20, j);
-			color(0x0C);
-			std::cout << char(219);
-		}
-	}
-
-	//chairs
-	color(0x0E);
-	for (int i = 11; i < 36; i++)
-	{
-		gotoxy(i + 20, 1);
-		std::cout << char(219);
-		gotoxy(i + 20, 16);
-		std::cout << char(219);
-	}
-	for (int i = 14; i < 33; i++)
-	{
-		gotoxy(i + 20, 3);
-		std::cout << char(219);
-		gotoxy(i + 20, 14);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 4; i++)
-	{
-		gotoxy(i + 7 + 20, 2);
-		std::cout << char(219);
-		gotoxy(i + 36 + 20, 2);
-		std::cout << char(219);
-		gotoxy(i + 10 + 20, 4);
-		std::cout << char(219);
-		gotoxy(i + 33 + 20, 4);
-		std::cout << char(219);
-		gotoxy(i + 41 + 20, 3);
-		std::cout << char(219);
-
-		gotoxy(i + 7 + 20, 15);
-		std::cout << char(219);
-		gotoxy(i + 36 + 20, 15);
-		std::cout << char(219);
-		gotoxy(i + 10 + 20, 13);
-		std::cout << char(219);
-		gotoxy(i + 33 + 20, 13);
-		std::cout << char(219);
-		gotoxy(i + 41 + 20, 14);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 2; i++)
-	{
-		gotoxy(i + 44 + 20, 4);
-		std::cout << char(219);
-		gotoxy(i + 44 + 20, 5);
-		std::cout << char(219);
-
-		gotoxy(i + 44 + 20, 12);
-		std::cout << char(219);
-		gotoxy(i + 44 + 20, 13);
-		std::cout << char(219);
-	}
-	//walls
-	for (int i = 0; i < 50; i++)
-	{
-		color(0x08);
-		gotoxy(i + 20, 0);
-		std::cout << char(219);
-		gotoxy(i + 20, 17);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 6; i++)
-	{
-		gotoxy(49 + 20, i + 1);
-		std::cout << char(219);
-		gotoxy(49 + 20, i + 11);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 17; i++)
-	{
-		gotoxy(0 + 20, i + 1);
-		std::cout << char(219);
-	}
-
-	//door
-	color(0x0F);
-	gotoxy(48 + 20, 5);
-	std::cout << char(219);
-	gotoxy(48 + 20, 6);
-	std::cout << char(219);
-	gotoxy(48 + 20, 11);
-	std::cout << char(219);
-	gotoxy(48 + 20, 12);
-	std::cout << char(219);
-
-	//table frame 3
-	for (int i = 0; i < 5; i++)
-	{
-		color(0x0E);
-		gotoxy(i + 30 + 20, 7);
-		std::cout << char(219);
-		gotoxy(i + 30 + 20, 8);
-		std::cout << char(219);
-		gotoxy(i + 30 + 20, 9);
-		std::cout << char(219);
-		gotoxy(i + 30 + 20, 10);
-		std::cout << char(219);
-	}
-	//dictator
-	color(0x06);
-	gotoxy(4 + 20, 8);
-	std::cout << "H";
-	//johan
-	color(0x09);
-	gotoxy(42 + 20, 8);
-	std::cout << "J";
-
-	/////////////////////////////////frame 6//////////////////////////////////////////
-	std::this_thread::sleep_for(std::chrono::seconds(1));
-	system("CLS");
-	//floor
-	for (int i = 0; i < 50; i++)
-	{
-		for (int j = 0; j < 18; j++)
-		{
-			gotoxy(i + 20, j);
-			color(0x0C);
-			std::cout << char(219);
-		}
-	}
-	//chairs
-	color(0x0E);
-	for (int i = 11; i < 36; i++)
-	{
-		gotoxy(i + 20, 1);
-		std::cout << char(219);
-		gotoxy(i + 20, 16);
-		std::cout << char(219);
-	}
-	for (int i = 14; i < 33; i++)
-	{
-		gotoxy(i + 20, 3);
-		std::cout << char(219);
-		gotoxy(i + 20, 14);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 4; i++)
-	{
-		gotoxy(i + 7 + 20, 2);
-		std::cout << char(219);
-		gotoxy(i + 36 + 20, 2);
-		std::cout << char(219);
-		gotoxy(i + 10 + 20, 4);
-		std::cout << char(219);
-		gotoxy(i + 33 + 20, 4);
-		std::cout << char(219);
-		gotoxy(i + 41 + 20, 3);
-		std::cout << char(219);
-
-		gotoxy(i + 7 + 20, 15);
-		std::cout << char(219);
-		gotoxy(i + 36 + 20, 15);
-		std::cout << char(219);
-		gotoxy(i + 10 + 20, 13);
-		std::cout << char(219);
-		gotoxy(i + 33 + 20, 13);
-		std::cout << char(219);
-		gotoxy(i + 41 + 20, 14);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 2; i++)
-	{
-		gotoxy(i + 44 + 20, 4);
-		std::cout << char(219);
-		gotoxy(i + 44 + 20, 5);
-		std::cout << char(219);
-
-		gotoxy(i + 44 + 20, 12);
-		std::cout << char(219);
-		gotoxy(i + 44 + 20, 13);
-		std::cout << char(219);
-	}
-	//walls
-	for (int i = 0; i < 50; i++)
-	{
-		color(0x08);
-		gotoxy(i + 20, 0);
-		std::cout << char(219);
-		gotoxy(i + 20, 17);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 6; i++)
-	{
-		gotoxy(49 + 20, i + 1);
-		std::cout << char(219);
-		gotoxy(49 + 20, i + 11);
-		std::cout << char(219);
-	}
-	for (int i = 0; i < 17; i++)
-	{
-		gotoxy(0 + 20, i + 1);
-		std::cout << char(219);
-	}
-
-	//table frame 4
-	for (int i = 0; i < 2; i++)
-	{
-		color(0x0E);
-		gotoxy(45 + 20, i + 7);
-		std::cout << char(219);
-		gotoxy(47 + 20, i + 7);
-		std::cout << char(219);
-		gotoxy(48 + 20, i + 7);
-		std::cout << char(219);
-
-		gotoxy(47 + 20, i + 9);
-		std::cout << char(219);
-		gotoxy(48 + 20, i + 9);
-		std::cout << char(219);
-
-
-		gotoxy(45 + 20, 10);
-		std::cout << char(219);
-		gotoxy(46 + 20, 10);
-		std::cout << char(219);
-
-		gotoxy(49 + 20, i + 7);
-		std::cout << char(219);
-		gotoxy(49 + 20, i + 9);
-		std::cout << char(219);
-	}
-	//dictator
-	color(0x06);
-	gotoxy(4 + 20, 8);
-	std::cout << "H";
-	//johan
-	color(0x09);
-	gotoxy(40 + 20, 5);
-	std::cout << "J";
-
-	/////////////////////////////////frame 7//////////////////////////////////////////
-	std::this_thread::sleep_for(std::chrono::seconds(2));
-	//dictator
-	color(0x0C);
-	gotoxy(40 + 20, 5);
-	std::cout << char(219);
-	//dictator
-	color(0x06);
-	gotoxy(4 + 20, 8);
-	std::cout << "H";
-	//johan
-	color(0x09);
-	gotoxy(39 + 20, 7);
-	std::cout << "J";
-
-	/////////////////////////////////frame 8//////////////////////////////////////////
-	std::this_thread::sleep_for(std::chrono::seconds(1));
-	//dictator
-	color(0x0C);
-	gotoxy(39 + 20, 7);
-	std::cout << char(219);
-	//dictator
-	color(0x06);
-	gotoxy(4 + 20, 8);
-	std::cout << "H";
-	//johan
-	color(0x09);
-	gotoxy(36 + 20, 8);
-	std::cout << "J";
-
-	std::string cutscene5line3[] = {
-		"Rikyar Adriaan Helt : Show me what you got."
+	"Johan went into the parliment clearing all the military officials one by one... until one remains...."
 	};
 
 	for (const auto& text : cutscene5line3) {
