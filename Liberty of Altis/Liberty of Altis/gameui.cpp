@@ -584,7 +584,7 @@ void gameui::cutscene1()
 	}
 	// Cutscene ends
 	gotoxy(x, y);
-	std::cout << "Cutscene ended. Press any key to start the game." << std::endl;
+	std::cout << "Press any key to start the game." << std::endl;
 	_getch();
 
 	// Game starts here
