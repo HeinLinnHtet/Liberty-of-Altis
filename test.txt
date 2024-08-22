@@ -1,6 +1,3 @@
-I support the national socialist movement of the fuhrer.
-......
-this is a test only a test do not be concerned or alarmed.
-
-
-hello testing the tree branchjhgskhcoasgdia
+Controls:
+WASD: Move up (w) left (a) down (s) right (d)
+J: attack then WASD to choose direction to attack
