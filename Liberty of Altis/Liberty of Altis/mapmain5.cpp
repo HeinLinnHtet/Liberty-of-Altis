@@ -185,9 +185,16 @@ void mapmain5::drawmap()
 		}
 	}
 
+	//for (int i = 0; i < Amt_Props; i++) {
+	//	props[i]->objPos.SetX(getx() + 4);
+	//	props[i]->objPos.SetY(gety() + 1);
+	//}
+	// 
+	// 
+	//Move to correct positiion 
 	for (int i = 0; i < Amt_Props; i++) {
-		props[i]->objPos.SetX(getx() + 4);
-		props[i]->objPos.SetY(gety() + 1);
+		props[i]->setx(props[i]->getx() + 4);
+		props[i]->sety(props[i]->gety() + 1);
 	}
 }
 
@@ -264,68 +271,65 @@ void mapmain5::map5game(int rifleamount,
 		}
 
 
-
-
 		//Set all troop positions
 		color(0x09);
 		if (level5Allies[0] != nullptr) {
-			SetStartPos(*level5Allies[0], 5, 2);
+			SetStartPos(*level5Allies[0], 40, 10);
 		}
 		if (level5Allies[1] != nullptr) {
-			SetStartPos(*level5Allies[1], 5, 5);
+			SetStartPos(*level5Allies[1], 45, 12);
 		}
 		if (level5Allies[2] != nullptr) {
-			SetStartPos(*level5Allies[2], 7, 5);
+			SetStartPos(*level5Allies[2], 51, 9);
 		}
 		if (level5Allies[3] != nullptr) {
-			SetStartPos(*level5Allies[3], 7, 6);
+			SetStartPos(*level5Allies[3], 41, 12);
 		}
 		if (level5Allies[4] != nullptr) {
-			SetStartPos(*level5Allies[4], 7, 8);
+			SetStartPos(*level5Allies[4], 47, 11);
 		}
 		if (level5Allies[5] != nullptr) {
-			SetStartPos(*level5Allies[5], 7, 10);
+			SetStartPos(*level5Allies[5], 42, 10);
 		}
 		if (level5Allies[6] != nullptr) {
-			SetStartPos(*level5Allies[6], 7, 12);
+			SetStartPos(*level5Allies[6], 37, 9);
 		}
 		if (level5Allies[7] != nullptr) {
-			SetStartPos(*level5Allies[7], 9, 14);
+			SetStartPos(*level5Allies[7], 35, 11);
 		}
 		if (level5Allies[8] != nullptr) {
-			SetStartPos(*level5Allies[8], 5, 16);
+			SetStartPos(*level5Allies[8], 38, 12);
 		}
 		if (level5Allies[9] != nullptr) {
-			SetStartPos(*level5Allies[9], 10, 18);
+			SetStartPos(*level5Allies[9], 33, 10);
 		}
 		if (level5Allies[10] != nullptr) {
-			SetStartPos(*level5Allies[10], 7, 13);
+			SetStartPos(*level5Allies[10], 44, 9);
 		}
 		if (level5Allies[11] != nullptr) {
-			SetStartPos(*level5Allies[11], 7, 14);
+			SetStartPos(*level5Allies[11], 49, 12);
 		}
 		if (level5Allies[12] != nullptr) {
-			SetStartPos(*level5Allies[12], 9, 12);
+			SetStartPos(*level5Allies[12], 42, 8);
 		}
 		if (level5Allies[13] != nullptr) {
-			SetStartPos(*level5Allies[13], 10, 2);
+			SetStartPos(*level5Allies[13], 34, 10);
 		}
 		if (level5Allies[Allies_Limit - 1] != nullptr) {
-			SetStartPos(*level5Allies[Allies_Limit - 1], 6, 12);
+			SetStartPos(*level5Allies[Allies_Limit - 1], 39, 11);
 		}
 
 		color(0x06);
-		SetStartPos(*level5Enemy[0], 25, 3);
-		SetStartPos(*level5Enemy[1], 30, 4);
-		SetStartPos(*level5Enemy[2], 28, 2);
-		SetStartPos(*level5Enemy[3], 40, 4);
-		SetStartPos(*level5Enemy[4], 30, 6);
-		SetStartPos(*level5Enemy[5], 40, 6);
-		SetStartPos(*level5Enemy[6], 28, 4);
-		SetStartPos(*level5Enemy[7], 35, 3);
-		SetStartPos(*level5Enemy[8], 23, 4);
-		SetStartPos(*level5Enemy[9], 35, 5);
-
+		SetStartPos(*level5Enemy[0], 5, 2);
+		SetStartPos(*level5Enemy[1], 5, 5);
+		SetStartPos(*level5Enemy[2], 7, 5);
+		SetStartPos(*level5Enemy[3], 9, 6);
+		SetStartPos(*level5Enemy[4], 7, 10);
+		SetStartPos(*level5Enemy[5], 6, 12);
+		SetStartPos(*level5Enemy[6], 10, 13);
+		SetStartPos(*level5Enemy[7], 12, 12);
+		SetStartPos(*level5Enemy[8], 7, 12);
+		SetStartPos(*level5Enemy[9], 14, 7);
 
 		////Check if all enemies have died  ### To change
 		bool test = false;
@@ -337,7 +341,7 @@ void mapmain5::map5game(int rifleamount,
 			///////////STATS
 			{
 				//display the stats
-				//allied troops live stats
+				//Enemy troops
 				gotoxy(65, 1);
 				color(0x06);
 				std::cout << "Enemy Troops";
@@ -363,7 +367,7 @@ void mapmain5::map5game(int rifleamount,
 				for (int i = 6; i < 8; i++) {
 					if (level5Enemy[i] != nullptr) {
 						gotoxy(55, 3 + i);
-						std::cout << "McGunner " << i - 5 << ": " << level5Enemy[i]->GetHealth() << " ";
+						std::cout << "McGunner " << i - 2 << ": " << level5Enemy[i]->GetHealth() << " ";
 
 						gotoxy(75, 3 + i);
 						std::cout << level5Enemy[i]->GetAttack();
@@ -376,7 +380,7 @@ void mapmain5::map5game(int rifleamount,
 				for (int i = 8; i < 10; i++) {
 					if (level5Enemy[i] != nullptr) {
 						gotoxy(55, 3 + i);
-						std::cout << "Grenader " << i - 7 << ": " << level5Enemy[i]->GetHealth() << " ";
+						std::cout << "Grenader " << i - 3 << ": " << level5Enemy[i]->GetHealth() << " ";
 
 						gotoxy(75, 3 + i);
 						std::cout << level5Enemy[i]->GetAttack();
@@ -386,7 +390,7 @@ void mapmain5::map5game(int rifleamount,
 					}
 				}
 
-				//Enemy troops
+				//allied troops live stats
 				gotoxy(65, numberofenemies + 3);
 				color(0x09);
 				std::cout << "Allied Troops";
@@ -413,7 +417,7 @@ void mapmain5::map5game(int rifleamount,
 				for (int i = rifleamount; i < mcgunamount + rifleamount; i++) {
 					if (level5Allies[i] != nullptr) {
 						gotoxy(55, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->Getname() << i - 2 << ": " << level5Allies[i]->GetHealth() << " ";
+						std::cout << level5Allies[i]->Getname() << i - (rifleamount - 1) << ": " << level5Allies[i]->GetHealth() << " ";
 
 						gotoxy(75, numberofenemies + 5 + i);
 						std::cout << level5Allies[i]->GetAttack();
@@ -427,63 +431,7 @@ void mapmain5::map5game(int rifleamount,
 				for (int i = mcgunamount + rifleamount; i < grendamount + mcgunamount + rifleamount; i++) {
 					if (level5Allies[i] != nullptr) {
 						gotoxy(55, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->Getname() << i - 4 << ": " << level5Allies[i]->GetHealth() << " ";
-
-						gotoxy(75, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->GetAttack();
-
-						gotoxy(83, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->GetRange();
-					}
-				}
-
-				//mortar
-				for (int i = grendamount + mcgunamount + rifleamount; i < motaramount + grendamount + mcgunamount + rifleamount; i++) {
-					if (level5Allies[i] != nullptr) {
-						gotoxy(55, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->Getname() << i + 1 << ": " << level5Allies[i]->GetHealth() << " ";
-
-						gotoxy(75, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->GetAttack();
-
-						gotoxy(83, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->GetRange();
-					}
-				}
-
-				//artillery
-				for (int i = motaramount + grendamount + mcgunamount + rifleamount; i < artilamount + motaramount + grendamount + mcgunamount + rifleamount; i++) {
-					if (level5Allies[i] != nullptr) {
-						gotoxy(55, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->Getname() << i - 2 << ": " << level5Allies[i]->GetHealth() << " ";
-
-						gotoxy(75, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->GetAttack();
-
-						gotoxy(83, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->GetRange();
-					}
-				}
-
-				//tank
-				for (int i = artilamount + motaramount + grendamount + mcgunamount + rifleamount; i < tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i++) {
-					if (level5Allies[i] != nullptr) {
-						gotoxy(55, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->Getname() << i - 4 << ": " << level5Allies[i]->GetHealth() << " ";
-
-						gotoxy(75, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->GetAttack();
-
-						gotoxy(83, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->GetRange();
-					}
-				}
-
-				//ifv
-				for (int i = tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i < ifvamount + tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i++) {
-					if (level5Allies[i] != nullptr) {
-						gotoxy(55, numberofenemies + 5 + i);
-						std::cout << level5Allies[i]->Getname() << i + 1 << ": " << level5Allies[i]->GetHealth() << " ";
+						std::cout << level5Allies[i]->Getname() << i - (rifleamount + mcgunamount - 1) << ": " << level5Allies[i]->GetHealth() << " ";
 
 						gotoxy(75, numberofenemies + 5 + i);
 						std::cout << level5Allies[i]->GetAttack();
@@ -497,7 +445,7 @@ void mapmain5::map5game(int rifleamount,
 
 			////////For player troops
 			// Player choose action 
-			for (int i = 0; i < 7; i++) {
+			for (int i = 0; i < Allies_Limit; i++) {
 				bool ValidMove = false;
 
 				//Get user input, WASD to move or J to attack 
@@ -552,7 +500,7 @@ void mapmain5::map5game(int rifleamount,
 
 							//Check collison between Allies and Allies
 							if (CanMove == true) {
-								for (int j = 0; j < 7; j++) {
+								for (int j = 0; j < Allies_Limit; j++) {
 									if (level5Allies[j] != nullptr) {
 										if (level5Allies[i]->Entitycollision(*level5Allies[j], choice) == true) {
 											gotoxy(15, 21);
@@ -613,18 +561,7 @@ void mapmain5::map5game(int rifleamount,
 						//Check if can attack any enemies 
 						for (int j = 0; j < 10; j++) {
 							if (level5Enemy[j] != nullptr) {
-								if (level5Allies[i]->Draw_Icon() != 'A' || level5Allies[i]->Draw_Icon() != 'O'){
-									if (CheckAttack(*level5Allies[i], *level5Enemy[j], attackDir) == true) {
-										level5Allies[i]->DamageDealt(*level5Enemy[j]);
-
-										gotoxy(15, 25);
-										std::cout << "attack Dealt";
-										gotoxy(15, 26);
-										std::cout << level5Enemy[j]->GetHealth() << " " << j << " " << i;
-										break;
-									}
-								}
-								else {
+								if (CheckAttack(*level5Allies[i], *level5Enemy[j], attackDir) == true) {
 									level5Allies[i]->DamageDealt(*level5Enemy[j]);
 
 									gotoxy(15, 25);
@@ -662,7 +599,7 @@ void mapmain5::map5game(int rifleamount,
 			//UI 
 			drawmap();
 			//Update new position 
-			for (int i = 0; i < 7; i++) {
+			for (int i = 0; i < Allies_Limit; i++) {
 				if (level5Allies[i] != nullptr) {
 					gotoxy(level5Allies[i]->PosXY.GetX(), level5Allies[i]->PosXY.GetY());
 					color(0x09);
@@ -687,21 +624,10 @@ void mapmain5::map5game(int rifleamount,
 				if (level5Enemy[i] != nullptr) {
 
 					//Attacking, Check if can attack first 
-					for (int j = 0; j < 7; j++) {
+					for (int j = 0; j < Allies_Limit; j++) {
 						if (level5Allies[j] != nullptr) {
-							if (level5Enemy[i]->Draw_Icon() != 'A' || level5Enemy[i]->Draw_Icon() != 'O'){
-								if (EnemyCheckAtk(*level5Allies[j], *level5Enemy[i]) == true) {
-									level5Enemy[i]->DamageDealt(*level5Allies[j]);
-									/*gotoxy(50, 23);
-									std::cout << "Enemy attacking " << i << " " << j << " " << level1Allies[0]->GetHealth();*/
-									Moving = false;
-									break;
-								}
-							}
-							else{
+							if (EnemyCheckAtk(*level5Allies[j], *level5Enemy[i]) == true) {
 								level5Enemy[i]->DamageDealt(*level5Allies[j]);
-								/*gotoxy(50, 23);
-								std::cout << "Enemy attacking " << i << " " << j << " " << level1Allies[0]->GetHealth();*/
 								Moving = false;
 								break;
 							}
@@ -730,7 +656,7 @@ void mapmain5::map5game(int rifleamount,
 
 						if (ValidMove == true) {
 							//Check collison between Enemies and Allies
-							for (int j = 0; j < 7; j++) {
+							for (int j = 0; j < Allies_Limit; j++) {
 								if (level5Allies[j] != nullptr) {
 									if (level5Enemy[i]->Entitycollision(*level5Allies[j], input) == true) {
 										gotoxy(15, 21);
@@ -780,7 +706,7 @@ void mapmain5::map5game(int rifleamount,
 				}
 
 				//Check if allies are alive 
-				for (int j = 0; j < 7; j++) {
+				for (int j = 0; j < Allies_Limit; j++) {
 					if (level5Allies[j] != nullptr) {
 						if (level5Allies[j]->isEntityAlive() == false) {
 							gotoxy(level5Allies[j]->PosXY.GetX(), level5Allies[j]->PosXY.GetY());
@@ -798,7 +724,7 @@ void mapmain5::map5game(int rifleamount,
 			//UI
 			drawmap();
 			//Update new position 
-			for (int i = 0; i < 7; i++) {
+			for (int i = 0; i < Allies_Limit; i++) {
 				if (level5Allies[i] != nullptr) {
 					gotoxy(level5Allies[i]->PosXY.GetX(), level5Allies[i]->PosXY.GetY());
 					color(0x09);
@@ -827,7 +753,7 @@ void mapmain5::map5game(int rifleamount,
 
 
 		//Delete backlog
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < Allies_Limit; i++) {
 			if (level5Allies[i] != nullptr) {
 				delete level5Allies[i];
 				level5Allies[i] = nullptr;
@@ -888,7 +814,7 @@ bool mapmain5::CheckAttack(Entity& main, Entity& other, char direction)
 					//Check for any objects aligned and above player 
 					if (xobj == x && (yobj < y)) {
 						//Check if within range
-						if (Endy <= Range) {
+						if ((Endy <= Range) && !(yother >= yobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -899,7 +825,7 @@ bool mapmain5::CheckAttack(Entity& main, Entity& other, char direction)
 					//Check for any objects aligned and above player 
 					if (xobj == x && (yobj > y)) {
 						//Check if within range
-						if (Endy <= Range) {
+						if ((Endy <= Range) && !(yother <= yobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -910,7 +836,7 @@ bool mapmain5::CheckAttack(Entity& main, Entity& other, char direction)
 					//Check for any objects aligned and above player 
 					if (yobj == y && (xobj > x)) {
 						//Check if within range
-						if (Endx <= Range) {
+						if ((Endx <= Range) && !(xother <= xobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -921,7 +847,7 @@ bool mapmain5::CheckAttack(Entity& main, Entity& other, char direction)
 					//Check for any objects aligned and above player 
 					if (yobj == y && (xobj < x)) {
 						//Check if within range
-						if (Endx <= Range) {
+						if ((Endx <= Range) && !(xother >= xobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -985,7 +911,7 @@ bool mapmain5::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 					//check if enviroment obj above
 					if ((x == xobj) && (yobj < y)) {
 						//Check if object in range
-						if (Endy <= Range) {
+						if ((Endy <= Range) && !(y >= yobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -996,7 +922,7 @@ bool mapmain5::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 					//check if enviroment obj above
 					if ((x == xobj) && (yobj > y)) {
 						//Check if object in range
-						if (Endy <= Range) {
+						if ((Endy <= Range) && !(y <= yobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -1023,7 +949,7 @@ bool mapmain5::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 					//check if enviroment obj above
 					if ((y == yobj) && (xobj < x)) {
 						//Check if object is within range
-						if (Endx <= Range) {
+						if ((Endx <= Range) && !(x >= xobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -1034,7 +960,7 @@ bool mapmain5::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 					//check if enviroment obj above
 					if ((y == yobj) && (xobj > x)) {
 						//Check if object is within range
-						if (Endx <= Range) {
+						if ((Endx <= Range) && !(x <= xobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -1055,7 +981,7 @@ bool mapmain5::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 		return attackable;
 	}
 }
-
+//Check collision
 bool mapmain5::CheckEnviroCollide(Entity& main, char direction)
 {
 	//store position
@@ -1095,6 +1021,7 @@ bool mapmain5::CheckEnviroCollide(Entity& main, char direction)
 	}
 
 	return result;
+
 }
 
 bool mapmain5::GetGameOver(void)
