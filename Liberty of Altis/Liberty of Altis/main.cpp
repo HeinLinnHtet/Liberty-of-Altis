@@ -24,51 +24,51 @@ int main(void) {
 	mapmain4 testlvl4;
 	mapmain5 testlvl5;
 
-	cutscene.cutscene1();
-	system("CLS");
+	//cutscene.cutscene1();
+	//system("CLS");
 
-	testlvl1.map1game();
-	system("CLS");
+	//testlvl1.map1game();
+	//system("CLS");
 
-	cutscene.cutscene2();
-	system("CLS");
-	testlvl2.map2game();
-	system("CLS");
+	//cutscene.cutscene2();
+	//system("CLS");
+	//testlvl2.map2game();
+	//system("CLS");
 
-	cutscene.cutscene3();
-	system("CLS");
+	//cutscene.cutscene3();
+	//system("CLS");
 
-	testshop.shopping();
+	//testshop.shopping();
 
-	//These are the values of what you bought from the shop
-	
-	maininventory.riflemansetter(testshop.inventory.riflemangetter());
-	maininventory.artillerysetter(testshop.inventory.artillerygetter());
-	maininventory.grenadiersetter(testshop.inventory.grenadiergetter());
-	maininventory.IFVsetter(testshop.inventory.IFVgetter());
-	maininventory.machinegunnersetter(testshop.inventory.machinegunnergetter());
-	maininventory.motarsetter(testshop.inventory.motargetter());
-	maininventory.tanksetter(testshop.inventory.tankgetter());
+	////These are the values of what you bought from the shop
+	//
+	//maininventory.riflemansetter(testshop.inventory.riflemangetter());
+	//maininventory.artillerysetter(testshop.inventory.artillerygetter());
+	//maininventory.grenadiersetter(testshop.inventory.grenadiergetter());
+	//maininventory.IFVsetter(testshop.inventory.IFVgetter());
+	//maininventory.machinegunnersetter(testshop.inventory.machinegunnergetter());
+	//maininventory.motarsetter(testshop.inventory.motargetter());
+	//maininventory.tanksetter(testshop.inventory.tankgetter());
 
-	//Level 3
-	while (testlvl3.GetGameOver() == false) {
-		maininventory.backpak();
-		system("CLS");
-		testlvl3.map3game(
-			maininventory.Troop_broughtin[0],
-			maininventory.Troop_broughtin[1],
-			maininventory.Troop_broughtin[2],
-			maininventory.Troop_broughtin[3],
-			maininventory.Troop_broughtin[4],
-			maininventory.Troop_broughtin[5],
-			maininventory.Troop_broughtin[6]);
-	}
+	////Level 3
+	//while (testlvl3.GetGameOver() == false) {
+	//	maininventory.backpak();
+	//	system("CLS");
+	//	testlvl3.map3game(
+	//		maininventory.Troop_broughtin[0],
+	//		maininventory.Troop_broughtin[1],
+	//		maininventory.Troop_broughtin[2],
+	//		maininventory.Troop_broughtin[3],
+	//		maininventory.Troop_broughtin[4],
+	//		maininventory.Troop_broughtin[5],
+	//		maininventory.Troop_broughtin[6]);
+	//}
 
-	//pay day
-	testshop.cashearned(500);
+	////pay day
+	//testshop.cashearned(500);
 
-	cutscene.cutscene4();
-	system("CLS");
+	//cutscene.cutscene4();
+	//system("CLS");
 
 	testshop.shopping();
 
