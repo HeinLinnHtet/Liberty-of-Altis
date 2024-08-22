@@ -564,14 +564,27 @@ void mapmain3::map3game(
 					//Check if can attack any enemies 
 					for (int j = 0; j < 10; j++) {
 						if (level3Enemy[j] != nullptr) {
-							if (CheckAttack(*level3Allies[i], *level3Enemy[j], attackDir) == true) {
-								level3Allies[i]->DamageDealt(*level3Enemy[j]);
+							if (level3Allies[i]->Draw_Icon() != 'A' || level3Allies[i]->Draw_Icon() != 'O') {
+								if (CheckAttack(*level3Allies[i], *level3Enemy[j], attackDir) == true) {
+									level3Allies[i]->DamageDealt(*level3Enemy[j]);
 
-								gotoxy(15, 25);
-								std::cout << "attack Dealt";
-								gotoxy(15, 26);
-								std::cout << level3Enemy[j]->GetHealth() << " " << j << " " << i;
-								break;
+									gotoxy(15, 25);
+									std::cout << "attack Dealt";
+									gotoxy(15, 26);
+									std::cout << level3Enemy[j]->GetHealth() << " " << j << " " << i;
+									break;
+								}
+								else {
+									if (CheckAttack(*level3Allies[i], *level3Enemy[j], attackDir) == true) {
+										level3Allies[i]->DamageDealt(*level3Enemy[j]);
+
+										gotoxy(15, 25);
+										std::cout << "attack Dealt";
+										gotoxy(15, 26);
+										std::cout << level3Enemy[j]->GetHealth() << " " << j << " " << i;
+										break;
+									}
+								}
 							}
 						}
 					}
@@ -629,11 +642,19 @@ void mapmain3::map3game(
 				//Attacking, Check if can attack first 
 				for (int j = 0; j < Allies_Limit; j++) {
 					if (level3Allies[j] != nullptr) {
-						if (EnemyCheckAtk(*level3Allies[j], *level3Enemy[i]) == true) {
-							level3Enemy[i]->DamageDealt(*level3Allies[j]);
-							Moving = false;
-							break;
-
+						if (level3Enemy[i]->Draw_Icon() != 'A' || level3Enemy[i]->Draw_Icon() != 'O'){
+							if (EnemyCheckAtk(*level3Allies[j], *level3Enemy[i]) == true) {
+								level3Enemy[i]->DamageDealt(*level3Allies[j]);
+								Moving = false;
+								break;
+							}
+						}
+						else{
+							if (EnemyCheckAtk(*level3Allies[j], *level3Enemy[i]) == true) {
+								level3Enemy[i]->DamageDealt(*level3Allies[j]);
+								Moving = false;
+								break;
+							}
 						}
 					}
 				}
@@ -829,7 +850,7 @@ bool mapmain3::CheckAttack(Entity& main, Entity& other, char direction)
 						//Check for any objects aligned and above player 
 						if (xobj == x && (yobj < y)) {
 							//Check if within range
-							if (Endy <= Range) {
+							if ((Endy <= Range) && !(yother >= yobj)) {
 								objectblocking = true;
 								break;
 							}
@@ -840,7 +861,7 @@ bool mapmain3::CheckAttack(Entity& main, Entity& other, char direction)
 						//Check for any objects aligned and above player 
 						if (xobj == x && (yobj > y)) {
 							//Check if within range
-							if (Endy <= Range) {
+							if ((Endy <= Range) && !(yother <= yobj)) {
 								objectblocking = true;
 								break;
 							}
@@ -851,7 +872,7 @@ bool mapmain3::CheckAttack(Entity& main, Entity& other, char direction)
 						//Check for any objects aligned and above player 
 						if (yobj == y && (xobj > x)) {
 							//Check if within range
-							if (Endx <= Range) {
+							if ((Endx <= Range) && !(xother <= xobj)) {
 								objectblocking = true;
 								break;
 							}
@@ -862,7 +883,7 @@ bool mapmain3::CheckAttack(Entity& main, Entity& other, char direction)
 						//Check for any objects aligned and above player 
 						if (yobj == y && (xobj < x)) {
 							//Check if within range
-							if (Endx <= Range) {
+							if ((Endx <= Range) && !(xother >= xobj)) {
 								objectblocking = true;
 								break;
 							}
@@ -887,7 +908,7 @@ bool mapmain3::CheckAttack(Entity& main, Entity& other, char direction)
 							//Check for any objects aligned and above player 
 							if (xobj == x && (yobj < y)) {
 								//Check if within range
-								if (Endy <= Range) {
+								if ((Endy <= Range) && !(yother >= yobj)) {
 									objectblocking = true;
 									break;
 								}
@@ -898,7 +919,7 @@ bool mapmain3::CheckAttack(Entity& main, Entity& other, char direction)
 							//Check for any objects aligned and above player 
 							if (xobj == x && (yobj > y)) {
 								//Check if within range
-								if (Endy <= Range) {
+								if ((Endy <= Range) && !(yother <= yobj)) {
 									objectblocking = true;
 									break;
 								}
@@ -909,7 +930,7 @@ bool mapmain3::CheckAttack(Entity& main, Entity& other, char direction)
 							//Check for any objects aligned and above player 
 							if (yobj == y && (xobj > x)) {
 								//Check if within range
-								if (Endx <= Range) {
+								if ((Endx <= Range) && !(xother <= xobj)) {
 									objectblocking = true;
 									break;
 								}
@@ -920,7 +941,7 @@ bool mapmain3::CheckAttack(Entity& main, Entity& other, char direction)
 							//Check for any objects aligned and above player 
 							if (yobj == y && (xobj < x)) {
 								//Check if within range
-								if (Endx <= Range) {
+								if ((Endx <= Range) && !(xother >= xobj)) {
 									objectblocking = true;
 									break;
 								}
@@ -970,12 +991,14 @@ bool mapmain3::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 	//Check if enemy is within range
 	if (dx <= Range && dy <= Range) {
 
-		if (x == xother) {
+		if (Enemy.Draw_Icon() == 'A' || Enemy.Draw_Icon() == 'O') {
+			objectblocking = false;
+		}
+		else {
+			//Check if they are aligned
+			//ally on y axis
+			if (x == xother) {
 
-			if (Enemy.Draw_Icon() == 'A' || Enemy.Draw_Icon() == 'O') {
-				objectblocking = false;
-			}
-			else {
 				//check EVERY object to see if any is obstructing  
 				for (int i = 0; i < Amt_Trees; i++) {
 
@@ -991,7 +1014,7 @@ bool mapmain3::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 						//check if enviroment obj above
 						if ((x == xobj) && (yobj < y)) {
 							//Check if object in range
-							if (Endy <= Range) {
+							if ((Endy <= Range) && !(yother >= yobj)) {
 								objectblocking = true;
 								break;
 							}
@@ -1002,7 +1025,7 @@ bool mapmain3::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 						//check if enviroment obj above
 						if ((x == xobj) && (yobj > y)) {
 							//Check if object in range
-							if (Endy <= Range) {
+							if ((Endy <= Range) && !(yother <= yobj)) {
 								objectblocking = true;
 								break;
 							}
@@ -1026,7 +1049,7 @@ bool mapmain3::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 							//check if enviroment obj above
 							if ((x == xobj) && (yobj < y)) {
 								//Check if object in range
-								if (Endy <= Range) {
+								if ((Endy <= Range) && !(yother >= yobj)) {
 									objectblocking = true;
 									break;
 								}
@@ -1037,7 +1060,7 @@ bool mapmain3::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 							//check if enviroment obj above
 							if ((x == xobj) && (yobj > y)) {
 								//Check if object in range
-								if (Endy <= Range) {
+								if ((Endy <= Range) && !(yother <= yobj)) {
 									objectblocking = true;
 									break;
 								}
@@ -1045,14 +1068,11 @@ bool mapmain3::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 						}
 					}
 				}
+			}
+			//Check if they are aligned
+			//ally on x axis
+			else if (y == yother) {
 
-			}
-		}
-		else if (y == yother) {
-			if (Enemy.Draw_Icon() == 'A' || Enemy.Draw_Icon() == 'O') {
-				objectblocking = false;
-			}
-			else {
 				//check EVERY object to see if any is obstructing  
 				for (int i = 0; i < Amt_Trees; i++) {
 
@@ -1068,7 +1088,7 @@ bool mapmain3::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 						//check if enviroment obj above
 						if ((y == yobj) && (xobj < x)) {
 							//Check if object is within range
-							if (Endx <= Range) {
+							if ((Endx <= Range) && !(xother >= xobj)) {
 								objectblocking = true;
 								break;
 							}
@@ -1079,7 +1099,7 @@ bool mapmain3::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 						//check if enviroment obj above
 						if ((y == yobj) && (xobj > x)) {
 							//Check if object is within range
-							if (Endx <= Range) {
+							if ((Endx <= Range) && !(xother <= xobj)) {
 								objectblocking = true;
 								break;
 							}
@@ -1102,7 +1122,7 @@ bool mapmain3::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 							//check if enviroment obj above
 							if ((y == yobj) && (xobj < x)) {
 								//Check if object is within range
-								if (Endx <= Range) {
+								if ((Endx <= Range) && !(xother >= xobj)) {
 									objectblocking = true;
 									break;
 								}
@@ -1113,7 +1133,7 @@ bool mapmain3::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 							//check if enviroment obj above
 							if ((y == yobj) && (xobj > x)) {
 								//Check if object is within range
-								if (Endx <= Range) {
+								if ((Endx <= Range) && !(xother <= xobj)) {
 									objectblocking = true;
 									break;
 								}
@@ -1121,15 +1141,14 @@ bool mapmain3::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 						}
 					}
 				}
+				else
+					objectblocking = true;
 			}
-
+			else
+				//means cant attack 
+				objectblocking = true;
 		}
-		else
-			objectblocking = true;
-
 	}
-	else
-		objectblocking = true;
 
 	//if no object obstruct, attack
 	if (objectblocking == false) {

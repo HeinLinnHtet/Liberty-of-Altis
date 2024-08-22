@@ -1260,8 +1260,6 @@ bool mapmain4::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 	//Check if enemy is within range
 	if (dx <= Range && dy <= Range) {
 
-
-
 		//Check if they are aligned
 		//ally on y axis
 		if (x == xother) {

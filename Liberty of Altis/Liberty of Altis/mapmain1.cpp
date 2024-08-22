@@ -706,7 +706,7 @@ bool mapmain1::CheckAttack(Entity& main, Entity& other, char direction)
 					//Check for any objects aligned and above player 
 					if (xobj == x && (yobj < y)) {
 						//Check if within range
-						if (Endy <= Range) {
+						if ((Endy <= Range) && !(yother >= yobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -717,7 +717,7 @@ bool mapmain1::CheckAttack(Entity& main, Entity& other, char direction)
 					//Check for any objects aligned and above player 
 					if (xobj == x && (yobj > y)) {
 						//Check if within range
-						if (Endy <= Range) {
+						if ((Endy <= Range) && !(yother <= yobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -728,7 +728,7 @@ bool mapmain1::CheckAttack(Entity& main, Entity& other, char direction)
 					//Check for any objects aligned and above player 
 					if (yobj == y && (xobj > x)) {
 						//Check if within range
-						if (Endx <= Range) {
+						if ((Endx <= Range) && !(xother <= xobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -739,7 +739,7 @@ bool mapmain1::CheckAttack(Entity& main, Entity& other, char direction)
 					//Check for any objects aligned and above player 
 					if (yobj == y && (xobj < x)) {
 						//Check if within range
-						if (Endx <= Range) {
+						if ((Endx <= Range) && !(xother >= xobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -804,7 +804,7 @@ bool mapmain1::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 					//check if enviroment obj above
 					if ((x == xobj) && (yobj < y)) {
 						//Check if object in range
-						if (Endy <= Range) {
+						if ((Endy <= Range) && !(y >= yobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -815,7 +815,7 @@ bool mapmain1::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 					//check if enviroment obj above
 					if ((x == xobj) && (yobj > y)) {
 						//Check if object in range
-						if (Endy <= Range) {
+						if ((Endy <= Range) && !(y <= yobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -842,7 +842,7 @@ bool mapmain1::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 					//check if enviroment obj above
 					if ((y == yobj) && (xobj < x)) {
 						//Check if object is within range
-						if (Endx <= Range) {
+						if ((Endx <= Range) && !(x >= xobj)) {
 							objectblocking = true;
 							break;
 						}
@@ -853,7 +853,7 @@ bool mapmain1::EnemyCheckAtk(Entity& ally, Entity& Enemy)
 					//check if enviroment obj above
 					if ((y == yobj) && (xobj > x)) {
 						//Check if object is within range
-						if (Endx <= Range) {
+						if ((Endx <= Range) && !(x <= xobj)) {
 							objectblocking = true;
 							break;
 						}
