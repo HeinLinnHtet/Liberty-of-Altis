@@ -9,6 +9,7 @@ bool mapmain4::GameOver = false;
 
 mapmain4::mapmain4()
 {
+
 	alliesdead = 0;
 	enemiesdead = 0;
 }
@@ -516,7 +517,7 @@ void mapmain4::map4game(int rifleamount,
 			for (int i = 3; i < 4; i++) {
 				if (level4Enemy[i] != nullptr) {
 					gotoxy(85, 3 + i);
-					std::cout << "McGunner " << i - 2 << ": " << level4Enemy[i]->GetHealth() << " ";
+					std::cout << "McGunner " << i - 5 << ": " << level4Enemy[i]->GetHealth() << " ";
 
 					gotoxy(105, 3 + i);
 					std::cout << level4Enemy[i]->GetAttack();
@@ -529,7 +530,7 @@ void mapmain4::map4game(int rifleamount,
 			for (int i = 4; i < 6; i++) {
 				if (level4Enemy[i] != nullptr) {
 					gotoxy(85, 3 + i);
-					std::cout << "Grenader " << i - 3 << ": " << level4Enemy[i]->GetHealth() << " ";
+					std::cout << "Grenader " << i - 7 << ": " << level4Enemy[i]->GetHealth() << " ";
 
 					gotoxy(105, 3 + i);
 					std::cout << level4Enemy[i]->GetAttack();
@@ -542,7 +543,7 @@ void mapmain4::map4game(int rifleamount,
 			for (int i = 6; i < 7; i++) {
 				if (level4Enemy[i] != nullptr) {
 					gotoxy(85, 3 + i);
-					std::cout << "Motar " << i - 5 << ": " << level4Enemy[i]->GetHealth() << " ";
+					std::cout << "Motar " << i - 7 << ": " << level4Enemy[i]->GetHealth() << " ";
 
 					gotoxy(105, 3 + i);
 					std::cout << level4Enemy[i]->GetAttack();
@@ -555,7 +556,7 @@ void mapmain4::map4game(int rifleamount,
 			for (int i = 7; i < 9; i++) {
 				if (level4Enemy[i] != nullptr) {
 					gotoxy(85, 3 + i);
-					std::cout << "IFV " << i - 6 << ": " << level4Enemy[i]->GetHealth() << " ";
+					std::cout << "IFV " << i - 7 << ": " << level4Enemy[i]->GetHealth() << " ";
 
 					gotoxy(105, 3 + i);
 					std::cout << level4Enemy[i]->GetAttack();
@@ -568,7 +569,7 @@ void mapmain4::map4game(int rifleamount,
 			for (int i = 9; i < Amt_Lvl4_Enemy; i++) {
 				if (level4Enemy[i] != nullptr) {
 					gotoxy(85, 3 + i);
-					std::cout << "Tank " << i - 8 << ": " << level4Enemy[i]->GetHealth() << " ";
+					std::cout << "Tank " << i - 7 << ": " << level4Enemy[i]->GetHealth() << " ";
 
 					gotoxy(105, 3 + i);
 					std::cout << level4Enemy[i]->GetAttack();
@@ -605,7 +606,7 @@ void mapmain4::map4game(int rifleamount,
 			for (int i = rifleamount; i < mcgunamount + rifleamount; i++) {
 				if (level4Allies[i] != nullptr) {
 					gotoxy(85, Amt_Lvl4_Enemy + 5 + i);
-					std::cout << level4Allies[i]->Getname() << i - (rifleamount - 1) << ": " << level4Allies[i]->GetHealth() << " ";
+					std::cout << level4Allies[i]->Getname() << i - 2 << ": " << level4Allies[i]->GetHealth() << " ";
 
 					gotoxy(105, Amt_Lvl4_Enemy + 5 + i);
 					std::cout << level4Allies[i]->GetAttack();
@@ -619,7 +620,7 @@ void mapmain4::map4game(int rifleamount,
 			for (int i = mcgunamount + rifleamount; i < grendamount + mcgunamount + rifleamount; i++) {
 				if (level4Allies[i] != nullptr) {
 					gotoxy(85, Amt_Lvl4_Enemy + 5 + i);
-					std::cout << level4Allies[i]->Getname() << i - (rifleamount + mcgunamount - 1) << ": " << level4Allies[i]->GetHealth() << " ";
+					std::cout << level4Allies[i]->Getname() << i - 4 << ": " << level4Allies[i]->GetHealth() << " ";
 
 					gotoxy(105, Amt_Lvl4_Enemy + 5 + i);
 					std::cout << level4Allies[i]->GetAttack();
@@ -633,7 +634,7 @@ void mapmain4::map4game(int rifleamount,
 			for (int i = grendamount + mcgunamount + rifleamount; i < motaramount + grendamount + mcgunamount + rifleamount; i++) {
 				if (level4Allies[i] != nullptr) {
 					gotoxy(85, Amt_Lvl4_Enemy + 5 + i);
-					std::cout << level4Allies[i]->Getname() << i - (grendamount + mcgunamount + rifleamount - 1) << ": " << level4Allies[i]->GetHealth() << " ";
+					std::cout << level4Allies[i]->Getname() << i + 1 << ": " << level4Allies[i]->GetHealth() << " ";
 
 					gotoxy(105, Amt_Lvl4_Enemy + 5 + i);
 					std::cout << level4Allies[i]->GetAttack();
@@ -647,7 +648,7 @@ void mapmain4::map4game(int rifleamount,
 			for (int i = motaramount + grendamount + mcgunamount + rifleamount; i < artilamount + motaramount + grendamount + mcgunamount + rifleamount; i++) {
 				if (level4Allies[i] != nullptr) {
 					gotoxy(85, Amt_Lvl4_Enemy + 5 + i);
-					std::cout << level4Allies[i]->Getname() << i - (motaramount + grendamount + mcgunamount + rifleamount - 1) << ": " << level4Allies[i]->GetHealth() << " ";
+					std::cout << level4Allies[i]->Getname() << i - 2 << ": " << level4Allies[i]->GetHealth() << " ";
 
 					gotoxy(105, Amt_Lvl4_Enemy + 5 + i);
 					std::cout << level4Allies[i]->GetAttack();
@@ -661,7 +662,7 @@ void mapmain4::map4game(int rifleamount,
 			for (int i = artilamount + motaramount + grendamount + mcgunamount + rifleamount; i < tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i++) {
 				if (level4Allies[i] != nullptr) {
 					gotoxy(85, Amt_Lvl4_Enemy + 5 + i);
-					std::cout << level4Allies[i]->Getname() << i - (artilamount + motaramount + grendamount + mcgunamount + rifleamount - 1) << ": " << level4Allies[i]->GetHealth() << " ";
+					std::cout << level4Allies[i]->Getname() << i - 4 << ": " << level4Allies[i]->GetHealth() << " ";
 
 					gotoxy(105, Amt_Lvl4_Enemy + 5 + i);
 					std::cout << level4Allies[i]->GetAttack();
@@ -675,7 +676,7 @@ void mapmain4::map4game(int rifleamount,
 			for (int i = tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i < ifvamount + tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount; i++) {
 				if (level4Allies[i] != nullptr) {
 					gotoxy(85, Amt_Lvl4_Enemy + 5 + i);
-					std::cout << level4Allies[i]->Getname() << i - (tankamount + artilamount + motaramount + grendamount + mcgunamount + rifleamount - 1) << ": " << level4Allies[i]->GetHealth() << " ";
+					std::cout << level4Allies[i]->Getname() << i + 1 << ": " << level4Allies[i]->GetHealth() << " ";
 
 					gotoxy(105, Amt_Lvl4_Enemy + 5 + i);
 					std::cout << level4Allies[i]->GetAttack();

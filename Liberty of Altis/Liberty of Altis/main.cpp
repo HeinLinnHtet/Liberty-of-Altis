@@ -51,21 +51,18 @@ int main(void) {
 	maininventory.tanksetter(testshop.inventory.tankgetter());
 
 	//Level 3
-	while (testlvl3.GetGameOver() == false) {
-		maininventory.backpak();
-		system("CLS");
-		testlvl3.map3game(
-			maininventory.Troop_broughtin[0],
-			maininventory.Troop_broughtin[1],
-			maininventory.Troop_broughtin[2],
-			maininventory.Troop_broughtin[3],
-			maininventory.Troop_broughtin[4],
-			maininventory.Troop_broughtin[5],
-			maininventory.Troop_broughtin[6]);
-	}
+	maininventory.backpak();
+	system("CLS");
+	testlvl3.map3game(
+		maininventory.Troop_broughtin[0],
+		maininventory.Troop_broughtin[1],
+		maininventory.Troop_broughtin[2],
+		maininventory.Troop_broughtin[3],
+		maininventory.Troop_broughtin[4],
+		maininventory.Troop_broughtin[5],
+		maininventory.Troop_broughtin[6]);
 
 	system("CLS");
-
 	//pay day
 	testshop.cashearned(500);
 
@@ -86,21 +83,18 @@ int main(void) {
 
 
 	//Level 4
-	while (testlvl4.GetGameOver() == false) {
-		maininventory.backpak();
-		system("CLS");
-		testlvl4.map4game(
-			maininventory.Troop_broughtin[0],
-			maininventory.Troop_broughtin[1],
-			maininventory.Troop_broughtin[2],
-			maininventory.Troop_broughtin[3],
-			maininventory.Troop_broughtin[4],
-			maininventory.Troop_broughtin[5],
-			maininventory.Troop_broughtin[6]);
-	}
+	maininventory.backpak();
+	system("CLS");
+	testlvl4.map4game(
+		maininventory.Troop_broughtin[0],
+		maininventory.Troop_broughtin[1],
+		maininventory.Troop_broughtin[2],
+		maininventory.Troop_broughtin[3],
+		maininventory.Troop_broughtin[4],
+		maininventory.Troop_broughtin[5],
+		maininventory.Troop_broughtin[6]);
 
 	system("CLS");
-
 	//pay day 2
 	testshop.cashearned(1000);
 
@@ -120,21 +114,18 @@ int main(void) {
 	maininventory.tanksetter(testshop.inventory.tankgetter());
 
 	//level 5
-	while (testlvl5.GetGameOver() == false) {
-		maininventory.bakpak();
-		system("CLS");
-		testlvl5.map5game(
-			maininventory.Troop_broughtin[0],
-			maininventory.Troop_broughtin[1],
-			maininventory.Troop_broughtin[2],
-			maininventory.Troop_broughtin[3],
-			maininventory.Troop_broughtin[4],
-			maininventory.Troop_broughtin[5],
-			maininventory.Troop_broughtin[6]);
-	}
+	maininventory.bakpak();
+	system("CLS");
+	testlvl5.map5game(
+		maininventory.Troop_broughtin[0],
+		maininventory.Troop_broughtin[1],
+		maininventory.Troop_broughtin[2],
+		maininventory.Troop_broughtin[3],
+		maininventory.Troop_broughtin[4],
+		maininventory.Troop_broughtin[5],
+		maininventory.Troop_broughtin[6]);
 
 	system("CLS");
-
 	cutscene.cutscence6();
 	system("CLS");
 }
